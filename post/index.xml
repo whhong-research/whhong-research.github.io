@@ -8,12 +8,13 @@
         <language>zh-cn</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Thu, 20 Feb 2025 19:34:16 +0800</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>PaperReading</title>
-        <link>https://example.com/p/paperreading/</link>
+        <title>PaperReading1</title>
+        <link>https://example.com/p/paperreading1/</link>
         <pubDate>Thu, 20 Feb 2025 19:34:16 +0800</pubDate>
         
-        <guid>https://example.com/p/paperreading/</guid>
-        <description></description>
+        <guid>https://example.com/p/paperreading1/</guid>
+        <description>&lt;p&gt;Paper 1&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>Chinese Test</title>
