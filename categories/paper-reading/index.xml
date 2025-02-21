@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Paper Reading on whhong的博客</title>
+        <title>论文阅读 on whhong的博客</title>
         <link>https://whhong-research.github.io/categories/paper-reading/</link>
-        <description>Recent content in Paper Reading on whhong的博客</description>
+        <description>Recent content in 论文阅读 on whhong的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Thu, 20 Feb 2025 19:34:16 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/categories/paper-reading/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>
-        <link>https://whhong-research.github.io/p/crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</link>
-        <pubDate>Thu, 20 Feb 2025 19:34:16 +0800</pubDate>
+        <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/categories/paper-reading/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>
+        <link>https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</guid>
-        <description>&lt;p&gt;Paper 1&lt;/p&gt;
-</description>
+        <guid>https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework.jpg" alt="Featured image of post Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes" /&gt;</description>
         </item>
         
     </channel>

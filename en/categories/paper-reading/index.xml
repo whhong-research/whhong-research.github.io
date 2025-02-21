@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Paper Reading on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/categories/paper-reading/</link>
+        <description>Recent content in Paper Reading on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/categories/paper-reading/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>
+        <link>https://whhong-research.github.io/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1.png" alt="Featured image of post Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes" /&gt;&lt;h2 id=&#34;framework&#34;&gt;Framework
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework.jpg&#34;
+	width=&#34;1431&#34;
+	height=&#34;752&#34;
+	srcset=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework_hu_8ef613c8a3c82dfc.jpg 480w, https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework_hu_85f91f20e1645bff.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Paper-framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;456px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250221181015772.png&#34;
+	width=&#34;1189&#34;
+	height=&#34;951&#34;
+	srcset=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250221181015772_hu_7f9d576cda7fac53.png 480w, https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250221181015772_hu_48c5fc5d6d952b91.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250221181015772&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;300px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/10cc08f5ed93298d0d577b3f27c3121.png&#34;
+	width=&#34;1585&#34;
+	height=&#34;689&#34;
+	srcset=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/10cc08f5ed93298d0d577b3f27c3121_hu_43893753e025cdda.png 480w, https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/10cc08f5ed93298d0d577b3f27c3121_hu_97302d8dd4ce8fa9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;10cc08f5ed93298d0d577b3f27c3121&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;230&#34;
+		data-flex-basis=&#34;552px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

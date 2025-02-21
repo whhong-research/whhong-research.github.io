@@ -6,6 +6,31 @@
         <description>Recent content in Tags on whhong&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>whhong</copyright><atom:link href="https://whhong-research.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>whhong</copyright>
+        <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Crack Segmentation</title>
+        <link>https://whhong-research.github.io/en/tags/crack-segmentation/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/crack-segmentation/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Diffusion</title>
+        <link>https://whhong-research.github.io/en/tags/diffusion/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/diffusion/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Unsupervised Learning</title>
+        <link>https://whhong-research.github.io/en/tags/unsupervised-learning/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/unsupervised-learning/</guid>
+        <description></description>
+        </item>
+        
     </channel>
 </rss>

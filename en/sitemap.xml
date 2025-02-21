@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://whhong-research.github.io/en/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/about/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/%E5%85%B3%E4%BA%8E/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/about/"
+                />
+  </url><url>
     <loc>https://whhong-research.github.io/en/categories/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -14,7 +41,86 @@
                 href="https://whhong-research.github.io/en/categories/"
                 />
   </url><url>
+    <loc>https://whhong-research.github.io/en/tags/crack-segmentation/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/crack-segmentation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/crack-segmentation/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/tags/diffusion/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/diffusion/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/diffusion/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/page/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/page/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/page/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/categories/paper-reading/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/categories/paper-reading/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/categories/paper-reading/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/post/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/post/"
+                />
+  </url><url>
     <loc>https://whhong-research.github.io/en/tags/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -26,16 +132,42 @@
                 href="https://whhong-research.github.io/en/tags/"
                 />
   </url><url>
-    <loc>https://whhong-research.github.io/en/</loc>
+    <loc>https://whhong-research.github.io/en/tags/unsupervised-learning/</loc>
+    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://whhong-research.github.io/"
+                href="https://whhong-research.github.io/tags/unsupervised-learning/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://whhong-research.github.io/en/"
+                href="https://whhong-research.github.io/en/tags/unsupervised-learning/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/archives/</loc>
+    <lastmod>2025-02-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/archives/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/archives/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/search/"
                 />
   </url>
 </urlset>

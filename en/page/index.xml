@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/page/</link>
+        <description>Recent content in Pages on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>About</title>
+        <link>https://whhong-research.github.io/en/about/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/about/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/%E5%85%B3%E4%BA%8E/about.jpg" alt="Featured image of post About" /&gt;&lt;h1 id=&#34;about-whhongs-blog&#34;&gt;About whhong&amp;rsquo;s blog
+&lt;/h1&gt;&lt;p&gt;Hi there! I&amp;rsquo;m whhong, a PhD candidate in the Department of Civil and Environmental Engineering at The Hong Kong Polytechnic University. My research focuses on health monitoring and intelligent maintenance of wind turbine blades. This website serves as my personal space to document reading insights and share experimental findings.&lt;/p&gt;
+&lt;p&gt;The motivation behind creating this site is simple: to cultivate a habit of &amp;lsquo;output&amp;rsquo;. After my first year as a PhD student, I realized that despite reading numerous papers, I often struggled to recall key takeaways, which left me somewhat frustrated. Thus, I decided to start this blog as a way to enhance my summarizing skills while systematically organizing my knowledge. Let&amp;rsquo;s see how long I can keep this up! If you ever notice I haven&amp;rsquo;t updated for a while, feel free to drop me an email to &amp;lsquo;scold&amp;rsquo; me!&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>archives</title>
+        <link>https://whhong-research.github.io/en/archives/</link>
+        <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>search</title>
+        <link>https://whhong-research.github.io/en/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

@@ -7,68 +7,28 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Thu, 20 Feb 2025 19:34:16 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Crack Diffusion</title>
-        <link>https://whhong-research.github.io/tags/crack-diffusion/</link>
-        <pubDate>Thu, 20 Feb 2025 19:34:16 +0800</pubDate>
+        <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Crack Segmentation</title>
+        <link>https://whhong-research.github.io/tags/crack-segmentation/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/tags/crack-diffusion/</guid>
+        <guid>https://whhong-research.github.io/tags/crack-segmentation/</guid>
         <description></description>
         </item>
         <item>
-        <title>Css</title>
-        <link>https://whhong-research.github.io/tags/css/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Diffusion</title>
+        <link>https://whhong-research.github.io/tags/diffusion/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/tags/css/</guid>
+        <guid>https://whhong-research.github.io/tags/diffusion/</guid>
         <description></description>
         </item>
         <item>
-        <title>Html</title>
-        <link>https://whhong-research.github.io/tags/html/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>Unsupervised Learning</title>
+        <link>https://whhong-research.github.io/tags/unsupervised-learning/</link>
+        <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/tags/html/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Markdown</title>
-        <link>https://whhong-research.github.io/tags/markdown/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/markdown/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Themes</title>
-        <link>https://whhong-research.github.io/tags/themes/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/themes/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Tag With Whitespaces</title>
-        <link>https://whhong-research.github.io/tags/tag-with-whitespaces/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/tag-with-whitespaces/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Text</title>
-        <link>https://whhong-research.github.io/tags/text/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/text/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Emoji</title>
-        <link>https://whhong-research.github.io/tags/emoji/</link>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/emoji/</guid>
+        <guid>https://whhong-research.github.io/tags/unsupervised-learning/</guid>
         <description></description>
         </item>
         
