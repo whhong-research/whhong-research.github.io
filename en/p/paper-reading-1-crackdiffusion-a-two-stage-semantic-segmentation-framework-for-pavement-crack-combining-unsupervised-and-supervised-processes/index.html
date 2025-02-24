@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Framework ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="个人总结 这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。\n">
 <title>Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>
 
 <link rel='canonical' href='https://whhong-research.github.io/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/'>
 
 <link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes">
-<meta property='og:description' content="Framework ">
+<meta property='og:description' content="个人总结 这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。\n">
 <meta property='og:url' content='https://whhong-research.github.io/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/'>
 <meta property='og:site_name' content='whhong&#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='unsupervised learning' /><meta property='article:tag' content='Crack segmentation' /><meta property='article:published_time' content='2025-02-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='unsupervised learning' /><meta property='article:tag' content='Crack segmentation' /><meta property='article:published_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.png' />
 <meta name="twitter:title" content="Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes">
-<meta name="twitter:description" content="Framework "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1.png' />
+<meta name="twitter:description" content="个人总结 这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.png' />
     </head>
     <body class="
     article-page
@@ -270,11 +270,31 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
+    <li><a href="#个人总结">个人总结</a></li>
+    <li><a href="#基于扩散的无监督异常检测">基于扩散的无监督异常检测</a>
       <ol>
-        <li><a href="#framework">Framework</a></li>
+        <li><a href="#扩散模型">扩散模型</a></li>
+        <li><a href="#扩散模型和gan模型对比">扩散模型和GAN模型对比</a></li>
+        <li><a href="#直接应用常规扩散问题的挑战">直接应用常规扩散问题的挑战</a></li>
+        <li><a href="#多模糊冷扩散模型">多模糊冷扩散模型</a>
+          <ol>
+            <li><a href="#退化算子-d">退化算子 D</a></li>
+            <li><a href="#恢复算子-r">恢复算子 R</a></li>
+            <li><a href="#损失函数">损失函数</a></li>
+            <li><a href="#训练过程及测试过程">训练过程及测试过程</a></li>
+            <li><a href="#模型效果及问题">模型效果及问题</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
+    <li><a href="#代码复现结果-working">代码复现结果 （working）</a>
+      <ol>
+        <li><a href="#训练数据集">训练数据集</a></li>
+        <li><a href="#试验1使用mae作为损失函数">试验1：使用MAE作为损失函数</a></li>
+      </ol>
+    </li>
+    <li><a href="#基础知识">基础知识</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
   </ol>
 </nav>
         </div>
@@ -290,8 +310,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/en/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/">
-                <img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1_hu_3496d710298882d6.png"
-                        srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1_hu_3496d710298882d6.png 800w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1_hu_af16a98164c92354.png 1600w"
+                <img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_3496d710298882d6.png"
+                        srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_3496d710298882d6.png 800w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_af16a98164c92354.png 1600w"
                         width="800" 
                         height="348" 
                         loading="lazy"
@@ -336,7 +356,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Feb 21, 2025</time>
+                <time class="article-time--published">Feb 24, 2025</time>
             </div>
         
 
@@ -371,28 +391,506 @@
     <section class="article-content">
     
     
-    <h2 id="framework">Framework
-</h2><p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework.jpg"
-	width="1431"
-	height="752"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework_hu_8ef613c8a3c82dfc.jpg 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework_hu_85f91f20e1645bff.jpg 1024w"
+    <h1 id="个人总结">个人总结
+</h1><ul>
+<li>
+<p>这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。</p>
+</li>
+<li>
+<p>本博客主要关注于第一阶段的无监督过程，该阶段首先以无裂缝的图像作为训练集，用于训练diffusion模型，接着以有裂缝的图像作为输入，通过diffusion过程，生成“无裂缝”的图像，使用结构相似性指数来提取像素级的裂缝特征；</p>
+</li>
+<li>
+<p><strong>关键假设</strong>： 将模糊的噪声应用在有裂缝和无裂缝的同一路面图像上，直至两张图像都不再有可见的裂缝特征时，二者的分布差异明显小于初始时的分布差异。</p>
+</li>
+</ul>
+<h1 id="基于扩散的无监督异常检测">基于扩散的无监督异常检测
+</h1><h2 id="扩散模型">扩散模型
+</h2><ol>
+<li>
+<p><strong>定义</strong>： 扩散模型是图像生成和分辨率增强的一种方法，由扩散过程和逆扩散过程组成。扩散过程通过逐步将高斯噪声添加到原始图像数据中，将原始图像转化称为高斯分布的数据；而逆扩散过程通过不断删除添加的高斯噪声，将高斯分布的数据恢复成为原始图像。</p>
+</li>
+<li>
+<p><strong>公式</strong>：公式（1）为扩散过程，公式（2）为逆扩散过程</p>
+</li>
+</ol>
+$$
+   x_t = \sqrt{1-\beta_t}x_{t-1} + \sqrt{\beta_t}Z_t\tag{1}\\
+$$$$
+x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta_t}{\sqrt{1-\alpha_t}}Z_t)\tag{2}
+$$<h2 id="扩散模型和gan模型对比">扩散模型和GAN模型对比
+</h2><ol>
+<li>
+<p><strong>原理</strong>： 同一类型的高维数据（例如图片）往往会集中分布在低维空间中。</p>
+</li>
+<li>
+<p><strong>GAN</strong>：裂缝通常被视为一种异常特征，GAN网络在处理这类问题时，是通过潜在张量（latent tensors）来重建异常图像，GAN通过学习正常路面样本的分布特征，当他遇到带裂缝的异常样本时，会尝试将其“拉回”正常样本的分布中，也就是将裂缝修复成正常路面的样子。</p>
+</li>
+<li>
+<p><strong>扩散模型</strong>：扩散模型也是将原始图像转换成潜在变量，但扩散模型生成的潜在变量大小和原始图像的一样大，而GAN网络生成的潜在变量通常会小一些。</p>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966.png"
+	width="476"
+	height="295"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_9d375cbef6809b2f.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_26d8554963e0620c.png 1024w"
 	loading="lazy"
 	
-		alt="Paper-framework"
+		alt="潜在变量（latent tensors）在GAN网络和Diffusion模型中的对比"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="190"
-		data-flex-basis="456px"
+		data-flex-grow="161"
+		data-flex-basis="387px"
 	
 ></p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250221181015772.png"
-	width="1189"
-	height="951"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250221181015772_hu_7f9d576cda7fac53.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250221181015772_hu_48c5fc5d6d952b91.png 1024w"
+</li>
+</ol>
+<h2 id="直接应用常规扩散问题的挑战">直接应用常规扩散问题的挑战
+</h2><ol>
+<li>路面裂缝特征是相对较小的物体，它们的像素与其他道路碎片（例如油漆，砾石和轮胎压痕）相似；</li>
+<li>当diffusion模型经过良好训练时，会重建裂纹和碎屑像素，从而仍然产生包含裂缝信息的重建图像；</li>
+<li>当diffusion模型训练不足时，无法准确地重建道路碎片；从而不能通过SSIM区分出碎屑和裂纹；</li>
+<li><strong>需求</strong>：重建图像中，裂缝区域被重建为无裂缝，道路碎屑、砾石等仍然保留；</li>
+</ol>
+<h2 id="多模糊冷扩散模型">多模糊冷扩散模型
+</h2><p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609.png"
+	width="919"
+	height="716"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609_hu_e16cb66f332ddaf1.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609_hu_d0bea3fea956c012.png 1024w"
 	loading="lazy"
 	
-		alt="image-20250221181015772"
+		alt="多模糊冷扩散模型的裂缝检测过程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="退化算子-d">退化算子 D
+</h3><ul>
+<li>作用于给定的原始图像 x<del>0</del> ，通过对 x<del>0</del> 添加 t 次噪声来实现扩散过程，可以表示为：</li>
+</ul>
+$$
+D(x_0, 0) = x_0, \quad x_t = D(x_0,t)\tag{3}
+$$<p>退化算子 D 可以用来实现多种图像变换，例如：模糊，形变，像素化，噪声添加等，其中，退化程度由参数 t 的值决定</p>
+<ul>
+<li>该研究中，将2D高斯模糊和2D最大池化合并为<strong>退化算子D</strong>，2D高斯模糊使用（3，3）的卷积内核。在每个卷积期间，内核的权重计算出2D高斯分布，Max pooling作为高斯模糊的补充，<strong>退化算子D</strong>可以表示为：</li>
+</ul>
+$$
+D(x_t, 1, M) = x_{t+1}(i,j) = \sum_{u=-r}^r\sum_{v=-r}^r x_t(i+u,j+v)\psi(u,v)f_{MaxPool}(u,v,M)
+$$<ul>
+<li>
+<p>实现代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">noise_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">filtersize</span><span class="p">):</span> <span class="c1"># 正向扩散过程q</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xt</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 存储扩散后的图像</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span> <span class="c1"># 遍历每个batch</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tem_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">batch</span><span class="p">]</span> <span class="c1"># 获取当前batch的图像</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tem_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">batch</span><span class="p">])</span> <span class="c1"># 获取当前batch的最大时间步</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tem_t</span><span class="p">):</span> <span class="c1"># 进行tem_t次扩散                </span>
+</span></span><span class="line"><span class="cl">            <span class="n">tem_x1</span> <span class="o">=</span> <span class="n">tem_x</span> <span class="c1"># 保存当前图像</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tem_x</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">tem_x</span><span class="p">,(</span><span class="n">filtersize</span><span class="p">,</span><span class="n">filtersize</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 对图像进行高斯模糊</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">25</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span> <span class="c1"># 每25步或第一步进行一次最大池化</span>
+</span></span><span class="line"><span class="cl">                <span class="n">tem_x</span> <span class="o">=</span> <span class="n">max_pooling</span><span class="p">(</span><span class="n">tem_x</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="n">xt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tem_x</span><span class="p">)</span> <span class="c1"># 将扩散后的图像添加到结果列表</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="c1"># 转换为numpy数组</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">xt</span> <span class="c1"># 返回t时刻的噪声图像</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>关于<code>cv2.GaussianBlur(src, ksize, sigmaX, sigmaY)</code>函数，<code>ksize</code>表示高斯模糊核的大小，<code>sigmaX</code>和<code>sigmaY</code>设置为0时，OpenCV会自动计算标准差：<code>σ = 0.3*((ksize-1)*0.5 - 1) + 0.8</code>，对于3×3的核来说，标准差约为0.8，会产生轻微的模糊效果；</li>
+</ul>
+</li>
+</ul>
+<h3 id="恢复算子-r">恢复算子 R
+</h3><ul>
+<li>
+<p>恢复算子 R 用于在添加噪声后恢复图像</p>
+</li>
+<li>
+<p>可以表示为： $R(x_t, t) \approx x_0$​</p>
+</li>
+<li>
+<p>在获取潜在张量后，使用denoising扩散概率模型（DDPM）中的UNET结构作为恢复算子。恢复算子的结构如下图所示：</p>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087.png"
+	width="974"
+	height="429"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_9a263ff10b108b4d.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_373b7bbe0c2bcc74.png 1024w"
+	loading="lazy"
+	
+		alt="多模糊冷扩散模型中的恢复算子R"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="227"
+		data-flex-basis="544px"
+	
+></p>
+</li>
+<li>
+<p>实现Unet网络代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Unet</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">dim</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>                          <span class="c1"># 基础维度</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">init_dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>                   <span class="c1"># 初始维度</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">out_dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>                    <span class="c1"># 输出维度</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">dim_mults</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>         <span class="c1"># 维度倍数</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                      <span class="c1"># 输入图像通道数</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">resnet_block_groups</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>           <span class="c1"># ResNet块分组数</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">learned_variance</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>          <span class="c1"># 是否学习方差</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">sinusoidal_cond_mlp</span><span class="o">=</span><span class="kc">True</span>        <span class="c1"># 是否使用正弦位置编码</span>
+</span></span><span class="line"><span class="cl">                 <span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">(</span><span class="n">Unet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>  <span class="c1"># 调用父类初始化</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 设置输入通道数</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="n">channels</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 如果没有指定初始维度,则设为基础维度的2/3</span>
+</span></span><span class="line"><span class="cl">        <span class="n">init_dim</span> <span class="o">=</span> <span class="n">default</span><span class="p">(</span><span class="n">init_dim</span><span class="p">,</span> <span class="n">dim</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 第一个卷积层,7x7卷积核</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">init_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">init_dim</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;SAME&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 构建维度列表,使用dim_mults进行维度扩展</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">init_dim</span><span class="p">,</span> <span class="o">*</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">dim</span> <span class="o">*</span> <span class="n">m</span><span class="p">,</span> <span class="n">dim_mults</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 将维度两两配对形成(输入维度,输出维度)的元组</span>
+</span></span><span class="line"><span class="cl">        <span class="n">in_out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">dims</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 设置ResNet块类,使用指定的分组数</span>
+</span></span><span class="line"><span class="cl">        <span class="n">block_klass</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">ResnetBlock</span><span class="p">,</span> <span class="n">groups</span> <span class="o">=</span> <span class="n">resnet_block_groups</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 时间编码维度为基础维度的4倍</span>
+</span></span><span class="line"><span class="cl">        <span class="n">time_dim</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">*</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">sinusoidal_cond_mlp</span> <span class="o">=</span> <span class="n">sinusoidal_cond_mlp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 构建时间编码层</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">sinusoidal_cond_mlp</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 使用正弦位置编码</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">time_mlp</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">                <span class="n">SinusoidalPosEmb</span><span class="p">(</span><span class="n">dim</span><span class="p">),</span>           <span class="c1"># 正弦位置编码</span>
+</span></span><span class="line"><span class="cl">                <span class="n">nn</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="n">time_dim</span><span class="p">),</span>        <span class="c1"># 全连接层</span>
+</span></span><span class="line"><span class="cl">                <span class="n">GELU</span><span class="p">(),</span>                          <span class="c1"># GELU激活函数</span>
+</span></span><span class="line"><span class="cl">                <span class="n">nn</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="n">time_dim</span><span class="p">)</span>         <span class="c1"># 全连接层</span>
+</span></span><span class="line"><span class="cl">            <span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 使用普通MLP</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">time_mlp</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">time_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 下采样和上采样层列表</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">downs</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ups</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">num_resolutions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">in_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 构建下采样路径</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="p">(</span><span class="n">dim_in</span><span class="p">,</span> <span class="n">dim_out</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">in_out</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">is_last</span> <span class="o">=</span> <span class="n">ind</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">num_resolutions</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 是否为最后一层</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">downs</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">                <span class="n">block_klass</span><span class="p">(</span><span class="n">dim_in</span><span class="p">,</span> <span class="n">dim_out</span><span class="p">,</span> <span class="n">time_emb_dim</span><span class="o">=</span><span class="n">time_dim</span><span class="p">),</span>    <span class="c1"># ResNet块1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">block_klass</span><span class="p">(</span><span class="n">dim_out</span><span class="p">,</span> <span class="n">dim_out</span><span class="p">,</span> <span class="n">time_emb_dim</span><span class="o">=</span><span class="n">time_dim</span><span class="p">),</span>   <span class="c1"># ResNet块2</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Residual</span><span class="p">(</span><span class="n">PreNorm</span><span class="p">(</span><span class="n">dim_out</span><span class="p">,</span> <span class="n">LinearAttention</span><span class="p">(</span><span class="n">dim_out</span><span class="p">))),</span>   <span class="c1"># 线性注意力</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Downsample</span><span class="p">(</span><span class="n">dim_out</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_last</span> <span class="k">else</span> <span class="n">Identity</span><span class="p">()</span>      <span class="c1"># 下采样或恒等映射</span>
+</span></span><span class="line"><span class="cl">            <span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 中间层</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mid_dim</span> <span class="o">=</span> <span class="n">dims</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">mid_block1</span> <span class="o">=</span> <span class="n">block_klass</span><span class="p">(</span><span class="n">mid_dim</span><span class="p">,</span> <span class="n">mid_dim</span><span class="p">,</span> <span class="n">time_emb_dim</span><span class="o">=</span><span class="n">time_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">mid_attn</span> <span class="o">=</span> <span class="n">Residual</span><span class="p">(</span><span class="n">PreNorm</span><span class="p">(</span><span class="n">mid_dim</span><span class="p">,</span> <span class="n">Attention</span><span class="p">(</span><span class="n">mid_dim</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">mid_block2</span> <span class="o">=</span> <span class="n">block_klass</span><span class="p">(</span><span class="n">mid_dim</span><span class="p">,</span> <span class="n">mid_dim</span><span class="p">,</span> <span class="n">time_emb_dim</span><span class="o">=</span><span class="n">time_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 构建上采样路径</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="p">(</span><span class="n">dim_in</span><span class="p">,</span> <span class="n">dim_out</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">in_out</span><span class="p">[</span><span class="mi">1</span><span class="p">:])):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">is_last</span> <span class="o">=</span> <span class="n">ind</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">num_resolutions</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">ups</span><span class="o">.</span><span class="n">append</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">                <span class="n">block_klass</span><span class="p">(</span><span class="n">dim_out</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim_in</span><span class="p">,</span> <span class="n">time_emb_dim</span><span class="o">=</span><span class="n">time_dim</span><span class="p">),</span>  <span class="c1"># ResNet块1</span>
+</span></span><span class="line"><span class="cl">                <span class="n">block_klass</span><span class="p">(</span><span class="n">dim_in</span><span class="p">,</span> <span class="n">dim_in</span><span class="p">,</span> <span class="n">time_emb_dim</span><span class="o">=</span><span class="n">time_dim</span><span class="p">),</span>       <span class="c1"># ResNet块2</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Residual</span><span class="p">(</span><span class="n">PreNorm</span><span class="p">(</span><span class="n">dim_in</span><span class="p">,</span> <span class="n">LinearAttention</span><span class="p">(</span><span class="n">dim_in</span><span class="p">))),</span>       <span class="c1"># 线性注意力</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Upsample</span><span class="p">(</span><span class="n">dim_in</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">is_last</span> <span class="k">else</span> <span class="n">Identity</span><span class="p">()</span>           <span class="c1"># 上采样或恒等映射</span>
+</span></span><span class="line"><span class="cl">            <span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 设置输出维度</span>
+</span></span><span class="line"><span class="cl">        <span class="n">default_out_dim</span> <span class="o">=</span> <span class="n">channels</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">learned_variance</span> <span class="k">else</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">out_dim</span> <span class="o">=</span> <span class="n">default</span><span class="p">(</span><span class="n">out_dim</span><span class="p">,</span> <span class="n">default_out_dim</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 最后的卷积层</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">final_conv</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">            <span class="n">block_klass</span><span class="p">(</span><span class="n">dim</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_dim</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                <span class="c1"># 初始卷积</span>
+</span></span><span class="line"><span class="cl">        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_mlp</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>             <span class="c1"># 时间编码</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>                              <span class="c1"># 存储跳跃连接的特征</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 下采样路径</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">block1</span><span class="p">,</span> <span class="n">block2</span><span class="p">,</span> <span class="n">attn</span><span class="p">,</span> <span class="n">downsample</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">downs</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">block1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>                <span class="c1"># ResNet块1</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">block2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>                <span class="c1"># ResNet块2</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">attn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                     <span class="c1"># 注意力层</span>
+</span></span><span class="line"><span class="cl">            <span class="n">h</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                     <span class="c1"># 保存特征用于跳跃连接</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">downsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>               <span class="c1"># 下采样</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 中间层处理</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_block1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_attn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_block2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 上采样路径</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">block1</span><span class="p">,</span> <span class="n">block2</span><span class="p">,</span> <span class="n">attn</span><span class="p">,</span> <span class="n">upsample</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ups</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">pop</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 拼接跳跃连接</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">block1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>                      <span class="c1"># ResNet块1</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">block2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>                      <span class="c1"># ResNet块2</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">attn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                          <span class="c1"># 注意力层</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">upsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      <span class="c1"># 上采样</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 最后的处理</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">pop</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>    <span class="c1"># 最后的跳跃连接</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">final_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                  <span class="c1"># 最后的卷积层</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">x</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="损失函数">损失函数
+</h3><ul>
+<li>
+<p>损失函数包括两个部分：</p>
+<ul>
+<li>L2距离：预测图像与真实图像之间的距离；</li>
+<li>SSIM：预测图像与真实图像之间的结构相似性度量；</li>
+</ul>
+</li>
+<li>
+<p>完整的损失函数表达式：
+$Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x_0))/2$</p>
+<p>其中：$\lambda_1$ 和 $\lambda_2$ 是两部分的权重系数</p>
+</li>
+<li>
+<p>SSIM的计算公式为：</p>
+<p>$SSIM(I_1,I_2) = \frac{(2\mu_1\mu_2 + C_1)(2\sigma_{12} + C_2)}{(\mu_1^2 + \mu_2^2 + C_1)(\sigma_1^2 + \sigma_2^2 + C_2)}$​</p>
+<ul>
+<li>$I_1$ 和 $I_2$ 是待比较的两张图像，</li>
+<li>$C_1$ 和 $C_2$ 是常数</li>
+<li>$\mu$ 表示图像的均值，$\sigma$ 表示图像的标准差</li>
+<li>使用3×3大小的滑动窗口计算</li>
+</ul>
+</li>
+</ul>
+<h3 id="训练过程及测试过程">训练过程及测试过程
+</h3><ol>
+<li>
+<p><strong>训练过程</strong></p>
+<ul>
+<li>
+<p>使用无裂缝的道路图像作为训练数据；</p>
+</li>
+<li>
+<p>对图像进行T轮多重模糊处理，得到图像x<del>t</del> ，完全消除裂缝特征；</p>
+</li>
+<li>
+<p>训练去噪U-Net来实现恢复算子R；</p>
+</li>
+<li>
+<p>训练过程中，参数t随机从区间(0, T]中采样；</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>测试过程</strong></p>
+<ul>
+<li>输入带裂缝的道路图像；</li>
+<li>应用T次退化算子D；</li>
+<li>使用训练好的去噪U-Net模型重建图像；</li>
+<li>使用SSIM比较原始输入x₀与重建图像x₀&rsquo;，用于生成裂缝分割结果；</li>
+</ul>
+</li>
+</ol>
+<h3 id="模型效果及问题">模型效果及问题
+</h3><ol>
+<li>
+<p>某些情况下，基于SSIM的分割结果无法满足期望效果：</p>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761.png"
+	width="915"
+	height="574"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761_hu_9f1eb73484bb27ed.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761_hu_30487711f2c0da94.png 1024w"
+	loading="lazy"
+	
+		alt="基于SSIM分割效果对比，案例1中背景分布与训练图片相近，案例2中背景分布与训练图片差异较大"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="382px"
+	
+></p>
+</li>
+<li>
+<p>SSIM不足以用于提取准确的裂缝特征信息，以案例2为例，人眼可以轻松识别出裂缝的位置，但是人眼不会注意到非裂缝区域的RGB值差异，但SSIM生成的差异图中，这些区域的差异强度可能与裂缝区域相当。</p>
+</li>
+<li>
+<p>作者还将提出的多模糊冷扩散模型与其他常见的无监督学习模型进行了对比，效果如下：</p>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204.png"
+	width="892"
+	height="249"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204_hu_592cff4186ef0db5.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204_hu_fd9c19dc2787aa91.png 1024w"
+	loading="lazy"
+	
+		alt="七个无监督网络的裂缝分割SSIM和IoU对比表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="358"
+		data-flex-basis="859px"
+	
+></p>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051.png"
+	width="895"
+	height="716"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051_hu_be6f6e53af3ebbea.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051_hu_ea1a6659550f820e.png 1024w"
+	loading="lazy"
+	
+		alt="基于SSIM的裂纹分割结果"
 	
 	
 		class="gallery-image" 
@@ -400,16 +898,269 @@
 		data-flex-basis="300px"
 	
 ></p>
-<p><img src="/10cc08f5ed93298d0d577b3f27c3121.png"
-	
-	
-	
+<p>可以看到，Multi-blur-based cold diffusion模型在四个数据集中的IoU都得到了最高值。</p>
+</li>
+</ol>
+<h1 id="代码复现结果-working">代码复现结果 （working）
+</h1><p>本章中大量代码来自于原文作者开源的Github仓库（<a class="link" href="https://github.com/ChengjiaHanSEU/CrackDiffusion"  target="_blank" rel="noopener"
+    >https://github.com/ChengjiaHanSEU/CrackDiffusion</a>）</p>
+<h2 id="训练数据集">训练数据集
+</h2><ol>
+<li>
+<p>数据集链接：<a class="link" href="https://www.kaggle.com/datasets/arunrk7/surface-crack-detection"  target="_blank" rel="noopener"
+    >https://www.kaggle.com/datasets/arunrk7/surface-crack-detection</a></p>
+</li>
+<li>
+<p>数据集描述：数据集包含带有和没有裂纹的各种混凝土表面的图像。将图像数据分为两个分为负（无裂纹），在单独的文件夹中进行正面（带裂纹）进行图像分类。每个类别都有20000个图像，共有40000张图像，带有227 x 227像素，带有RGB通道。该数据集由Zhang等人（2016）提出的方法生成458个高分辨率图像（4032x3024像素）。高分辨率图像在表面饰面和照明条件方面发现具有很高的差异。没有应用随机旋转或翻转或倾斜的数据增强。</p>
+</li>
+<li>
+<p>使用了该数据集中的负类（即没有带有裂缝）的图像作为训练数据。</p>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505.png"
+	width="1885"
+	height="1190"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505_hu_e52556ebab045b35.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505_hu_5fc9b127450c87ac.png 1024w"
 	loading="lazy"
 	
-		alt="10cc08f5ed93298d0d577b3f27c3121"
+		alt="训练数据集概览"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="158"
+		data-flex-basis="380px"
 	
 ></p>
+</li>
+</ol>
+<h2 id="试验1使用mae作为损失函数">试验1：使用MAE作为损失函数
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">t</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">sample_timesteps</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">train_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x_t</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">noise_images</span><span class="p">(</span><span class="n">train_image</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">filtersize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">predicted_noise_image</span> <span class="o">=</span> <span class="n">unet</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_image</span><span class="p">,</span> <span class="n">predicted_noise_image</span><span class="p">)</span>  <span class="c1"># MAE loss</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>训练到122个epoch时触发早停，因为训练损失不断下降，而验证损失在过去30个epoch中上升了，最佳模型出现在92个epoch时刻；</li>
+</ol>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history.png"
+	width="1000"
+	height="600"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history_hu_53b6569e609e568d.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history_hu_16c22d8522eef1ea.png 1024w"
+	loading="lazy"
+	
+		alt="training_history"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<ol start="2">
+<li>
+<p><strong>测试效果：</strong></p>
+<ul>
+<li>裂缝分割效果较好的：</li>
+</ul>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all.png"
+	width="4440"
+	height="1305"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all_hu_4f49506df08f2c5d.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all_hu_51ced3f7873f5d0d.png 1024w"
+	loading="lazy"
+	
+		alt="CFD数据集中裂缝分割效果较优的"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="816px"
+	
+></p>
+<ul>
+<li>裂缝分割效果较差的：（可能是由于裂缝过于细微）</li>
+</ul>
+<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all.png"
+	width="4440"
+	height="1330"
+	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all_hu_d5a49ac571418e07.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all_hu_fb20fd4b851a8065.png 1024w"
+	loading="lazy"
+	
+		alt="CFD数据集中裂缝分割效果较差的"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="333"
+		data-flex-basis="801px"
+	
+></p>
+</li>
+</ol>
+<h1 id="基础知识">基础知识
+</h1><ol>
+<li>
+<p><strong>Latent Tensors(潜在张量)</strong>:</p>
+<ul>
+<li>
+<p><strong>基本概念</strong>：</p>
+<ul>
+<li>
+<p>潜在张量是深度学习中的一个重要概念，表示数据在&quot;潜在空间&quot;（latent space）中的表示形式</p>
+</li>
+<li>
+<p>它是原始数据经过编码（encoding）后的一种压缩表示</p>
+</li>
+<li>
+<p>通常维度比原始数据低，但包含了原始数据的关键特征信息</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>特点</strong>：</p>
+<ul>
+<li>
+<p><strong>维度压缩</strong>：比如一张1024×1024的图片，可能被压缩成16×16×512的潜在张量（16×16表示空间维度被压缩，512为特征通道数，每个通道表示图像的不同特征或属性）</p>
+</li>
+<li>
+<p><strong>信息提取</strong>：保留数据中最重要的特征，去除冗余信息</p>
+</li>
+<li>
+<p><strong>连续性</strong>：在潜在空间中，相似的数据点会彼此靠近</p>
+</li>
+<li>
+<p><strong>可解释性</strong>：潜在空间中的每个维度可能对应原始数据的某个特征</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>工作原理举例</strong>（ 以图像处理为例）：</p>
+<ul>
+<li>
+<p><strong>输入</strong>：原始图像（如1024×1024×3的彩色图片）</p>
+</li>
+<li>
+<p><strong>编码过程</strong>：通过神经网络将图像压缩成潜在张量</p>
+</li>
+<li>
+<p><strong>潜在表示</strong>：可能是16×16×512的张量</p>
+</li>
+<li>
+<p><strong>解码过程</strong>：可以从潜在张量重建出原始图像</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>在不同模型中的应用</strong>：</p>
+<ul>
+<li>
+<p><strong>GAN中</strong>：生成器从随机潜在张量生成逼真的图像</p>
+</li>
+<li>
+<p><strong>VAE中</strong>：将输入编码为潜在空间中的分布</p>
+</li>
+<li>
+<p><strong>扩散模型中</strong>：通过逐步添加噪声形成潜在表示</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>L2距离</strong>:</p>
+<ul>
+<li>
+<p><strong>定义：</strong></p>
+<ul>
+<li>L2距离（L2 Distance）也称为欧几里得距离（Euclidean Distance），是最常用的距离度量方式之一。</li>
+<li>在数学上表示为：$L2 = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$</li>
+</ul>
+</li>
+<li>
+<p><strong>在不同维度的表现</strong></p>
+<ul>
+<li>
+<p><strong>一维空间</strong>：两个数之间的绝对差值</p>
+</li>
+<li>
+<p><strong>二维空间</strong>：平面上两点间的直线距离</p>
+</li>
+<li>
+<p><strong>高维空间</strong>：各个维度差值的平方和开根号</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>高斯模糊</strong>:</p>
+<ul>
+<li>
+<p><strong>基本概念</strong>：</p>
+<p>高斯模糊是一种使用高斯函数对图像进行平滑处理的技术。其核心是二维高斯函数：</p>
+<p>$G(x,y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2 + y^2}{2\sigma^2}}$</p>
+<p>其中：</p>
+<ul>
+<li>σ 是标准差，控制模糊程度</li>
+<li>x,y 是像素的坐标位置</li>
+</ul>
+</li>
+<li>
+<p><strong>关键参数</strong>：</p>
+<ul>
+<li>
+<p><strong>标准差(σ)</strong></p>
+<ul>
+<li>
+<p>控制模糊强度</p>
+</li>
+<li>
+<p>σ越大，模糊程度越高</p>
+</li>
+<li>
+<p>σ越小，模糊程度越低</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>核大小(kernel size)</strong></p>
+<ul>
+<li>
+<p>通常为奇数（3×3, 5×5, 7×7等）</p>
+</li>
+<li>
+<p>建议核大小 ≥ 6σ + 1</p>
+</li>
+<li>
+<p>核越大，计算量越大</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>冷扩散模型 vs 扩散模型</strong></p>
+<p>冷扩散模型可以视为扩散模型的一种广义版本，不同点在于冷扩散模型中，扩散过程中的噪声不需要遵循高斯分布，可以选择Gaussian blur, snowflake noise, Gaussian mask等，在噪声的选择中具有灵活性。冷扩散模型中，扩散过程和逆扩散过程被建模为两个独立的算子，即退化算子D和恢复算子R。</p>
+</li>
+</ol>
+<h1 id="参考文献">参考文献
+</h1><ol>
+<li>Han, C., Yang, H., Ma, T., Wang, S., Zhao, C., Yang, Y., 2024. CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes. Automation in Construction 160, 105332. <a class="link" href="https://doi.org/10.1016/j.autcon.2024.105332"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/j.autcon.2024.105332</a></li>
+<li><a class="link" href="https://github.com/ChengjiaHanSEU/CrackDiffusion"  target="_blank" rel="noopener"
+    >https://github.com/ChengjiaHanSEU/CrackDiffusion</a></li>
+</ol>
 
 </section>
 
