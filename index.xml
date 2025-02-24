@@ -13,7 +13,109 @@
         <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Paper-framework.jpg" alt="Featured image of post Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes" /&gt;</description>
+        <description>&lt;img src="https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/PaperReading1.png" alt="Featured image of post Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes" /&gt;&lt;h1 id=&#34;个人总结&#34;&gt;个人总结
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;本博客主要关注于第一阶段的无监督过程，该阶段首先以无裂缝的图像作为训练集，用于训练diffusion模型，接着以有裂缝的图像作为输入，通过diffusion过程，生成“无裂缝”的图像，使用结构相似性指数来提取像素级的裂缝特征；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087.png&#34;
+	width=&#34;974&#34;
+	height=&#34;429&#34;
+	srcset=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_9a263ff10b108b4d.png 480w, https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_373b7bbe0c2bcc74.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;多模糊冷扩散模型框架&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;544px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关键假设&lt;/strong&gt;： 将模糊的噪声应用在有裂缝和无裂缝的同一路面图像上，直至两张图像都不再有可见的裂缝特征时，二者的分布差异明显小于初始时的分布差异。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;基于扩散的无监督异常检测&#34;&gt;基于扩散的无监督异常检测
+&lt;/h1&gt;&lt;h2 id=&#34;扩散模型&#34;&gt;扩散模型
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;： 扩散模型是图像生成和分辨率增强的一种方法，由扩散过程和逆扩散过程组成。扩散过程通过逐步将高斯噪声添加到原始图像数据中，将原始图像转化称为高斯分布的数据；而逆扩散过程通过不断删除添加的高斯噪声，将高斯分布的数据恢复成为原始图像。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;公式&lt;/strong&gt;：公式（1）为扩散过程，公式（2）为逆扩散过程&lt;/p&gt;
+$$
+   x_t = \sqrt{1-\beta_t}x_{t-1} + \sqrt{\beta_t}Z_t\tag{1}\\
+   $$&lt;/li&gt;
+&lt;/ol&gt;
+$$
+x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta_t}{\sqrt{1-\alpha_t}}Z_t)\tag{2}
+$$&lt;h2 id=&#34;扩散模型和gan模型对比&#34;&gt;扩散模型和GAN模型对比
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;原理&lt;/strong&gt;： 同一类型的高维数据（例如图片）往往会集中分布在低维空间中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GAN&lt;/strong&gt;：裂缝通常被视为一种异常特征，GAN网络在处理这类问题时，是通过潜在张量（latent tensors）来重建异常图像，GAN通过学习正常路面样本的分布特征，当他遇到带裂缝的异常样本时，会尝试将其“拉回”正常样本的分布中，也就是将裂缝修复成正常路面的样子。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;扩散模型&lt;/strong&gt;：扩散模型也是将原始图像转换成潜在变量，但扩散模型生成的潜在变量大小和原始图像的一样大，而GAN网络生成的潜在变量通常会小一些。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966.png&#34;
+	width=&#34;476&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_9d375cbef6809b2f.png 480w, https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_26d8554963e0620c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;潜在变量（latent tensors）在GAN网络和Diffusion模型中的对比&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;直接应用常规扩散问题的挑战&#34;&gt;直接应用常规扩散问题的挑战
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;路面裂缝特征是相对较小的物体，它们的像素与其他道路碎片（例如油漆，砾石和轮胎压痕）相似；&lt;/li&gt;
+&lt;li&gt;当diffusion模型经过良好训练时，会重建裂纹和碎屑像素，从而仍然产生包含裂缝信息的重建图像；&lt;/li&gt;
+&lt;li&gt;当diffusion模型训练不足时，无法准确地重建道路碎片；从而不能通过SSIM区分出碎屑和裂纹；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;需求&lt;/strong&gt;：重建图像中，裂缝区域被重建为无裂缝，道路碎屑、砾石等仍然保留；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;多模糊冷扩散模型&#34;&gt;多模糊冷扩散模型
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;冷扩散模型 vs 扩散模型&lt;/strong&gt;：冷扩散模型可以视为扩散模型的一种广义版本，不同点在于冷扩散模型中，扩散过程中的噪声不需要遵循高斯分布，可以选择Gaussian blur, snowflake noise, Gaussian mask等，在噪声的选择中具有灵活性；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;冷扩散模型中，扩散过程和逆扩散过程被建模为两个独立的操作员，即退化操作员&lt;strong&gt;D&lt;/strong&gt;和恢复操作员&lt;strong&gt;R&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;退化算子 D 作用于给定的原始图像&lt;/p&gt;
+&lt;p&gt;通过对 x₀ 添加 t 次噪声来实现扩散过程&lt;/p&gt;
+$$
+        D(x_0, 0) = x_0, \quad x_t = D(x_0,t)\tag{3}
+        $$&lt;p&gt;
+退化算子 D 可以用来实现多种图像变换，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模糊&lt;/li&gt;
+&lt;li&gt;形变&lt;/li&gt;
+&lt;li&gt;像素化&lt;/li&gt;
+&lt;li&gt;噪声添加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中，退化程度由参数 t 的值决定&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;p&gt;Han, C., Yang, H., Ma, T., Wang, S., Zhao, C., Yang, Y., 2024. CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes. Automation in Construction 160, 105332. &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.autcon.2024.105332&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1016/j.autcon.2024.105332&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
         </item>
         <item>
         <title>关于</title>
