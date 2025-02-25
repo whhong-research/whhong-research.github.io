@@ -8,6 +8,14 @@
         <language>en</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Mon, 24 Feb 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Paper Reading 2:</title>
+        <link>https://whhong-research.github.io/en/p/paper-reading-2/</link>
+        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/paper-reading-2/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>图像处理（1）：骨架化处理裂缝分割掩码图像</title>
         <link>https://whhong-research.github.io/en/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/</link>
         <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
@@ -15,6 +23,14 @@
         <guid>https://whhong-research.github.io/en/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/</guid>
         <description>&lt;h1 id=&#34;简介&#34;&gt;简介
 &lt;/h1&gt;</description>
+        </item>
+        <item>
+        <title>风机叶片动态响应仿真（1）：openfast生成响应数据</title>
+        <link>https://whhong-research.github.io/en/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F1openfast%E7%94%9F%E6%88%90%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/</link>
+        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F1openfast%E7%94%9F%E6%88%90%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F1openfast%E7%94%9F%E6%88%90%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/1.jpg" alt="Featured image of post 风机叶片动态响应仿真（1）：openfast生成响应数据" /&gt;</description>
         </item>
         <item>
         <title>Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>

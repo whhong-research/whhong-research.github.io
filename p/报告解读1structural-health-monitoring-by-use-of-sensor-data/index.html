@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="报告简介 基本信息 项目名称：PSA study Structural health monitoring of offshore structure by use of sensor data\n发布时间：2024-02-21\n项目目标：\n探讨SHM如何作为一种评估海上结构健康的决策支持工具； 如何利用SHM（传感器数据，结构故障历史记录等）指导运维； 评估对比不同的SHM方法的优劣势； 介绍一些使用SHM进行维护计划的海上结构案例； “This report explores structural health monitoring (SHM) as a decision support tool to assess the structural health of offshore structures. The main objective of this report is to evaluate how SHM may be used to improve safety and inspection and maintenance planning with use of sensor data and structural failure history. The report evaluates different SHM approaches, including strengths and weaknesses, and contains some examples of use of SHM for both maintenance planning and to capture safety critical behavior of offshore structures.”\n">
+<title>报告解读（1）：Structural health monitoring by use of sensor data</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="报告解读（1）：Structural health monitoring by use of sensor data">
+<meta property='og:description' content="报告简介 基本信息 项目名称：PSA study Structural health monitoring of offshore structure by use of sensor data\n发布时间：2024-02-21\n项目目标：\n探讨SHM如何作为一种评估海上结构健康的决策支持工具； 如何利用SHM（传感器数据，结构故障历史记录等）指导运维； 评估对比不同的SHM方法的优劣势； 介绍一些使用SHM进行维护计划的海上结构案例； “This report explores structural health monitoring (SHM) as a decision support tool to assess the structural health of offshore structures. The main objective of this report is to evaluate how SHM may be used to improve safety and inspection and maintenance planning with use of sensor data and structural failure history. The report evaluates different SHM approaches, including strengths and weaknesses, and contains some examples of use of SHM for both maintenance planning and to capture safety critical behavior of offshore structures.”\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='海上结构' /><meta property='article:tag' content='健康监测' /><meta property='article:tag' content='RBI' /><meta property='article:published_time' content='2025-02-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-25T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287.png' />
+<meta name="twitter:title" content="报告解读（1）：Structural health monitoring by use of sensor data">
+<meta name="twitter:description" content="报告简介 基本信息 项目名称：PSA study Structural health monitoring of offshore structure by use of sensor data\n发布时间：2024-02-21\n项目目标：\n探讨SHM如何作为一种评估海上结构健康的决策支持工具； 如何利用SHM（传感器数据，结构故障历史记录等）指导运维； 评估对比不同的SHM方法的优劣势； 介绍一些使用SHM进行维护计划的海上结构案例； “This report explores structural health monitoring (SHM) as a decision support tool to assess the structural health of offshore structures. The main objective of this report is to evaluate how SHM may be used to improve safety and inspection and maintenance planning with use of sensor data and structural failure history. The report evaluates different SHM approaches, including strengths and weaknesses, and contains some examples of use of SHM for both maintenance planning and to capture safety critical behavior of offshore structures.”\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#报告简介">报告简介</a>
+      <ol>
+        <li><a href="#基本信息">基本信息</a></li>
+        <li><a href="#关键名词定义">关键名词定义</a></li>
+      </ol>
+    </li>
+    <li><a href="#结构健康监测shm">结构健康监测（SHM）</a>
+      <ol>
+        <li><a href="#shm系统的类别">SHM系统的类别</a></li>
+        <li><a href="#shm系统流程">SHM系统流程</a></li>
+        <li><a href="#shm系统价值">SHM系统价值</a></li>
+        <li><a href="#使用shm是否可以预防重大事故">使用SHM是否可以预防重大事故？</a></li>
+      </ol>
+    </li>
+    <li><a href="#结构完整性管理strucutral-integrity-management">结构完整性管理（Strucutral integrity management）</a>
+      <ol>
+        <li><a href="#sim介绍">SIM介绍</a></li>
+        <li><a href="#屏障管理-barrier-management">屏障管理 （Barrier management）</a></li>
+        <li><a href="#什么是检测计划-inspection">什么是检测计划 （Inspection）</a></li>
+        <li><a href="#数据驱动的检测计划-data-driven-inspection-planning">数据驱动的检测计划 (Data driven inspection planning)</a></li>
+      </ol>
+    </li>
+    <li><a href="#常见海上结构故障">常见海上结构故障</a>
+      <ol>
+        <li><a href="#结构极限状态">结构极限状态</a></li>
+        <li><a href="#结构失效场景">结构失效场景</a></li>
+        <li><a href="#钢结构常见故障模式">钢结构常见故障模式</a></li>
+        <li><a href="#海上结构故障报告">海上结构故障报告</a></li>
+      </ol>
+    </li>
+    <li><a href="#参考规范">参考规范</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/">
+                <img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287_hu_6ca996289b89466d.png"
+                        srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287_hu_6ca996289b89466d.png 800w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287_hu_cb15942ea4d1733c.png 1600w"
+                        width="800" 
+                        height="275" 
+                        loading="lazy"
+                        alt="Featured image of post 报告解读（1）：Structural health monitoring by use of sensor data" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A/" >
+                项目报告
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/">报告解读（1）：Structural health monitoring by use of sensor data</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 25, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/en/p/paper-reading-2/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="报告简介">报告简介
+</h1><h2 id="基本信息">基本信息
+</h2><ol>
+<li>
+<p><strong>项目名称</strong>：PSA study Structural health monitoring of offshore structure by use of sensor data</p>
+</li>
+<li>
+<p><strong>发布时间</strong>：2024-02-21</p>
+</li>
+<li>
+<p><strong>项目目标</strong>：</p>
+<ul>
+<li>探讨SHM如何作为一种评估海上结构健康的决策支持工具；</li>
+<li>如何利用SHM（传感器数据，结构故障历史记录等）指导运维；</li>
+<li>评估对比不同的SHM方法的优劣势；</li>
+<li>介绍一些使用SHM进行维护计划的海上结构案例；</li>
+</ul>
+<p><em>“This report explores structural health monitoring (SHM) as a decision support tool to assess the structural health of offshore structures. The main objective of this report is to evaluate how SHM may be used to improve safety and inspection and maintenance planning with use of sensor data and structural failure history. The report evaluates different SHM approaches, including strengths and weaknesses, and contains some examples of use of SHM for both maintenance planning and to capture safety critical behavior of offshore structures.”</em></p>
+</li>
+</ol>
+<h2 id="关键名词定义">关键名词定义
+</h2><ol>
+<li>
+<p><strong>SHM</strong>：一种能用于检测结构性故障的诊断工具，可能还包括警告、定位和评估结构性故障后果等功能；</p>
+<p><em>“SHM is a diagnostic tool that has the objective to detect a structural failure, and may in addition warn, localize and evaluate the consequence of a structural failure.”</em></p>
+</li>
+<li>
+<p><strong>Digital twin</strong>：数字孪生是一种系统或资产的虚拟表示，使得用户能够使用该系统或资产的信息，集成模型和数据，其目的是为用户提供全生命周期的决策支持；</p>
+<p><em>“A digital twin is a virtual representation of a system or asset that calculates system states and makes system information available, through integrated models and data, with the purpose of providing decision support over its life cycle.”</em></p>
+</li>
+<li>
+<p><strong>Inspection</strong>：检查、测量或测试的过程，以确定结构当前的状况；</p>
+<p><em>“process of examination, measurement and/or testing to determine a condition or state of an item”</em></p>
+</li>
+<li>
+<p><strong>Virtual sensors</strong>: 虚拟传感器是数值传感器或是基于物理传感器派生的传感器；</p>
+<p><em>“virtual sensors are numerical sensors or derived based on physical sensors”</em></p>
+</li>
+<li>
+<p><strong>Monitoring system</strong>：监测系统通过测量设备（传感器）接受有关系统的信息；</p>
+<p><em>&ldquo;a monitoring system receives information about the system through measuring devices (sensors), and makes it available to the operator&rdquo;</em></p>
+</li>
+<li>
+<p><strong>Risk-based inspection</strong>：基于风险的检验（Risk-Based Inspection, RBI）是一个识别、评估和映射工业风险（由腐蚀和应力开裂引起）的过程，这些风险可能会影响压力设备和结构构件的完整性。RBI主要针对可以通过适当的检验和分析来控制的风险。在RBI过程中，工程师设计检验策略（检验什么、何时检验、如何检验），以最有效地匹配预测或观察到的劣化机理。</p>
+<p><em>“risk-based inspection (RBI) is a process that identifies, assesses and maps industrial risks (due to corrosion and stress cracking), which could compromise equipment integrity in both pressurized equipment and structural elements. RBI addresses risks that can be controlled through proper inspections and analysis. During the RBI process, engineers design inspection strategies (what, when, how to inspect) that most efficiently match forecasted or observed degradation mechanisms.”</em></p>
+</li>
+</ol>
+<h1 id="结构健康监测shm">结构健康监测（SHM）
+</h1><p>健康监测系统的常见组件如下图所示：</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225180936281.png"
+	width="976"
+	height="531"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225180936281_hu_6b0fc4b4b7d65bec.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225180936281_hu_78c28de85b0c8a8f.png 1024w"
+	loading="lazy"
+	
+		alt="结构健康监测系统的组件"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></p>
+<h2 id="shm系统的类别">SHM系统的类别
+</h2><ol>
+<li><strong>根据输入进行划分</strong>：
+<ul>
+<li>划分为Sensors，Indicators，Numerical twin，Hybrid twin以及Data-Driven models；</li>
+</ul>
+</li>
+</ol>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225154603992.png"
+	width="976"
+	height="453"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225154603992_hu_e10650e0b6bb28ee.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225154603992_hu_2b6ce24b4a09232a.png 1024w"
+	loading="lazy"
+	
+		alt="根据输入不同类别的SHM系统"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="215"
+		data-flex-basis="517px"
+	
+></p>
+<ol start="2">
+<li><strong>根据功能进行划分</strong>：
+<ul>
+<li><strong>Level 1:</strong> 定性 (Detection) ，表明结构中可能存在损伤；</li>
+<li><strong>Level 2:</strong> 定位 (Localization) ，提供故障的位置信息；</li>
+<li><strong>Level 3</strong>: 定量 (Assessment) ，提供故障的大小信息；</li>
+<li><strong>Level 4</strong>: 评估  (Consequence) ，提供故障对实际结构安全性的影响；</li>
+<li><strong>诊断预警 (Prognostic)</strong>：结构在不久的将来会发生损伤；</li>
+<li><strong>Fit for purpose</strong>: 能够验证结构的强度是否足够</li>
+</ul>
+</li>
+</ol>
+<h2 id="shm系统流程">SHM系统流程
+</h2><ol>
+<li>评估结构运营环境：
+<ul>
+<li>识别结构性故障模式，结构退化机制及后果；</li>
+<li>选择合适的传感器，安装方案和成本；</li>
+</ul>
+</li>
+<li>构建SHM系统：
+<ul>
+<li>传感器安装，校准及日志系统配置；</li>
+<li>系统集成测试；</li>
+<li>数据记录，过滤，压缩及传输</li>
+</ul>
+</li>
+<li>数据分析处理：
+<ul>
+<li>故障诊断，损伤识别等；</li>
+<li>模态分析</li>
+</ul>
+</li>
+<li>结构整体性评估
+<ul>
+<li>结构状态评估；</li>
+<li>剩余寿命预测；</li>
+</ul>
+</li>
+</ol>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225145911991.png"
+	width="727"
+	height="453"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225145911991_hu_83341a542b5d0c8d.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225145911991_hu_a446d95a4aac8863.png 1024w"
+	loading="lazy"
+	
+		alt="建立SHM系统流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="385px"
+	
+></p>
+<h2 id="shm系统价值">SHM系统价值
+</h2><p><strong>参考文献：</strong> <em>PSA: Svendsen et al., 2021, The use of digital solutions and structural health monitoring for integrity management of offshore structures, Rambøll report no. REN2021N00099-RAM-RP-00004 dated 14th February 2022</em></p>
+<ul>
+<li>引入SHM系统的主要目的是减少不确定性；</li>
+<li>同时SHM系统还能够提供用于优化检查计划的其他信息</li>
+</ul>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192219780.png"
+	width="909"
+	height="322"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192219780_hu_d16ea7c37143c966.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192219780_hu_b63856477ef4d9ad.png 1024w"
+	loading="lazy"
+	
+		alt="在海上结构中使用SHM创造的价值及收益"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="282"
+		data-flex-basis="677px"
+	
+></p>
+<p><strong>表1：使用SHM系统为海上结构创造的价值</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">CAPEX（资本支出）</th>
+          <th style="text-align: center">OPEX（运营支出）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">实际设计验证</td>
+          <td style="text-align: center">实际安全性和风险评估</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">设计基础和优化</td>
+          <td style="text-align: center">预测性维护</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">实施新的学习/知识差距</td>
+          <td style="text-align: center">意外事件 - 即时信息</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">最小化停机时间</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">变化（损伤）检测</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">捕捉意外行为</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">根本原因分析</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">生命周期历史</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">预警系统</td>
+      </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">决策制定</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="使用shm是否可以预防重大事故">使用SHM是否可以预防重大事故？
+</h2><ol>
+<li>
+<p>挪威最大的工业事故是1981年Alexander Kjelland platform倾覆，该平台的结构性损伤起源与一个6 mm的圆角焊缝，随后支撑结构发生疲劳裂缝，导致平台一条支腿失效。</p>
+<ul>
+<li>
+<p>使用基于传感器数据的SHM系统可能<strong>无法阻止</strong>该次事故，因为该平台是一个非冗余结构；</p>
+</li>
+<li>
+<p>SHM可以支持决策，减少事故发生的可能性；</p>
+</li>
+<li>
+<p>对于Alexander Kjelland事故而言，必须在裂缝发展成为致命损伤前发现它才能够阻止事故的发生；</p>
+</li>
+<li>
+<p>但该裂缝的位置并不是设计阶段评估的关键部分，通常而言传感器不会布置在该处；</p>
+</li>
+<li>
+<p>只有将裂缝布置在浮筒上，设计传感器系统能够监测到100mm的裂缝，并认识到该裂缝未来将发展成为致命损伤，才能阻止该事故；</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225201437456.png"
+	width="706"
+	height="885"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225201437456_hu_2794911751ccb3e1.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225201437456_hu_f142e7148b5c76ed.png 1024w"
+	loading="lazy"
+	
+		alt="Alexander Kjelland事故中破坏的浮筒"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="191px"
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p>2009年在挪威Ekofisk 2/4 W platform船撞事故：</p>
+<ul>
+<li>SHM能够作为一种决策工具用于评估结构损伤，在进行更细致的检查之前；</li>
+<li>SHM能够提供实时的结构承载力评估和剩余寿命等（例如是否能够安排人员进入发生船撞后的结构进行检查）</li>
+<li>然而，实现上述两点需要SHM系统能够监测到由于船撞引发的大变形；</li>
+</ul>
+</li>
+</ol>
+<h1 id="结构完整性管理strucutral-integrity-management">结构完整性管理（Strucutral integrity management）
+</h1><h2 id="sim介绍">SIM介绍
+</h2><ul>
+<li>
+<p><strong>结构全生命周期</strong></p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193006829.png"
+	width="484"
+	height="432"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193006829_hu_dc701ee07018e196.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193006829_hu_8470c9328675c766.png 1024w"
+	loading="lazy"
+	
+		alt="结构全生命周期"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="268px"
+	
+></p>
+</li>
+<li>
+<p><strong>定义</strong>：SIM是一个连续的过程，用于展示海上结构从安装到退役全生命周期的情况。SIM为结构的检查计划、维护及维修计划提供了一个框架，如下图所示：</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225161204447.png"
+	width="1011"
+	height="382"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225161204447_hu_59985024a420312d.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225161204447_hu_29698ca1ed58ff92.png 1024w"
+	loading="lazy"
+	
+		alt="引入SHM的SIM框架"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="264"
+		data-flex-basis="635px"
+	
+></p>
+<p>该框架中主要包含以下四个模块：</p>
+<ul>
+<li>
+<p>数据和信息收集；</p>
+</li>
+<li>
+<p>结构状态评估；</p>
+</li>
+<li>
+<p>评估并选择维护策略；</p>
+</li>
+<li>
+<p>建立检查计划；</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="屏障管理-barrier-management">屏障管理 （Barrier management）
+</h2><p><strong>参考文献：</strong> <em>PSA, 2013, Principles for barrier management in the petroleum industry, dated 29th of January 2013</em></p>
+<ol>
+<li><strong>屏障</strong>：旨在单独或共同减少特定错误、危险或事故发生的可能性，或限制其危害/不利影响的技术、操作和组织要素。</li>
+<li><strong>屏障要素</strong>：实现屏障功能的技术、操作或组织措施或解决方案。</li>
+<li><strong>屏障功能</strong>：在从故障、危险或意外情况导致事故的事件链中，屏障所承担的任务或角色。</li>
+<li><strong>性能影响因素</strong>：对屏障功能和要素按预期运行具有重要影响的条件。</li>
+</ol>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225163007335.png"
+	width="1003"
+	height="499"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225163007335_hu_7e9402c8c6490711.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225163007335_hu_7f341866d90b9942.png 1024w"
+	loading="lazy"
+	
+		alt="屏障管理架构"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="482px"
+	
+></p>
+<h2 id="什么是检测计划-inspection">什么是检测计划 （Inspection）
+</h2><ul>
+<li>
+<p>首要目标是确定：<strong>what, when, where and how to inspect</strong></p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194052111.png"
+	width="1045"
+	height="703"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194052111_hu_8a4652e34fd7930c.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194052111_hu_3b2a37edbd3f458d.png 1024w"
+	loading="lazy"
+	
+		alt="what, when, where and how to inspect"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
+	
+></p>
+<p>上图还展示了<strong>population-based SHM</strong>是如何作为SIM中的一部分，黄色的风机是风场中的代表，通常是风场中使用率最高或负载最大的结构，通过采集该结构的结构信息，能够用于指导其他风机的资产管理。</p>
+</li>
+<li>
+<p>选择检测技术需要考虑该技术的检测概率，<strong>PoD (Probability of detection)</strong> 可以用来衡量检测技术的准确性。Trueness 和 Precision可以用来衡量一种检测技术的准确性。 Trueness指的的是测量结果和真实值的偏差程度；Precision指的是独立检测结果的一致性，如下图所示：</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194619657.png"
+	width="933"
+	height="298"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194619657_hu_7b2cd46ffe77643d.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194619657_hu_820fb13cf0542fb1.png 1024w"
+	loading="lazy"
+	
+		alt="解释trueness和precision"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="313"
+		data-flex-basis="751px"
+	
+></p>
+</li>
+<li>
+<p>对于分类模型，可以用混淆矩阵，AUC，召回率，分类器精度，F1得分等指标进行衡量；</p>
+</li>
+<li>
+<p><strong>When to inspect</strong>: 何时进行检测应当基于TBI和CBI的组合，TBI应当根据RBI的结果来设定，随着对SHM系统信息的增加，TBI可以逐步被CBI所取代；</p>
+</li>
+</ul>
+<h2 id="数据驱动的检测计划-data-driven-inspection-planning">数据驱动的检测计划 (Data driven inspection planning)
+</h2><ul>
+<li>
+<p>根据规范Norsok N-005，检测计划应考虑基于风险的检测分析结果；</p>
+</li>
+<li>
+<p>Risk based inspection (RBI)可以基于以下三点开展</p>
+<ul>
+<li><strong>基于通用设计基准</strong>：使用同一类型或类似结构的历史数据或工程经验，检测范围通常是针对运营使用的保守假设；</li>
+<li><strong>基于定性分析</strong>：结合相同或类似结构的历史数据或工程经验，以及具体的设计细节，检测范围将更有针对性地集中在高利用率的特殊区域；</li>
+<li><strong>基于定量分析</strong>：基于特定设计的概率分析</li>
+</ul>
+</li>
+<li>
+<p>下图展示了RBI是如何作为选择TBI或者CBI作为检测计划的基础</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192708216.png"
+	width="1126"
+	height="454"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192708216_hu_e201eb26a3789505.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192708216_hu_179c9c6d081ad849.png 1024w"
+	loading="lazy"
+	
+		alt="RBI作为选择TBI/CBI的基础"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="595px"
+	
+></p>
+</li>
+<li>
+<p><strong>Calendar-based inspection vs conditional-based inspection</strong>:</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193442952.png"
+	width="1104"
+	height="595"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193442952_hu_1aee2eb37649efbd.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193442952_hu_7027269883a6a05a.png 1024w"
+	loading="lazy"
+	
+		alt="左图为Calendar-based inspection，右图结合了conditional-based inspection"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+</li>
+</ul>
+<h1 id="常见海上结构故障">常见海上结构故障
+</h1><h2 id="结构极限状态">结构极限状态
+</h2><ol>
+<li><strong>SLS（Serviceability Limit State，正常使用极限状态）</strong>：
+<ul>
+<li><strong>定义</strong>：结构在正常使用条件下应满足的功能要求，确保其在使用期间不会出现影响功能或舒适性的问题。</li>
+<li><strong>关注点</strong>：变形、振动、裂缝宽度等。</li>
+<li><strong>目标</strong>：保证结构在正常使用中的功能性和舒适性。</li>
+</ul>
+</li>
+<li><strong>FLS（Fatigue Limit State，疲劳极限状态）</strong>：
+<ul>
+<li><strong>定义</strong>：结构在反复荷载作用下抵抗疲劳破坏的能力。</li>
+<li><strong>关注点</strong>：循环应力、疲劳寿命、裂纹扩展等。</li>
+<li><strong>目标</strong>：防止结构因反复荷载导致的疲劳破坏。</li>
+</ul>
+</li>
+<li><strong>ULS（Ultimate Limit State，承载能力极限状态）</strong>：
+<ul>
+<li><strong>定义</strong>：结构在最大荷载作用下抵抗破坏的能力，涉及安全性。</li>
+<li><strong>关注点</strong>：强度、稳定性、整体稳定性等。</li>
+<li><strong>目标</strong>：确保结构在极端条件下的安全性，防止倒塌或严重破坏。</li>
+</ul>
+</li>
+<li><strong>ALS（Accidental Limit State，偶然作用极限状态）</strong>：
+<ul>
+<li><strong>定义</strong>：结构在偶然事件（如爆炸、撞击、火灾等）下的性能。</li>
+<li><strong>关注点</strong>：剩余承载力、整体稳定性、局部破坏等。</li>
+<li><strong>目标</strong>：保证结构在偶然事件中不发生灾难性破坏，尽量减少损失。</li>
+</ul>
+</li>
+</ol>
+<h2 id="结构失效场景">结构失效场景
+</h2><p><strong>表2 不同失效场景概述</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">场景编号</th>
+          <th style="text-align: center">场景描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">低周和高周疲劳导致的疲劳开裂</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">HISC（Hydrogen Induced Stress Cracking）相关开裂</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center">点蚀和腐蚀</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">甲板上的掉落物</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">极端载荷导致的屈服超载</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: center">极端载荷导致的局部和整体屈曲</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: center">极端载荷导致的整体崩塌</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: center">局部波浪冲击导致的凹痕</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: center">系泊缆或拉索断裂</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: center">泄漏导致的进水</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: center">异常环境条件的影响（甲板上的波浪）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: center">爆炸</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>下图中可以看出，疲劳、腐蚀、过载和振动是漂浮式结构中主要的故障原因，而固定式结构还包括基础与海床的相互作用以及平台间的连接桥。同时，还考虑了掉落物体以及船撞的因素。表3是根据下图进行总结得到的。</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225151959404.png"
+	width="933"
+	height="738"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225151959404_hu_7f1bc60cbae92197.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225151959404_hu_3f08e9acbcaeb72d.png 1024w"
+	loading="lazy"
+	
+		alt="海上结构常见结构失效模式及原因"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p><strong>表3：重要失效模式</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">失效模式编号</th>
+          <th style="text-align: center">描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: center">由于疲劳和腐蚀导致的（贯穿厚度）开裂</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">由于疲劳或腐蚀导致的构件分离</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: center">由于疲劳或腐蚀导致的构件缺失</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: center">由于船舶撞击或掉落物导致的凹痕和变形</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: center">固定式安装的灌浆连接（滑移和失效）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: center">固定式安装的超载（沉降和下沉）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: center">固定式安装的冲刷</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: center">多种原因导致的过度/意外振动</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: center">多种原因导致的桥梁支承问题（互连桥）</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: center">由风、波浪或水流作用导致的涡激振动问题</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="钢结构常见故障模式">钢结构常见故障模式
+</h2><p>钢结构通常的故障模式是结构承载力的下降，造成承载力下降的故障机制包括：材料退化、材料损失、疲劳和过度负载等。导致这些故障机制的常见影响因素如下图所示：</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225153354229.png"
+	width="846"
+	height="594"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225153354229_hu_4c3fe2862a6c3142.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225153354229_hu_4191b4884a3f252d.png 1024w"
+	loading="lazy"
+	
+		alt="钢结构常见故障模式"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="341px"
+	
+></p>
+<h2 id="海上结构故障报告">海上结构故障报告
+</h2><p>下表中总结了过去几年中主要的海上结构管理机构对重大结构性事故的报告。从下表中可以看出，欧盟仅报告了INA平台丢失的一次重大事故。</p>
+<p><strong>表4：过去五年被定义为重大事故的报告事件</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>地区</th>
+          <th>报告的事件</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>欧盟：海上油气作业安全（europa.eu）</td>
+          <td>报告的结构完整性损失事件。数据为2016年(0)、2017年(0)、2018年(0)、2019年(2起-无法确定具体事件)、2020年(1起-克罗地亚平台完全损失 - INA的天然气平台在海床上被发现 <a class="link" href="https://www.croatiaweek.com/inas-missing-gas-platform-found-on-seabed/"  target="_blank" rel="noopener"
+    >https://www.croatiaweek.com/inas-missing-gas-platform-found-on-seabed/</a>)、2021年(0)。</td>
+      </tr>
+      <tr>
+          <td>英国：必须向RIDDOR报告危险事故</td>
+          <td>运营商应报告与以下相关的事故：<br><br>坍塌：&ldquo;任何海上设施或海上设施上任何设备的非故意坍塌或部分坍塌，这种坍塌危及设施的整体结构完整性&rdquo;。<br><br>海床下沉或坍塌：&ldquo;任何可能影响海上设施基础或整体结构完整性的海床下沉或坍塌&rdquo;。<br><br>与监管机构的非正式讨论中，没有上述重大失效的记录。已发生一些失效，但未达到需要报告的程度，已知的很少。</td>
+      </tr>
+      <tr>
+          <td>IOGP</td>
+          <td>未报告，非正式反馈表明没有结构失效的情况。</td>
+      </tr>
+      <tr>
+          <td>美国：海上事故统计|安全和环境执法局（bsee.gov），监管机构收集海上事故数据</td>
+          <td>搜索2018年、2019年、2020年和2021年的重大事故，仅报告了各种起重机事故，未提及导管架失效，但注意到一些船舶撞击导致的支腿损坏。</td>
+      </tr>
+      <tr>
+          <td>澳大利亚：NOPSEMA</td>
+          <td>2019-2020年期间没有与结构（和井）完整性相关的监管行动。</td>
+      </tr>
+  </tbody>
+</table></div>
+<h1 id="参考规范">参考规范
+</h1><ol>
+<li>NORSOK N-005:2017+AC:2019 In-service integrity management of structures and marine systems</li>
+<li>DNV-RP-C210: Probabilistic methods for planning of inspection for fatigue cracks in offshore structures</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84/">海上结构</a>
+        
+            <a href="/tags/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B/">健康监测</a>
+        
+            <a href="/tags/rbi/">RBI</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
