@@ -7,13 +7,341 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Mon, 24 Feb 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E8%8D%B7%E8%BD%BD%E7%94%9F%E6%88%90/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>风机叶片动态响应仿真（1）：openfast生成响应数据</title>
-        <link>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F1openfast%E7%94%9F%E6%88%90%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/</link>
-        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        <lastBuildDate>Wed, 26 Feb 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E8%8D%B7%E8%BD%BD%E7%94%9F%E6%88%90/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>风机叶片动态响应仿真（0）：理论基础</title>
+        <link>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F0%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</link>
+        <pubDate>Wed, 26 Feb 2025 16:46:00 +0800</pubDate>
         
-        <guid>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F1openfast%E7%94%9F%E6%88%90%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F1openfast%E7%94%9F%E6%88%90%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE/1.jpg" alt="Featured image of post 风机叶片动态响应仿真（1）：openfast生成响应数据" /&gt;</description>
+        <guid>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E5%8A%A8%E6%80%81%E5%93%8D%E5%BA%94%E4%BB%BF%E7%9C%9F0%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>OpenFast仿真（1）：AeroDyn使用指南</title>
+        <link>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg" alt="Featured image of post OpenFast仿真（1）：AeroDyn使用指南" /&gt;&lt;h1 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Openfast帮助文档&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://openfast.readthedocs.io/en/main/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://openfast.readthedocs.io/en/main/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;专业名词解释&#34;&gt;专业名词解释
+&lt;/h1&gt;&lt;h3 id=&#34;诱导速度induced-velocities&#34;&gt;诱导速度（induced velocities）
+&lt;/h3&gt;&lt;p&gt;诱导速度是指由于涡流系统(vortex system)存在而在流场中产生的额外速度分量。在风机和螺旋桨理论中，这是一个核心概念。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：诱导速度是流体粒子由于涡量(vorticity)的存在而获得的速度，它是对自由流速度的一种扰动或修正。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;物理意义&lt;/strong&gt;：当叶片产生升力时，必然会形成涡系统(包括束缚涡和尾涡)，这些涡系统会导致流场中的速度发生变化，这种变化就是诱导速度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;自由涡尾流模型free-vortex-wake-model&#34;&gt;自由涡尾流模型（Free Vortex Wake Model）
+&lt;/h3&gt;&lt;p&gt;自由涡尾流模型是一种高级气动模拟方法，用于更准确地捕捉风机或旋翼飞行器的尾流动力学。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心思想&lt;/strong&gt;：尾流被表示为一系列涡丝(vortex filaments)，这些涡丝自由地在流场中运动和变形，而不受预定轨迹的约束。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;标准势流模型standard-potential-flow-model&#34;&gt;标准势流模型（Standard Potential-Flow Model）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;势流模型是指假设流体为无旋、无粘性且不可压缩的流动模型，是空气动力学中的一种基础理论模型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;局限性&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;忽略粘性：无法准确预测分离流和失速；&lt;/li&gt;
+&lt;li&gt;假设连续流动：不能准确模拟分离点后的流动；&lt;/li&gt;
+&lt;li&gt;预测过高的升力：在大攻角下，标准势流模型会高估升力系数；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bak修正bak-correction&#34;&gt;Bak修正（Bak Correction）
+&lt;/h3&gt;&lt;p&gt;Bak 修正是由丹麦风能专家 Christian Bak 提出的一种对标准势流模型的改进方法，主要用于提高势流模型在预测风力涡轮机叶片气动性能时的准确性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;修正目标&lt;/strong&gt;：主要针对势流理论在大攻角和分离流动条件下的局限性进行修正。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;修正方法&lt;/strong&gt;：通过引入经验性修正因子，调整势流模型计算的压力分布，使其更接近实际流动情况。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心思想&lt;/strong&gt;：结合实验数据和CFD结果，对势流方程的解进行后处理调整，特别是在叶片的吸力面(负压面)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;塔架阴影效应tower-shadow&#34;&gt;塔架阴影效应（Tower Shadow）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：塔架阴影是指风流经塔架后在其下游形成的速度亏损区域。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;物理机制&lt;/strong&gt;：当风流经塔架时：
+&lt;ul&gt;
+&lt;li&gt;塔架阻碍气流，产生阻力&lt;/li&gt;
+&lt;li&gt;在塔架下游形成尾流区域&lt;/li&gt;
+&lt;li&gt;尾流区域内风速降低&lt;/li&gt;
+&lt;li&gt;可能产生涡脱落现象(vortex shedding)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;aerodyn&#34;&gt;AeroDyn
+&lt;/h1&gt;&lt;h2 id=&#34;简介&#34;&gt;简介
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Aerodyn是一个时域的风机空气动力学模块，可以作为代码单独驱动以计算未跟openfast耦合的风机的空气动力响应；&lt;/li&gt;
+&lt;li&gt;Aerodyn用于计算叶片和塔筒的空气动力荷载，计算原理遵循&lt;strong&gt;致动线理论&lt;/strong&gt;（the principles of actuator lines）；&lt;/li&gt;
+&lt;li&gt;Aerodyn由6个子模型组成，分别是：
+&lt;ul&gt;
+&lt;li&gt;rotor wake/induction&lt;/li&gt;
+&lt;li&gt;blade airfoil aerodynamics&lt;/li&gt;
+&lt;li&gt;tower influence on the fluid local to the blade nodes&lt;/li&gt;
+&lt;li&gt;tower and nacelle drag&lt;/li&gt;
+&lt;li&gt;aeroacoustics&lt;/li&gt;
+&lt;li&gt;buoyancy on the blade, hub, nacelle and tower&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;输入文件&#34;&gt;输入文件
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;基本单位：（kg, m, s, N）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;常规设置&#34;&gt;常规设置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DTAero&lt;/strong&gt;: 空气动力学的计算步骤，建议最少设置200步；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Wake_mod&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置为0说明不考虑 &lt;strong&gt;induced velocities&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;设置为1将基于BEM理论考虑这些效果；&lt;/li&gt;
+&lt;li&gt;设置为3将使用 &lt;strong&gt;free vortex wake model&lt;/strong&gt;，注意在线性分析阶段不能设置为3；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Twrpotent&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设置为0说明不考虑塔筒对叶片局部流场的潜在影响；&lt;/li&gt;
+&lt;li&gt;设置为1说明适用&lt;strong&gt;standard potential-flow model&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;设置为2说明还考虑了&lt;strong&gt;Bak修正&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;建模参数建议&#34;&gt;建模参数建议
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;NumVBlNds&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;建议设置在10-20之间，用于平衡计算精度和计算成本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;模拟&lt;strong&gt;运行中&lt;/strong&gt;的风机叶片时：
+&lt;ul&gt;
+&lt;li&gt;建议包括动态BEM模型（&lt;strong&gt;Wake_Mod = 1&lt;/strong&gt;）和UA（&lt;strong&gt;AFAeroMod = 2&lt;/strong&gt;）；&lt;/li&gt;
+&lt;li&gt;启用 &lt;strong&gt;SkewMod = 2&lt;/strong&gt;，&lt;strong&gt;TipLoss = TRUE&lt;/strong&gt;，&lt;strong&gt;HubLoss = TRUE&lt;/strong&gt;，&lt;strong&gt;TanInd = TRUE&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;然而当偏航误差大于45度时，应用&lt;strong&gt;SkewMod = 2&lt;/strong&gt;是无效的；&lt;/li&gt;
+&lt;li&gt;BEM的非线性求解与入流角相关，&lt;strong&gt;IndToler&lt;/strong&gt;建议设置为&lt;strong&gt;DEFAULT&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;输出设置&#34;&gt;输出设置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;AeroDyn能够输出沿塔筒的9个节点和沿叶片的9个节点中输出气动力学和运动学量；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;BldNd_BladesOut&lt;/strong&gt;: 表示要输出的叶片数量；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;BldNd_BlOutNd&lt;/strong&gt;：表示要输出的节点&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考虑输出叶片各节点的气动力：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;”to plane“&lt;/strong&gt;：表示相对于转子平面，Fx表示垂直于叶片旋转平面的力，Fy表示平行于叶片旋转平面的力。适用于整体叶片性能和计算全局荷载；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;”to chord“&lt;/strong&gt;: 表示相对叶片弦线，代表局部/微观的参考系，Fn是垂直于叶片局部弦线的力，Ft是平行于叶片局部弦线的力，沿着前缘到后缘的方向，影响叶片的扭转变形。适用于局部叶片的结构响应和变形。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175627698.png&#34;
+	width=&#34;1037&#34;
+	height=&#34;536&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175627698_hu_f86b883fe5418108.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175627698_hu_a21cedf760ba1e6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;叶片局部坐标系&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;464px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/Blade_chord.png&#34;
+	width=&#34;685&#34;
+	height=&#34;482&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/Blade_chord_hu_696c6ec29e60002.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/Blade_chord_hu_8aa6e90c98c61599.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;叶片局部坐标系&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Mm&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Pitching&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;moment&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fx&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Normal&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fy&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tangential&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fn&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Normal&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chord&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Ft&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tangential&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chord&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;输出文件变量设置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656.png&#34;
+	width=&#34;1149&#34;
+	height=&#34;377&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656_hu_25248f9e796f840.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656_hu_c3a651d127d69d3b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Blade output Channel&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;304&#34;
+		data-flex-basis=&#34;731px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175559551.png&#34;
+	width=&#34;1142&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175559551_hu_fb260ea7203acae8.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175559551_hu_1f50df2326604a7b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Blade output channel 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;输出文件&#34;&gt;输出文件
+&lt;/h2&gt;&lt;h3 id=&#34;摘要文件-summary-file&#34;&gt;摘要文件 （Summary file）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;当SumPrint设置为TRUE时，会生成文件OutFileRoot.AD.sum来总结相关空气动力学模型的关键信息，包括启用的功能和输出；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;结果文件results-files&#34;&gt;结果文件（Results files）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;生成OutFileRoot.#.out文件；&lt;/li&gt;
+&lt;li&gt;数据通道在初始的input file中进行定义；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;测试案例&#34;&gt;测试案例
+&lt;/h1&gt;&lt;h2 id=&#34;输入文件示例&#34;&gt;输入文件示例
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;修改AeroDyn的输入文件（通常该文件后缀为”AeroDyn15.dat“）中的输出模块&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;======  Outputs  ====================================================================================
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;True          SumPrint            - Generate a summary file listing input options and interpolated properties to &amp;#34;&amp;lt;rootname&amp;gt;.AD.sum&amp;#34;?  (flag)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          9   NBlOuts             - Number of blade node outputs [0 - 9] (-)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          1,2,3,4,5,6,7,8,9   BlOutNd             - Blade nodes whose values will be output  (-)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          0   NTwOuts             - Number of tower node outputs [0 - 9]  (-)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              TwOutNd             - Tower nodes whose values will be output  (-)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   OutList             - The next line(s) contains a list of output parameters.  See OutListParameters.xlsx for a listing of available output channels, (-)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N1Fn,B1N1Ft,B1N1Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N2Fn,B1N2Ft,B1N2Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N3Fn,B1N3Ft,B1N3Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N4Fn,B1N4Ft,B1N4Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N5Fn,B1N5Ft,B1N5Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N6Fn,B1N6Ft,B1N6Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N7Fn,B1N7Ft,B1N7Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N8Fn,B1N8Ft,B1N8Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B1N9Fn,B1N9Ft,B1N9Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N1Fn,B2N1Ft,B2N1Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N2Fn,B2N2Ft,B2N2Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N3Fn,B2N3Ft,B2N3Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N4Fn,B2N4Ft,B2N4Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N5Fn,B2N5Ft,B2N5Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N6Fn,B2N6Ft,B2N6Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N7Fn,B2N7Ft,B2N7Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N8Fn,B2N8Ft,B2N8Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;#34;B2N9Fn,B2N9Ft,B2N9Mm&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;END of input file (the word &amp;#34;END&amp;#34; must appear in the first 3 columns of this last OutList line)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;---------------------------------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;输出文件示例&#34;&gt;输出文件示例
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;从”.AD.sum“文件中可以看到本次输出的变量&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183148963.png&#34;
+	width=&#34;575&#34;
+	height=&#34;405&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183148963_hu_2dc4b2d5d66d2fa0.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183148963_hu_f8ae94e53d378a4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;摘要文件输出变量查看&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;340px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;从&amp;quot;.out&amp;quot;文件中，能够看到输出结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183254463.png&#34;
+	width=&#34;699&#34;
+	height=&#34;395&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183254463_hu_573ee448969e9657.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183254463_hu_eb8959044a89bd9b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;输出结果示例&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;python脚本批量化处理-working&#34;&gt;Python脚本批量化处理 （working）
+&lt;/h2&gt;&lt;p&gt;考虑使用python脚本进行自动化修改及变量提取&lt;/p&gt;
+</description>
         </item>
         
     </channel>

@@ -351,25 +351,6 @@
     
 
     
-        <footer class="article-translations">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 5h7" />
-  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
-  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
-  <path d="M12 20l4 -9l4 9" />
-  <path d="M19.1 18h-6.2" />
-</svg>
-
-
-
-            <div>
-                
-                    <a href="https://whhong-research.github.io/en/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/" class="link">English</a>
-                
-            </div>
-        </footer>
-    
 </div>
 
 </header>
@@ -458,8 +439,65 @@
 </ol>
 <h2 id="skimagemorphologyskeletonize">skimage.morphology.skeletonize
 </h2><p>skeletonize函数是scikit-image库中用于骨架化的函数，主要有三种方法:</p>
+<p>需要注意的是，需要保证输入图像是二值化图像，即只有0（黑色，背景）和255【或者表示为1】（白色，前景）；</p>
 <ol>
-<li><strong>Zhang-Suen细化算法(默认方法):</strong></li>
+<li>
+<p><strong>Zhang-Suen细化算法(默认方法):</strong></p>
+<ul>
+<li><strong>基本思路</strong>：去除掉非骨架上的非0像素点；</li>
+<li><strong>如何查找非骨架点</strong>：对于非零像素点，考虑其8领域像素点</li>
+</ul>
+<p><img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226111149133.png"
+	width="581"
+	height="251"
+	srcset="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226111149133_hu_3353c6fc3f5f3d22.png 480w, /p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226111149133_hu_86e1b4dc4605206a.png 1024w"
+	loading="lazy"
+	
+		alt="对于一个像素点的8领域像素点"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="555px"
+	
+></p>
+<ul>
+<li><strong>Step1</strong>:</li>
+</ul>
+<p><img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226111324375.png"
+	width="896"
+	height="505"
+	srcset="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226111324375_hu_968d1d005d4a5238.png 480w, /p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226111324375_hu_567ac73b5d10fb78.png 1024w"
+	loading="lazy"
+	
+		alt="Step 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<ul>
+<li>
+<p><strong>Step2</strong>:</p>
+<p><img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226113630599.png"
+	width="887"
+	height="432"
+	srcset="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226113630599_hu_1174789bddfa8c5f.png 480w, /p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/image-20250226113630599_hu_1688b3f8cc142ce2.png 1024w"
+	loading="lazy"
+	
+		alt="Step 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+</li>
+</ul>
+</li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
