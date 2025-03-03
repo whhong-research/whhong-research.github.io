@@ -2,18 +2,18 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="个人总结 这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。\n">
-<title>Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>
+<title>论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</title>
 
-<link rel='canonical' href='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/'>
+<link rel='canonical' href='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes">
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes">
 <meta property='og:description' content="个人总结 这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。\n">
-<meta property='og:url' content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/'>
+<meta property='og:url' content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/'>
 <meta property='og:site_name' content='whhong的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='unsupervised learning' /><meta property='article:tag' content='Crack segmentation' /><meta property='article:published_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.png' />
-<meta name="twitter:title" content="Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='unsupervised learning' /><meta property='article:tag' content='Crack segmentation' /><meta property='article:published_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.png' />
+<meta name="twitter:title" content="论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes">
 <meta name="twitter:description" content="个人总结 这篇文章提出了一种名为Crack-Diffusion的增强监督监测框架，用于分割路面裂缝。该框架主要分为两个阶段，第一阶段为无监督的multi-blur-based cold diffusion异常检测模型，第二阶段为有监督的U-NET分割模型。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://whhong-research.github.io/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.png' />
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.png' />
     </head>
     <body class="
     article-page
@@ -309,13 +309,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/">
-                <img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_3496d710298882d6.png"
-                        srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_3496d710298882d6.png 800w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_af16a98164c92354.png 1600w"
+            <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/">
+                <img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_3496d710298882d6.png"
+                        srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_3496d710298882d6.png 800w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1_hu_af16a98164c92354.png 1600w"
                         width="800" 
                         height="348" 
                         loading="lazy"
-                        alt="Featured image of post Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes" />
+                        alt="Featured image of post 论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes" />
                 
             </a>
         </div>
@@ -334,7 +334,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/">Paper Reading 1: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</a>
+            <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/">论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</a>
         </h2>
     
         
@@ -408,10 +408,10 @@ $$<h2 id="扩散模型和gan模型对比">扩散模型和GAN模型对比
 </li>
 <li>
 <p><strong>扩散模型</strong>：扩散模型也是将原始图像转换成潜在变量，但扩散模型生成的潜在变量大小和原始图像的一样大，而GAN网络生成的潜在变量通常会小一些。</p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966.png"
 	width="476"
 	height="295"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_9d375cbef6809b2f.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_26d8554963e0620c.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_9d375cbef6809b2f.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115126966_hu_26d8554963e0620c.png 1024w"
 	loading="lazy"
 	
 		alt="潜在变量（latent tensors）在GAN网络和Diffusion模型中的对比"
@@ -432,10 +432,10 @@ $$<h2 id="扩散模型和gan模型对比">扩散模型和GAN模型对比
 <li><strong>需求</strong>：重建图像中，裂缝区域被重建为无裂缝，道路碎屑、砾石等仍然保留；</li>
 </ol>
 <h2 id="多模糊冷扩散模型">多模糊冷扩散模型
-</h2><p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609.png"
+</h2><p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609.png"
 	width="919"
 	height="716"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609_hu_e16cb66f332ddaf1.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609_hu_d0bea3fea956c012.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609_hu_e16cb66f332ddaf1.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224124120609_hu_d0bea3fea956c012.png 1024w"
 	loading="lazy"
 	
 		alt="多模糊冷扩散模型的裂缝检测过程"
@@ -509,10 +509,10 @@ $$<ul>
 </li>
 <li>
 <p>在获取潜在张量后，使用denoising扩散概率模型（DDPM）中的UNET结构作为恢复算子。恢复算子的结构如下图所示：</p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087.png"
 	width="974"
 	height="429"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_9a263ff10b108b4d.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_373b7bbe0c2bcc74.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_9a263ff10b108b4d.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224115858087_hu_373b7bbe0c2bcc74.png 1024w"
 	loading="lazy"
 	
 		alt="多模糊冷扩散模型中的恢复算子R"
@@ -832,10 +832,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 </h3><ol>
 <li>
 <p>某些情况下，基于SSIM的分割结果无法满足期望效果：</p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761.png"
 	width="915"
 	height="574"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761_hu_9f1eb73484bb27ed.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761_hu_30487711f2c0da94.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761_hu_9f1eb73484bb27ed.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224131456761_hu_30487711f2c0da94.png 1024w"
 	loading="lazy"
 	
 		alt="基于SSIM分割效果对比，案例1中背景分布与训练图片相近，案例2中背景分布与训练图片差异较大"
@@ -852,10 +852,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 </li>
 <li>
 <p>作者还将提出的多模糊冷扩散模型与其他常见的无监督学习模型进行了对比，效果如下：</p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204.png"
 	width="892"
 	height="249"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204_hu_592cff4186ef0db5.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204_hu_fd9c19dc2787aa91.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204_hu_592cff4186ef0db5.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150708204_hu_fd9c19dc2787aa91.png 1024w"
 	loading="lazy"
 	
 		alt="七个无监督网络的裂缝分割SSIM和IoU对比表"
@@ -866,10 +866,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 		data-flex-basis="859px"
 	
 ></p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051.png"
 	width="895"
 	height="716"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051_hu_be6f6e53af3ebbea.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051_hu_ea1a6659550f820e.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051_hu_be6f6e53af3ebbea.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224150551051_hu_ea1a6659550f820e.png 1024w"
 	loading="lazy"
 	
 		alt="基于SSIM的裂纹分割结果"
@@ -897,10 +897,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 </li>
 <li>
 <p>使用了该数据集中的负类（即没有带有裂缝）的图像作为训练数据。</p>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505.png"
 	width="1885"
 	height="1190"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505_hu_e52556ebab045b35.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505_hu_5fc9b127450c87ac.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505_hu_e52556ebab045b35.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/image-20250224161552505_hu_5fc9b127450c87ac.png 1024w"
 	loading="lazy"
 	
 		alt="训练数据集概览"
@@ -935,10 +935,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 </div><ol>
 <li>训练到122个epoch时触发早停，因为训练损失不断下降，而验证损失在过去30个epoch中上升了，最佳模型出现在92个epoch时刻；</li>
 </ol>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history.png"
 	width="1000"
 	height="600"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history_hu_53b6569e609e568d.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history_hu_16c22d8522eef1ea.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history_hu_53b6569e609e568d.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/training_history_hu_16c22d8522eef1ea.png 1024w"
 	loading="lazy"
 	
 		alt="training_history"
@@ -955,10 +955,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 <ul>
 <li>裂缝分割效果较好的：</li>
 </ul>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all.png"
 	width="4440"
 	height="1305"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all_hu_4f49506df08f2c5d.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all_hu_51ced3f7873f5d0d.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all_hu_4f49506df08f2c5d.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_1_best_all_hu_51ced3f7873f5d0d.png 1024w"
 	loading="lazy"
 	
 		alt="CFD数据集中裂缝分割效果较优的"
@@ -972,10 +972,10 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
 <ul>
 <li>裂缝分割效果较差的：（可能是由于裂缝过于细微）</li>
 </ul>
-<p><img src="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all.png"
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all.png"
 	width="4440"
 	height="1330"
-	srcset="/p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all_hu_d5a49ac571418e07.png 480w, /p/paper-reading-1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all_hu_fb20fd4b851a8065.png 1024w"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all_hu_d5a49ac571418e07.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/Image_86_best_all_hu_fb20fd4b851a8065.png 1024w"
 	loading="lazy"
 	
 		alt="CFD数据集中裂缝分割效果较差的"
@@ -1207,6 +1207,39 @@ $Loss = \lambda_1||x_0&rsquo;(t) - x_0||_2 + \lambda_2(1 - SSIM(x_0&rsquo;(t), x
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_33d73a08e4acaf5.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines"
+                        
+                        data-hash="md5-Cmq9yjtI&#43;wIrrk7eMo&#43;PHg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

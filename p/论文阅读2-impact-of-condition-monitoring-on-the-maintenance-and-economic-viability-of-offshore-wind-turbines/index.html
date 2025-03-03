@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="主要贡献 回答了两个基本问题：\n风场中的SCADA系统是否是专门设计的状态监测系统（CMS）的可行替代方案； 结合CMS和运维策略以最大限度提到OWT的财务效益的最佳方法是什么； 基本假设 每个子系统的健康状态分为四类：正常、轻微故障、严重故障和失效；\n">
+<title>论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines">
+<meta property='og:description' content="主要贡献 回答了两个基本问题：\n风场中的SCADA系统是否是专门设计的状态监测系统（CMS）的可行替代方案； 结合CMS和运维策略以最大限度提到OWT的财务效益的最佳方法是什么； 基本假设 每个子系统的健康状态分为四类：正常、轻微故障、严重故障和失效；\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='运维框架' /><meta property='article:tag' content='CBM' /><meta property='article:tag' content='健康监测' /><meta property='article:published_time' content='2025-03-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1.png' />
+<meta name="twitter:title" content="论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines">
+<meta name="twitter:description" content="主要贡献 回答了两个基本问题：\n风场中的SCADA系统是否是专门设计的状态监测系统（CMS）的可行替代方案； 结合CMS和运维策略以最大限度提到OWT的财务效益的最佳方法是什么； 基本假设 每个子系统的健康状态分为四类：正常、轻微故障、严重故障和失效；\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#主要贡献">主要贡献</a></li>
+    <li><a href="#基本假设">基本假设</a></li>
+    <li><a href="#运维策略">运维策略</a>
+      <ol>
+        <li><a href="#纠正性维护">纠正性维护</a></li>
+        <li><a href="#周期性维护">周期性维护</a></li>
+        <li><a href="#基于状态的维护">基于状态的维护</a></li>
+        <li><a href="#维护框架">维护框架</a></li>
+        <li><a href="#运维策略指定">运维策略指定</a></li>
+      </ol>
+    </li>
+    <li><a href="#退化模型">退化模型</a></li>
+    <li><a href="#检测模型">检测模型</a>
+      <ol>
+        <li><a href="#the-purpose-designed-cms-特意安装传感器用于监测某一组件的健康状态">The purpose-designed CMS (特意安装传感器用于监测某一组件的健康状态)</a></li>
+        <li><a href="#scada-based-cms">SCADA-based CMS</a></li>
+      </ol>
+    </li>
+    <li><a href="#修复模型">修复模型</a>
+      <ol>
+        <li><a href="#维护成本">维护成本</a></li>
+        <li><a href="#维护流程">维护流程</a></li>
+      </ol>
+    </li>
+    <li><a href="#仿真流程">仿真流程</a>
+      <ol>
+        <li><a href="#风机的服役过程">风机的服役过程</a></li>
+        <li><a href="#小结">小结</a></li>
+      </ol>
+    </li>
+    <li><a href="#结果及考虑的指标">结果及考虑的指标</a>
+      <ol>
+        <li><a href="#使用率">使用率</a></li>
+        <li><a href="#coa-the-ratio-of-maintenance-cost-to-availability">COA (the ratio of maintenance cost to availability)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/">
+                <img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1_hu_7cdd00ffe51f458e.png"
+                        srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1_hu_7cdd00ffe51f458e.png 800w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1_hu_319cd8e2cc46ea34.png 1600w"
+                        width="800" 
+                        height="374" 
+                        loading="lazy"
+                        alt="Featured image of post 论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                论文阅读
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/">论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 03, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="主要贡献">主要贡献
+</h1><p>回答了两个基本问题：</p>
+<ol>
+<li>风场中的SCADA系统是否是专门设计的状态监测系统（CMS）的可行替代方案；</li>
+<li>结合CMS和运维策略以最大限度提到OWT的财务效益的最佳方法是什么；</li>
+</ol>
+<h1 id="基本假设">基本假设
+</h1><ol>
+<li>
+<p>每个子系统的健康状态分为四类：正常、轻微故障、严重故障和失效；</p>
+</li>
+<li>
+<p>轻微故障或严重故障时，子系统仍允许运行；</p>
+</li>
+<li>
+<p>严重故障更容易被CMS所监测到；</p>
+</li>
+<li>
+<p>不同部件在故障发展的不同阶段有不同的误报率；</p>
+</li>
+<li>
+<p>任何子系统失效都将触发风机停机；</p>
+</li>
+<li>
+<p>每个子系统的退化过程遵循威布尔分布；</p>
+</li>
+<li>
+<p>威布尔分布的参数来源于文献中公开的故障率数据；</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303154521803.png"
+	width="874"
+	height="471"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303154521803_hu_9393948f3422dd3f.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303154521803_hu_c8370b309ffdccb2.png 1024w"
+	loading="lazy"
+	
+		alt="Failure rates"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+</li>
+<li>
+<p>风机使用寿命为20年；</p>
+</li>
+<li>
+<p>假设修复后组件的情况“as good as new”</p>
+</li>
+</ol>
+<h1 id="运维策略">运维策略
+</h1><h2 id="纠正性维护">纠正性维护
+</h2><ol>
+<li><strong>定义</strong>：在子结构发生完全失效（failure）后进行；</li>
+</ol>
+<h2 id="周期性维护">周期性维护
+</h2><ol>
+<li><strong>定义</strong>：按照预先确定的时间间隔进行维护；</li>
+<li>将周期性维护分为大修和小修，基本服务（BS）是发现并修复那些常见、易于修复但难以监控的问题；高级服务（AS）将对所有结构部件进行检查；</li>
+</ol>
+<h2 id="基于状态的维护">基于状态的维护
+</h2><ol>
+<li><strong>定义</strong>： 基于风机实际的健康状态进行维护；</li>
+<li>有效程度取决于CMS的故障检测能力；</li>
+</ol>
+<h2 id="维护框架">维护框架
+</h2><ul>
+<li>Maintenance 1对应修复Minor faults;</li>
+<li>Maintenance 2对应修复critical faults;</li>
+<li>Maintenance 3对应修复failures;</li>
+</ul>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160352843.png"
+	width="1376"
+	height="824"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160352843_hu_de4cfa958de6cc74.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160352843_hu_ae0544a2bae6dd11.png 1024w"
+	loading="lazy"
+	
+		alt="维护框架"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<h2 id="运维策略指定">运维策略指定
+</h2><ul>
+<li>
+<p>五种不同的运维策略</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194130738.png"
+	width="989"
+	height="226"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194130738_hu_4bd91d651fb29ec1.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194130738_hu_dd676b92e02a3e62.png 1024w"
+	loading="lazy"
+	
+		alt="运维策略制定"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="437"
+		data-flex-basis="1050px"
+	
+></p>
+</li>
+<li>
+<p>四种不同的monitoring system：</p>
+<ul>
+<li>没有部署monitoring system;</li>
+<li>SCADA</li>
+<li>CMS</li>
+<li>SCADA+CMS</li>
+</ul>
+</li>
+</ul>
+<h1 id="退化模型">退化模型
+</h1><ul>
+<li>
+<p>系统退化模型架构：</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160707353.png"
+	width="662"
+	height="851"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160707353_hu_55cef50d48d02d28.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160707353_hu_2fb36d459e90402a.png 1024w"
+	loading="lazy"
+	
+		alt="系统Petri Net"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="77"
+		data-flex-basis="186px"
+	
+></p>
+</li>
+</ul>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160810715.png"
+	width="916"
+	height="259"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160810715_hu_32b79d6644e65eb8.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160810715_hu_dc9b859116bb721f.png 1024w"
+	loading="lazy"
+	
+		alt="Weibull分布参数"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="353"
+		data-flex-basis="848px"
+	
+></p>
+<h1 id="检测模型">检测模型
+</h1><h2 id="the-purpose-designed-cms-特意安装传感器用于监测某一组件的健康状态">The purpose-designed CMS (特意安装传感器用于监测某一组件的健康状态)
+</h2><p>整体框架如下：</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162950860.png"
+	width="746"
+	height="709"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162950860_hu_d9dc9f315094a826.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162950860_hu_1c2d62fbf7f023a5.png 1024w"
+	loading="lazy"
+	
+		alt="检测模型整体框架"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="252px"
+	
+></p>
+<ul>
+<li>
+<p>硬件健康状态的模拟（即考虑传感器失效概率）：C1表示传感器检测到系统故障的概率，C2表示传感器损坏的概率；</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162519443.png"
+	width="420"
+	height="445"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162519443_hu_d93fe736bd8180cf.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162519443_hu_ec2acc65d4b308c5.png 1024w"
+	loading="lazy"
+	
+		alt="Part-one"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="94"
+		data-flex-basis="226px"
+	
+></p>
+</li>
+<li>
+<p>考虑数据采集系统（DAQ）发生故障的可能性：</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163125644.png"
+	width="467"
+	height="56"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163125644_hu_b55125835109e57c.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163125644_hu_9c50e779e7182fc2.png 1024w"
+	loading="lazy"
+	
+		alt="DAQ系统故障模拟"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="833"
+		data-flex-basis="2001px"
+	
+></p>
+</li>
+<li>
+<p>监测系统发出故障预警信号，对应的故障类型概率：其中normal : minor fault : critical fault为0.4，0.5，0.1</p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163342506.png"
+	width="339"
+	height="279"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163342506_hu_937412d9e3f003da.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163342506_hu_7fe1efb15485c72.png 1024w"
+	loading="lazy"
+	
+		alt="预警信号与对应故障类型概率"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="121"
+		data-flex-basis="291px"
+	
+></p>
+</li>
+</ul>
+<h2 id="scada-based-cms">SCADA-based CMS
+</h2><p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184823147.png"
+	width="821"
+	height="460"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184823147_hu_9c33cd1b275f25a.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184823147_hu_be3b76cef1382278.png 1024w"
+	loading="lazy"
+	
+		alt="CMS &#43; SCADA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="428px"
+	
+></p>
+<ul>
+<li>故障检测概率（Probability of detection），文中直接通过假设得出</li>
+</ul>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184857580.png"
+	width="477"
+	height="209"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184857580_hu_852771bd9b2a27c3.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184857580_hu_f7df467c96aef358.png 1024w"
+	loading="lazy"
+	
+		alt="故障检测概率"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="228"
+		data-flex-basis="547px"
+	
+></p>
+<h1 id="修复模型">修复模型
+</h1><h2 id="维护成本">维护成本
+</h2><p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185325375.png"
+	width="495"
+	height="380"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185325375_hu_4aff92fac5e02246.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185325375_hu_8fa326e252bbd5f7.png 1024w"
+	loading="lazy"
+	
+		alt="不同故障所需船只租赁成本"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="312px"
+	
+></p>
+<h2 id="维护流程">维护流程
+</h2><ul>
+<li>M1代表从检测到故障到发出修复指令的时间；</li>
+<li>M2代表安排会议来指定维修计划的时间；</li>
+<li>M3代表制定计划的时间；</li>
+<li>M4+M5代表了租用船只，调遣人员，准备维护设备的时间；</li>
+<li>M6代表了如果有备件，那么将启用M6，这个时间远短于M5；</li>
+<li>M7没啥意思，表示维护船准备出发；</li>
+<li>M8和M9代表运输船到达现场的时间，M9考虑了天气因素的影响，即等待合适窗口时间；</li>
+<li>M11代表了维护所需要的时间；</li>
+</ul>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185721918.png"
+	width="799"
+	height="439"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185721918_hu_e3ff1d3495ae687d.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185721918_hu_ddc76768473d3063.png 1024w"
+	loading="lazy"
+	
+		alt="维护流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="436px"
+	
+></p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185747196.png"
+	width="991"
+	height="349"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185747196_hu_1b9063fb3ec9fc86.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185747196_hu_b3c82794c8ced9b8.png 1024w"
+	loading="lazy"
+	
+		alt="修复模型中的相关参数"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="283"
+		data-flex-basis="681px"
+	
+></p>
+<h1 id="仿真流程">仿真流程
+</h1><h2 id="风机的服役过程">风机的服役过程
+</h2><p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303201938165.png"
+	width="822"
+	height="729"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303201938165_hu_adc049eee7ebe7ce.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303201938165_hu_f2a7b10b03506497.png 1024w"
+	loading="lazy"
+	
+		alt="服役过程模拟"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="270px"
+	
+></p>
+<h2 id="小结">小结
+</h2><ol>
+<li>对所有的随机变量进行采样，生成参数；</li>
+<li>对一个风机执行上述所有流程，直至达到服务寿命；</li>
+<li>反复迭代直至收敛 （30000次后收敛至稳定值，所有模拟均进行了50000次迭代；）</li>
+</ol>
+<h1 id="结果及考虑的指标">结果及考虑的指标
+</h1><h2 id="使用率">使用率
+</h2><ul>
+<li>缩短相邻的AS能提高风机的使用率，但仍然不如使用任何一种monitoring system的情况；</li>
+<li>当频繁进行AS时，结合两个monitoring system可能会导致使用率下降，因为检测到损伤后对风机进行修复的停机时间变长；</li>
+</ul>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194521652.png"
+	width="791"
+	height="419"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194521652_hu_e8c3ab287d5c6a9d.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194521652_hu_687f9a9885b808f5.png 1024w"
+	loading="lazy"
+	
+		alt="不同维护策略下的风机使用率-DatasetA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="453px"
+	
+></p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195148402.png"
+	width="766"
+	height="434"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195148402_hu_1c0458fb0a2696e2.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195148402_hu_202fb40a2e91a983.png 1024w"
+	loading="lazy"
+	
+		alt="不同维护策略下的风机使用率-DatasetB"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="423px"
+	
+></p>
+<h2 id="coa-the-ratio-of-maintenance-cost-to-availability">COA (the ratio of maintenance cost to availability)
+</h2><p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195254188.png"
+	width="762"
+	height="435"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195254188_hu_8c53406db5c4740b.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195254188_hu_531ce35b8620acd3.png 1024w"
+	loading="lazy"
+	
+		alt="不同维护策略下的COA-DatasetA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195320729.png"
+	width="771"
+	height="467"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195320729_hu_69830f29f375e54a.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195320729_hu_729ba3f3f454817f.png 1024w"
+	loading="lazy"
+	
+		alt="不同维护策略下的COA-DatasetA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="396px"
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/">运维框架</a>
+        
+            <a href="/tags/cbm/">CBM</a>
+        
+            <a href="/tags/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B/">健康监测</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB1-crackdiffusion-a-two-stage-semantic-segmentation-framework-for-pavement-crack-combining-unsupervised-and-supervised-processes/1.42f81beb1fbd6930a80b4f0a26b2f740_hu_d3267c7dfb175308.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes"
+                        
+                        data-hash="md5-Qvgb6x&#43;9aTCoC08KJrL3QA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文阅读（1）: CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

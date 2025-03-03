@@ -7,7 +7,405 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines</title>
+        <link>https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/1.png" alt="Featured image of post 论文阅读（2）: Impact of condition monitoring on the maintenance and economic viability of offshore wind turbines" /&gt;&lt;h1 id=&#34;主要贡献&#34;&gt;主要贡献
+&lt;/h1&gt;&lt;p&gt;回答了两个基本问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;风场中的SCADA系统是否是专门设计的状态监测系统（CMS）的可行替代方案；&lt;/li&gt;
+&lt;li&gt;结合CMS和运维策略以最大限度提到OWT的财务效益的最佳方法是什么；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;基本假设&#34;&gt;基本假设
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;每个子系统的健康状态分为四类：正常、轻微故障、严重故障和失效；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;轻微故障或严重故障时，子系统仍允许运行；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;严重故障更容易被CMS所监测到；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不同部件在故障发展的不同阶段有不同的误报率；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任何子系统失效都将触发风机停机；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个子系统的退化过程遵循威布尔分布；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;威布尔分布的参数来源于文献中公开的故障率数据；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303154521803.png&#34;
+	width=&#34;874&#34;
+	height=&#34;471&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303154521803_hu_9393948f3422dd3f.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303154521803_hu_c8370b309ffdccb2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Failure rates&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;风机使用寿命为20年；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;假设修复后组件的情况“as good as new”&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;运维策略&#34;&gt;运维策略
+&lt;/h1&gt;&lt;h2 id=&#34;纠正性维护&#34;&gt;纠正性维护
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：在子结构发生完全失效（failure）后进行；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;周期性维护&#34;&gt;周期性维护
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：按照预先确定的时间间隔进行维护；&lt;/li&gt;
+&lt;li&gt;将周期性维护分为大修和小修，基本服务（BS）是发现并修复那些常见、易于修复但难以监控的问题；高级服务（AS）将对所有结构部件进行检查；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;基于状态的维护&#34;&gt;基于状态的维护
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;： 基于风机实际的健康状态进行维护；&lt;/li&gt;
+&lt;li&gt;有效程度取决于CMS的故障检测能力；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;维护框架&#34;&gt;维护框架
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Maintenance 1对应修复Minor faults;&lt;/li&gt;
+&lt;li&gt;Maintenance 2对应修复critical faults;&lt;/li&gt;
+&lt;li&gt;Maintenance 3对应修复failures;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160352843.png&#34;
+	width=&#34;1376&#34;
+	height=&#34;824&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160352843_hu_de4cfa958de6cc74.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160352843_hu_ae0544a2bae6dd11.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;维护框架&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;运维策略指定&#34;&gt;运维策略指定
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;五种不同的运维策略&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194130738.png&#34;
+	width=&#34;989&#34;
+	height=&#34;226&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194130738_hu_4bd91d651fb29ec1.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194130738_hu_dd676b92e02a3e62.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;运维策略制定&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;437&#34;
+		data-flex-basis=&#34;1050px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;四种不同的monitoring system：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;没有部署monitoring system;&lt;/li&gt;
+&lt;li&gt;SCADA&lt;/li&gt;
+&lt;li&gt;CMS&lt;/li&gt;
+&lt;li&gt;SCADA+CMS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;退化模型&#34;&gt;退化模型
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;系统退化模型架构：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160707353.png&#34;
+	width=&#34;662&#34;
+	height=&#34;851&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160707353_hu_55cef50d48d02d28.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160707353_hu_2fb36d459e90402a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;系统Petri Net&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;186px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160810715.png&#34;
+	width=&#34;916&#34;
+	height=&#34;259&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160810715_hu_32b79d6644e65eb8.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303160810715_hu_dc9b859116bb721f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Weibull分布参数&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;353&#34;
+		data-flex-basis=&#34;848px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;检测模型&#34;&gt;检测模型
+&lt;/h1&gt;&lt;h2 id=&#34;the-purpose-designed-cms-特意安装传感器用于监测某一组件的健康状态&#34;&gt;The purpose-designed CMS (特意安装传感器用于监测某一组件的健康状态)
+&lt;/h2&gt;&lt;p&gt;整体框架如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162950860.png&#34;
+	width=&#34;746&#34;
+	height=&#34;709&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162950860_hu_d9dc9f315094a826.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162950860_hu_1c2d62fbf7f023a5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;检测模型整体框架&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;硬件健康状态的模拟（即考虑传感器失效概率）：C1表示传感器检测到系统故障的概率，C2表示传感器损坏的概率；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162519443.png&#34;
+	width=&#34;420&#34;
+	height=&#34;445&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162519443_hu_d93fe736bd8180cf.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303162519443_hu_ec2acc65d4b308c5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Part-one&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;94&#34;
+		data-flex-basis=&#34;226px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考虑数据采集系统（DAQ）发生故障的可能性：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163125644.png&#34;
+	width=&#34;467&#34;
+	height=&#34;56&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163125644_hu_b55125835109e57c.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163125644_hu_9c50e779e7182fc2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DAQ系统故障模拟&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;833&#34;
+		data-flex-basis=&#34;2001px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;监测系统发出故障预警信号，对应的故障类型概率：其中normal : minor fault : critical fault为0.4，0.5，0.1&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163342506.png&#34;
+	width=&#34;339&#34;
+	height=&#34;279&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163342506_hu_937412d9e3f003da.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303163342506_hu_7fe1efb15485c72.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;预警信号与对应故障类型概率&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;291px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scada-based-cms&#34;&gt;SCADA-based CMS
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184823147.png&#34;
+	width=&#34;821&#34;
+	height=&#34;460&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184823147_hu_9c33cd1b275f25a.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184823147_hu_be3b76cef1382278.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CMS &amp;#43; SCADA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;故障检测概率（Probability of detection），文中直接通过假设得出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184857580.png&#34;
+	width=&#34;477&#34;
+	height=&#34;209&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184857580_hu_852771bd9b2a27c3.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303184857580_hu_f7df467c96aef358.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;故障检测概率&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;547px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;修复模型&#34;&gt;修复模型
+&lt;/h1&gt;&lt;h2 id=&#34;维护成本&#34;&gt;维护成本
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185325375.png&#34;
+	width=&#34;495&#34;
+	height=&#34;380&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185325375_hu_4aff92fac5e02246.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185325375_hu_8fa326e252bbd5f7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同故障所需船只租赁成本&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;维护流程&#34;&gt;维护流程
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;M1代表从检测到故障到发出修复指令的时间；&lt;/li&gt;
+&lt;li&gt;M2代表安排会议来指定维修计划的时间；&lt;/li&gt;
+&lt;li&gt;M3代表制定计划的时间；&lt;/li&gt;
+&lt;li&gt;M4+M5代表了租用船只，调遣人员，准备维护设备的时间；&lt;/li&gt;
+&lt;li&gt;M6代表了如果有备件，那么将启用M6，这个时间远短于M5；&lt;/li&gt;
+&lt;li&gt;M7没啥意思，表示维护船准备出发；&lt;/li&gt;
+&lt;li&gt;M8和M9代表运输船到达现场的时间，M9考虑了天气因素的影响，即等待合适窗口时间；&lt;/li&gt;
+&lt;li&gt;M11代表了维护所需要的时间；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185721918.png&#34;
+	width=&#34;799&#34;
+	height=&#34;439&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185721918_hu_e3ff1d3495ae687d.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185721918_hu_ddc76768473d3063.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;维护流程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;436px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185747196.png&#34;
+	width=&#34;991&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185747196_hu_1b9063fb3ec9fc86.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303185747196_hu_b3c82794c8ced9b8.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;修复模型中的相关参数&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;283&#34;
+		data-flex-basis=&#34;681px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;仿真流程&#34;&gt;仿真流程
+&lt;/h1&gt;&lt;h2 id=&#34;风机的服役过程&#34;&gt;风机的服役过程
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303201938165.png&#34;
+	width=&#34;822&#34;
+	height=&#34;729&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303201938165_hu_adc049eee7ebe7ce.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303201938165_hu_f2a7b10b03506497.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;服役过程模拟&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;112&#34;
+		data-flex-basis=&#34;270px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;小结&#34;&gt;小结
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;对所有的随机变量进行采样，生成参数；&lt;/li&gt;
+&lt;li&gt;对一个风机执行上述所有流程，直至达到服务寿命；&lt;/li&gt;
+&lt;li&gt;反复迭代直至收敛 （30000次后收敛至稳定值，所有模拟均进行了50000次迭代；）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;结果及考虑的指标&#34;&gt;结果及考虑的指标
+&lt;/h1&gt;&lt;h2 id=&#34;使用率&#34;&gt;使用率
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;缩短相邻的AS能提高风机的使用率，但仍然不如使用任何一种monitoring system的情况；&lt;/li&gt;
+&lt;li&gt;当频繁进行AS时，结合两个monitoring system可能会导致使用率下降，因为检测到损伤后对风机进行修复的停机时间变长；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194521652.png&#34;
+	width=&#34;791&#34;
+	height=&#34;419&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194521652_hu_e8c3ab287d5c6a9d.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303194521652_hu_687f9a9885b808f5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同维护策略下的风机使用率-DatasetA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195148402.png&#34;
+	width=&#34;766&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195148402_hu_1c0458fb0a2696e2.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195148402_hu_202fb40a2e91a983.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同维护策略下的风机使用率-DatasetB&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;coa-the-ratio-of-maintenance-cost-to-availability&#34;&gt;COA (the ratio of maintenance cost to availability)
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195254188.png&#34;
+	width=&#34;762&#34;
+	height=&#34;435&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195254188_hu_8c53406db5c4740b.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195254188_hu_531ce35b8620acd3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同维护策略下的COA-DatasetA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195320729.png&#34;
+	width=&#34;771&#34;
+	height=&#34;467&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195320729_hu_69830f29f375e54a.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/image-20250303195320729_hu_729ba3f3f454817f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同维护策略下的COA-DatasetA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;396px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>报告解读（1）：Structural health monitoring by use of sensor data</title>
         <link>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/</link>
         <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
