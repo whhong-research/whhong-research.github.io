@@ -271,6 +271,13 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#任务说明">任务说明</a></li>
+    <li><a href="#实现代码">实现代码</a>
+      <ol>
+        <li><a href="#代码功能">代码功能</a></li>
+        <li><a href="#代码示例">代码示例</a></li>
+        <li><a href="#效果展示">效果展示</a></li>
+      </ol>
+    </li>
     <li><a href="#相关函数功能介绍">相关函数功能介绍</a>
       <ol>
         <li><a href="#cv2distancetransform">cv2.distanceTransform</a></li>
@@ -401,7 +408,155 @@
 <p>同时，SAM模型中接受Mask和Point提示，Mask提示可以视为Dense的Point提示，思路为通过骨架化提取裂缝中的特征点，以便能够作为SAM模型中的Prompt进行精细化分割；</p>
 </li>
 </ul>
-<h1 id="相关函数功能介绍">相关函数功能介绍
+</li>
+</ol>
+<h1 id="实现代码">实现代码
+</h1><h2 id="代码功能">代码功能
+</h2><ol>
+<li>将图片resize为（1024，512）大小，方便统一定义形态学去噪的kernel大小和连通域大小；</li>
+<li>选取最暗的5%的像素点进行阈值分割，将最暗的5%的像素点视为“裂缝”;</li>
+<li>进行形态学操作去除小噪点，并删除较小面积的连通域；</li>
+</ol>
+<h2 id="代码示例">代码示例
+</h2><ol>
+<li><strong>阈值分割</strong>：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">adaptive_threshold1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="mi">512</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">gray</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 双边滤波保持边缘的同时去噪</span>
+</span></span><span class="line"><span class="cl">        <span class="n">smoothed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">sigmaColor</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 2. 将图像展平成1维数组</span>
+</span></span><span class="line"><span class="cl">        <span class="n">flat_img</span> <span class="o">=</span> <span class="n">smoothed</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># 3. 计算阈值（最暗的5%像素）</span>
+</span></span><span class="line"><span class="cl">        <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">flat_img</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 获取最暗的5%的阈值</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># 4. 二值化处理</span>
+</span></span><span class="line"><span class="cl">        <span class="n">binary_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">smoothed</span><span class="p">)</span>  <span class="c1"># 创建全黑背景</span>
+</span></span><span class="line"><span class="cl">        <span class="n">binary_img</span><span class="p">[</span><span class="n">smoothed</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>  <span class="c1"># 最暗的5%像素设为白色</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">binary_img</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><strong>形态学操作</strong>：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">morphological_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 形态学操作去除小噪点</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">opening</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># 连通域分析去除小区域</span>
+</span></span><span class="line"><span class="cl">        <span class="n">num_labels</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">centroids</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">connectedComponentsWithStats</span><span class="p">(</span><span class="n">opening</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">morphed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># 保留大于最小面积的连通域</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">):</span>  <span class="c1"># 从1开始跳过背景</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">stats</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CC_STAT_AREA</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_area</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">morphed</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">closed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">morphed</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">closed</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li><strong>骨架化</strong>：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">skeletonize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 确保输入是单通道二值图像</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">binary</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">binary</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>      
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 骨架化</span>
+</span></span><span class="line"><span class="cl">        <span class="n">skeleton</span> <span class="o">=</span> <span class="n">skeletonize</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 添加后处理步骤</span>
+</span></span><span class="line"><span class="cl">        <span class="n">skeleton</span> <span class="o">=</span> <span class="n">process_skeleton</span><span class="p">(</span><span class="n">skeleton</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 使用距离信息调整骨架宽度</span>
+</span></span><span class="line"><span class="cl">        <span class="n">skeleton</span> <span class="o">=</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">skeleton</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="效果展示">效果展示
+</h2><h1 id="相关函数功能介绍">相关函数功能介绍
 </h1><h2 id="cv2distancetransform">cv2.distanceTransform
 </h2><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -433,8 +588,6 @@
 <li>cv2.CV_32F: 32位浮点型</li>
 <li>cv2.CV_64F: 64位浮点型</li>
 </ul>
-</li>
-</ol>
 </li>
 </ol>
 <h2 id="skimagemorphologyskeletonize">skimage.morphology.skeletonize
@@ -623,6 +776,34 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/1.png" loading="lazy" data-key="" data-hash="/1.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">图像处理（2）：SAM分割裂缝提示点策略</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SAM on whhong的博客</title>
+        <link>https://whhong-research.github.io/tags/sam/</link>
+        <description>Recent content in SAM on whhong的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Mon, 24 Feb 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/sam/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>图像处理（2）：SAM分割裂缝提示点策略</title>
+        <link>https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/</link>
+        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/1.png" alt="Featured image of post 图像处理（2）：SAM分割裂缝提示点策略" /&gt;&lt;h1 id=&#34;实验图像&#34;&gt;实验图像
+&lt;/h1&gt;&lt;h2 id=&#34;添加负点来优化分割结果&#34;&gt;添加负点来优化分割结果
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;当人工输入较为完美的裂缝提示点，且裂缝将图像分为明显两部分时，只输入正点可能导致SAM错误将大面积的一部分路面作为识别结果；此时，如果添加两个负点在掩码区域，将会出现较好识别裂缝的情况：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;猜想结论&lt;/strong&gt;：正确少量的负点能很大程度优化sam的分割结果；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250307132347887.png&#34;
+	width=&#34;1387&#34;
+	height=&#34;1004&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250307132347887_hu_85f7510709199073.png 480w, https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250307132347887_hu_8710cb7e2148e5dc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250307132347887&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;331px&#34;
+	
+&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250307135852945.png&#34;
+	width=&#34;1490&#34;
+	height=&#34;1045&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250307135852945_hu_9c93e53422c34e85.png 480w, https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250307135852945_hu_1f46e0f415cdfd92.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250307135852945&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;正点的数量和分布影响&#34;&gt;正点的数量和分布影响
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;当正点未能较好地分布在裂缝上时，会出现裂缝边缘识别不全的情况，产生大量错误识别图案的情况：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;猜想结论&lt;/strong&gt;：正点的覆盖区域尽量贴近裂缝形状&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250312104636392.png&#34;
+	width=&#34;1531&#34;
+	height=&#34;1093&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250312104636392_hu_f1a626563db0d1ca.png 480w, https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250312104636392_hu_a06dffd3ce71abed.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250312104636392&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250312104751917.png&#34;
+	width=&#34;1516&#34;
+	height=&#34;1081&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250312104751917_hu_92a3bf6731f30d34.png 480w, https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250312104751917_hu_6aec26863ad1cea0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250312104751917&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;正点和负点的比例影响&#34;&gt;正点和负点的比例影响
+&lt;/h2&gt;&lt;h2 id=&#34;错误的正提示点影响&#34;&gt;错误的正提示点影响
+&lt;/h2&gt;&lt;h2 id=&#34;错误的负提示点影响&#34;&gt;错误的负提示点影响
+&lt;/h2&gt;&lt;h2 id=&#34;官网demo和github代码实现效果存在差异&#34;&gt;官网demo和github代码实现效果存在差异
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/762&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/facebookresearch/segment-anything/issues/762&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/620&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/facebookresearch/segment-anything/issues/620&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/169&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/facebookresearch/segment-anything/issues/169&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;负点的采样策略&#34;&gt;负点的采样策略
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;随机采样&#34;&gt;随机采样
+&lt;/h3&gt;&lt;h3 id=&#34;根据提示正点的轮廓进行采样&#34;&gt;根据提示正点的轮廓进行采样
+&lt;/h3&gt;&lt;h1 id=&#34;理想情况测试&#34;&gt;理想情况测试
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250310203741678.png&#34;
+	width=&#34;1454&#34;
+	height=&#34;957&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250310203741678_hu_7822eb966034b5aa.png 480w, https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250310203741678_hu_46801a97849b361e.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250310203741678&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;364px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250310204013016.png&#34;
+	width=&#34;1459&#34;
+	height=&#34;997&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250310204013016_hu_1ec658159e79fe65.png 480w, https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/image-20250310204013016_hu_bc77ab51ef32f3c9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250310204013016&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;351px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

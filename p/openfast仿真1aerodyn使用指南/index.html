@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参考文献 Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy. Openfast帮助文档：https://openfast.readthedocs.io/en/main/index.html 专业名词解释 诱导速度（induced velocities） 诱导速度是指由于涡流系统(vortex system)存在而在流场中产生的额外速度分量。在风机和螺旋桨理论中，这是一个核心概念。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="参考文献 Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy. Openfast帮助文档：https://openfast.readthedocs.io/en/main/index.html AeroDyn 简介 Aerodyn是一个时域的风机空气动力学模块，可以作为代码单独驱动以计算未跟openfast耦合的风机的空气动力响应； Aerodyn用于计算叶片和塔筒的空气动力荷载，计算原理遵循致动线理论（the principles of actuator lines）； Aerodyn由6个子模型组成，分别是： rotor wake/induction blade airfoil aerodynamics tower influence on the fluid local to the blade nodes tower and nacelle drag aeroacoustics buoyancy on the blade, hub, nacelle and tower 输入文件 基本单位：（kg, m, s, N） General options DTAero: 空气动力学的计算步骤，建议最少设置200步；\n">
 <title>OpenFast仿真（1）：AeroDyn使用指南</title>
 
 <link rel='canonical' href='https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
 
 <link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="OpenFast仿真（1）：AeroDyn使用指南">
-<meta property='og:description' content="参考文献 Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy. Openfast帮助文档：https://openfast.readthedocs.io/en/main/index.html 专业名词解释 诱导速度（induced velocities） 诱导速度是指由于涡流系统(vortex system)存在而在流场中产生的额外速度分量。在风机和螺旋桨理论中，这是一个核心概念。\n">
+<meta property='og:description' content="参考文献 Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy. Openfast帮助文档：https://openfast.readthedocs.io/en/main/index.html AeroDyn 简介 Aerodyn是一个时域的风机空气动力学模块，可以作为代码单独驱动以计算未跟openfast耦合的风机的空气动力响应； Aerodyn用于计算叶片和塔筒的空气动力荷载，计算原理遵循致动线理论（the principles of actuator lines）； Aerodyn由6个子模型组成，分别是： rotor wake/induction blade airfoil aerodynamics tower influence on the fluid local to the blade nodes tower and nacelle drag aeroacoustics buoyancy on the blade, hub, nacelle and tower 输入文件 基本单位：（kg, m, s, N） General options DTAero: 空气动力学的计算步骤，建议最少设置200步；\n">
 <meta property='og:url' content='https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
 <meta property='og:site_name' content='whhong的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenFast' /><meta property='article:tag' content='荷载生成' /><meta property='article:published_time' content='2025-02-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenFast' /><meta property='article:tag' content='气动特性' /><meta property='article:tag' content='python脚本' /><meta property='article:published_time' content='2025-02-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg' />
 <meta name="twitter:title" content="OpenFast仿真（1）：AeroDyn使用指南">
-<meta name="twitter:description" content="参考文献 Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy. Openfast帮助文档：https://openfast.readthedocs.io/en/main/index.html 专业名词解释 诱导速度（induced velocities） 诱导速度是指由于涡流系统(vortex system)存在而在流场中产生的额外速度分量。在风机和螺旋桨理论中，这是一个核心概念。\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="参考文献 Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy. Openfast帮助文档：https://openfast.readthedocs.io/en/main/index.html AeroDyn 简介 Aerodyn是一个时域的风机空气动力学模块，可以作为代码单独驱动以计算未跟openfast耦合的风机的空气动力响应； Aerodyn用于计算叶片和塔筒的空气动力荷载，计算原理遵循致动线理论（the principles of actuator lines）； Aerodyn由6个子模型组成，分别是： rotor wake/induction blade airfoil aerodynamics tower influence on the fluid local to the blade nodes tower and nacelle drag aeroacoustics buoyancy on the blade, hub, nacelle and tower 输入文件 基本单位：（kg, m, s, N） General options DTAero: 空气动力学的计算步骤，建议最少设置200步；\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg' />
     </head>
     <body class="
@@ -271,25 +271,12 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#参考文献">参考文献</a></li>
-    <li><a href="#专业名词解释">专业名词解释</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#诱导速度induced-velocities">诱导速度（induced velocities）</a></li>
-            <li><a href="#自由涡尾流模型free-vortex-wake-model">自由涡尾流模型（Free Vortex Wake Model）</a></li>
-            <li><a href="#标准势流模型standard-potential-flow-model">标准势流模型（Standard Potential-Flow Model）</a></li>
-            <li><a href="#bak修正bak-correction">Bak修正（Bak Correction）</a></li>
-            <li><a href="#塔架阴影效应tower-shadow">塔架阴影效应（Tower Shadow）</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
     <li><a href="#aerodyn">AeroDyn</a>
       <ol>
         <li><a href="#简介">简介</a></li>
         <li><a href="#输入文件">输入文件</a>
           <ol>
-            <li><a href="#常规设置">常规设置</a></li>
+            <li><a href="#general-options">General options</a></li>
             <li><a href="#建模参数建议">建模参数建议</a></li>
             <li><a href="#输出设置">输出设置</a></li>
           </ol>
@@ -306,7 +293,7 @@
       <ol>
         <li><a href="#输入文件示例">输入文件示例</a></li>
         <li><a href="#输出文件示例">输出文件示例</a></li>
-        <li><a href="#python脚本批量化处理-working">Python脚本批量化处理 （working）</a></li>
+        <li><a href="#python脚本批量化处理">Python脚本批量化处理</a></li>
       </ol>
     </li>
   </ol>
@@ -392,48 +379,6 @@
 <li><strong>Openfast帮助文档</strong>：<a class="link" href="https://openfast.readthedocs.io/en/main/index.html"  target="_blank" rel="noopener"
     >https://openfast.readthedocs.io/en/main/index.html</a></li>
 </ol>
-<h1 id="专业名词解释">专业名词解释
-</h1><h3 id="诱导速度induced-velocities">诱导速度（induced velocities）
-</h3><p>诱导速度是指由于涡流系统(vortex system)存在而在流场中产生的额外速度分量。在风机和螺旋桨理论中，这是一个核心概念。</p>
-<ul>
-<li><strong>定义</strong>：诱导速度是流体粒子由于涡量(vorticity)的存在而获得的速度，它是对自由流速度的一种扰动或修正。</li>
-<li><strong>物理意义</strong>：当叶片产生升力时，必然会形成涡系统(包括束缚涡和尾涡)，这些涡系统会导致流场中的速度发生变化，这种变化就是诱导速度。</li>
-</ul>
-<h3 id="自由涡尾流模型free-vortex-wake-model">自由涡尾流模型（Free Vortex Wake Model）
-</h3><p>自由涡尾流模型是一种高级气动模拟方法，用于更准确地捕捉风机或旋翼飞行器的尾流动力学。</p>
-<ul>
-<li><strong>核心思想</strong>：尾流被表示为一系列涡丝(vortex filaments)，这些涡丝自由地在流场中运动和变形，而不受预定轨迹的约束。</li>
-</ul>
-<h3 id="标准势流模型standard-potential-flow-model">标准势流模型（Standard Potential-Flow Model）
-</h3><ul>
-<li>势流模型是指假设流体为无旋、无粘性且不可压缩的流动模型，是空气动力学中的一种基础理论模型。</li>
-<li><strong>局限性</strong>：
-<ul>
-<li>忽略粘性：无法准确预测分离流和失速；</li>
-<li>假设连续流动：不能准确模拟分离点后的流动；</li>
-<li>预测过高的升力：在大攻角下，标准势流模型会高估升力系数；</li>
-</ul>
-</li>
-</ul>
-<h3 id="bak修正bak-correction">Bak修正（Bak Correction）
-</h3><p>Bak 修正是由丹麦风能专家 Christian Bak 提出的一种对标准势流模型的改进方法，主要用于提高势流模型在预测风力涡轮机叶片气动性能时的准确性。</p>
-<ul>
-<li><strong>修正目标</strong>：主要针对势流理论在大攻角和分离流动条件下的局限性进行修正。</li>
-<li><strong>修正方法</strong>：通过引入经验性修正因子，调整势流模型计算的压力分布，使其更接近实际流动情况。</li>
-<li><strong>核心思想</strong>：结合实验数据和CFD结果，对势流方程的解进行后处理调整，特别是在叶片的吸力面(负压面)。</li>
-</ul>
-<h3 id="塔架阴影效应tower-shadow">塔架阴影效应（Tower Shadow）
-</h3><ul>
-<li><strong>定义</strong>：塔架阴影是指风流经塔架后在其下游形成的速度亏损区域。</li>
-<li><strong>物理机制</strong>：当风流经塔架时：
-<ul>
-<li>塔架阻碍气流，产生阻力</li>
-<li>在塔架下游形成尾流区域</li>
-<li>尾流区域内风速降低</li>
-<li>可能产生涡脱落现象(vortex shedding)</li>
-</ul>
-</li>
-</ul>
 <h1 id="aerodyn">AeroDyn
 </h1><h2 id="简介">简介
 </h2><ol>
@@ -454,7 +399,7 @@
 </h2><ol>
 <li>基本单位：（kg, m, s, N）</li>
 </ol>
-<h3 id="常规设置">常规设置
+<h3 id="general-options">General options
 </h3><ol>
 <li>
 <p><strong>DTAero</strong>: 空气动力学的计算步骤，建议最少设置200步；</p>
@@ -560,6 +505,34 @@
 </div></li>
 <li>
 <p><strong>输出文件变量设置：</strong></p>
+<ul>
+<li>
+<p>OutList: 注意使用节点编号时，节点编号范围为1-9，举例来说，若输入B1N10Fx会发出报错；如果想输出叶片中编号为10的截面的信息，需要输入节点编号10所对应的位置；如下图所示；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">10,11,12,13,14,15,16,17,18 BlOutNd       - Blade nodes whose values will be output (-)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>叶片中的10号截面对应的Output node为1，输出的B1N1Fx代表的是叶片1的<strong>10</strong>号截面的平行于旋转平面的力</p>
+<p><img src="/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250304133952981.png"
+	width="740"
+	height="251"
+	srcset="/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250304133952981_hu_cc9d4d9402a06e2d.png 480w, /p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250304133952981_hu_5d5989384fcc6378.png 1024w"
+	loading="lazy"
+	
+		alt="注意节点编号的对应关系"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="294"
+		data-flex-basis="707px"
+	
+></p>
+</li>
+</ul>
 <p><img src="/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656.png"
 	width="1149"
 	height="377"
@@ -704,8 +677,342 @@
 ></p>
 </li>
 </ul>
-<h2 id="python脚本批量化处理-working">Python脚本批量化处理 （working）
-</h2><p>考虑使用python脚本进行自动化修改及变量提取</p>
+<h2 id="python脚本批量化处理">Python脚本批量化处理
+</h2><ul>
+<li>
+<p>实现功能1：批量化修改Aerodyn的输入文件，并修改对应的fst文件；</p>
+</li>
+<li>
+<p>实现功能2：批量化读取Aerodyn的输出文件，提取并保存Aerodyn中定义的输出变量到excel表格中；</p>
+</li>
+<li>
+<p>输入参数：</p>
+<ul>
+<li>
+<p><code>all_nodes = list(range(1, 20))</code> 定义需要的节点数量，此处为19个节点；</p>
+</li>
+<li>
+<p>设置文件路径</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">subprocess</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openfast_toolbox.io</span> <span class="kn">import</span> <span class="n">FASTInputFile</span><span class="p">,</span> <span class="n">FASTOutputFile</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">split_nodes_into_groups</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">group_size</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;将节点列表分成每组最多9个节点&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">group_size</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">),</span> <span class="n">group_size</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">modify_aerodyn</span><span class="p">(</span><span class="n">aero_file_path</span><span class="p">,</span> <span class="n">node_group</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;修改AeroDyn输入文件&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="n">FASTInputFile</span><span class="p">(</span><span class="n">aero_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置输出节点数量</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_group</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;NBlOuts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_nodes</span>  <span class="c1"># 设置输出节点数量</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置节点</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;BlOutNd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node_group</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 生成输出列表</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span>  <span class="c1"># 添加初始换行</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">blade</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">node_index</span><span class="p">,</span> <span class="n">node_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 从1开始计数</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s2">&#34;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s2">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}</span><span class="s2">Fn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s2">&#34;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s2">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}</span><span class="s2">Ft&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s2">&#34;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s2">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}</span><span class="s2">Mm&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;OutList&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_list</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">output_path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">run_openfast</span><span class="p">(</span><span class="n">fast_exe_path</span><span class="p">,</span> <span class="n">fst_file_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;运行OpenFAST&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">working_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fst_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="n">fast_exe_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">fst_file_path</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;OpenFAST simulation completed successfully&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error running OpenFAST: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_blade_data</span><span class="p">(</span><span class="n">outb_file</span><span class="p">,</span> <span class="n">node_group</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;从.outb文件提取数据&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span> <span class="o">=</span> <span class="n">FASTOutputFile</span><span class="p">(</span><span class="n">outb_file</span><span class="p">)</span><span class="o">.</span><span class="n">toDataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">blade_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">3</span><span class="p">:</span> <span class="p">{}}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">blade</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 枚举node_group获取索引和值</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">node_index</span><span class="p">,</span> <span class="n">node_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 从1开始计数</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">measure</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Fn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">,</span> <span class="s1">&#39;Mm&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">measure</span> <span class="o">==</span> <span class="s1">&#39;Mm&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s1">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}{</span><span class="n">measure</span><span class="si">}</span><span class="s1">_[N-m/m]&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>  <span class="c1"># measure is &#39;Fn&#39; or &#39;Ft&#39;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s1">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}{</span><span class="n">measure</span><span class="si">}</span><span class="s1">_[N/m]&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">data_dict</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Node</span><span class="si">{</span><span class="n">node_value</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">measure</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found data for </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Column </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2"> not found&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">blade_data</span><span class="p">[</span><span class="n">blade</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">blade_data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">merge_blade_data</span><span class="p">(</span><span class="n">all_runs_data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;合并多次运行的数据&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">merged_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">3</span><span class="p">:</span> <span class="p">{}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">blade</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 使用第一次运行的时间数据</span>
+</span></span><span class="line"><span class="cl">        <span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">:</span> <span class="n">all_runs_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">blade</span><span class="p">][</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">]})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 合并所有运行的数据</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">run_data</span> <span class="ow">in</span> <span class="n">all_runs_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cols_to_merge</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">run_data</span><span class="p">[</span><span class="n">blade</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">&#39;Time_[s]&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">merged_df</span><span class="p">[</span><span class="n">cols_to_merge</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_data</span><span class="p">[</span><span class="n">blade</span><span class="p">][</span><span class="n">cols_to_merge</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">merged_data</span><span class="p">[</span><span class="n">blade</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">merged_data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">save_to_excel</span><span class="p">(</span><span class="n">blade_data</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;保存数据到Excel文件&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">blade_num</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">blade_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Blade_</span><span class="si">{</span><span class="n">blade_num</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Data saved to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置路径</span>
+</span></span><span class="line"><span class="cl">    <span class="n">work_dir</span> <span class="o">=</span> <span class="s1">&#39;E:/Study/openfast/r-test-3.5.3/glue-codes/openfast/5MW_Test_Weihao&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fast_exe_path</span> <span class="o">=</span> <span class="s1">&#39;E:/Study/openfast/r-test-3.5.3/glue-codes/openfast/5MW_Test_Weihao/openfast_x64.exe&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;5MW_Land_BD_DLL_WTurb.fst&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">aero_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;NRELOffshrBsline5MW_Onshore_AeroDyn15.dat&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_excel</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;blade_data_all_nodes.xlsx&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 定义所有需要的节点</span>
+</span></span><span class="line"><span class="cl">    <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">node_groups</span> <span class="o">=</span> <span class="n">split_nodes_into_groups</span><span class="p">(</span><span class="n">all_nodes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">all_runs_data</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node_group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_groups</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing node group </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">node_group</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 修改后的气动文件名</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modified_aero_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;NRELOffshrBsline5MW_Onshore_AeroDyn15_group_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.dat&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 修改气动文件</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modify_aerodyn</span><span class="p">(</span><span class="n">aero_file</span><span class="p">,</span> <span class="n">node_group</span><span class="p">,</span> <span class="n">modified_aero_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 修改FST文件中的AeroDyn文件路径</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fst</span> <span class="o">=</span> <span class="n">FASTInputFile</span><span class="p">(</span><span class="n">fst_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fst</span><span class="p">[</span><span class="s1">&#39;AeroFile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#34;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">modified_aero_file</span><span class="p">)</span><span class="si">}</span><span class="s1">&#34;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modified_fst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;5MW_Land_DLL_WTurb_group_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.fst&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">modified_fst_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 运行OpenFAST</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">run_openfast</span><span class="p">(</span><span class="n">fast_exe_path</span><span class="p">,</span> <span class="n">modified_fst_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 提取数据</span>
+</span></span><span class="line"><span class="cl">            <span class="n">outb_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;5MW_Land_DLL_WTurb_group_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.outb&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">run_data</span> <span class="o">=</span> <span class="n">extract_blade_data</span><span class="p">(</span><span class="n">outb_file</span><span class="p">,</span> <span class="n">node_group</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">all_runs_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># 等待一小段时间确保文件写入完成</span>
+</span></span><span class="line"><span class="cl">            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 合并所有运行的数据</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">all_runs_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">merged_data</span> <span class="o">=</span> <span class="n">merge_blade_data</span><span class="p">(</span><span class="n">all_runs_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 保存最终数据</span>
+</span></span><span class="line"><span class="cl">        <span class="n">save_to_excel</span><span class="p">(</span><span class="n">merged_data</span><span class="p">,</span> <span class="n">output_excel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;No data was collected from any runs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>避坑点1</strong>：Outlist需要添加初始换行，否则第一个变量将不会输出；</li>
+<li><strong>避坑点2：</strong>&lsquo;BlOutNd&rsquo;需要使用“,”来连接变量，直接赋值会导致出现&quot;()&quot;，造成报错；</li>
+</ul>
 
 </section>
 
@@ -716,7 +1023,9 @@
         
             <a href="/tags/openfast/">OpenFast</a>
         
-            <a href="/tags/%E8%8D%B7%E8%BD%BD%E7%94%9F%E6%88%90/">荷载生成</a>
+            <a href="/tags/%E6%B0%94%E5%8A%A8%E7%89%B9%E6%80%A7/">气动特性</a>
+        
+            <a href="/tags/python%E8%84%9A%E6%9C%AC/">Python脚本</a>
         
     </section>
 
