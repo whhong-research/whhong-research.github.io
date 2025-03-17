@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 14 Mar 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SAM</title>
+        <link>https://whhong-research.github.io/tags/sam/</link>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/sam/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>提示点测试</title>
+        <link>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</link>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>CBM</title>
         <link>https://whhong-research.github.io/tags/cbm/</link>
         <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
@@ -88,27 +104,11 @@
         <description></description>
         </item>
         <item>
-        <title>SAM</title>
-        <link>https://whhong-research.github.io/tags/sam/</link>
-        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/sam/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>裂缝骨架化</title>
         <link>https://whhong-research.github.io/tags/%E8%A3%82%E7%BC%9D%E9%AA%A8%E6%9E%B6%E5%8C%96/</link>
         <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
         
         <guid>https://whhong-research.github.io/tags/%E8%A3%82%E7%BC%9D%E9%AA%A8%E6%9E%B6%E5%8C%96/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>提示点测试</title>
-        <link>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</link>
-        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</guid>
         <description></description>
         </item>
         <item>

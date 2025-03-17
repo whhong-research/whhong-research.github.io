@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://whhong-research.github.io/</loc>
-    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://whhong-research.github.io/categories/</loc>
-    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,14 +28,14 @@
                 href="https://whhong-research.github.io/categories/"
                 />
   </url><url>
-    <loc>https://whhong-research.github.io/tags/cbm/</loc>
-    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://whhong-research.github.io/post/</loc>
-    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/sam/</loc>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
   </url><url>
     <loc>https://whhong-research.github.io/tags/</loc>
-    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -46,6 +46,21 @@
                 hreflang="zh-cn"
                 href="https://whhong-research.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://whhong-research.github.io/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/</loc>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/cbm/</loc>
+    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whhong-research.github.io/tags/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B/</loc>
     <lastmod>2025-03-03T00:00:00+00:00</lastmod>
@@ -105,25 +120,10 @@
     <loc>https://whhong-research.github.io/tags/computer-vision/</loc>
     <lastmod>2025-02-24T16:46:00+08:00</lastmod>
   </url><url>
-    <loc>https://whhong-research.github.io/tags/sam/</loc>
-    <lastmod>2025-02-24T16:46:00+08:00</lastmod>
-  </url><url>
     <loc>https://whhong-research.github.io/tags/%E8%A3%82%E7%BC%9D%E9%AA%A8%E6%9E%B6%E5%8C%96/</loc>
     <lastmod>2025-02-24T16:46:00+08:00</lastmod>
   </url><url>
-    <loc>https://whhong-research.github.io/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2025-02-24T16:46:00+08:00</lastmod>
-  </url><url>
-    <loc>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2025-02-24T16:46:00+08:00</lastmod>
-  </url><url>
     <loc>https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/</loc>
-    <lastmod>2025-02-24T16:46:00+08:00</lastmod>
-  </url><url>
-    <loc>https://whhong-research.github.io/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/</loc>
-    <lastmod>2025-02-24T16:46:00+08:00</lastmod>
-  </url><url>
-    <loc>https://whhong-research.github.io/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2025-02-24T16:46:00+08:00</lastmod>
   </url><url>
     <loc>https://whhong-research.github.io/tags/crack-segmentation/</loc>
