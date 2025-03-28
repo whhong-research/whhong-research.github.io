@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Experimental Objectives Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm; Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors; Mooring Chain Corrosion Degradation Mechanism Modified S-N curve expressions fitted from the dataset:\n">
+<title>贝叶斯动态线性建模：系泊链疲劳寿命预测</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
+<meta property='og:description' content="Experimental Objectives Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm; Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors; Mooring Chain Corrosion Degradation Mechanism Modified S-N curve expressions fitted from the dataset:\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='BDLM' /><meta property='article:tag' content='动态贝叶斯网络' /><meta property='article:tag' content='寿命预测' /><meta property='article:tag' content='腐蚀退化' /><meta property='article:published_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png' />
+<meta name="twitter:title" content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
+<meta name="twitter:description" content="Experimental Objectives Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm; Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors; Mooring Chain Corrosion Degradation Mechanism Modified S-N curve expressions fitted from the dataset:\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#experimental-objectives">Experimental Objectives</a></li>
+    <li><a href="#mooring-chain-corrosion-degradation-mechanism">Mooring Chain Corrosion Degradation Mechanism</a></li>
+    <li><a href="#data-processing-workflow">Data Processing Workflow</a></li>
+    <li><a href="#bdlm-algorithm-principles">BDLM Algorithm Principles</a>
+      <ol>
+        <li><a href="#model-definition">Model Definition</a></li>
+        <li><a href="#bayesian-recursive-framework">Bayesian Recursive Framework</a></li>
+        <li><a href="#case-study">Case Study</a></li>
+      </ol>
+    </li>
+    <li><a href="#results-demonstration">Results Demonstration</a></li>
+    <li><a href="#references">References</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">
+                <img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_fd773c07f5185cd4.png"
+                        srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_fd773c07f5185cd4.png 800w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_df3b2d890d7cf8b7.png 1600w"
+                        width="800" 
+                        height="566" 
+                        loading="lazy"
+                        alt="Featured image of post 贝叶斯动态线性建模：系泊链疲劳寿命预测" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/" >
+                实验测试
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">贝叶斯动态线性建模：系泊链疲劳寿命预测</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 27, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="experimental-objectives">Experimental Objectives
+</h1><ul>
+<li>Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm;</li>
+<li>Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors;</li>
+</ul>
+<h1 id="mooring-chain-corrosion-degradation-mechanism">Mooring Chain Corrosion Degradation Mechanism
+</h1><p>Modified S-N curve expressions fitted from the dataset:</p>
+$$
+\log N = 12.249 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 12.143 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$<p>S-N curve expressions proposed according to design specifications:</p>
+$$
+\log N = 11.904 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 11.797 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$<ul>
+<li>$\lambda_m$ is the mean load ratio expressed as a percentage of the Minimum Breaking Load (MBL)</li>
+<li>c is the defined corrosion grade, ranging from 1 (new chain) to 7 (severe corrosion)</li>
+</ul>
+<h1 id="data-processing-workflow">Data Processing Workflow
+</h1><ol>
+<li>Collect daily strain data and convert it to stress spectrum through rainflow counting method, combining material elastic modulus;</li>
+<li>Calculate fatigue damage factors based on S-N curves for specific corrosion grades:
+<ul>
+<li>Mark fatigue damage factors as NaN for periods with missing sensor data;</li>
+<li>Remove outliers using 3σ criterion to ensure data quality;</li>
+</ul>
+</li>
+<li>Construct annual fatigue damage factor series (365×1 vector) as input for the BDLM (Bayesian Dynamic Linear Model) framework;</li>
+<li>Through BDLM model predict future distribution characteristics of fatigue damage factors to support structural health monitoring and maintenance decisions.</li>
+</ol>
+<h1 id="bdlm-algorithm-principles">BDLM Algorithm Principles
+</h1><h2 id="model-definition">Model Definition
+</h2><p>BDLM consists of two equations:</p>
+$$
+\text{Observation equation: }y_t = F_t^\top \theta_t + v_t, \quad v_t \sim \mathcal{N}(0, V_t)
+$$$$
+\text{State equation: }\theta_t = G_t\theta_{t-1} + w_t, \quad w_t \sim \mathcal{N}(0, W_t)
+$$<ul>
+<li>
+<p>$y_t \in \mathbb{R} \text{ is the observation at time } t$</p>
+</li>
+<li>
+<p>$\theta_t \in \mathbb{R}^n \text{ is the hidden state vector}$</p>
+</li>
+<li>
+<p>$F_t \in \mathbb{R}^n \text{ is the observation design matrix}$</p>
+</li>
+<li>
+<p>$G_t \in \mathbb{R}^{n \times n} \text{ is the state transition matrix}$</p>
+</li>
+<li>
+<p>$v_t \text{ and } w_t \text{ are independent Gaussian noise with covariances } V_t \text{ and } W_t$</p>
+</li>
+</ul>
+<h2 id="bayesian-recursive-framework">Bayesian Recursive Framework
+</h2><p>BDLM&rsquo;s core is combining prior distribution with likelihood through Bayes&rsquo; theorem to obtain posterior distribution. The recursion involves two steps:</p>
+<ol>
+<li><strong>Prediction Step</strong>: Use state equation to derive prior of $θ_t$ from posterior of $θ_{t−1}$;</li>
+<li><strong>Update Step</strong>: Combine observation $y_t$ to update posterior of $θ_t$;</li>
+</ol>
+<p><strong>Step 1: Prediction (Prior Distribution)</strong></p>
+<p>Assume posterior distribution at time $t-1$ is:</p>
+$$
+\theta_{t-1} \mid y_{1:t-1} \sim \mathcal{N}(m_{t-1}, C_{t-1})
+$$<p>Predict prior distribution at time $t$ through state equation:</p>
+$$
+\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t) \\
+    a_t = G_t m_{t-1},
+    R_t = G_t C_{t-1} G_t^\top + W_t
+$$<ol>
+<li>Linear transformation of state equation: $\theta_t = G_t\theta_{t-1} + w_t$;</li>
+<li>Gaussian distribution property under linear transformation: if $\theta_t  \sim \mathcal{N}(m_{t-1}, C_{t-1})$, then $G_t\theta_{t-1} \sim \mathcal{N}(G_t m_{t-1}, G_t C_{t-1} G_t)$;</li>
+<li>Add noise to derive final result;</li>
+</ol>
+<p><strong>Step 2: Update (Posterior Distribution)</strong></p>
+<p>Likelihood from observation equation:</p>
+$$
+y_t \mid \theta_t \sim \mathcal{N}(F_t^\top \theta_t, V_t)
+$$<p>Combine with prior $\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t)$, use Bayes&rsquo; theorem to calculate posterior</p>
+$$
+p(\theta_t | y_{1:t}) \propto p(y_t | \theta_t)p(\theta_t | y_{1:t-1})
+$$<p>Update mean and covariance using Gaussian conditional distribution formula:</p>
+$$
+\theta_t \mid y_{1:t} \sim \mathcal{N}(m_t, C_t) \\
+m_t = a_t + R_t F_t Q_t^{-1} (y_t - F_t^\top a_t)，
+C_t = R_t - R_t F_t Q_t^{-1} F_t^\top R_t \
+$$<h2 id="case-study">Case Study
+</h2><ol>
+<li>
+<p>State vector comprises five key components, $X=[X^{LL},X^P,X^{AR}]$:</p>
+<ul>
+<li>
+<p>Base level term $X^{LL}$</p>
+</li>
+<li>
+<p>Seasonal variation term (period: 365/4 days) $X^{P1}$</p>
+</li>
+<li>
+<p>Dual periodic terms (period: 7 days, two sets) $ X^{P2},X^{P3}$</p>
+</li>
+<li>
+<p>First-order autoregressive term (for residuals) $X^{AR}$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Observation design matrix: defines how observations are extracted from states;</p>
+<ul>
+<li>If only observing first component (level term) of state vector, then $F_t=[1,0,…,0]^T$</li>
+</ul>
+</li>
+<li>
+<p>State transition matrix: describes how states evolve over time;</p>
+<ul>
+<li>
+<p>Base level term</p>
+$$
+     \mathbf{A}^{LT} = \begin{bmatrix} 
+     1 
+     \end{bmatrix}
+     $$</li>
+<li>
+<p>Periodic term (Fourier form)</p>
+</li>
+</ul>
+$$
+   \mathbf{A}^P = \begin{bmatrix} 
+   \cos\omega & \sin\omega \\
+   -\sin\omega & \cos\omega
+   \end{bmatrix}
+   $$</li>
+</ol>
+<h1 id="results-demonstration">Results Demonstration
+</h1><ul>
+<li>
+<p>Calculate stress spectrum for each month, below shows stress spectrum distribution for April 2006:</p>
+<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution.png"
+	width="1160"
+	height="756"
+	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_30ddbfd0843ab083.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_fa6e1bb5fdb2178a.png 1024w"
+	loading="lazy"
+	
+		alt="stress_distribution"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="368px"
+	
+></p>
+</li>
+<li>
+<p>Calculate daily fatigue damage factors considering corrosion grade 4:</p>
+<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear.png"
+	width="1302"
+	height="774"
+	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_ecdbf02c8eceda2d.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_cfbdb88b70be7968.png 1024w"
+	loading="lazy"
+	
+		alt="Corrosion_4_log_linear"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="168"
+		data-flex-basis="403px"
+	
+></p>
+</li>
+<li>
+<p>Prediction Results Analysis:</p>
+<ul>
+<li>
+<p>Model predictions (blue solid line) show high agreement with measured values;</p>
+</li>
+<li>
+<p>Predictions include confidence intervals (light blue region);</p>
+</li>
+<li>
+<p>Confidence intervals widen in data-missing periods, reflecting increased uncertainty;</p>
+</li>
+<li>
+<p>Model demonstrates excellent fitting performance in periods with complete data;</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index.png"
+	width="1109"
+	height="712"
+	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_38a18bcb6c96f4fa.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_a922fd03ee171dd4.png 1024w"
+	loading="lazy"
+	
+		alt="Damage_index"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
+	
+></p>
+<ul>
+<li>Use model trained on 2006 data to predict fatigue damage factors for 2007;</li>
+</ul>
+<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png"
+	width="895"
+	height="633"
+	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_e6f584f864087f9b.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_3d8df5c310c0ef04.png 1024w"
+	loading="lazy"
+	
+		alt="Prediction"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="339px"
+	
+></p>
+<h1 id="references">References
+</h1><p>[1] J. Heng, Y. Dong, L. Lai, Z. Zhou, and D. M. Frangopol, “Digital twins-boosted intelligent maintenance of ageing bridge hangers exposed to coupled corrosion–fatigue deterioration,” <em>Automation in Construction</em>, vol. 167, p. 105697, Nov. 2024, doi: <a class="link" href="https://doi.org/10.1016/j.autcon.2024.105697"  target="_blank" rel="noopener"
+    >10.1016/j.autcon.2024.105697</a>.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/bdlm/">BDLM</a>
+        
+            <a href="/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/">动态贝叶斯网络</a>
+        
+            <a href="/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">寿命预测</a>
+        
+            <a href="/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/">腐蚀退化</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

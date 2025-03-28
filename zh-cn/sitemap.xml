@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://whhong-research.github.io/</loc>
-    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,8 +15,21 @@
                 href="https://whhong-research.github.io/"
                 />
   </url><url>
+    <loc>https://whhong-research.github.io/tags/bdlm/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/bdlm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/bdlm/"
+                />
+  </url><url>
     <loc>https://whhong-research.github.io/categories/</loc>
-    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,13 +42,20 @@
                 />
   </url><url>
     <loc>https://whhong-research.github.io/post/</loc>
-    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
-  </url><url>
-    <loc>https://whhong-research.github.io/tags/sam/</loc>
-    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/post/"
+                />
   </url><url>
     <loc>https://whhong-research.github.io/tags/</loc>
-    <lastmod>2025-03-14T16:46:00+08:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -47,7 +67,84 @@
                 href="https://whhong-research.github.io/tags/"
                 />
   </url><url>
+    <loc>https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/"
+                />
+  </url><url>
     <loc>https://whhong-research.github.io/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2025-03-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2025-03-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/</loc>
+    <lastmod>2025-03-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2025-03-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://whhong-research.github.io/tags/sam/</loc>
     <lastmod>2025-03-14T16:46:00+08:00</lastmod>
   </url><url>
     <loc>https://whhong-research.github.io/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/</loc>
@@ -79,9 +176,6 @@
                 />
   </url><url>
     <loc>https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB2-impact-of-condition-monitoring-on-the-maintenance-and-economic-viability-of-offshore-wind-turbines/</loc>
-    <lastmod>2025-03-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://whhong-research.github.io/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2025-03-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://whhong-research.github.io/tags/openfast/</loc>

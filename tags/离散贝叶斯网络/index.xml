@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>离散贝叶斯网络 on whhong的博客</title>
+        <link>https://whhong-research.github.io/tags/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</link>
+        <description>Recent content in 离散贝叶斯网络 on whhong的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Wed, 19 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks</title>
+        <link>https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319.png" alt="Featured image of post 论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks" /&gt;&lt;h1 id=&#34;rbi建模方法&#34;&gt;RBI建模方法
+&lt;/h1&gt;&lt;h2 id=&#34;不同模型&#34;&gt;不同模型
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Decision tree: 决策树；&lt;/li&gt;
+&lt;li&gt;Crude Monte Carlo simulations: 粗略蒙特卡洛模拟；&lt;/li&gt;
+&lt;li&gt;Discrete Bayesian networks (dBN): 离散贝叶斯网络；&lt;/li&gt;
+&lt;li&gt;Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟；&lt;/li&gt;
+&lt;li&gt;Limited memory influence diagrams (LIMID): 有限内存影响图；&lt;/li&gt;
+&lt;li&gt;Partially observable Markov decision process: 部分可观察马尔可夫决策过程；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;模型对比&#34;&gt;模型对比
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;MCMC不需要连续变量的离散化，dBN需要；&lt;/li&gt;
+&lt;li&gt;MCMC相比于dBN更加耗时，因为其是基于采样进行推断的；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;本文计算框架&#34;&gt;本文计算框架
+&lt;/h1&gt;&lt;h2 id=&#34;两种决策模型&#34;&gt;两种决策模型
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）；&lt;/li&gt;
+&lt;li&gt;Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319150235335.png&#34;
+	width=&#34;1083&#34;
+	height=&#34;420&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319150235335_hu_b1e7b5a64bb0203e.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319150235335_hu_f5562f6762e3bc4c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;计算框架&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;257&#34;
+		data-flex-basis=&#34;618px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;模型输入设定&#34;&gt;模型输入设定
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;specific cost： 执行inspection，repair和a corrective repair的成本；&lt;/li&gt;
+&lt;li&gt;specification of models: 退化概率模型、修复概率模型、检测概率模型以及监测概率模型；&lt;/li&gt;
+&lt;li&gt;strategy and parameters：不同的维养策略；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;基础dbn架构&#34;&gt;基础dBN架构
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;下图所示的dBN架构主要适用于simulation-based的模型；
+&lt;ul&gt;
+&lt;li&gt;$M_0$ 表示初始的模型参数，不同的模型参数可以对应不同类型的退化模型；&lt;/li&gt;
+&lt;li&gt;$D_0$ 表示初始的损伤状态，一般初始状态默认为健康无损；&lt;/li&gt;
+&lt;li&gt;$I_i$ 是第 $i$ 个时间步的检测结果；&lt;/li&gt;
+&lt;li&gt;$I_{M,i}$ 是第 $i$ 个时间步的监测结果；&lt;/li&gt;
+&lt;li&gt;$I_{D,i}$ 是第 $i$ 个时间步的是否要进行检测的判断；&lt;/li&gt;
+&lt;li&gt;$R_i$ 是第 $i$ 个时间步是否要进行修复，包括两种状态（&amp;ldquo;repair&amp;rdquo; and &amp;ldquo;not repair&amp;rdquo;）；&lt;/li&gt;
+&lt;li&gt;$D_{R,i}$ 是第 $i$ 个时间步进行修复/或者不修复后的损伤状态；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319151022557.png&#34;
+	width=&#34;541&#34;
+	height=&#34;367&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319151022557_hu_a3680c8f0655c9f1.png 480w, https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319151022557_hu_3721786d617f1dbc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;dBN架构&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;353px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;举例来说
+&lt;ul&gt;
+&lt;li&gt;如果有 $n_d$ （e.g. 7）种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ （e.g. 7）的向量；&lt;/li&gt;
+&lt;li&gt;如果有 $n_M$ （e.g. 3）种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ （e.g.3）的向量；&lt;/li&gt;
+&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M&lt;em&gt;n_M$（e.g. 3&lt;/em&gt;3）的矩阵，用于表示不同时间步过程中模型参数的变化；&lt;/li&gt;
+&lt;li&gt;$P(D_i|D_{R，i-1}，M_i)$是一个$n_D&lt;em&gt;n_D&lt;/em&gt;n_M$的三维矩阵；&lt;/li&gt;
+&lt;li&gt;当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$ ;&lt;/li&gt;
+&lt;li&gt;$P(D_{R,i}|D_{i}，R_i)$是一个 $n_D&lt;em&gt;n_D&lt;/em&gt;2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布；&lt;/li&gt;
+&lt;li&gt;如果有$n_I$种检测结果，那么检测模型将以$P(I_i|D_i,I_{D,i})$ 的形式进行建模，大小为$n_I&lt;em&gt;n_D&lt;/em&gt;2$ ；&lt;/li&gt;
+&lt;li&gt;健康检测系统被假设为仅仅与损伤尺寸$D_i$相关，用$P(I_{M,i}|D_i)$ 的形式进行表示，如果有$n_{I_M}$种健康监测系统报警结果，那么$P(I_{M,i}|D_i)$是一个$n_{I_M}*n_D$的矩阵；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;维护策略&#34;&gt;维护策略
+&lt;/h2&gt;&lt;p&gt;本文考虑了13种不同的维护策略&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;纠正性运维；&lt;/li&gt;
+&lt;li&gt;无检测，定期修复；&lt;/li&gt;
+&lt;li&gt;无检测，根据CM报警结果来确定是否进行修复；&lt;/li&gt;
+&lt;li&gt;等间距检测，根据检测结果确定是否进行修复；&lt;/li&gt;
+&lt;li&gt;根据CM报警结果来确定是否进行检测，根据检测结果确定是否进行修复；&lt;/li&gt;
+&lt;li&gt;无检测，根据失效概率决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;等距检测，根据失效概率决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;根据失效概率决定是否进行检测；根据失效概率决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;根据失效概率决定是否进行检测；根据检测结果决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;不检测，根据损伤尺寸的期望值决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;等距检测，根据损伤尺寸的期望值决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;根据损伤尺寸的期望值决定是否进行检测，根据损伤尺寸的期望值决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;根据损伤尺寸的期望值决定是否进行检测；根据检测结果决定是否进行修复；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;简单策略下的算法说明&#34;&gt;简单策略下的算法说明
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
+$$
+  P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
+  \times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
+  $$&lt;/li&gt;
+&lt;li&gt;
+$$
+  P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1})
+  $$&lt;/li&gt;
+&lt;li&gt;
+$$
+  P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
+  \times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
+  \times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
+  $$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;失效概率等于损伤状态$D_i$ 等于”fault“的概率；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;repair的概率为节点$R_i$ 中取值为&amp;quot;repair&amp;quot;的概率；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;需要根据不同的策略来制定$P(R_i|D_i)$ , 例如对于策略1而言，所有的$R_i$ 均为0，即不进行repair；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;复杂策略下的算法说明&#34;&gt;复杂策略下的算法说明
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;随机从$P(D_0)$ 分布中选取$d_0$；&lt;/li&gt;
+&lt;li&gt;随机从$P(M_0)$ 分布中选取$m_0$；&lt;/li&gt;
+&lt;li&gt;计算初始的$P(D_0,M_0)=P(D_0)P(M_0)$ ;&lt;/li&gt;
+&lt;li&gt;对每一个时间步$i$ :
+&lt;ul&gt;
+&lt;li&gt;从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$ ;&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;&lt;/li&gt;
+&lt;li&gt;根据决策规则$i_{D,i}$ 做出是否进行检测的决策；&lt;/li&gt;
+&lt;li&gt;从分布$P(I_{i}|D_i=d_i，I_{D,i}=i_{D,i})$ 中抽取检测结果$i_i$ ;&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;&lt;/li&gt;
+&lt;li&gt;根据决策规则$r_i$ 做出是否进行修复的决策；&lt;/li&gt;
+&lt;li&gt;从分布$P(D_{R，i}|D_i=d_i，R_{i}=r_{i})$ 中抽取进行修复后的结构损伤状态$d_{R,i}$ ;&lt;/li&gt;
+&lt;li&gt;从分布$P(D_{i+1}|D_{R,i}=d_i，M_{i+1}=m_{0})$ 中抽取下一步损伤状态$d_{i+1}$ ;&lt;/li&gt;
+&lt;li&gt;使用退化和修复suan&amp;rsquo;f更新$P(D_{i+1},M_{i+1})$ ***** ;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

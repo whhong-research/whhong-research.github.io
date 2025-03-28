@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="RBI建模方法 不同模型 Decision tree: 决策树； Crude Monte Carlo simulations: 粗略蒙特卡洛模拟； Discrete Bayesian networks (dBN): 离散贝叶斯网络； Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟； Limited memory influence diagrams (LIMID): 有限内存影响图； Partially observable Markov decision process: 部分可观察马尔可夫决策过程； 模型对比 MCMC不需要连续变量的离散化，dBN需要； MCMC相比于dBN更加耗时，因为其是基于采样进行推断的； 本文计算框架 两种决策模型 Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）； Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）； ">
+<title>论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks">
+<meta property='og:description' content="RBI建模方法 不同模型 Decision tree: 决策树； Crude Monte Carlo simulations: 粗略蒙特卡洛模拟； Discrete Bayesian networks (dBN): 离散贝叶斯网络； Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟； Limited memory influence diagrams (LIMID): 有限内存影响图； Partially observable Markov decision process: 部分可观察马尔可夫决策过程； 模型对比 MCMC不需要连续变量的离散化，dBN需要； MCMC相比于dBN更加耗时，因为其是基于采样进行推断的； 本文计算框架 两种决策模型 Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）； Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）； ">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='运维框架' /><meta property='article:tag' content='离散贝叶斯网络' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319.png' />
+<meta name="twitter:title" content="论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks">
+<meta name="twitter:description" content="RBI建模方法 不同模型 Decision tree: 决策树； Crude Monte Carlo simulations: 粗略蒙特卡洛模拟； Discrete Bayesian networks (dBN): 离散贝叶斯网络； Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟； Limited memory influence diagrams (LIMID): 有限内存影响图； Partially observable Markov decision process: 部分可观察马尔可夫决策过程； 模型对比 MCMC不需要连续变量的离散化，dBN需要； MCMC相比于dBN更加耗时，因为其是基于采样进行推断的； 本文计算框架 两种决策模型 Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）； Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）； "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#rbi建模方法">RBI建模方法</a>
+      <ol>
+        <li><a href="#不同模型">不同模型</a></li>
+        <li><a href="#模型对比">模型对比</a></li>
+      </ol>
+    </li>
+    <li><a href="#本文计算框架">本文计算框架</a>
+      <ol>
+        <li><a href="#两种决策模型">两种决策模型</a></li>
+        <li><a href="#模型输入设定">模型输入设定</a></li>
+        <li><a href="#基础dbn架构">基础dBN架构</a></li>
+        <li><a href="#维护策略">维护策略</a></li>
+        <li><a href="#简单策略下的算法说明">简单策略下的算法说明</a></li>
+        <li><a href="#复杂策略下的算法说明">复杂策略下的算法说明</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/">
+                <img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319_hu_4f2e0dded6c21543.png"
+                        srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319_hu_4f2e0dded6c21543.png 800w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319_hu_6307abeeccb6fd8.png 1600w"
+                        width="800" 
+                        height="384" 
+                        loading="lazy"
+                        alt="Featured image of post 论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" >
+                论文阅读
+            </a>
+        
+            <a href="/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/" >
+                实验测试
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/">论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 19, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="rbi建模方法">RBI建模方法
+</h1><h2 id="不同模型">不同模型
+</h2><ul>
+<li>Decision tree: 决策树；</li>
+<li>Crude Monte Carlo simulations: 粗略蒙特卡洛模拟；</li>
+<li>Discrete Bayesian networks (dBN): 离散贝叶斯网络；</li>
+<li>Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟；</li>
+<li>Limited memory influence diagrams (LIMID): 有限内存影响图；</li>
+<li>Partially observable Markov decision process: 部分可观察马尔可夫决策过程；</li>
+</ul>
+<h2 id="模型对比">模型对比
+</h2><ul>
+<li>MCMC不需要连续变量的离散化，dBN需要；</li>
+<li>MCMC相比于dBN更加耗时，因为其是基于采样进行推断的；</li>
+</ul>
+<h1 id="本文计算框架">本文计算框架
+</h1><h2 id="两种决策模型">两种决策模型
+</h2><ol>
+<li>Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）；</li>
+<li>Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）；</li>
+</ol>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319150235335.png"
+	width="1083"
+	height="420"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319150235335_hu_b1e7b5a64bb0203e.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319150235335_hu_f5562f6762e3bc4c.png 1024w"
+	loading="lazy"
+	
+		alt="计算框架"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="257"
+		data-flex-basis="618px"
+	
+></p>
+<h2 id="模型输入设定">模型输入设定
+</h2><ol>
+<li>specific cost： 执行inspection，repair和a corrective repair的成本；</li>
+<li>specification of models: 退化概率模型、修复概率模型、检测概率模型以及监测概率模型；</li>
+<li>strategy and parameters：不同的维养策略；</li>
+</ol>
+<h2 id="基础dbn架构">基础dBN架构
+</h2><ul>
+<li>下图所示的dBN架构主要适用于simulation-based的模型；
+<ul>
+<li>$M_0$ 表示初始的模型参数，不同的模型参数可以对应不同类型的退化模型；</li>
+<li>$D_0$ 表示初始的损伤状态，一般初始状态默认为健康无损；</li>
+<li>$I_i$ 是第 $i$ 个时间步的检测结果；</li>
+<li>$I_{M,i}$ 是第 $i$ 个时间步的监测结果；</li>
+<li>$I_{D,i}$ 是第 $i$ 个时间步的是否要进行检测的判断；</li>
+<li>$R_i$ 是第 $i$ 个时间步是否要进行修复，包括两种状态（&ldquo;repair&rdquo; and &ldquo;not repair&rdquo;）；</li>
+<li>$D_{R,i}$ 是第 $i$ 个时间步进行修复/或者不修复后的损伤状态；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319151022557.png"
+	width="541"
+	height="367"
+	srcset="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319151022557_hu_a3680c8f0655c9f1.png 480w, /p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/image-20250319151022557_hu_3721786d617f1dbc.png 1024w"
+	loading="lazy"
+	
+		alt="dBN架构"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="353px"
+	
+></p>
+<ul>
+<li>举例来说
+<ul>
+<li>如果有 $n_d$ （e.g. 7）种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ （e.g. 7）的向量；</li>
+<li>如果有 $n_M$ （e.g. 3）种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ （e.g.3）的向量；</li>
+<li>$P(M_i|M_{i-1})$是一个$n_M<em>n_M$（e.g. 3</em>3）的矩阵，用于表示不同时间步过程中模型参数的变化；</li>
+<li>$P(D_i|D_{R，i-1}，M_i)$是一个$n_D<em>n_D</em>n_M$的三维矩阵；</li>
+<li>当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$ ;</li>
+<li>$P(D_{R,i}|D_{i}，R_i)$是一个 $n_D<em>n_D</em>2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布；</li>
+<li>如果有$n_I$种检测结果，那么检测模型将以$P(I_i|D_i,I_{D,i})$ 的形式进行建模，大小为$n_I<em>n_D</em>2$ ；</li>
+<li>健康检测系统被假设为仅仅与损伤尺寸$D_i$相关，用$P(I_{M,i}|D_i)$ 的形式进行表示，如果有$n_{I_M}$种健康监测系统报警结果，那么$P(I_{M,i}|D_i)$是一个$n_{I_M}*n_D$的矩阵；</li>
+</ul>
+</li>
+</ul>
+<h2 id="维护策略">维护策略
+</h2><p>本文考虑了13种不同的维护策略</p>
+<ol>
+<li>纠正性运维；</li>
+<li>无检测，定期修复；</li>
+<li>无检测，根据CM报警结果来确定是否进行修复；</li>
+<li>等间距检测，根据检测结果确定是否进行修复；</li>
+<li>根据CM报警结果来确定是否进行检测，根据检测结果确定是否进行修复；</li>
+<li>无检测，根据失效概率决定是否进行修复；</li>
+<li>等距检测，根据失效概率决定是否进行修复；</li>
+<li>根据失效概率决定是否进行检测；根据失效概率决定是否进行修复；</li>
+<li>根据失效概率决定是否进行检测；根据检测结果决定是否进行修复；</li>
+<li>不检测，根据损伤尺寸的期望值决定是否进行修复；</li>
+<li>等距检测，根据损伤尺寸的期望值决定是否进行修复；</li>
+<li>根据损伤尺寸的期望值决定是否进行检测，根据损伤尺寸的期望值决定是否进行修复；</li>
+<li>根据损伤尺寸的期望值决定是否进行检测；根据检测结果决定是否进行修复；</li>
+</ol>
+<h2 id="简单策略下的算法说明">简单策略下的算法说明
+</h2><ul>
+<li>
+<p>公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）</p>
+$$
+  P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
+  \times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
+  $$</li>
+<li>
+$$
+  P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1})
+  $$</li>
+<li>
+$$
+  P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
+  \times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
+  \times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
+  $$</li>
+<li>
+<p>失效概率等于损伤状态$D_i$ 等于”fault“的概率；</p>
+</li>
+<li>
+<p>repair的概率为节点$R_i$ 中取值为&quot;repair&quot;的概率；</p>
+</li>
+<li>
+<p>需要根据不同的策略来制定$P(R_i|D_i)$ , 例如对于策略1而言，所有的$R_i$ 均为0，即不进行repair；</p>
+</li>
+</ul>
+<h2 id="复杂策略下的算法说明">复杂策略下的算法说明
+</h2><ul>
+<li>随机从$P(D_0)$ 分布中选取$d_0$；</li>
+<li>随机从$P(M_0)$ 分布中选取$m_0$；</li>
+<li>计算初始的$P(D_0,M_0)=P(D_0)P(M_0)$ ;</li>
+<li>对每一个时间步$i$ :
+<ul>
+<li>从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$ ;</li>
+<li>使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;</li>
+<li>根据决策规则$i_{D,i}$ 做出是否进行检测的决策；</li>
+<li>从分布$P(I_{i}|D_i=d_i，I_{D,i}=i_{D,i})$ 中抽取检测结果$i_i$ ;</li>
+<li>使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;</li>
+<li>根据决策规则$r_i$ 做出是否进行修复的决策；</li>
+<li>从分布$P(D_{R，i}|D_i=d_i，R_{i}=r_{i})$ 中抽取进行修复后的结构损伤状态$d_{R,i}$ ;</li>
+<li>从分布$P(D_{i+1}|D_{R,i}=d_i，M_{i+1}=m_{0})$ 中抽取下一步损伤状态$d_{i+1}$ ;</li>
+<li>使用退化和修复suan&rsquo;f更新$P(D_{i+1},M_{i+1})$ ***** ;</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/">运维框架</a>
+        
+            <a href="/tags/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/">离散贝叶斯网络</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.080744c03bde1e5bd700103f5bdf89b4_hu_e95a8bf9828ba75f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 贝叶斯动态线性建模：系泊链疲劳寿命预测"
+                        
+                        data-hash="md5-CAdEwDveHlvXABA/W9&#43;JtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">贝叶斯动态线性建模：系泊链疲劳寿命预测</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/004_True10_conf58.15.8abc989ef495447e6057a7a44616f555_hu_a0db448a82087c09.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 图像处理（2）：SAM分割裂缝提示点策略"
+                        
+                        data-hash="md5-iryYnvSVRH5gV6ekRhb1VQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">图像处理（2）：SAM分割裂缝提示点策略</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/1.3d32b2264364214342092b476dfe7813_hu_c8811d39f0d17bf3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 图像处理（1）：骨架化处理裂缝分割掩码图像"
+                        
+                        data-hash="md5-PTKyJkNkIUNCCStHbf54Ew==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">图像处理（1）：骨架化处理裂缝分割掩码图像</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

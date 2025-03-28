@@ -6,6 +6,39 @@
         <description>Recent content in Tags on whhong&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>whhong</copyright><atom:link href="https://whhong-research.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>whhong</copyright>
+        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BDLM</title>
+        <link>https://whhong-research.github.io/en/tags/bdlm/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/bdlm/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>动态贝叶斯网络</title>
+        <link>https://whhong-research.github.io/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>寿命预测</title>
+        <link>https://whhong-research.github.io/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>腐蚀退化</title>
+        <link>https://whhong-research.github.io/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/</guid>
+        <description></description>
+        </item>
+        
     </channel>
 </rss>

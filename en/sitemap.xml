@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://whhong-research.github.io/en/</loc>
-    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -13,6 +13,123 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://whhong-research.github.io/en/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/tags/bdlm/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/bdlm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/bdlm/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/categories/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/categories/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/post/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/post/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/tags/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/"
+                />
+  </url><url>
+    <loc>https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</loc>
+    <lastmod>2025-03-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/"
                 />
   </url><url>
     <loc>https://whhong-research.github.io/en/about/</loc>
@@ -54,18 +171,6 @@
                 href="https://whhong-research.github.io/en/archives/"
                 />
   </url><url>
-    <loc>https://whhong-research.github.io/en/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://whhong-research.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://whhong-research.github.io/en/categories/"
-                />
-  </url><url>
     <loc>https://whhong-research.github.io/en/categories/paper-reading/</loc>
     <xhtml:link
                 rel="alternate"
@@ -88,18 +193,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://whhong-research.github.io/en/search/"
-                />
-  </url><url>
-    <loc>https://whhong-research.github.io/en/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://whhong-research.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://whhong-research.github.io/en/tags/"
                 />
   </url>
 </urlset>

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目的 由于海洋平台上疲劳敏感部位的真实应变数据难以获取，本研究使用典型的疲劳敏感构件的实测应变数据来验证疲劳寿命预测算法的有效性； 考虑海洋环境中金属结构易发生锈蚀的因素，结合规范使用修正的S-N曲线进行疲劳因子计算； 系泊链腐蚀退化机理 根据数据集拟合修正的S-N曲线表达式：\n">
+<title>贝叶斯动态线性建模：系泊链疲劳寿命预测</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
+<meta property='og:description' content="实验目的 由于海洋平台上疲劳敏感部位的真实应变数据难以获取，本研究使用典型的疲劳敏感构件的实测应变数据来验证疲劳寿命预测算法的有效性； 考虑海洋环境中金属结构易发生锈蚀的因素，结合规范使用修正的S-N曲线进行疲劳因子计算； 系泊链腐蚀退化机理 根据数据集拟合修正的S-N曲线表达式：\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='BDLM' /><meta property='article:tag' content='动态贝叶斯网络' /><meta property='article:tag' content='寿命预测' /><meta property='article:tag' content='腐蚀退化' /><meta property='article:published_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png' />
+<meta name="twitter:title" content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
+<meta name="twitter:description" content="实验目的 由于海洋平台上疲劳敏感部位的真实应变数据难以获取，本研究使用典型的疲劳敏感构件的实测应变数据来验证疲劳寿命预测算法的有效性； 考虑海洋环境中金属结构易发生锈蚀的因素，结合规范使用修正的S-N曲线进行疲劳因子计算； 系泊链腐蚀退化机理 根据数据集拟合修正的S-N曲线表达式：\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#实验目的">实验目的</a></li>
+    <li><a href="#系泊链腐蚀退化机理">系泊链腐蚀退化机理</a></li>
+    <li><a href="#数据处理流程">数据处理流程</a></li>
+    <li><a href="#bdlm算法原理">BDLM算法原理</a>
+      <ol>
+        <li><a href="#模型定义">模型定义</a></li>
+        <li><a href="#贝叶斯递推框架">贝叶斯递推框架</a></li>
+        <li><a href="#案例说明">案例说明</a></li>
+      </ol>
+    </li>
+    <li><a href="#结果展示">结果展示</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">
+                <img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_fd773c07f5185cd4.png"
+                        srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_fd773c07f5185cd4.png 800w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_df3b2d890d7cf8b7.png 1600w"
+                        width="800" 
+                        height="566" 
+                        loading="lazy"
+                        alt="Featured image of post 贝叶斯动态线性建模：系泊链疲劳寿命预测" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/" >
+                实验测试
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">贝叶斯动态线性建模：系泊链疲劳寿命预测</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 27, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验目的">实验目的
+</h1><ul>
+<li>由于海洋平台上疲劳敏感部位的真实应变数据难以获取，本研究使用典型的疲劳敏感构件的实测应变数据来验证疲劳寿命预测算法的有效性；</li>
+<li>考虑海洋环境中金属结构易发生锈蚀的因素，结合规范使用修正的S-N曲线进行疲劳因子计算；</li>
+</ul>
+<h1 id="系泊链腐蚀退化机理">系泊链腐蚀退化机理
+</h1><p>根据数据集拟合修正的S-N曲线表达式：</p>
+$$
+\log N = 12.249 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 12.143 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$<p>根据设计规范要求提出的S-N曲线表达式：</p>
+$$
+\log N = 11.904 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 11.797 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$<ul>
+<li>$\lambda_m$​​ 是以最小断裂负载（MBL）的百分比表示的平均负荷比，</li>
+<li>c是定义的腐蚀等级，从1（全新链条）到7（严重腐蚀）；</li>
+</ul>
+<h1 id="数据处理流程">数据处理流程
+</h1><ol>
+<li>采集每日应变数据，并结合材料弹性模量，通过雨流计数法将应变转换为应力谱；</li>
+<li>基于特定腐蚀等级的S-N曲线进行疲劳损伤因子计算：
+<ul>
+<li>对于传感器数据缺失的时段，相应的疲劳损伤因子标记为NaN值；</li>
+<li>采用3σ准则剔除异常值，确保数据质量；</li>
+</ul>
+</li>
+<li>构建年度疲劳损伤因子序列（365×1向量），作为BDLM（贝叶斯动态线性模型）框架的输入数据；</li>
+<li>通过BDLM模型预测疲劳损伤因子的未来分布特征，为结构健康监测和维护决策提供可靠依据。</li>
+</ol>
+<h1 id="bdlm算法原理">BDLM算法原理
+</h1><h2 id="模型定义">模型定义
+</h2><p>BDLM由2个方程构成：</p>
+$$
+\text{观测方程：}y_t = F_t^\top \theta_t + v_t, \quad v_t \sim \mathcal{N}(0, V_t)
+$$$$
+\text{状态方程：}\theta_t = G_t\theta_{t-1} + w_t, \quad w_t \sim \mathcal{N}(0, W_t)
+$$<ul>
+<li>
+<p>$y_t \in \mathbb{R} \text{ 是时刻 } t \text{ 的观测值}$</p>
+</li>
+<li>
+<p>$\theta_t \in \mathbb{R}^n \text{ 是隐状态向量}$</p>
+</li>
+<li>
+<p>$F_t \in \mathbb{R}^n \text{ 是观测设计矩阵}$​</p>
+</li>
+<li>
+<p>$G_t \in \mathbb{R}^{n \times n} \text{ 是状态转移矩阵}$</p>
+</li>
+<li>
+<p>$v_t \text{ 和 } w_t \text{ 是独立的高斯噪声，协方差分别为 } V_t \text{ 和 } W_t$</p>
+</li>
+</ul>
+<h2 id="贝叶斯递推框架">贝叶斯递推框架
+</h2><p>BDLM的核心是通过贝叶斯定理，将先验分布与似然结合，得到后验分布。递推分为两步：</p>
+<ol>
+<li><strong>预测步</strong>：利用状态方程，从 $θ_{t−1}$的后验推导$θ_{t}$的先验；</li>
+<li><strong>更新步</strong>：结合观测$y_t$，更新 $θ_{t}$​ 的后验;</li>
+</ol>
+<p><strong>步骤1：预测步（先验分布）</strong></p>
+<p>假设 $t-1$​ 时刻的后验分布为：</p>
+$$
+\theta_{t-1} \mid y_{1:t-1} \sim \mathcal{N}(m_{t-1}, C_{t-1})
+$$<p>通过状态方程预测 $t$​​ 时刻的先验分布：</p>
+$$
+\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t) \\
+    a_t = G_t m_{t-1},
+    R_t = G_t C_{t-1} G_t^\top + W_t
+$$<ol>
+<li>状态方程线性变换：$\theta_t = G_t\theta_{t-1} + w_t$</li>
+<li>高斯分布具有线性变换的性质：若$\theta_t  \sim \mathcal{N}(m_{t-1}, C_{t-1})$，则$G_t\theta_{t-1} \sim \mathcal{N}(G_t m_{t-1}, G_t C_{t-1} G_t)$​</li>
+<li>加上噪声即可推导到最终结果；</li>
+</ol>
+<p><strong>步骤2：更新步（后验分布）</strong></p>
+<p>观测方程给出似然：</p>
+$$
+y_t \mid \theta_t \sim \mathcal{N}(F_t^\top \theta_t, V_t)
+$$<p>结合先验$\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t)$​​，利用贝叶斯定理计算后验</p>
+$$
+p(\theta_t | y_{1:t}) \propto p(y_t | \theta_t)p(\theta_t | y_{1:t-1})
+$$<p>利用高斯条件分布公式，将均值和协方差更新为：（本质上，卡尔曼滤波的均值和协方差更新公式就是通过高斯分布的贝叶斯定理计算得到的）</p>
+$$
+\theta_t \mid y_{1:t} \sim \mathcal{N}(m_t, C_t) \\
+m_t = a_t + R_t F_t Q_t^{-1} (y_t - F_t^\top a_t)，
+C_t = R_t - R_t F_t Q_t^{-1} F_t^\top R_t \
+$$<h2 id="案例说明">案例说明
+</h2><ol>
+<li>
+<p>状态向量由以下五个关键组分构成，$X=[X^{LL},X^P,X^{AR}]$：</p>
+<ul>
+<li>
+<p>基准水平项 $X^{LL}$</p>
+</li>
+<li>
+<p>季节性变化项（周期：365/4 天） $X^{P1}$</p>
+</li>
+<li>
+<p>双周期项（周期：7 天，共两组）$ X^{P2},X^{P3}$</p>
+</li>
+<li>
+<p>一阶自回归项（用于残差描述）$X^{AR}$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>观测设计矩阵：即观测值如何从状态中提取分量；</p>
+<ul>
+<li>若仅观测状态向量的第一个分量（水平项），则$F_t=[1,0,…,0]^T$。</li>
+</ul>
+</li>
+<li>
+<p>状态转移矩阵：用于描述状态是如何随时间演化；</p>
+<ul>
+<li>
+<p>基准水平项</p>
+$$
+     \mathbf{A}^{LT} = \begin{bmatrix} 
+     1 
+     \end{bmatrix}
+     $$</li>
+<li>
+<p>周期项（傅里叶形式）</p>
+</li>
+</ul>
+$$
+   \mathbf{A}^P = \begin{bmatrix} 
+   \cos\omega & \sin\omega \\
+   -\sin\omega & \cos\omega
+   \end{bmatrix}
+   $$</li>
+</ol>
+<h1 id="结果展示">结果展示
+</h1><ul>
+<li>
+<p>计算每个月份的应力谱，下图为2006年4月的应力谱分布示意图：</p>
+<p><img src="C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cstress_distribution.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="stress_distribution"
+	
+	
+></p>
+</li>
+<li>
+<p>考虑腐蚀情况为4时的S-N曲线，计算每天的疲劳损伤因子：</p>
+<p><img src="C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cCorrosion_4_log_linear.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Corrosion_4_log_linear"
+	
+	
+></p>
+</li>
+<li>
+<p>预测结果分析：</p>
+<ul>
+<li>
+<p>模型预测值（蓝色实线）与实测值吻合度高</p>
+</li>
+<li>
+<p>预测结果包含置信区间（浅蓝色区域）</p>
+</li>
+<li>
+<p>在数据缺失区间，置信区间明显展宽，反映了预测不确定性的增加</p>
+</li>
+<li>
+<p>在完整数据区间，模型展现出优异的拟合性能</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cDamage_index.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Damage_index"
+	
+	
+></p>
+<ul>
+<li>利用2006年的数据训练得到的模型来预测2007年的疲劳损伤因子;</li>
+</ul>
+<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png"
+	width="895"
+	height="633"
+	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_e6f584f864087f9b.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_3d8df5c310c0ef04.png 1024w"
+	loading="lazy"
+	
+		alt="Prediction"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="339px"
+	
+></p>
+<h1 id="参考文献">参考文献
+</h1><p>[1] J. Heng, Y. Dong, L. Lai, Z. Zhou, and D. M. Frangopol, “Digital twins-boosted intelligent maintenance of ageing bridge hangers exposed to coupled corrosion–fatigue deterioration,” <em>Automation in Construction</em>, vol. 167, p. 105697, Nov. 2024, doi: <a class="link" href="https://doi.org/10.1016/j.autcon.2024.105697"  target="_blank" rel="noopener"
+    >10.1016/j.autcon.2024.105697</a>.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/bdlm/">BDLM</a>
+        
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/">动态贝叶斯网络</a>
+        
+            <a href="/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">寿命预测</a>
+        
+            <a href="/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/">腐蚀退化</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB3computational-framework-for-risk-based-planning-of-inspections-maintenance-and-condition-monitoring-using-discrete-bayesian-networks/20250319.b6ac8a4e2dc423f11ba73614958adb9b_hu_d5dea2f979917682.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks"
+                        
+                        data-hash="md5-tqyKTi3EI/EbpzYUlYrbmw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文阅读（3）：Computational framework for risk-based planning of inspections, maintenance and condition monitoring using discrete Bayesian networks</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%862sam%E5%88%86%E5%89%B2%E8%A3%82%E7%BC%9D%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5/004_True10_conf58.15.8abc989ef495447e6057a7a44616f555_hu_a0db448a82087c09.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 图像处理（2）：SAM分割裂缝提示点策略"
+                        
+                        data-hash="md5-iryYnvSVRH5gV6ekRhb1VQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">图像处理（2）：SAM分割裂缝提示点策略</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%861%E9%AA%A8%E6%9E%B6%E5%8C%96%E5%A4%84%E7%90%86%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E6%8E%A9%E7%A0%81%E5%9B%BE%E5%83%8F/1.3d32b2264364214342092b476dfe7813_hu_c8811d39f0d17bf3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 图像处理（1）：骨架化处理裂缝分割掩码图像"
+                        
+                        data-hash="md5-PTKyJkNkIUNCCStHbf54Ew==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">图像处理（1）：骨架化处理裂缝分割掩码图像</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

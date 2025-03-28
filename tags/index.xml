@@ -7,7 +7,55 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Fri, 14 Mar 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BDLM</title>
+        <link>https://whhong-research.github.io/tags/bdlm/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/bdlm/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>动态贝叶斯网络</title>
+        <link>https://whhong-research.github.io/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>腐蚀退化</title>
+        <link>https://whhong-research.github.io/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>寿命预测</title>
+        <link>https://whhong-research.github.io/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>离散贝叶斯网络</title>
+        <link>https://whhong-research.github.io/tags/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>运维框架</title>
+        <link>https://whhong-research.github.io/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>SAM</title>
         <link>https://whhong-research.github.io/tags/sam/</link>
         <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
@@ -37,14 +85,6 @@
         <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/tags/%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>运维框架</title>
-        <link>https://whhong-research.github.io/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/</link>
-        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/tags/%E8%BF%90%E7%BB%B4%E6%A1%86%E6%9E%B6/</guid>
         <description></description>
         </item>
         <item>

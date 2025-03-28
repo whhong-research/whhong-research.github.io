@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/post/</link>
+        <description>Recent content in Posts on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>贝叶斯动态线性建模：系泊链疲劳寿命预测</title>
+        <link>https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png" alt="Featured image of post 贝叶斯动态线性建模：系泊链疲劳寿命预测" /&gt;&lt;h1 id=&#34;experimental-objectives&#34;&gt;Experimental Objectives
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm;&lt;/li&gt;
+&lt;li&gt;Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;mooring-chain-corrosion-degradation-mechanism&#34;&gt;Mooring Chain Corrosion Degradation Mechanism
+&lt;/h1&gt;&lt;p&gt;Modified S-N curve expressions fitted from the dataset:&lt;/p&gt;
+$$
+\log N = 12.249 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 12.143 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$&lt;p&gt;S-N curve expressions proposed according to design specifications:&lt;/p&gt;
+$$
+\log N = 11.904 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 11.797 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$&lt;ul&gt;
+&lt;li&gt;$\lambda_m$ is the mean load ratio expressed as a percentage of the Minimum Breaking Load (MBL)&lt;/li&gt;
+&lt;li&gt;c is the defined corrosion grade, ranging from 1 (new chain) to 7 (severe corrosion)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;data-processing-workflow&#34;&gt;Data Processing Workflow
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;Collect daily strain data and convert it to stress spectrum through rainflow counting method, combining material elastic modulus;&lt;/li&gt;
+&lt;li&gt;Calculate fatigue damage factors based on S-N curves for specific corrosion grades:
+&lt;ul&gt;
+&lt;li&gt;Mark fatigue damage factors as NaN for periods with missing sensor data;&lt;/li&gt;
+&lt;li&gt;Remove outliers using 3σ criterion to ensure data quality;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Construct annual fatigue damage factor series (365×1 vector) as input for the BDLM (Bayesian Dynamic Linear Model) framework;&lt;/li&gt;
+&lt;li&gt;Through BDLM model predict future distribution characteristics of fatigue damage factors to support structural health monitoring and maintenance decisions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;bdlm-algorithm-principles&#34;&gt;BDLM Algorithm Principles
+&lt;/h1&gt;&lt;h2 id=&#34;model-definition&#34;&gt;Model Definition
+&lt;/h2&gt;&lt;p&gt;BDLM consists of two equations:&lt;/p&gt;
+$$
+\text{Observation equation: }y_t = F_t^\top \theta_t + v_t, \quad v_t \sim \mathcal{N}(0, V_t)
+$$$$
+\text{State equation: }\theta_t = G_t\theta_{t-1} + w_t, \quad w_t \sim \mathcal{N}(0, W_t)
+$$&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$y_t \in \mathbb{R} \text{ is the observation at time } t$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\theta_t \in \mathbb{R}^n \text{ is the hidden state vector}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$F_t \in \mathbb{R}^n \text{ is the observation design matrix}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$G_t \in \mathbb{R}^{n \times n} \text{ is the state transition matrix}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$v_t \text{ and } w_t \text{ are independent Gaussian noise with covariances } V_t \text{ and } W_t$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bayesian-recursive-framework&#34;&gt;Bayesian Recursive Framework
+&lt;/h2&gt;&lt;p&gt;BDLM&amp;rsquo;s core is combining prior distribution with likelihood through Bayes&amp;rsquo; theorem to obtain posterior distribution. The recursion involves two steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Prediction Step&lt;/strong&gt;: Use state equation to derive prior of $θ_t$ from posterior of $θ_{t−1}$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Update Step&lt;/strong&gt;: Combine observation $y_t$ to update posterior of $θ_t$;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Step 1: Prediction (Prior Distribution)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Assume posterior distribution at time $t-1$ is:&lt;/p&gt;
+$$
+\theta_{t-1} \mid y_{1:t-1} \sim \mathcal{N}(m_{t-1}, C_{t-1})
+$$&lt;p&gt;Predict prior distribution at time $t$ through state equation:&lt;/p&gt;
+$$
+\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t) \\
+    a_t = G_t m_{t-1},
+    R_t = G_t C_{t-1} G_t^\top + W_t
+$$&lt;ol&gt;
+&lt;li&gt;Linear transformation of state equation: $\theta_t = G_t\theta_{t-1} + w_t$;&lt;/li&gt;
+&lt;li&gt;Gaussian distribution property under linear transformation: if $\theta_t  \sim \mathcal{N}(m_{t-1}, C_{t-1})$, then $G_t\theta_{t-1} \sim \mathcal{N}(G_t m_{t-1}, G_t C_{t-1} G_t)$;&lt;/li&gt;
+&lt;li&gt;Add noise to derive final result;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Step 2: Update (Posterior Distribution)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Likelihood from observation equation:&lt;/p&gt;
+$$
+y_t \mid \theta_t \sim \mathcal{N}(F_t^\top \theta_t, V_t)
+$$&lt;p&gt;Combine with prior $\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t)$, use Bayes&amp;rsquo; theorem to calculate posterior&lt;/p&gt;
+$$
+p(\theta_t | y_{1:t}) \propto p(y_t | \theta_t)p(\theta_t | y_{1:t-1})
+$$&lt;p&gt;Update mean and covariance using Gaussian conditional distribution formula:&lt;/p&gt;
+$$
+\theta_t \mid y_{1:t} \sim \mathcal{N}(m_t, C_t) \\
+m_t = a_t + R_t F_t Q_t^{-1} (y_t - F_t^\top a_t)，
+C_t = R_t - R_t F_t Q_t^{-1} F_t^\top R_t \
+$$&lt;h2 id=&#34;case-study&#34;&gt;Case Study
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;State vector comprises five key components, $X=[X^{LL},X^P,X^{AR}]$:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Base level term $X^{LL}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Seasonal variation term (period: 365/4 days) $X^{P1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dual periodic terms (period: 7 days, two sets) $ X^{P2},X^{P3}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;First-order autoregressive term (for residuals) $X^{AR}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Observation design matrix: defines how observations are extracted from states;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If only observing first component (level term) of state vector, then $F_t=[1,0,…,0]^T$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;State transition matrix: describes how states evolve over time;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Base level term&lt;/p&gt;
+$$
+     \mathbf{A}^{LT} = \begin{bmatrix} 
+     1 
+     \end{bmatrix}
+     $$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Periodic term (Fourier form)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+$$
+   \mathbf{A}^P = \begin{bmatrix} 
+   \cos\omega &amp; \sin\omega \\
+   -\sin\omega &amp; \cos\omega
+   \end{bmatrix}
+   $$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;results-demonstration&#34;&gt;Results Demonstration
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Calculate stress spectrum for each month, below shows stress spectrum distribution for April 2006:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution.png&#34;
+	width=&#34;1160&#34;
+	height=&#34;756&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_30ddbfd0843ab083.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_fa6e1bb5fdb2178a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;stress_distribution&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Calculate daily fatigue damage factors considering corrosion grade 4:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear.png&#34;
+	width=&#34;1302&#34;
+	height=&#34;774&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_ecdbf02c8eceda2d.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_cfbdb88b70be7968.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Corrosion_4_log_linear&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Prediction Results Analysis:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Model predictions (blue solid line) show high agreement with measured values;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Predictions include confidence intervals (light blue region);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Confidence intervals widen in data-missing periods, reflecting increased uncertainty;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Model demonstrates excellent fitting performance in periods with complete data;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index.png&#34;
+	width=&#34;1109&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_38a18bcb6c96f4fa.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_a922fd03ee171dd4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Damage_index&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use model trained on 2006 data to predict fatigue damage factors for 2007;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png&#34;
+	width=&#34;895&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_e6f584f864087f9b.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_3d8df5c310c0ef04.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Prediction&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;339px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;references&#34;&gt;References
+&lt;/h1&gt;&lt;p&gt;[1] J. Heng, Y. Dong, L. Lai, Z. Zhou, and D. M. Frangopol, “Digital twins-boosted intelligent maintenance of ageing bridge hangers exposed to coupled corrosion–fatigue deterioration,” &lt;em&gt;Automation in Construction&lt;/em&gt;, vol. 167, p. 105697, Nov. 2024, doi: &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.autcon.2024.105697&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;10.1016/j.autcon.2024.105697&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

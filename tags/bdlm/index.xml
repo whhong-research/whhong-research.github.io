@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>BDLM on whhong的博客</title>
+        <link>https://whhong-research.github.io/tags/bdlm/</link>
+        <description>Recent content in BDLM on whhong的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/bdlm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>贝叶斯动态线性建模：系泊链疲劳寿命预测</title>
+        <link>https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</link>
+        <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png" alt="Featured image of post 贝叶斯动态线性建模：系泊链疲劳寿命预测" /&gt;&lt;h1 id=&#34;实验目的&#34;&gt;实验目的
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;由于海洋平台上疲劳敏感部位的真实应变数据难以获取，本研究使用典型的疲劳敏感构件的实测应变数据来验证疲劳寿命预测算法的有效性；&lt;/li&gt;
+&lt;li&gt;考虑海洋环境中金属结构易发生锈蚀的因素，结合规范使用修正的S-N曲线进行疲劳因子计算；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;系泊链腐蚀退化机理&#34;&gt;系泊链腐蚀退化机理
+&lt;/h1&gt;&lt;p&gt;根据数据集拟合修正的S-N曲线表达式：&lt;/p&gt;
+$$
+\log N = 12.249 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 12.143 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$&lt;p&gt;根据设计规范要求提出的S-N曲线表达式：&lt;/p&gt;
+$$
+\log N = 11.904 - 0.0507 \cdot \lambda_m - 0.106 \cdot c - 3.0 \cdot \log S
+$$$$
+\log N = 11.797 - 0.0507 \cdot \lambda_m - 0.673 \cdot \log c - 3.0 \cdot \log S
+$$&lt;ul&gt;
+&lt;li&gt;$\lambda_m$​​ 是以最小断裂负载（MBL）的百分比表示的平均负荷比，&lt;/li&gt;
+&lt;li&gt;c是定义的腐蚀等级，从1（全新链条）到7（严重腐蚀）；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;数据处理流程&#34;&gt;数据处理流程
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;采集每日应变数据，并结合材料弹性模量，通过雨流计数法将应变转换为应力谱；&lt;/li&gt;
+&lt;li&gt;基于特定腐蚀等级的S-N曲线进行疲劳损伤因子计算：
+&lt;ul&gt;
+&lt;li&gt;对于传感器数据缺失的时段，相应的疲劳损伤因子标记为NaN值；&lt;/li&gt;
+&lt;li&gt;采用3σ准则剔除异常值，确保数据质量；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;构建年度疲劳损伤因子序列（365×1向量），作为BDLM（贝叶斯动态线性模型）框架的输入数据；&lt;/li&gt;
+&lt;li&gt;通过BDLM模型预测疲劳损伤因子的未来分布特征，为结构健康监测和维护决策提供可靠依据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;bdlm算法原理&#34;&gt;BDLM算法原理
+&lt;/h1&gt;&lt;h2 id=&#34;模型定义&#34;&gt;模型定义
+&lt;/h2&gt;&lt;p&gt;BDLM由2个方程构成：&lt;/p&gt;
+$$
+\text{观测方程：}y_t = F_t^\top \theta_t + v_t, \quad v_t \sim \mathcal{N}(0, V_t)
+$$$$
+\text{状态方程：}\theta_t = G_t\theta_{t-1} + w_t, \quad w_t \sim \mathcal{N}(0, W_t)
+$$&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$y_t \in \mathbb{R} \text{ 是时刻 } t \text{ 的观测值}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\theta_t \in \mathbb{R}^n \text{ 是隐状态向量}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$F_t \in \mathbb{R}^n \text{ 是观测设计矩阵}$​&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$G_t \in \mathbb{R}^{n \times n} \text{ 是状态转移矩阵}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$v_t \text{ 和 } w_t \text{ 是独立的高斯噪声，协方差分别为 } V_t \text{ 和 } W_t$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;贝叶斯递推框架&#34;&gt;贝叶斯递推框架
+&lt;/h2&gt;&lt;p&gt;BDLM的核心是通过贝叶斯定理，将先验分布与似然结合，得到后验分布。递推分为两步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;预测步&lt;/strong&gt;：利用状态方程，从 $θ_{t−1}$的后验推导$θ_{t}$的先验；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更新步&lt;/strong&gt;：结合观测$y_t$，更新 $θ_{t}$​ 的后验;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;步骤1：预测步（先验分布）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设 $t-1$​ 时刻的后验分布为：&lt;/p&gt;
+$$
+\theta_{t-1} \mid y_{1:t-1} \sim \mathcal{N}(m_{t-1}, C_{t-1})
+$$&lt;p&gt;通过状态方程预测 $t$​​ 时刻的先验分布：&lt;/p&gt;
+$$
+\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t) \\
+    a_t = G_t m_{t-1},
+    R_t = G_t C_{t-1} G_t^\top + W_t
+$$&lt;ol&gt;
+&lt;li&gt;状态方程线性变换：$\theta_t = G_t\theta_{t-1} + w_t$&lt;/li&gt;
+&lt;li&gt;高斯分布具有线性变换的性质：若$\theta_t  \sim \mathcal{N}(m_{t-1}, C_{t-1})$，则$G_t\theta_{t-1} \sim \mathcal{N}(G_t m_{t-1}, G_t C_{t-1} G_t)$​&lt;/li&gt;
+&lt;li&gt;加上噪声即可推导到最终结果；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;步骤2：更新步（后验分布）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;观测方程给出似然：&lt;/p&gt;
+$$
+y_t \mid \theta_t \sim \mathcal{N}(F_t^\top \theta_t, V_t)
+$$&lt;p&gt;结合先验$\theta_t \mid y_{1:t-1} \sim \mathcal{N}(a_t, R_t)$​​，利用贝叶斯定理计算后验&lt;/p&gt;
+$$
+p(\theta_t | y_{1:t}) \propto p(y_t | \theta_t)p(\theta_t | y_{1:t-1})
+$$&lt;p&gt;利用高斯条件分布公式，将均值和协方差更新为：（本质上，卡尔曼滤波的均值和协方差更新公式就是通过高斯分布的贝叶斯定理计算得到的）&lt;/p&gt;
+$$
+\theta_t \mid y_{1:t} \sim \mathcal{N}(m_t, C_t) \\
+m_t = a_t + R_t F_t Q_t^{-1} (y_t - F_t^\top a_t)，
+C_t = R_t - R_t F_t Q_t^{-1} F_t^\top R_t \
+$$&lt;h2 id=&#34;案例说明&#34;&gt;案例说明
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;状态向量由以下五个关键组分构成，$X=[X^{LL},X^P,X^{AR}]$：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基准水平项 $X^{LL}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;季节性变化项（周期：365/4 天） $X^{P1}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;双周期项（周期：7 天，共两组）$ X^{P2},X^{P3}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一阶自回归项（用于残差描述）$X^{AR}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;观测设计矩阵：即观测值如何从状态中提取分量；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若仅观测状态向量的第一个分量（水平项），则$F_t=[1,0,…,0]^T$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;状态转移矩阵：用于描述状态是如何随时间演化；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;基准水平项&lt;/p&gt;
+$$
+     \mathbf{A}^{LT} = \begin{bmatrix} 
+     1 
+     \end{bmatrix}
+     $$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;周期项（傅里叶形式）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+$$
+   \mathbf{A}^P = \begin{bmatrix} 
+   \cos\omega &amp; \sin\omega \\
+   -\sin\omega &amp; \cos\omega
+   \end{bmatrix}
+   $$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;结果展示&#34;&gt;结果展示
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;计算每个月份的应力谱，下图为2006年4月的应力谱分布示意图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cstress_distribution.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;stress_distribution&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考虑腐蚀情况为4时的S-N曲线，计算每天的疲劳损伤因子：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cCorrosion_4_log_linear.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Corrosion_4_log_linear&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;预测结果分析：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;模型预测值（蓝色实线）与实测值吻合度高&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;预测结果包含置信区间（浅蓝色区域）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在数据缺失区间，置信区间明显展宽，反映了预测不确定性的增加&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在完整数据区间，模型展现出优异的拟合性能&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cDamage_index.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Damage_index&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用2006年的数据训练得到的模型来预测2007年的疲劳损伤因子;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png&#34;
+	width=&#34;895&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_e6f584f864087f9b.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_3d8df5c310c0ef04.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Prediction&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;141&#34;
+		data-flex-basis=&#34;339px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h1&gt;&lt;p&gt;[1] J. Heng, Y. Dong, L. Lai, Z. Zhou, and D. M. Frangopol, “Digital twins-boosted intelligent maintenance of ageing bridge hangers exposed to coupled corrosion–fatigue deterioration,” &lt;em&gt;Automation in Construction&lt;/em&gt;, vol. 167, p. 105697, Nov. 2024, doi: &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.autcon.2024.105697&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;10.1016/j.autcon.2024.105697&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
