@@ -151,27 +151,35 @@ $$
 &lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;计算每个月份的应力谱，下图为2006年4月的应力谱分布示意图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cstress_distribution.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution.png&#34;
+	width=&#34;1160&#34;
+	height=&#34;756&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_30ddbfd0843ab083.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_fa6e1bb5fdb2178a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;stress_distribution&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;考虑腐蚀情况为4时的S-N曲线，计算每天的疲劳损伤因子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cCorrosion_4_log_linear.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear.png&#34;
+	width=&#34;1302&#34;
+	height=&#34;774&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_ecdbf02c8eceda2d.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_cfbdb88b70be7968.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Corrosion_4_log_linear&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -193,14 +201,18 @@ $$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cDamage_index.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index.png&#34;
+	width=&#34;1109&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_38a18bcb6c96f4fa.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_a922fd03ee171dd4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Damage_index&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -303,9 +315,9 @@ $$
 &lt;ul&gt;
 &lt;li&gt;举例来说
 &lt;ul&gt;
-&lt;li&gt;如果有 $n_d$ （e.g. 7）种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ （e.g. 7）的向量；&lt;/li&gt;
-&lt;li&gt;如果有 $n_M$ （e.g. 3）种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ （e.g.3）的向量；&lt;/li&gt;
-&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M&lt;em&gt;n_M$（e.g. 3&lt;/em&gt;3）的矩阵，用于表示不同时间步过程中模型参数的变化；&lt;/li&gt;
+&lt;li&gt;如果有 $n_d$ 种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ 的向量；&lt;/li&gt;
+&lt;li&gt;如果有 $n_M$ 种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ 的向量；&lt;/li&gt;
+&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M*n_M$的矩阵，用于表示不同时间步过程中模型参数的变化；&lt;/li&gt;
 &lt;li&gt;$P(D_i|D_{R，i-1}，M_i)$是一个$n_D&lt;em&gt;n_D&lt;/em&gt;n_M$的三维矩阵；&lt;/li&gt;
 &lt;li&gt;当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$ ;&lt;/li&gt;
 &lt;li&gt;$P(D_{R,i}|D_{i}，R_i)$是一个 $n_D&lt;em&gt;n_D&lt;/em&gt;2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布；&lt;/li&gt;
@@ -334,16 +346,18 @@ $$
 &lt;h2 id=&#34;简单策略下的算法说明&#34;&gt;简单策略下的算法说明
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
+&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$​, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
 $$
   P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
   \times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
   $$&lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;公式（2）为公式（1）的详细表示（以7种损伤状态，3种模型参数为例），值得解释的是，这里公式中的✖并不是代表标准的矩阵乘法，而是表示概率的乘积运算；&lt;/p&gt;
 $$
   P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1})
   $$&lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;公式（3）是进行变量消去后的公式，能够很好地提高计算效率和减少内存资源，依次消去了$M_{i-1},R_{i-1},D_{i-1}$，最终消去了$D_{R,i-1}$​ 变量：&lt;/p&gt;
 $$
   P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
   \times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
@@ -367,14 +381,14 @@ $$
 &lt;li&gt;对每一个时间步$i$ :
 &lt;ul&gt;
 &lt;li&gt;从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$ ;&lt;/li&gt;
-&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$  ;*&lt;/li&gt;
 &lt;li&gt;根据决策规则$i_{D,i}$ 做出是否进行检测的决策；&lt;/li&gt;
 &lt;li&gt;从分布$P(I_{i}|D_i=d_i，I_{D,i}=i_{D,i})$ 中抽取检测结果$i_i$ ;&lt;/li&gt;
-&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ;*&lt;/li&gt;
 &lt;li&gt;根据决策规则$r_i$ 做出是否进行修复的决策；&lt;/li&gt;
 &lt;li&gt;从分布$P(D_{R，i}|D_i=d_i，R_{i}=r_{i})$ 中抽取进行修复后的结构损伤状态$d_{R,i}$ ;&lt;/li&gt;
 &lt;li&gt;从分布$P(D_{i+1}|D_{R,i}=d_i，M_{i+1}=m_{0})$ 中抽取下一步损伤状态$d_{i+1}$ ;&lt;/li&gt;
-&lt;li&gt;使用退化和修复suan&amp;rsquo;f更新$P(D_{i+1},M_{i+1})$ ***** ;&lt;/li&gt;
+&lt;li&gt;根据退化和修复算法更新$P(D_{i+1},M_{i+1})$  ; *&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

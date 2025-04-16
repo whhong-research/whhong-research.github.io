@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="流程介绍 Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；) Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化） Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化） Step1: 获取历史数据和维护状态 表征站点的数据：风速和湍流尤为重要； 任何关于更换部件、维修历史和荷载历史的信息都非常重要； Annex B des cribes which information is important for assessing the loading history of components. Clause 5 gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information. Step2: Risk management process (风险管理过程) Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略） Clause 6 provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps. Step3: Operation, maintenance and inspection A maintenance and inspection scheme can be drawn up, as described in Clause 7 对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施； 根据检查信息来更新第二步中的风险排名并估计RUL； Step4: Condition monitoring (Clause 8) Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;Maintenance planning，判断能否延长结构寿命； 能够为风险评估提供更多的输入，进而进一步优化检测和运维方案； Step5: Health and safety review Step6: Analytical assessments of RUL 资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估； 第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的； 第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (Clause 10)； 分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容； Annex D中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算； ">
+<title>报告解读（3）：IEC61400-28风机全寿命报告解读</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="报告解读（3）：IEC61400-28风机全寿命报告解读">
+<meta property='og:description' content="流程介绍 Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；) Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化） Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化） Step1: 获取历史数据和维护状态 表征站点的数据：风速和湍流尤为重要； 任何关于更换部件、维修历史和荷载历史的信息都非常重要； Annex B des cribes which information is important for assessing the loading history of components. Clause 5 gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information. Step2: Risk management process (风险管理过程) Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略） Clause 6 provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps. Step3: Operation, maintenance and inspection A maintenance and inspection scheme can be drawn up, as described in Clause 7 对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施； 根据检查信息来更新第二步中的风险排名并估计RUL； Step4: Condition monitoring (Clause 8) Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;Maintenance planning，判断能否延长结构寿命； 能够为风险评估提供更多的输入，进而进一步优化检测和运维方案； Step5: Health and safety review Step6: Analytical assessments of RUL 资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估； 第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的； 第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (Clause 10)； 分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容； Annex D中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算； ">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='IEC规范' /><meta property='article:tag' content='全生命周期' /><meta property='article:published_time' content='2025-04-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-15T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28.png' />
+<meta name="twitter:title" content="报告解读（3）：IEC61400-28风机全寿命报告解读">
+<meta name="twitter:description" content="流程介绍 Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；) Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化） Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化） Step1: 获取历史数据和维护状态 表征站点的数据：风速和湍流尤为重要； 任何关于更换部件、维修历史和荷载历史的信息都非常重要； Annex B des cribes which information is important for assessing the loading history of components. Clause 5 gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information. Step2: Risk management process (风险管理过程) Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略） Clause 6 provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps. Step3: Operation, maintenance and inspection A maintenance and inspection scheme can be drawn up, as described in Clause 7 对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施； 根据检查信息来更新第二步中的风险排名并估计RUL； Step4: Condition monitoring (Clause 8) Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;Maintenance planning，判断能否延长结构寿命； 能够为风险评估提供更多的输入，进而进一步优化检测和运维方案； Step5: Health and safety review Step6: Analytical assessments of RUL 资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估； 第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的； 第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (Clause 10)； 分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容； Annex D中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算； "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#流程介绍">流程介绍</a></li>
+    <li><a href="#clause-5data-management-requirements-and-uncertainty">Clause 5：Data management, requirements and uncertainty</a></li>
+    <li><a href="#clause-6risk-management-process">Clause 6：Risk management process</a></li>
+    <li><a href="#clause-7wind-farm-operation-maintenance-and-inspections">Clause 7：Wind farm operation, maintenance and inspections</a>
+      <ol>
+        <li><a href="#life-extension-preparation-inspections-70--to-80--through-operational-life"><strong>Life extension preparation inspections (70 % to 80 % through operational life)</strong>：</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/">
+                <img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28_hu_4436ce95b5673013.png"
+                        srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28_hu_4436ce95b5673013.png 800w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28_hu_4d10af4be04b76dc.png 1600w"
+                        width="800" 
+                        height="567" 
+                        loading="lazy"
+                        alt="Featured image of post 报告解读（3）：IEC61400-28风机全寿命报告解读" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A/" >
+                项目报告
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/">报告解读（3）：IEC61400-28风机全寿命报告解读</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 15, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="流程介绍">流程介绍
+</h1><p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664.png"
+	width="951"
+	height="662"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_62f24c39fef9cf0c.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_d4b8e196e59de380.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250415205059664"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="143"
+		data-flex-basis="344px"
+	
+></p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819.png"
+	width="1054"
+	height="797"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_a2f5dac2801b93fc.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_ba299e9734ef984.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250415205235819"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="317px"
+	
+></p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646.png"
+	width="755"
+	height="926"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_dca168d36a694d40.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_c45300f12a06abf6.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250415211953646"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="81"
+		data-flex-basis="195px"
+	
+></p>
+<ul>
+<li>Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；)</li>
+<li>Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化）</li>
+<li>Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化）</li>
+<li><strong>Step1</strong>: 获取历史数据和维护状态
+<ul>
+<li>表征站点的数据：风速和湍流尤为重要；</li>
+<li>任何关于更换部件、维修历史和荷载历史的信息都非常重要；</li>
+<li><strong>Annex B</strong> des cribes which information is important for assessing the loading history of components. <strong>Clause 5</strong> gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information.</li>
+</ul>
+</li>
+<li><strong>Step2</strong>: Risk management process (风险管理过程)
+<ul>
+<li>Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略）</li>
+<li><strong>Clause 6</strong> provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps.</li>
+</ul>
+</li>
+<li><strong>Step3</strong>: Operation, maintenance and inspection
+<ul>
+<li>A maintenance and inspection scheme can be drawn up, as described in <strong>Clause 7</strong></li>
+<li>对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施；</li>
+<li>根据检查信息来更新第二步中的风险排名并估计RUL；</li>
+</ul>
+</li>
+<li><strong>Step4</strong>: Condition monitoring (<strong>Clause 8</strong>)
+<ul>
+<li>Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;Maintenance planning，判断能否延长结构寿命；</li>
+<li>能够为风险评估提供更多的输入，进而进一步优化检测和运维方案；</li>
+</ul>
+</li>
+<li><strong>Step5</strong>:  Health and safety review</li>
+<li><strong>Step6</strong>: Analytical assessments of RUL
+<ul>
+<li>资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估；</li>
+<li>第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的；</li>
+<li>第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (<strong>Clause 10</strong>)；</li>
+<li>分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容；</li>
+<li><strong>Annex D</strong>中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算；</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378.png"
+	width="1337"
+	height="285"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_77146ee28c11c615.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_f0684c13577a89e5.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250415212143378"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="469"
+		data-flex-basis="1125px"
+	
+></p>
+<h1 id="clause-5data-management-requirements-and-uncertainty">Clause 5：Data management, requirements and uncertainty
+</h1><ul>
+<li>
+<p>There are benefits to filling gaps in measured operating data. Not all data are captured comprehensively during the lifetime of each individual turbine. Strategies exist to address the issue of regenerating missing data retrospectively, based on scrutiny of data from turbines of similar design, site conditions, maintenance history and operational philosophy. (可以根据其他相似设计/现场条件等经验来重建缺失的数据)</p>
+</li>
+<li>
+<p>数据/信息类别定义：</p>
+<ul>
+<li><strong>动态数据</strong>（Dynamic data）:  在风机运行过程中会迅速变化的数据，例如风速、转速、角度、频率、温度等和状态监测数据（CM数据），例如振动信号、腐蚀深度、oil analysis、裂缝深度（？）等；需要评估数据和模型的不确定性，对于测量数据，应该根据<strong>ISO/IEC Guide 98- 3</strong>来估算不确定性。该指南指出，<strong>必须评估测量数据的不确定性</strong>；</li>
+<li><strong>静态数据</strong>（Static data）：例如检测报告、手册等；这类型的数据没有不确定性，而是有公差（tolerance），These do not have uncertainty but tolerances (allowable variations of thicknesses, diameters, rated power, weights, position of centre of gravity (CoG, inertia) . Such t olerances can induce variance into the assessment by altering the strength or the dynamic loads.</li>
+</ul>
+</li>
+<li>
+<p>CM数据部分可以用于衡量预测评估方法的准确性（例如确定预测的裂缝或者腐蚀深度是否准确），部分可以用于监测无法预测寿命的结构退化速度；<strong>也可以用于作为检查干预措施的触发因素</strong>；</p>
+</li>
+<li>
+<p>风力测量应以<strong>10分钟为间隔</strong>进行（理想情况下，应使用安装在不同测风塔上的多个仪器，在不同高度进行测量，包括轮毂高度），测量周期应至少为6个月，并在风电场安装之前完成。但如果季节性变化对风况有显著影响，则<strong>监测周期应至少为12个月</strong>，以涵盖这些影响。数据应包括风速、风向、温度和气压的汇总统计信息（对于所有参数，至少包括平均值、最小值、最大值和标准差）；</p>
+</li>
+<li>
+<p>SCADA数据 （IEC 61400-25-1 AND IEC 61400-25-2）中强烈建议记录的信息：</p>
+<ul>
+<li>working hour</li>
+<li>alarm, warning and operational logs</li>
+<li>nacelle orientation</li>
+<li>wind direction at nacelle wind vane</li>
+<li>temperature of main components (average, maximum, minimum)</li>
+</ul>
+</li>
+<li>
+<p>当风电场（或多个风电场）中出现常见故障时，应进行适当的统计分析，以建立预测未来故障可能性的统计模型。例如，可以将统计分布（如韦伯分布或韦伯贝叶斯分布）拟合到数据中。这将有助于维护计划的制定和备件的储备。然而，如果针对特定组件、故障模式和场地条件的组合所提供的数据集较小（例如，某一特定场地的风机数量较少），则这些模型的结果将具有较大的不确定性 (<strong>Clause 10</strong>);</p>
+</li>
+<li>
+<p>检测记录和报告可以包括以下内容：</p>
+<ul>
+<li>structural integrity (for example, dye penetrant or NDE for detection of cracks)</li>
+<li>boroscopy 内窥镜检查 (for example, main bearing, gearbox bearings, gears)</li>
+<li>dimensional (for example, wear, free movement, play, backlash)</li>
+<li>visual (for example, leakage, overheating, loose / missing / fractured bolts, corrosion, dents, stress raisers)</li>
+<li>bolt tension (for example, re-torquing)</li>
+<li>grease and oil sample analyses 润滑脂和油样分析</li>
+</ul>
+</li>
+<li>
+<p><strong>IEC 61400-13</strong>：load measurements</p>
+</li>
+<li>
+<p>数据不确定性等级定义： （可以根据标准差和均值的比值进行定义）</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878.png"
+	width="939"
+	height="270"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_6bfb9108b6809dc5.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_d8c280bd558a9d42.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416175253878"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="347"
+		data-flex-basis="834px"
+	
+></p>
+</li>
+</ul>
+<h1 id="clause-6risk-management-process">Clause 6：Risk management process
+</h1><p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027.png"
+	width="928"
+	height="784"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_4499561b3c6964e2.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_b61b30913889f302.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416210003027"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="284px"
+	
+></p>
+<ul>
+<li>
+<p>风险评估至少应能够估算以下情况，并以适当的置信度限制：</p>
+<ul>
+<li>
+<p>系统中所有组成构件的风险优先级的数值；</p>
+</li>
+<li>
+<p>IEC 60812中定义的risk priority number (风险优先等级)：</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967.png"
+	width="1047"
+	height="270"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_4547aa03ab916239.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_782d1adccf39e868.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416204848967"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="387"
+		data-flex-basis="930px"
+	
+></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="clause-7wind-farm-operation-maintenance-and-inspections">Clause 7：Wind farm operation, maintenance and inspections
+</h1><ul>
+<li>
+<p>主要构件定义 （参考原报告3.1.20）</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791.png"
+	width="786"
+	height="1156"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_5a6766e5311f925b.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_6c2f1cf965fb0fbc.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416210732791"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="67"
+		data-flex-basis="163px"
+	
+></p>
+</li>
+<li>
+<p>Principles of risk based inspection (RBI) (see <strong>API 581:2000</strong>) or reliability -centred maintenance (RCM) (see <strong>IEC 60300-3-11:2009</strong>) may be applied.</p>
+</li>
+<li>
+<p>CMS（状态监测系统）可以用于触发或者替换常规的inspection；</p>
+</li>
+<li>
+<p><strong>Early life inspections (15 % to 25 % through operational life)</strong>：</p>
+<ul>
+<li>
+<p>检测保修期结束前要求的损伤并执行修复；</p>
+</li>
+<li>
+<p>作为风机整体状态的基准；</p>
+</li>
+<li>
+<p>建议的检查计划包括：（全部项目请参考<strong>Annex C</strong>）</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501.png"
+	width="973"
+	height="972"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_e52c63679c90a64c.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_a8c9955e98ca2ea4.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416212250501"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="100"
+		data-flex-basis="240px"
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Mid-life inspections (45 % to 55 % through operational life)</strong>:</p>
+<ul>
+<li>提供关于结构退化率的其他信息；</li>
+<li>用于指导预防性维护措施；</li>
+</ul>
+</li>
+<li>
+<h2 id="life-extension-preparation-inspections-70--to-80--through-operational-life"><strong>Life extension preparation inspections (70 % to 80 % through operational life)</strong>：
+</h2></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/iec%E8%A7%84%E8%8C%83/">IEC规范</a>
+        
+            <a href="/tags/%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">全生命周期</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287.ba1560ff83958ccf4ff4900bfce6c524_hu_618c67ee3575128d.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 报告解读（1）：Structural health monitoring by use of sensor data"
+                        
+                        data-hash="md5-uhVg/4OVjM9P9JAL/ObFJA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">报告解读（1）：Structural health monitoring by use of sensor data</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB2cost-tu1402-quantifying-the-value-of-shm/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB2cost-tu1402-quantifying-the-value-of-shm/1.9615ff13becb3342c7c9e7ed3daf28bf_hu_37426403328ce05c.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 报告解读（2）：COST TU1402 Quantifying the Value of SHM"
+                        
+                        data-hash="md5-lhX/E77LM0LHyeftPa8ovw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">报告解读（2）：COST TU1402 Quantifying the Value of SHM</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

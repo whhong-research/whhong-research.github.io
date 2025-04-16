@@ -7,7 +7,282 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>报告解读（3）：IEC61400-28风机全寿命报告解读</title>
+        <link>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28.png" alt="Featured image of post 报告解读（3）：IEC61400-28风机全寿命报告解读" /&gt;&lt;h1 id=&#34;流程介绍&#34;&gt;流程介绍
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664.png&#34;
+	width=&#34;951&#34;
+	height=&#34;662&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_62f24c39fef9cf0c.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_d4b8e196e59de380.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250415205059664&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819.png&#34;
+	width=&#34;1054&#34;
+	height=&#34;797&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_a2f5dac2801b93fc.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_ba299e9734ef984.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250415205235819&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;317px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646.png&#34;
+	width=&#34;755&#34;
+	height=&#34;926&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_dca168d36a694d40.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_c45300f12a06abf6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250415211953646&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;195px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；)&lt;/li&gt;
+&lt;li&gt;Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化）&lt;/li&gt;
+&lt;li&gt;Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step1&lt;/strong&gt;: 获取历史数据和维护状态
+&lt;ul&gt;
+&lt;li&gt;表征站点的数据：风速和湍流尤为重要；&lt;/li&gt;
+&lt;li&gt;任何关于更换部件、维修历史和荷载历史的信息都非常重要；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annex B&lt;/strong&gt; des cribes which information is important for assessing the loading history of components. &lt;strong&gt;Clause 5&lt;/strong&gt; gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step2&lt;/strong&gt;: Risk management process (风险管理过程)
+&lt;ul&gt;
+&lt;li&gt;Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clause 6&lt;/strong&gt; provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step3&lt;/strong&gt;: Operation, maintenance and inspection
+&lt;ul&gt;
+&lt;li&gt;A maintenance and inspection scheme can be drawn up, as described in &lt;strong&gt;Clause 7&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施；&lt;/li&gt;
+&lt;li&gt;根据检查信息来更新第二步中的风险排名并估计RUL；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step4&lt;/strong&gt;: Condition monitoring (&lt;strong&gt;Clause 8&lt;/strong&gt;)
+&lt;ul&gt;
+&lt;li&gt;Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;amp;Maintenance planning，判断能否延长结构寿命；&lt;/li&gt;
+&lt;li&gt;能够为风险评估提供更多的输入，进而进一步优化检测和运维方案；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step5&lt;/strong&gt;:  Health and safety review&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step6&lt;/strong&gt;: Analytical assessments of RUL
+&lt;ul&gt;
+&lt;li&gt;资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估；&lt;/li&gt;
+&lt;li&gt;第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的；&lt;/li&gt;
+&lt;li&gt;第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (&lt;strong&gt;Clause 10&lt;/strong&gt;)；&lt;/li&gt;
+&lt;li&gt;分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annex D&lt;/strong&gt;中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378.png&#34;
+	width=&#34;1337&#34;
+	height=&#34;285&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_77146ee28c11c615.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_f0684c13577a89e5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250415212143378&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;469&#34;
+		data-flex-basis=&#34;1125px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;clause-5data-management-requirements-and-uncertainty&#34;&gt;Clause 5：Data management, requirements and uncertainty
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;There are benefits to filling gaps in measured operating data. Not all data are captured comprehensively during the lifetime of each individual turbine. Strategies exist to address the issue of regenerating missing data retrospectively, based on scrutiny of data from turbines of similar design, site conditions, maintenance history and operational philosophy. (可以根据其他相似设计/现场条件等经验来重建缺失的数据)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据/信息类别定义：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;动态数据&lt;/strong&gt;（Dynamic data）:  在风机运行过程中会迅速变化的数据，例如风速、转速、角度、频率、温度等和状态监测数据（CM数据），例如振动信号、腐蚀深度、oil analysis、裂缝深度（？）等；需要评估数据和模型的不确定性，对于测量数据，应该根据&lt;strong&gt;ISO/IEC Guide 98- 3&lt;/strong&gt;来估算不确定性。该指南指出，&lt;strong&gt;必须评估测量数据的不确定性&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;静态数据&lt;/strong&gt;（Static data）：例如检测报告、手册等；这类型的数据没有不确定性，而是有公差（tolerance），These do not have uncertainty but tolerances (allowable variations of thicknesses, diameters, rated power, weights, position of centre of gravity (CoG, inertia) . Such t olerances can induce variance into the assessment by altering the strength or the dynamic loads.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CM数据部分可以用于衡量预测评估方法的准确性（例如确定预测的裂缝或者腐蚀深度是否准确），部分可以用于监测无法预测寿命的结构退化速度；&lt;strong&gt;也可以用于作为检查干预措施的触发因素&lt;/strong&gt;；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;风力测量应以&lt;strong&gt;10分钟为间隔&lt;/strong&gt;进行（理想情况下，应使用安装在不同测风塔上的多个仪器，在不同高度进行测量，包括轮毂高度），测量周期应至少为6个月，并在风电场安装之前完成。但如果季节性变化对风况有显著影响，则&lt;strong&gt;监测周期应至少为12个月&lt;/strong&gt;，以涵盖这些影响。数据应包括风速、风向、温度和气压的汇总统计信息（对于所有参数，至少包括平均值、最小值、最大值和标准差）；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SCADA数据 （IEC 61400-25-1 AND IEC 61400-25-2）中强烈建议记录的信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;working hour&lt;/li&gt;
+&lt;li&gt;alarm, warning and operational logs&lt;/li&gt;
+&lt;li&gt;nacelle orientation&lt;/li&gt;
+&lt;li&gt;wind direction at nacelle wind vane&lt;/li&gt;
+&lt;li&gt;temperature of main components (average, maximum, minimum)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当风电场（或多个风电场）中出现常见故障时，应进行适当的统计分析，以建立预测未来故障可能性的统计模型。例如，可以将统计分布（如韦伯分布或韦伯贝叶斯分布）拟合到数据中。这将有助于维护计划的制定和备件的储备。然而，如果针对特定组件、故障模式和场地条件的组合所提供的数据集较小（例如，某一特定场地的风机数量较少），则这些模型的结果将具有较大的不确定性 (&lt;strong&gt;Clause 10&lt;/strong&gt;);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检测记录和报告可以包括以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;structural integrity (for example, dye penetrant or NDE for detection of cracks)&lt;/li&gt;
+&lt;li&gt;boroscopy 内窥镜检查 (for example, main bearing, gearbox bearings, gears)&lt;/li&gt;
+&lt;li&gt;dimensional (for example, wear, free movement, play, backlash)&lt;/li&gt;
+&lt;li&gt;visual (for example, leakage, overheating, loose / missing / fractured bolts, corrosion, dents, stress raisers)&lt;/li&gt;
+&lt;li&gt;bolt tension (for example, re-torquing)&lt;/li&gt;
+&lt;li&gt;grease and oil sample analyses 润滑脂和油样分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;IEC 61400-13&lt;/strong&gt;：load measurements&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据不确定性等级定义： （可以根据标准差和均值的比值进行定义）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878.png&#34;
+	width=&#34;939&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_6bfb9108b6809dc5.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_d8c280bd558a9d42.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416175253878&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;347&#34;
+		data-flex-basis=&#34;834px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;clause-6risk-management-process&#34;&gt;Clause 6：Risk management process
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027.png&#34;
+	width=&#34;928&#34;
+	height=&#34;784&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_4499561b3c6964e2.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_b61b30913889f302.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416210003027&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;284px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;风险评估至少应能够估算以下情况，并以适当的置信度限制：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;系统中所有组成构件的风险优先级的数值；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IEC 60812中定义的risk priority number (风险优先等级)：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967.png&#34;
+	width=&#34;1047&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_4547aa03ab916239.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_782d1adccf39e868.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416204848967&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;387&#34;
+		data-flex-basis=&#34;930px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;clause-7wind-farm-operation-maintenance-and-inspections&#34;&gt;Clause 7：Wind farm operation, maintenance and inspections
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主要构件定义 （参考原报告3.1.20）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791.png&#34;
+	width=&#34;786&#34;
+	height=&#34;1156&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_5a6766e5311f925b.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_6c2f1cf965fb0fbc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416210732791&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;67&#34;
+		data-flex-basis=&#34;163px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Principles of risk based inspection (RBI) (see &lt;strong&gt;API 581:2000&lt;/strong&gt;) or reliability -centred maintenance (RCM) (see &lt;strong&gt;IEC 60300-3-11:2009&lt;/strong&gt;) may be applied.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CMS（状态监测系统）可以用于触发或者替换常规的inspection；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Early life inspections (15 % to 25 % through operational life)&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;检测保修期结束前要求的损伤并执行修复；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作为风机整体状态的基准；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建议的检查计划包括：（全部项目请参考&lt;strong&gt;Annex C&lt;/strong&gt;）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501.png&#34;
+	width=&#34;973&#34;
+	height=&#34;972&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_e52c63679c90a64c.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_a8c9955e98ca2ea4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416212250501&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mid-life inspections (45 % to 55 % through operational life)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提供关于结构退化率的其他信息；&lt;/li&gt;
+&lt;li&gt;用于指导预防性维护措施；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h2 id=&#34;life-extension-preparation-inspections-70--to-80--through-operational-life&#34;&gt;&lt;strong&gt;Life extension preparation inspections (70 % to 80 % through operational life)&lt;/strong&gt;：
+&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>贝叶斯动态线性建模：系泊链疲劳寿命预测</title>
         <link>https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/</link>
         <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
@@ -151,27 +426,35 @@ $$
 &lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;计算每个月份的应力谱，下图为2006年4月的应力谱分布示意图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cstress_distribution.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution.png&#34;
+	width=&#34;1160&#34;
+	height=&#34;756&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_30ddbfd0843ab083.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_fa6e1bb5fdb2178a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;stress_distribution&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;考虑腐蚀情况为4时的S-N曲线，计算每天的疲劳损伤因子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cCorrosion_4_log_linear.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear.png&#34;
+	width=&#34;1302&#34;
+	height=&#34;774&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_ecdbf02c8eceda2d.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_cfbdb88b70be7968.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Corrosion_4_log_linear&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -193,14 +476,18 @@ $$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cDamage_index.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index.png&#34;
+	width=&#34;1109&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_38a18bcb6c96f4fa.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_a922fd03ee171dd4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Damage_index&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -303,9 +590,9 @@ $$
 &lt;ul&gt;
 &lt;li&gt;举例来说
 &lt;ul&gt;
-&lt;li&gt;如果有 $n_d$ （e.g. 7）种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ （e.g. 7）的向量；&lt;/li&gt;
-&lt;li&gt;如果有 $n_M$ （e.g. 3）种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ （e.g.3）的向量；&lt;/li&gt;
-&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M&lt;em&gt;n_M$（e.g. 3&lt;/em&gt;3）的矩阵，用于表示不同时间步过程中模型参数的变化；&lt;/li&gt;
+&lt;li&gt;如果有 $n_d$ 种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ 的向量；&lt;/li&gt;
+&lt;li&gt;如果有 $n_M$ 种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ 的向量；&lt;/li&gt;
+&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M*n_M$的矩阵，用于表示不同时间步过程中模型参数的变化；&lt;/li&gt;
 &lt;li&gt;$P(D_i|D_{R，i-1}，M_i)$是一个$n_D&lt;em&gt;n_D&lt;/em&gt;n_M$的三维矩阵；&lt;/li&gt;
 &lt;li&gt;当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$ ;&lt;/li&gt;
 &lt;li&gt;$P(D_{R,i}|D_{i}，R_i)$是一个 $n_D&lt;em&gt;n_D&lt;/em&gt;2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布；&lt;/li&gt;
@@ -334,16 +621,18 @@ $$
 &lt;h2 id=&#34;简单策略下的算法说明&#34;&gt;简单策略下的算法说明
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
+&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$​, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
 $$
   P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
   \times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
   $$&lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;公式（2）为公式（1）的详细表示（以7种损伤状态，3种模型参数为例），值得解释的是，这里公式中的✖并不是代表标准的矩阵乘法，而是表示概率的乘积运算；&lt;/p&gt;
 $$
   P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1})
   $$&lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;公式（3）是进行变量消去后的公式，能够很好地提高计算效率和减少内存资源，依次消去了$M_{i-1},R_{i-1},D_{i-1}$，最终消去了$D_{R,i-1}$​ 变量：&lt;/p&gt;
 $$
   P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
   \times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
@@ -367,14 +656,14 @@ $$
 &lt;li&gt;对每一个时间步$i$ :
 &lt;ul&gt;
 &lt;li&gt;从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$ ;&lt;/li&gt;
-&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$  ;*&lt;/li&gt;
 &lt;li&gt;根据决策规则$i_{D,i}$ 做出是否进行检测的决策；&lt;/li&gt;
 &lt;li&gt;从分布$P(I_{i}|D_i=d_i，I_{D,i}=i_{D,i})$ 中抽取检测结果$i_i$ ;&lt;/li&gt;
-&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ***** ;&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ;*&lt;/li&gt;
 &lt;li&gt;根据决策规则$r_i$ 做出是否进行修复的决策；&lt;/li&gt;
 &lt;li&gt;从分布$P(D_{R，i}|D_i=d_i，R_{i}=r_{i})$ 中抽取进行修复后的结构损伤状态$d_{R,i}$ ;&lt;/li&gt;
 &lt;li&gt;从分布$P(D_{i+1}|D_{R,i}=d_i，M_{i+1}=m_{0})$ 中抽取下一步损伤状态$d_{i+1}$ ;&lt;/li&gt;
-&lt;li&gt;使用退化和修复suan&amp;rsquo;f更新$P(D_{i+1},M_{i+1})$ ***** ;&lt;/li&gt;
+&lt;li&gt;根据退化和修复算法更新$P(D_{i+1},M_{i+1})$  ; *&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

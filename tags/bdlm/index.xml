@@ -151,27 +151,35 @@ $$
 &lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;计算每个月份的应力谱，下图为2006年4月的应力谱分布示意图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cstress_distribution.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution.png&#34;
+	width=&#34;1160&#34;
+	height=&#34;756&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_30ddbfd0843ab083.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_fa6e1bb5fdb2178a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;stress_distribution&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;368px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;考虑腐蚀情况为4时的S-N曲线，计算每天的疲劳损伤因子：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cCorrosion_4_log_linear.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear.png&#34;
+	width=&#34;1302&#34;
+	height=&#34;774&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_ecdbf02c8eceda2d.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_cfbdb88b70be7968.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Corrosion_4_log_linear&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -193,14 +201,18 @@ $$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;C:%5cOneDrive_whhong%5cOneDrive%5chugo_blog%5cwhhong%5ccontent%5cpost%5c20250327_%e7%b3%bb%e6%b3%8a%e9%93%be%e7%96%b2%e5%8a%b3%e9%a2%84%e6%b5%8bBDLM%5cDamage_index.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index.png&#34;
+	width=&#34;1109&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_38a18bcb6c96f4fa.png 480w, https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_a922fd03ee171dd4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Damage_index&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
