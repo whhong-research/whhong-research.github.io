@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="报告解读（3）：IEC61400-28风机全寿命报告解读">
+<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="报告解读（3）：IEC61400-28风机全寿命报告解读">
 <meta property='og:description' content="流程介绍 Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；) Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化） Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化） Step1: 获取历史数据和维护状态 表征站点的数据：风速和湍流尤为重要； 任何关于更换部件、维修历史和荷载历史的信息都非常重要； Annex B des cribes which information is important for assessing the loading history of components. Clause 5 gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information. Step2: Risk management process (风险管理过程) Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略） Clause 6 provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps. Step3: Operation, maintenance and inspection A maintenance and inspection scheme can be drawn up, as described in Clause 7 对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施； 根据检查信息来更新第二步中的风险排名并估计RUL； Step4: Condition monitoring (Clause 8) Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;Maintenance planning，判断能否延长结构寿命； 能够为风险评估提供更多的输入，进而进一步优化检测和运维方案； Step5: Health and safety review Step6: Analytical assessments of RUL 资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估； 第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的； 第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (Clause 10)； 分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容； Annex D中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算； ">
 <meta property='og:url' content='https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/'>
 <meta property='og:site_name' content='whhong的博客'>
@@ -273,11 +273,9 @@
     <li><a href="#流程介绍">流程介绍</a></li>
     <li><a href="#clause-5data-management-requirements-and-uncertainty">Clause 5：Data management, requirements and uncertainty</a></li>
     <li><a href="#clause-6risk-management-process">Clause 6：Risk management process</a></li>
-    <li><a href="#clause-7wind-farm-operation-maintenance-and-inspections">Clause 7：Wind farm operation, maintenance and inspections</a>
-      <ol>
-        <li><a href="#life-extension-preparation-inspections-70--to-80--through-operational-life"><strong>Life extension preparation inspections (70 % to 80 % through operational life)</strong>：</a></li>
-      </ol>
-    </li>
+    <li><a href="#clause-7wind-farm-operation-maintenance-and-inspections">Clause 7：Wind farm operation, maintenance and inspections</a></li>
+    <li><a href="#clause-8condition-and-structural-health-monitoring">Clause 8：Condition and structural health monitoring</a></li>
+    <li><a href="#clause-10analytical-assessment-of-turbine-lifetime">Clause 10：Analytical assessment of turbine lifetime</a></li>
   </ol>
 </nav>
         </div>
@@ -619,8 +617,103 @@
 </ul>
 </li>
 <li>
-<h2 id="life-extension-preparation-inspections-70--to-80--through-operational-life"><strong>Life extension preparation inspections (70 % to 80 % through operational life)</strong>：
-</h2></li>
+<p><strong>Life extension preparation inspections (70 % to 80 % through operational life)</strong>：</p>
+<ul>
+<li>构成了评估风机部件剩余使用寿命（RUL）的基础；</li>
+</ul>
+</li>
+</ul>
+<h1 id="clause-8condition-and-structural-health-monitoring">Clause 8：Condition and structural health monitoring
+</h1><p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330.png"
+	width="870"
+	height="987"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_dc77449688aac616.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_c02ecffed92f5052.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416213912330"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="88"
+		data-flex-basis="211px"
+	
+></p>
+<ul>
+<li>
+<p><strong>structural health monitoring</strong>： real time tracking of parameters correlated with the state of health of part of the primary structure.</p>
+<ul>
+<li>
+<p>在全生命周期期间，使用监测指标来检测结构健康状况的变化并预测失效过程；</p>
+</li>
+<li>
+<p>Table 4中的例子说明了数据、信息、建议和决策之间的关系；</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774.png"
+	width="982"
+	height="349"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_bceb1edf3637e7f2.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_1ae3a397ee6eb0f6.png 1024w"
+	loading="lazy"
+	
+		alt="Table 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="281"
+		data-flex-basis="675px"
+	
+></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Condition monitoring data requirements</strong>:</p>
+<p><img src="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454.png"
+	width="957"
+	height="1168"
+	srcset="/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_e89bfc561277e599.png 480w, /p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_dc380af26c5eedea.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250416214847454"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="81"
+		data-flex-basis="196px"
+	
+></p>
+</li>
+</ul>
+<h1 id="clause-10analytical-assessment-of-turbine-lifetime">Clause 10：Analytical assessment of turbine lifetime
+</h1><ul>
+<li>
+<p>相对评估：<strong>现场条件下的载荷</strong>与按照认证设计条件计算的载荷进行比较。这些载荷使用**气弹模型（aero-elastic model）**计算。通过获得的载荷比，可以使用适当的损伤模型（例如，利用简单的 S-N 曲线对等损伤载荷进行比较）推导出剩余使用寿命（RUL）。在这种方法中，通常不考虑设计裕度。只有在有适当的设计文档可用时，才可能考虑设计裕度。在这种情况下，需要特别注意设计文档的正确性和完整性，以及相对评估的准确性。由于其相对性质，这种方法比下面描述的绝对方法对模型误差的敏感性更低；</p>
+<ul>
+<li>使用气弹模型（可以通过载荷测量进行验证）</li>
+<li>根据设计条件和现场特定的风况条件计算相对剩余使用寿命（RUL）</li>
+<li>充分估计 RUL 的不确定性</li>
+<li>基于获得的 RUL、不确定性以及<strong>Clause 6</strong>所述的风险评估程序，制定检查、维护和监测策略</li>
+</ul>
+</li>
+<li>
+<p><strong>绝对评估</strong>：旨在确定组件的<strong>绝对损伤</strong>，从而估算其剩余使用寿命（RUL）。与相对评估相比，所采用的损伤模型更加复杂，因此<strong>需要更多关于风机或组件的相关数据和信息</strong>。由于使用的是<strong>绝对值</strong>而非相对值，这种方法对模型不准确性（或在载荷测量情况下，对测量不准确性）的敏感性更高，因此只有在对风机或组件的物理和几何特性以及风机控制和安全系统有准确了解的情况下才应采用这种方法；</p>
+<ul>
+<li>使用经过充分验证的气弹模型和组件模型，例如通过载荷测量进行验证</li>
+<li>基于现场特定的风况条件计算绝对剩余使用寿命（RUL）</li>
+<li>充分估计 RUL 的不确定性</li>
+<li>基于获得的 RUL、不确定性以及<strong>Clause 6</strong>所述的风险评估程序，制定检查、维护和监测策略</li>
+</ul>
+</li>
+<li>
+<p><strong>不确定性评估</strong>，至少应包括以下几个方面：</p>
+<ul>
+<li>环境数据（例如大气湍流，风速分布，波浪分布）</li>
+<li>气弹性模型（气动力计算模型）</li>
+<li>测量数据</li>
+<li>疲劳损伤模型（for example, the application of simplified damage equivalent loads, S-N curve parameters, theories of crack initiation, growth, and possible application of fracture mechanics）</li>
+</ul>
+</li>
+<li>
+<p>Relevant failure modes for structural or major components shall be defined in accordance with <strong>IEC 61400-1</strong>, for example, fatigue crack initiation of fibre or matrix in the spar caps of the blade structure.</p>
+</li>
 </ul>
 
 </section>

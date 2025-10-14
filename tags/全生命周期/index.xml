@@ -277,8 +277,103 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;h2 id=&#34;life-extension-preparation-inspections-70--to-80--through-operational-life&#34;&gt;&lt;strong&gt;Life extension preparation inspections (70 % to 80 % through operational life)&lt;/strong&gt;：
-&lt;/h2&gt;&lt;/li&gt;
+&lt;p&gt;&lt;strong&gt;Life extension preparation inspections (70 % to 80 % through operational life)&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构成了评估风机部件剩余使用寿命（RUL）的基础；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;clause-8condition-and-structural-health-monitoring&#34;&gt;Clause 8：Condition and structural health monitoring
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330.png&#34;
+	width=&#34;870&#34;
+	height=&#34;987&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_dc77449688aac616.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_c02ecffed92f5052.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416213912330&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;211px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;structural health monitoring&lt;/strong&gt;： real time tracking of parameters correlated with the state of health of part of the primary structure.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在全生命周期期间，使用监测指标来检测结构健康状况的变化并预测失效过程；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Table 4中的例子说明了数据、信息、建议和决策之间的关系；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774.png&#34;
+	width=&#34;982&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_bceb1edf3637e7f2.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_1ae3a397ee6eb0f6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Table 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;675px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Condition monitoring data requirements&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
+	width=&#34;957&#34;
+	height=&#34;1168&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_e89bfc561277e599.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_dc380af26c5eedea.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416214847454&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;196px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;clause-10analytical-assessment-of-turbine-lifetime&#34;&gt;Clause 10：Analytical assessment of turbine lifetime
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;相对评估：&lt;strong&gt;现场条件下的载荷&lt;/strong&gt;与按照认证设计条件计算的载荷进行比较。这些载荷使用**气弹模型（aero-elastic model）**计算。通过获得的载荷比，可以使用适当的损伤模型（例如，利用简单的 S-N 曲线对等损伤载荷进行比较）推导出剩余使用寿命（RUL）。在这种方法中，通常不考虑设计裕度。只有在有适当的设计文档可用时，才可能考虑设计裕度。在这种情况下，需要特别注意设计文档的正确性和完整性，以及相对评估的准确性。由于其相对性质，这种方法比下面描述的绝对方法对模型误差的敏感性更低；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用气弹模型（可以通过载荷测量进行验证）&lt;/li&gt;
+&lt;li&gt;根据设计条件和现场特定的风况条件计算相对剩余使用寿命（RUL）&lt;/li&gt;
+&lt;li&gt;充分估计 RUL 的不确定性&lt;/li&gt;
+&lt;li&gt;基于获得的 RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;绝对评估&lt;/strong&gt;：旨在确定组件的&lt;strong&gt;绝对损伤&lt;/strong&gt;，从而估算其剩余使用寿命（RUL）。与相对评估相比，所采用的损伤模型更加复杂，因此&lt;strong&gt;需要更多关于风机或组件的相关数据和信息&lt;/strong&gt;。由于使用的是&lt;strong&gt;绝对值&lt;/strong&gt;而非相对值，这种方法对模型不准确性（或在载荷测量情况下，对测量不准确性）的敏感性更高，因此只有在对风机或组件的物理和几何特性以及风机控制和安全系统有准确了解的情况下才应采用这种方法；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用经过充分验证的气弹模型和组件模型，例如通过载荷测量进行验证&lt;/li&gt;
+&lt;li&gt;基于现场特定的风况条件计算绝对剩余使用寿命（RUL）&lt;/li&gt;
+&lt;li&gt;充分估计 RUL 的不确定性&lt;/li&gt;
+&lt;li&gt;基于获得的 RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;不确定性评估&lt;/strong&gt;，至少应包括以下几个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;环境数据（例如大气湍流，风速分布，波浪分布）&lt;/li&gt;
+&lt;li&gt;气弹性模型（气动力计算模型）&lt;/li&gt;
+&lt;li&gt;测量数据&lt;/li&gt;
+&lt;li&gt;疲劳损伤模型（for example, the application of simplified damage equivalent loads, S-N curve parameters, theories of crack initiation, growth, and possible application of fracture mechanics）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relevant failure modes for structural or major components shall be defined in accordance with &lt;strong&gt;IEC 61400-1&lt;/strong&gt;, for example, fatigue crack initiation of fibre or matrix in the spar caps of the blade structure.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

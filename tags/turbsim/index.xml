@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>TurbSim on whhong的博客</title>
+        <link>https://whhong-research.github.io/tags/turbsim/</link>
+        <description>Recent content in TurbSim on whhong的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Tue, 20 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/turbsim/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>OpenFast仿真（2）：TurbSim和Inflow使用指南</title>
+        <link>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post OpenFast仿真（2）：TurbSim和Inflow使用指南" /&gt;&lt;h1 id=&#34;input参数&#34;&gt;Input参数
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;RandSeed1: 生成随机数，和RandSeed2联合使用；&lt;/li&gt;
+&lt;li&gt;RandSeed2: 指定随机数生成器，建议使用“&lt;strong&gt;RanLux&lt;/strong&gt;”；&lt;/li&gt;
+&lt;li&gt;WrAdFF：&amp;ldquo;True&amp;rdquo; or &amp;ldquo;False&amp;rdquo;，指定输出格式，该格式满足AeroDyn需求，为.bts文件；&lt;/li&gt;
+&lt;li&gt;TimeStep: 建议设定为0.05秒，满足多数仿真需求，该值决定了最大频率（0.05对应20Hz）&lt;/li&gt;
+&lt;li&gt;NumGrid_Z（NumGrid_Y）：必须是大于1的整数，NumGrid_Y为奇数的话意味着中心点落在塔筒中心线上；&lt;/li&gt;
+&lt;li&gt;Analysis Time:仿真时间长度，建议至少设置为600s；&lt;/li&gt;
+&lt;li&gt;Usable Time：设置为“All”，将不会添加一个计算所需的小数值（the grid width divided by the mean HH wind speed）&lt;/li&gt;
+&lt;li&gt;HubHt:轮毂高度，单位为m，用作网格位置的参考高度；&lt;/li&gt;
+&lt;li&gt;GridHeight：1/2的网格高度应该小于HubHt；&lt;/li&gt;
+&lt;li&gt;GridWidth：保证叶片转动在网格范围内；&lt;/li&gt;
+&lt;li&gt;IECstandard：1代表61400-1风机，2代表61400-2，3代表61400-3（海上风机）；&lt;/li&gt;
+&lt;li&gt;IECturbc：IEC规定中的湍流强度，A表示强度最大，默认值为B；&lt;/li&gt;
+&lt;li&gt;IEC_WindType：IEC湍流模型，NTM为正常湍流模型，ETM为极端湍流模型，NWM为极端风速模型；&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;openfast报错&#34;&gt;Openfast报错
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;叶片撞塔&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;初始变桨角没有设置好&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097.png&#34;
+	width=&#34;840&#34;
+	height=&#34;1194&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097_hu_57af791f05bac539.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097_hu_ad91baf7fdf556d4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250524152737097&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;70&#34;
+		data-flex-basis=&#34;168px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -7,7 +7,123 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 02 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>风机叶片物理模型文献整理</title>
+        <link>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/</link>
+        <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/image-20251002120026774.png" alt="Featured image of post 风机叶片物理模型文献整理" /&gt;&lt;h1 id=&#34;风机叶片物理模型文献整理&#34;&gt;风机叶片物理模型文献整理
+&lt;/h1&gt;&lt;h2 id=&#34;trailing-edge-bondlines&#34;&gt;Trailing edge bondlines
+&lt;/h2&gt;&lt;h3 id=&#34;prediction-of-crack-growth-at-trailing-edge-bondlines-of-a-wind-turbine-rotor-blade-for-the-assessment-of-remaining-service-life&#34;&gt;Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;background&#34;&gt;Background
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/image-20251002120026774.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;后缘受力示意图和后缘裂缝示意图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;后缘存在至少以下两种损伤：
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Tunnelling cracks (cracking in the adhesive along its width direction)&amp;quot;：沿叶片宽度方向；”While tunnelling cracks alone do not cause failure, in some cases can lead to the formation of interfacial cracks which can eventually fail by buckling of the blade“ 该种损伤不会导致叶片失效，但可能引发interfacial cracks&lt;/li&gt;
+&lt;li&gt;”interfacial debonding, i.e., cracking along the interface between laminate and adhesive layer (in the blade length direction“ (沿叶片长度方向)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;后缘开裂可能形成的原因：”The damage formed was due to a combination of several factors such as extreme loading conditions, complex geometries and imperfections coming from manufacturing processes.“ 极端负载，复杂外形，制造缺陷&lt;/li&gt;
+&lt;li&gt;”Haselbach et al. [5] tested a 34 m long blade by four-point loads and found that the local buckling of the trailing edge led to the debonding of the joint. It was concluded that &lt;strong&gt;the edgewise loads&lt;/strong&gt; are the primary loads driving the failure of the trailing edge.“ ：&lt;strong&gt;沿边荷载导致后缘开裂&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;research-gaps&#34;&gt;Research Gaps
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;However, the method did not considered the edgewise loading that could lead to local buckling of the trailing edge laminate which can lead to debonding.&amp;rdquo; &lt;strong&gt;未考虑沿边荷载作用&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;”However, boundary conditions considered in the numerical model were based on subcomponent testing and not the full-scale blade.“ &lt;strong&gt;基于子部件测试而非全尺寸叶片&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;research-purposes&#34;&gt;Research Purposes
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;“&lt;strong&gt;The purpose of this study&lt;/strong&gt; is to demonstrate a methodology for predicting damage growth at trailing edge joint of the wind turbine rotor blade.” ： 预测后缘裂缝增长
+&lt;ul&gt;
+&lt;li&gt;考虑作用在叶片上的应力/应变&lt;/li&gt;
+&lt;li&gt;边界条件&lt;/li&gt;
+&lt;li&gt;铺层厚度和刚度&lt;/li&gt;
+&lt;li&gt;初始脱粘长度造成的损伤状态（”the current damage state captured by an initial debond length parameter.“）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用一个一维分析模型（输入：铺层厚度，初始裂缝长度，叶片的重量分布，弹性模量，复合材料粘结层的断裂力学属性）进行裂缝预测，并使用3D有限元模型进行验证；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;analytical-modelling&#34;&gt;Analytical Modelling
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;叶片——悬臂梁：根部固定，叶尖自由端
+&lt;ul&gt;
+&lt;li&gt;因此叶片自身重力将导致edgewise stress&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Assumption:
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;we assume a simplified cross-sectional area of the blade model wherein, the analysis of only load-carrying laminates located at spar caps (pressure side and suction side), leading and trailing edges, are taken into account.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>OpenFast仿真（2）：TurbSim和Inflow使用指南</title>
+        <link>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post OpenFast仿真（2）：TurbSim和Inflow使用指南" /&gt;&lt;h1 id=&#34;input参数&#34;&gt;Input参数
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;RandSeed1: 生成随机数，和RandSeed2联合使用；&lt;/li&gt;
+&lt;li&gt;RandSeed2: 指定随机数生成器，建议使用“&lt;strong&gt;RanLux&lt;/strong&gt;”；&lt;/li&gt;
+&lt;li&gt;WrAdFF：&amp;ldquo;True&amp;rdquo; or &amp;ldquo;False&amp;rdquo;，指定输出格式，该格式满足AeroDyn需求，为.bts文件；&lt;/li&gt;
+&lt;li&gt;TimeStep: 建议设定为0.05秒，满足多数仿真需求，该值决定了最大频率（0.05对应20Hz）&lt;/li&gt;
+&lt;li&gt;NumGrid_Z（NumGrid_Y）：必须是大于1的整数，NumGrid_Y为奇数的话意味着中心点落在塔筒中心线上；&lt;/li&gt;
+&lt;li&gt;Analysis Time:仿真时间长度，建议至少设置为600s；&lt;/li&gt;
+&lt;li&gt;Usable Time：设置为“All”，将不会添加一个计算所需的小数值（the grid width divided by the mean HH wind speed）&lt;/li&gt;
+&lt;li&gt;HubHt:轮毂高度，单位为m，用作网格位置的参考高度；&lt;/li&gt;
+&lt;li&gt;GridHeight：1/2的网格高度应该小于HubHt；&lt;/li&gt;
+&lt;li&gt;GridWidth：保证叶片转动在网格范围内；&lt;/li&gt;
+&lt;li&gt;IECstandard：1代表61400-1风机，2代表61400-2，3代表61400-3（海上风机）；&lt;/li&gt;
+&lt;li&gt;IECturbc：IEC规定中的湍流强度，A表示强度最大，默认值为B；&lt;/li&gt;
+&lt;li&gt;IEC_WindType：IEC湍流模型，NTM为正常湍流模型，ETM为极端湍流模型，NWM为极端风速模型；&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;openfast报错&#34;&gt;Openfast报错
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;叶片撞塔&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;初始变桨角没有设置好&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097.png&#34;
+	width=&#34;840&#34;
+	height=&#34;1194&#34;
+	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097_hu_57af791f05bac539.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097_hu_ad91baf7fdf556d4.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250524152737097&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;70&#34;
+		data-flex-basis=&#34;168px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>报告解读（3）：IEC61400-28风机全寿命报告解读</title>
         <link>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/</link>
         <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
@@ -277,8 +393,103 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;h2 id=&#34;life-extension-preparation-inspections-70--to-80--through-operational-life&#34;&gt;&lt;strong&gt;Life extension preparation inspections (70 % to 80 % through operational life)&lt;/strong&gt;：
-&lt;/h2&gt;&lt;/li&gt;
+&lt;p&gt;&lt;strong&gt;Life extension preparation inspections (70 % to 80 % through operational life)&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构成了评估风机部件剩余使用寿命（RUL）的基础；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;clause-8condition-and-structural-health-monitoring&#34;&gt;Clause 8：Condition and structural health monitoring
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330.png&#34;
+	width=&#34;870&#34;
+	height=&#34;987&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_dc77449688aac616.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_c02ecffed92f5052.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416213912330&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;211px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;structural health monitoring&lt;/strong&gt;： real time tracking of parameters correlated with the state of health of part of the primary structure.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在全生命周期期间，使用监测指标来检测结构健康状况的变化并预测失效过程；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Table 4中的例子说明了数据、信息、建议和决策之间的关系；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774.png&#34;
+	width=&#34;982&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_bceb1edf3637e7f2.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_1ae3a397ee6eb0f6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Table 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;675px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Condition monitoring data requirements&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
+	width=&#34;957&#34;
+	height=&#34;1168&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_e89bfc561277e599.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_dc380af26c5eedea.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250416214847454&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;196px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;clause-10analytical-assessment-of-turbine-lifetime&#34;&gt;Clause 10：Analytical assessment of turbine lifetime
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;相对评估：&lt;strong&gt;现场条件下的载荷&lt;/strong&gt;与按照认证设计条件计算的载荷进行比较。这些载荷使用**气弹模型（aero-elastic model）**计算。通过获得的载荷比，可以使用适当的损伤模型（例如，利用简单的 S-N 曲线对等损伤载荷进行比较）推导出剩余使用寿命（RUL）。在这种方法中，通常不考虑设计裕度。只有在有适当的设计文档可用时，才可能考虑设计裕度。在这种情况下，需要特别注意设计文档的正确性和完整性，以及相对评估的准确性。由于其相对性质，这种方法比下面描述的绝对方法对模型误差的敏感性更低；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用气弹模型（可以通过载荷测量进行验证）&lt;/li&gt;
+&lt;li&gt;根据设计条件和现场特定的风况条件计算相对剩余使用寿命（RUL）&lt;/li&gt;
+&lt;li&gt;充分估计 RUL 的不确定性&lt;/li&gt;
+&lt;li&gt;基于获得的 RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;绝对评估&lt;/strong&gt;：旨在确定组件的&lt;strong&gt;绝对损伤&lt;/strong&gt;，从而估算其剩余使用寿命（RUL）。与相对评估相比，所采用的损伤模型更加复杂，因此&lt;strong&gt;需要更多关于风机或组件的相关数据和信息&lt;/strong&gt;。由于使用的是&lt;strong&gt;绝对值&lt;/strong&gt;而非相对值，这种方法对模型不准确性（或在载荷测量情况下，对测量不准确性）的敏感性更高，因此只有在对风机或组件的物理和几何特性以及风机控制和安全系统有准确了解的情况下才应采用这种方法；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用经过充分验证的气弹模型和组件模型，例如通过载荷测量进行验证&lt;/li&gt;
+&lt;li&gt;基于现场特定的风况条件计算绝对剩余使用寿命（RUL）&lt;/li&gt;
+&lt;li&gt;充分估计 RUL 的不确定性&lt;/li&gt;
+&lt;li&gt;基于获得的 RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;不确定性评估&lt;/strong&gt;，至少应包括以下几个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;环境数据（例如大气湍流，风速分布，波浪分布）&lt;/li&gt;
+&lt;li&gt;气弹性模型（气动力计算模型）&lt;/li&gt;
+&lt;li&gt;测量数据&lt;/li&gt;
+&lt;li&gt;疲劳损伤模型（for example, the application of simplified damage equivalent loads, S-N curve parameters, theories of crack initiation, growth, and possible application of fracture mechanics）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relevant failure modes for structural or major components shall be defined in accordance with &lt;strong&gt;IEC 61400-1&lt;/strong&gt;, for example, fatigue crack initiation of fibre or matrix in the spar caps of the blade structure.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
