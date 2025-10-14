@@ -10,10 +10,10 @@
 <meta property='og:description' content="风机叶片物理模型文献整理 Trailing edge bondlines Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037 Background 后缘存在至少以下两种损伤： &ldquo;Tunnelling cracks (cracking in the adhesive along its width direction)&quot;：沿叶片宽度方向；”While tunnelling cracks alone do not cause failure, in some cases can lead to the formation of interfacial cracks which can eventually fail by buckling of the blade“ 该种损伤不会导致叶片失效，但可能引发interfacial cracks ”interfacial debonding, i.e., cracking along the interface between laminate and adhesive layer (in the blade length direction“ (沿叶片长度方向) 后缘开裂可能形成的原因：”The damage formed was due to a combination of several factors such as extreme loading conditions, complex geometries and imperfections coming from manufacturing processes.“ 极端负载，复杂外形，制造缺陷 ”Haselbach et al. [5] tested a 34 m long blade by four-point loads and found that the local buckling of the trailing edge led to the debonding of the joint. It was concluded that the edgewise loads are the primary loads driving the failure of the trailing edge.“ ：沿边荷载导致后缘开裂 Research Gaps &ldquo;However, the method did not considered the edgewise loading that could lead to local buckling of the trailing edge laminate which can lead to debonding.&rdquo; 未考虑沿边荷载作用 ”However, boundary conditions considered in the numerical model were based on subcomponent testing and not the full-scale blade.“ 基于子部件测试而非全尺寸叶片 Research Purposes “The purpose of this study is to demonstrate a methodology for predicting damage growth at trailing edge joint of the wind turbine rotor blade.” ： 预测后缘裂缝增长 考虑作用在叶片上的应力/应变 边界条件 铺层厚度和刚度 初始脱粘长度造成的损伤状态（”the current damage state captured by an initial debond length parameter.“） 使用一个一维分析模型（输入：铺层厚度，初始裂缝长度，叶片的重量分布，弹性模量，复合材料粘结层的断裂力学属性）进行裂缝预测，并使用3D有限元模型进行验证； Analytical Modelling 叶片——悬臂梁：根部固定，叶尖自由端 因此叶片自身重力将导致edgewise stress Assumption: &ldquo;we assume a simplified cross-sectional area of the blade model wherein, the analysis of only load-carrying laminates located at spar caps (pressure side and suction side), leading and trailing edges, are taken into account.&rdquo; ">
 <meta property='og:url' content='https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/'>
 <meta property='og:site_name' content='whhong的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='有限元' /><meta property='article:tag' content='物理模型' /><meta property='article:tag' content='后缘开裂' /><meta property='article:published_time' content='2025-10-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/image-20251002120026774.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='有限元' /><meta property='article:tag' content='物理模型' /><meta property='article:tag' content='后缘开裂' /><meta property='article:published_time' content='2025-10-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/FIGURE1.png' />
 <meta name="twitter:title" content="风机叶片物理模型文献整理">
 <meta name="twitter:description" content="风机叶片物理模型文献整理 Trailing edge bondlines Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037 Background 后缘存在至少以下两种损伤： &ldquo;Tunnelling cracks (cracking in the adhesive along its width direction)&quot;：沿叶片宽度方向；”While tunnelling cracks alone do not cause failure, in some cases can lead to the formation of interfacial cracks which can eventually fail by buckling of the blade“ 该种损伤不会导致叶片失效，但可能引发interfacial cracks ”interfacial debonding, i.e., cracking along the interface between laminate and adhesive layer (in the blade length direction“ (沿叶片长度方向) 后缘开裂可能形成的原因：”The damage formed was due to a combination of several factors such as extreme loading conditions, complex geometries and imperfections coming from manufacturing processes.“ 极端负载，复杂外形，制造缺陷 ”Haselbach et al. [5] tested a 34 m long blade by four-point loads and found that the local buckling of the trailing edge led to the debonding of the joint. It was concluded that the edgewise loads are the primary loads driving the failure of the trailing edge.“ ：沿边荷载导致后缘开裂 Research Gaps &ldquo;However, the method did not considered the edgewise loading that could lead to local buckling of the trailing edge laminate which can lead to debonding.&rdquo; 未考虑沿边荷载作用 ”However, boundary conditions considered in the numerical model were based on subcomponent testing and not the full-scale blade.“ 基于子部件测试而非全尺寸叶片 Research Purposes “The purpose of this study is to demonstrate a methodology for predicting damage growth at trailing edge joint of the wind turbine rotor blade.” ： 预测后缘裂缝增长 考虑作用在叶片上的应力/应变 边界条件 铺层厚度和刚度 初始脱粘长度造成的损伤状态（”the current damage state captured by an initial debond length parameter.“） 使用一个一维分析模型（输入：铺层厚度，初始裂缝长度，叶片的重量分布，弹性模量，复合材料粘结层的断裂力学属性）进行裂缝预测，并使用3D有限元模型进行验证； Analytical Modelling 叶片——悬臂梁：根部固定，叶尖自由端 因此叶片自身重力将导致edgewise stress Assumption: &ldquo;we assume a simplified cross-sectional area of the blade model wherein, the analysis of only load-carrying laminates located at spar caps (pressure side and suction side), leading and trailing edges, are taken into account.&rdquo; "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://whhong-research.github.io/image-20251002120026774.png' />
+    <meta name="twitter:image" content='https://whhong-research.github.io/FIGURE1.png' />
     </head>
     <body class="
     article-page
@@ -302,7 +302,7 @@
         <div class="article-image">
             <a href="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/">
                 
-                    <img src="/image-20251002120026774.png" loading="lazy" alt="Featured image of post 风机叶片物理模型文献整理" />
+                    <img src="/FIGURE1.png" loading="lazy" alt="Featured image of post 风机叶片物理模型文献整理" />
                 
             </a>
         </div>
@@ -371,13 +371,13 @@
     >https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037</a></li>
 </ul>
 <h4 id="background">Background
-</h4><p><img src="/image-20251002120026774.png"
+</h4><p><img src="/FIGURE1.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="后缘受力示意图和后缘裂缝示意图"
+		alt="image1"
 	
 	
 ></p>
