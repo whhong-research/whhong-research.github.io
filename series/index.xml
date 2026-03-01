@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Series on whhong的博客</title>
+        <link>https://whhong-research.github.io/series/</link>
+        <description>Recent content in Series on whhong的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>风机仿真与建模</title>
+        <link>https://whhong-research.github.io/series/%E9%A3%8E%E6%9C%BA%E4%BB%BF%E7%9C%9F%E4%B8%8E%E5%BB%BA%E6%A8%A1/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/series/%E9%A3%8E%E6%9C%BA%E4%BB%BF%E7%9C%9F%E4%B8%8E%E5%BB%BA%E6%A8%A1/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>运维决策与风险管理</title>
+        <link>https://whhong-research.github.io/series/%E8%BF%90%E7%BB%B4%E5%86%B3%E7%AD%96%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/series/%E8%BF%90%E7%BB%B4%E5%86%B3%E7%AD%96%E4%B8%8E%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>报告解读与标准规范</title>
+        <link>https://whhong-research.github.io/series/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB%E4%B8%8E%E6%A0%87%E5%87%86%E8%A7%84%E8%8C%83/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/series/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB%E4%B8%8E%E6%A0%87%E5%87%86%E8%A7%84%E8%8C%83/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>图像处理与AI</title>
+        <link>https://whhong-research.github.io/series/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8Eai/</link>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/series/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E4%B8%8Eai/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

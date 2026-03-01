@@ -8,27 +8,59 @@
         <language>zh-cn</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Thu, 02 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/categories/%E5%8F%B6%E7%89%87%E4%BB%BF%E7%9C%9F/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>风机叶片物理模型文献整理</title>
-        <link>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/</link>
+        <title>叶片多尺度物理建模：从微观损伤到宏观失效</title>
+        <link>https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/</link>
         <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B%E6%96%87%E7%8C%AE%E6%95%B4%E7%90%86/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/FIGURE1.png" alt="Featured image of post 风机叶片物理模型文献整理" /&gt;&lt;h1 id=&#34;风机叶片物理模型文献整理&#34;&gt;风机叶片物理模型文献整理
-&lt;/h1&gt;&lt;h2 id=&#34;trailing-edge-bondlines&#34;&gt;Trailing edge bondlines
-&lt;/h2&gt;&lt;h3 id=&#34;prediction-of-crack-growth-at-trailing-edge-bondlines-of-a-wind-turbine-rotor-blade-for-the-assessment-of-remaining-service-life&#34;&gt;Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://iopscience.iop.org/article/10.1088/1757-899X/1293/1/012037&lt;/a&gt;&lt;/li&gt;
+        <guid>https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png" alt="Featured image of post 叶片多尺度物理建模：从微观损伤到宏观失效" /&gt;&lt;h1 id=&#34;风机叶片物理模型文献整理&#34;&gt;风机叶片物理模型文献整理
+&lt;/h1&gt;&lt;p&gt;参考文献：&lt;/p&gt;
+&lt;p&gt;Sørensen, B. F., Castro, O., Chen, X., &amp;amp; Branner, K. (2025). Fatigue of composites for wind turbines blades. In &lt;em&gt;Fatigue in Composites&lt;/em&gt; (pp. 555–596). Elsevier. &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/B978-0-12-821288-2.00013-8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1016/B978-0-12-821288-2.00013-8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Bangaru, A. K., Miao, X.-Y., Sørensen, B. F., &amp;amp; Chen, X. (2023). Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life: 43rd Risø International Symposium on Materials Science. &lt;em&gt;43rd Risoe International Symposium on Materials Science&lt;/em&gt;, &lt;em&gt;1293&lt;/em&gt;. &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1088/1757-899X/1293/1/012037&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1088/1757-899X/1293/1/012037&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Miao, X. Y., &amp;amp; Chen, X. (2023). Structural transverse cracking mechanisms of trailing edge regions in composite wind turbine blades. &lt;em&gt;Composite Structures&lt;/em&gt;, &lt;em&gt;308&lt;/em&gt;(116680). &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.compstruct.2023.116680&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1016/j.compstruct.2023.116680&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;multiscale-approach&#34;&gt;Multiscale approach
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;为什么需要使用多尺度模型来进行模拟&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;损伤区域需要使用较细的网格，例如对于后缘的粘合层脱粘，需要网格尺寸在毫米级别来捕获裂缝的简短应力场；而全尺度的叶片模型长度在100m尺度；（&lt;strong&gt;从计算效率，计算精度角度出发&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;从建模的最终目的出发&lt;/strong&gt;：如果只需要计算结构频率和计算挠度，一维梁模型就可以；而想要模拟损伤发展过程，子结构模型的精度仍然不足以进行捕获，而是需要从microscale尺度进行理解；“In general, we think that damage interaction and scale effects in fracture of composite structures are so complicated that they can only be understood on the microscale, i.e., by microscale experiments and micromechanical modelling”&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;background&#34;&gt;Background
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/FIGURE1.png&#34;
-	
-	
-	
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A top-down approach to fatigue of composite structures. (由上至下，使用全局模型的位移作为子结构模型的边界条件来实现多尺度建模)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“The displacement of a (global) full-blade model with a relative coarse mesh could be used as input (boundary conditions) for a substructure model, i.e. a more refined model of a smaller part of the blade (e.g. an FE model with much smaller element sizes, where the damage evolution prediction is made) of a smaller blade part, analogous to the control of boundary conditions for substructure testing.”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;some parts (some of the elements) in the global FE model with damage should have their properties (constitutive laws) changed so that their behaviour replicates that of the damage simulated in the submodel&amp;rdquo; (全局模型中存在损坏的区域应该改变其属性/本构定律来和子结构模型保持一致)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&amp;ldquo;a ‘consistent’ approach should refer to energy, such that the work of an applied force becomes the same for the global model as for the substructure model.&amp;rdquo;
+(跨尺度模型保持一致的方法应该涉及能量，使得全局模型和子结构模型所施加的力做的功保持一致)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;“the output from a finer length scale model should be formulated in a sufficiently simple form such that it can be applied in a model at the coarser length scale.” 微观模型的输出应当以简单的形式表达，以便应用于大尺度模型中；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;trailing-edge-bondlines&#34;&gt;Trailing edge bondlines
+&lt;/h2&gt;&lt;h4 id=&#34;background&#34;&gt;Background
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png&#34;
+	width=&#34;910&#34;
+	height=&#34;576&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_b7a3328e15fa2282.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_638ed3643fcdf4e0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image1&#34;
+		alt=&#34;20251002&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;379px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -60,26 +92,101 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;analytical-modelling&#34;&gt;Analytical Modelling
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;叶片——悬臂梁：根部固定，叶尖自由端
+&lt;li&gt;
+&lt;p&gt;叶片——悬臂梁：根部固定，叶尖自由端&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;因此叶片自身重力将导致edgewise stress&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Assumption:
+&lt;li&gt;
+&lt;p&gt;Assumption:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&amp;ldquo;we assume a simplified cross-sectional area of the blade model wherein, the analysis of only load-carrying laminates located at spar caps (pressure side and suction side), leading and trailing edges, are taken into account.&amp;rdquo;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;考虑重力和局部屈曲&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910.png&#34;
+	width=&#34;429&#34;
+	height=&#34;104&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_a86a433664790a4e.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_b37898d8a337511c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;重力引起的edgewise stress表达式&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;412&#34;
+		data-flex-basis=&#34;990px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285.png&#34;
+	width=&#34;865&#34;
+	height=&#34;730&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_af610227c79f32c4.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_608407a6b75f0e57.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;局部屈曲示意图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;284px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208.png&#34;
+	width=&#34;941&#34;
+	height=&#34;300&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_a995a6ddfac52531.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_13c07ff6f7659673.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;局部屈曲导致的轴向力变化以及弯矩变化&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;313&#34;
+		data-flex-basis=&#34;752px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585.png&#34;
+	width=&#34;930&#34;
+	height=&#34;186&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_68365090760c83e2.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_6deb70eeac99877d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;计算energe release rate&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;500&#34;
+		data-flex-basis=&#34;1200px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;fe-modelling&#34;&gt;FE Modelling
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Abaqus， C3D8R，solid element&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A 5m prismatic beam model&lt;/strong&gt; from a 17m long Vindeby blade&lt;/li&gt;
+&lt;li&gt;mesh size:
+&lt;ul&gt;
+&lt;li&gt;25 * 22 * 6 mm for spar cap&lt;/li&gt;
+&lt;li&gt;25 * 11 * 14 mm for sandwich panels&lt;/li&gt;
+&lt;li&gt;25 * 4 * 0.8 mm for trailing edge debondlines&lt;/li&gt;
+&lt;li&gt;Mesh size is chosen based on mesh sensitivitu analysis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The virtual crack closure technique (VCCT)&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
         <item>
-        <title>OpenFast仿真（2）：TurbSim和Inflow使用指南</title>
-        <link>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+        <title>TurbSim风场建模与OpenFast入流设置指南</title>
+        <link>https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</link>
         <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post OpenFast仿真（2）：TurbSim和Inflow使用指南" /&gt;&lt;h1 id=&#34;input参数&#34;&gt;Input参数
+        <guid>https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post TurbSim风场建模与OpenFast入流设置指南" /&gt;&lt;h1 id=&#34;input参数&#34;&gt;Input参数
 &lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;RandSeed1: 生成随机数，和RandSeed2联合使用；&lt;/li&gt;
 &lt;li&gt;RandSeed2: 指定随机数生成器，建议使用“&lt;strong&gt;RanLux&lt;/strong&gt;”；&lt;/li&gt;
@@ -103,10 +210,10 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;初始变桨角没有设置好&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097.png&#34;
 	width=&#34;840&#34;
 	height=&#34;1194&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097_hu_57af791f05bac539.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F2turbsim%E5%92%8Cinflow%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250524152737097_hu_ad91baf7fdf556d4.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097_hu_840df227b5d51aef.png 480w, https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097_hu_7e7448cca983ff2f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250524152737097&#34;
@@ -124,98 +231,120 @@
 </description>
         </item>
         <item>
-        <title>OpenFast仿真（1）：AeroDyn使用指南</title>
-        <link>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+        <title>风机叶片气动弹性建模：AeroDyn模块参数化方法</title>
+        <link>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/</link>
         <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg" alt="Featured image of post OpenFast仿真（1）：AeroDyn使用指南" /&gt;&lt;h1 id=&#34;参考文献&#34;&gt;参考文献
+        <guid>https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001.jpg" alt="Featured image of post 风机叶片气动弹性建模：AeroDyn模块参数化方法" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;系列导读&lt;/strong&gt;：本系列文章将系统介绍 OpenFAST 风机仿真软件的使用方法，涵盖 AeroDyn 空气动力学模块、ElastoDyn 结构动力学模块、控制系统集成等内容。本文为系列开篇，详细介绍 AeroDyn 空气动力学模块的配置与使用方法。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;先导知识&lt;/strong&gt;：致动线理论（Actuator Line Theory）是风力机空气动力学建模的重要方法，将叶片简化为沿展向分布的线源，通过计算叶片元素上的气动力来模拟叶片与流场的相互作用。该方法在保持计算效率的同时，能够较好地捕捉叶片的气动特性。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;参考文献&#34;&gt;参考文献
 &lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User’s Guide and Theory Manual. Renewable Energy.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Openfast帮助文档&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://openfast.readthedocs.io/en/main/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;li&gt;Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User&amp;rsquo;s Guide and Theory Manual. Renewable Energy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OpenFAST官方文档&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://openfast.readthedocs.io/en/main/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://openfast.readthedocs.io/en/main/index.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;aerodyn&#34;&gt;AeroDyn
-&lt;/h1&gt;&lt;h2 id=&#34;简介&#34;&gt;简介
+&lt;h1 id=&#34;aerodyn模块详解&#34;&gt;AeroDyn模块详解
+&lt;/h1&gt;&lt;h2 id=&#34;模块简介&#34;&gt;模块简介
 &lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Aerodyn是一个时域的风机空气动力学模块，可以作为代码单独驱动以计算未跟openfast耦合的风机的空气动力响应；&lt;/li&gt;
-&lt;li&gt;Aerodyn用于计算叶片和塔筒的空气动力荷载，计算原理遵循&lt;strong&gt;致动线理论&lt;/strong&gt;（the principles of actuator lines）；&lt;/li&gt;
-&lt;li&gt;Aerodyn由6个子模型组成，分别是：
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AeroDyn&lt;/strong&gt; 是一个时域空气动力学计算模块，既可作为独立程序运行以计算未与 OpenFAST 耦合的风机气动响应，也可集成到 OpenFAST 框架中实现多物理场耦合仿真；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;该模块主要用于计算叶片和塔筒的空气动力载荷，其核心理论基础为&lt;strong&gt;致动线理论&lt;/strong&gt;（Actuator Line Theory）；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AeroDyn 由六个子模型构成，分别负责：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;rotor wake/induction&lt;/li&gt;
-&lt;li&gt;blade airfoil aerodynamics&lt;/li&gt;
-&lt;li&gt;tower influence on the fluid local to the blade nodes&lt;/li&gt;
-&lt;li&gt;tower and nacelle drag&lt;/li&gt;
-&lt;li&gt;aeroacoustics&lt;/li&gt;
-&lt;li&gt;buoyancy on the blade, hub, nacelle and tower&lt;/li&gt;
+&lt;li&gt;转子尾流与诱导速度计算（rotor wake/induction）&lt;/li&gt;
+&lt;li&gt;叶片翼型空气动力学（blade airfoil aerodynamics）&lt;/li&gt;
+&lt;li&gt;塔筒对叶片局部流场的干扰效应（tower influence on the fluid local to the blade nodes）&lt;/li&gt;
+&lt;li&gt;塔筒与机舱的气动阻力（tower and nacelle drag）&lt;/li&gt;
+&lt;li&gt;气动噪声计算（aeroacoustics）&lt;/li&gt;
+&lt;li&gt;叶片、轮毂、机舱和塔筒的浮力效应（buoyancy）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;输入文件&#34;&gt;输入文件
+&lt;h2 id=&#34;输入文件配置&#34;&gt;输入文件配置
 &lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;基本单位：（kg, m, s, N）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基本单位制&lt;/strong&gt;：千克-米-秒-牛顿（kg, m, s, N）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;general-options&#34;&gt;General options
+&lt;h3 id=&#34;通用选项设置&#34;&gt;通用选项设置
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;DTAero&lt;/strong&gt;: 空气动力学的计算步骤，建议最少设置200步；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DTAero&lt;/strong&gt;: 空气动力学计算时间步长，建议至少设置200个步长以保证计算稳定性；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Wake_mod&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Wake_mod&lt;/strong&gt;（尾流模型选择）:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;设置为0说明不考虑 &lt;strong&gt;induced velocities&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;设置为1将基于BEM理论考虑这些效果；&lt;/li&gt;
-&lt;li&gt;设置为3将使用 &lt;strong&gt;free vortex wake model&lt;/strong&gt;，注意在线性分析阶段不能设置为3；&lt;/li&gt;
+&lt;li&gt;设置为 0：不考虑诱导速度效应；&lt;/li&gt;
+&lt;li&gt;设置为 1：基于叶素-动量理论（BEM）计算诱导速度；&lt;/li&gt;
+&lt;li&gt;设置为 3：采用&lt;strong&gt;自由涡尾流模型&lt;/strong&gt;（free vortex wake model），注意在线性分析阶段不能设置为 3；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Twrpotent&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Twrpotent&lt;/strong&gt;（塔筒势流效应）:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;设置为0说明不考虑塔筒对叶片局部流场的潜在影响；&lt;/li&gt;
-&lt;li&gt;设置为1说明适用&lt;strong&gt;standard potential-flow model&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;设置为2说明还考虑了&lt;strong&gt;Bak修正&lt;/strong&gt;；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;建模参数建议&#34;&gt;建模参数建议
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;NumVBlNds&lt;/strong&gt;:
-&lt;ul&gt;
-&lt;li&gt;建议设置在10-20之间，用于平衡计算精度和计算成本&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;模拟&lt;strong&gt;运行中&lt;/strong&gt;的风机叶片时：
-&lt;ul&gt;
-&lt;li&gt;建议包括动态BEM模型（&lt;strong&gt;Wake_Mod = 1&lt;/strong&gt;）和UA（&lt;strong&gt;AFAeroMod = 2&lt;/strong&gt;）；&lt;/li&gt;
-&lt;li&gt;启用 &lt;strong&gt;SkewMod = 2&lt;/strong&gt;，&lt;strong&gt;TipLoss = TRUE&lt;/strong&gt;，&lt;strong&gt;HubLoss = TRUE&lt;/strong&gt;，&lt;strong&gt;TanInd = TRUE&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;然而当偏航误差大于45度时，应用&lt;strong&gt;SkewMod = 2&lt;/strong&gt;是无效的；&lt;/li&gt;
-&lt;li&gt;BEM的非线性求解与入流角相关，&lt;strong&gt;IndToler&lt;/strong&gt;建议设置为&lt;strong&gt;DEFAULT&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;设置为 0：不考虑塔筒对叶片局部流场的潜在影响；&lt;/li&gt;
+&lt;li&gt;设置为 1：采用&lt;strong&gt;标准势流模型&lt;/strong&gt;（standard potential-flow model）；&lt;/li&gt;
+&lt;li&gt;设置为 2：在标准势流模型基础上增加 &lt;strong&gt;Bak 修正&lt;/strong&gt;；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;输出设置&#34;&gt;输出设置
+&lt;h3 id=&#34;建模参数推荐设置&#34;&gt;建模参数推荐设置
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;AeroDyn能够输出沿塔筒的9个节点和沿叶片的9个节点中输出气动力学和运动学量；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NumVBlNds&lt;/strong&gt;（叶片节点数）:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建议设置在 10-20 之间，以平衡计算精度与计算成本；&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;BldNd_BladesOut&lt;/strong&gt;: 表示要输出的叶片数量；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;运行状态风机叶片&lt;/strong&gt;的仿真配置建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;推荐启用动态 BEM 模型（&lt;strong&gt;Wake_Mod = 1&lt;/strong&gt;）和非定常空气动力学模型（&lt;strong&gt;AFAeroMod = 2&lt;/strong&gt;）；&lt;/li&gt;
+&lt;li&gt;启用 &lt;strong&gt;SkewMod = 2&lt;/strong&gt;、&lt;strong&gt;TipLoss = TRUE&lt;/strong&gt;、&lt;strong&gt;HubLoss = TRUE&lt;/strong&gt;、&lt;strong&gt;TanInd = TRUE&lt;/strong&gt;；&lt;/li&gt;
+&lt;li&gt;注意：当偏航误差大于 45 度时，&lt;strong&gt;SkewMod = 2&lt;/strong&gt; 设置无效；&lt;/li&gt;
+&lt;li&gt;BEM 非线性求解与入流角相关，&lt;strong&gt;IndToler&lt;/strong&gt; 建议保持默认值 &lt;strong&gt;DEFAULT&lt;/strong&gt;；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;输出设置配置&#34;&gt;输出设置配置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;AeroDyn 支持沿塔筒 9 个节点和沿叶片 9 个节点的气动力学和运动学量输出；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;BldNd_BlOutNd&lt;/strong&gt;：表示要输出的节点&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BldNd_BladesOut&lt;/strong&gt;: 指定需要输出结果的叶片数量；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;考虑输出叶片各节点的气动力：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BldNd_BlOutNd&lt;/strong&gt;: 指定需要输出的节点编号；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;叶片节点气动力输出选项&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;”to plane“&lt;/strong&gt;：表示相对于转子平面，Fx表示垂直于叶片旋转平面的力，Fy表示平行于叶片旋转平面的力。适用于整体叶片性能和计算全局荷载；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;ldquo;to plane&amp;rdquo;&lt;/strong&gt;（相对于转子平面）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fx：垂直于叶片旋转平面的力，适用于评估整体叶片性能和计算全局载荷；&lt;/li&gt;
+&lt;li&gt;Fy：平行于叶片旋转平面的力；&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;”to chord“&lt;/strong&gt;: 表示相对叶片弦线，代表局部/微观的参考系，Fn是垂直于叶片局部弦线的力，Ft是平行于叶片局部弦线的力，沿着前缘到后缘的方向，影响叶片的扭转变形。适用于局部叶片的结构响应和变形。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175627698.png&#34;
+&lt;p&gt;&lt;strong&gt;&amp;ldquo;to chord&amp;rdquo;&lt;/strong&gt;（相对于叶片弦线）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fn：垂直于叶片局部弦线的力；&lt;/li&gt;
+&lt;li&gt;Ft：平行于叶片局部弦线、沿前缘到后缘方向的力，影响叶片扭转变形；&lt;/li&gt;
+&lt;li&gt;适用于分析局部叶片结构响应和变形；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_005.png&#34;
 	width=&#34;1037&#34;
 	height=&#34;536&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175627698_hu_f86b883fe5418108.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175627698_hu_a21cedf760ba1e6.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_005_hu_74b0920dbc45704.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_005_hu_4302b64c8b1e8e36.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;叶片局部坐标系&#34;
@@ -228,10 +357,10 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/Blade_chord.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_002.png&#34;
 	width=&#34;685&#34;
 	height=&#34;482&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/Blade_chord_hu_696c6ec29e60002.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/Blade_chord_hu_8aa6e90c98c61599.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_002_hu_ff342a560b3b540.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_002_hu_349bad0a983757de.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;叶片局部坐标系&#34;
@@ -251,32 +380,32 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Mm&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Pitching&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;moment&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fx&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Normal&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fy&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tangential&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fn&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Normal&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chord&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Ft&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Tangential&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;force&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;chord&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;per&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unit&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;at&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;each&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;node&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Mm&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;单位长度俯仰力矩&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;各节点&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fx&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;单位长度法向力&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;相对于平面&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;在各节点&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fy&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;单位长度切向力&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;相对于平面&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;在各节点&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Fn&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;单位长度法向力&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;相对于弦线&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;在各节点&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Ft&amp;#34;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;单位长度切向力&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;（&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;相对于弦线&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;在各节点&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;输出文件变量设置：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;输出文件变量设置&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;OutList: 注意使用节点编号时，节点编号范围为1-9，举例来说，若输入B1N10Fx会发出报错；如果想输出叶片中编号为10的截面的信息，需要输入节点编号10所对应的位置；如下图所示；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OutList&lt;/strong&gt;: 节点编号范围为 1-9。例如，输入 B1N10Fx 将导致报错；如需输出叶片第 10 号截面的信息，应输入该截面所对应的节点编号；如下图所示；&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;10,11,12,13,14,15,16,17,18 BlOutNd       - Blade nodes whose values will be output (-)
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;10,11,12,13,14,15,16,17,18 BlOutNd       - 输出节点编号 (-)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;叶片中的10号截面对应的Output node为1，输出的B1N1Fx代表的是叶片1的&lt;strong&gt;10&lt;/strong&gt;号截面的平行于旋转平面的力&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250304133952981.png&#34;
+&lt;/div&gt;&lt;p&gt;叶片 10 号截面对应输出节点 1，输出的 B1N1Fx 代表叶片 1 的 &lt;strong&gt;10&lt;/strong&gt; 号截面平行于旋转平面的力；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008.png&#34;
 	width=&#34;740&#34;
 	height=&#34;251&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250304133952981_hu_cc9d4d9402a06e2d.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250304133952981_hu_5d5989384fcc6378.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_2a507bc60624ab2b.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_4a3df2c490ac32eb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;注意节点编号的对应关系&#34;
@@ -289,10 +418,10 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_003.png&#34;
 	width=&#34;1149&#34;
 	height=&#34;377&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656_hu_25248f9e796f840.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175526656_hu_c3a651d127d69d3b.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_003_hu_7e93f98463ad7d25.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_003_hu_d98f1a71969829f1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Blade output Channel&#34;
@@ -303,10 +432,10 @@
 		data-flex-basis=&#34;731px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175559551.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_004.png&#34;
 	width=&#34;1142&#34;
 	height=&#34;712&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175559551_hu_fb260ea7203acae8.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226175559551_hu_1f50df2326604a7b.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_004_hu_8ad8d8a04beb1a2b.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_004_hu_d4e4304164739bc4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Blade output channel 2&#34;
@@ -319,21 +448,21 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;输出文件&#34;&gt;输出文件
-&lt;/h2&gt;&lt;h3 id=&#34;摘要文件-summary-file&#34;&gt;摘要文件 （Summary file）
+&lt;h2 id=&#34;输出文件说明&#34;&gt;输出文件说明
+&lt;/h2&gt;&lt;h3 id=&#34;摘要文件summary-file&#34;&gt;摘要文件（Summary file）
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;当SumPrint设置为TRUE时，会生成文件OutFileRoot.AD.sum来总结相关空气动力学模型的关键信息，包括启用的功能和输出；&lt;/li&gt;
+&lt;li&gt;当 &lt;strong&gt;SumPrint&lt;/strong&gt; 设置为 TRUE 时，生成文件 &lt;code&gt;OutFileRoot.AD.sum&lt;/code&gt;，汇总空气动力学模型的关键信息，包括启用功能和输出设置；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;结果文件results-files&#34;&gt;结果文件（Results files）
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;生成OutFileRoot.#.out文件；&lt;/li&gt;
-&lt;li&gt;数据通道在初始的input file中进行定义；&lt;/li&gt;
+&lt;li&gt;生成 &lt;code&gt;OutFileRoot.#.out&lt;/code&gt; 文件；&lt;/li&gt;
+&lt;li&gt;数据通道在初始输入文件中定义；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;测试案例&#34;&gt;测试案例
 &lt;/h1&gt;&lt;h2 id=&#34;输入文件示例&#34;&gt;输入文件示例
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;修改AeroDyn的输入文件（通常该文件后缀为”AeroDyn15.dat“）中的输出模块&lt;/p&gt;
+&lt;p&gt;修改 AeroDyn 输入文件（通常后缀为 &lt;code&gt;AeroDyn15.dat&lt;/code&gt;）中的输出模块：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -399,28 +528,28 @@
 &lt;h2 id=&#34;输出文件示例&#34;&gt;输出文件示例
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;从”.AD.sum“文件中可以看到本次输出的变量&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183148963.png&#34;
-	width=&#34;575&#34;
-	height=&#34;405&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183148963_hu_2dc4b2d5d66d2fa0.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183148963_hu_f8ae94e53d378a4.png 1024w&#34;
+&lt;p&gt;从&lt;code&gt;.AD.sum&lt;/code&gt;文件中可以查看本次输出的变量&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008.png&#34;
+	width=&#34;740&#34;
+	height=&#34;251&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_2a507bc60624ab2b.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_4a3df2c490ac32eb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;摘要文件输出变量查看&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;141&#34;
-		data-flex-basis=&#34;340px&#34;
+		data-flex-grow=&#34;294&#34;
+		data-flex-basis=&#34;707px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;从&amp;quot;.out&amp;quot;文件中，能够看到输出结果&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183254463.png&#34;
+&lt;p&gt;从&lt;code&gt;.out&lt;/code&gt;文件中，可以查看输出结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_007.png&#34;
 	width=&#34;699&#34;
 	height=&#34;395&#34;
-	srcset=&#34;https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183254463_hu_573ee448969e9657.png 480w, https://whhong-research.github.io/p/openfast%E4%BB%BF%E7%9C%9F1aerodyn%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/image-20250226183254463_hu_eb8959044a89bd9b.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_007_hu_20927af5d6273d67.png 480w, https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_007_hu_a9857b8431da8e53.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;输出结果示例&#34;
@@ -436,20 +565,16 @@
 &lt;h2 id=&#34;python脚本批量化处理&#34;&gt;Python脚本批量化处理
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;实现功能1：批量化修改Aerodyn的输入文件，并修改对应的fst文件；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能1&lt;/strong&gt;：批量修改AeroDyn输入文件，并同步修改对应的&lt;code&gt;.fst&lt;/code&gt;文件；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;实现功能2：批量化读取Aerodyn的输出文件，提取并保存Aerodyn中定义的输出变量到excel表格中；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;功能2&lt;/strong&gt;：批量读取AeroDyn输出文件，提取并保存AeroDyn中定义的输出变量到Excel表格；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;输入参数：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;输入参数&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;all_nodes = list(range(1, 20))&lt;/code&gt; 定义需要的节点数量，此处为19个节点；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;设置文件路径&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;all_nodes = list(range(1, 20))&lt;/code&gt;：定义需要的节点数量，此处为19个节点；&lt;/li&gt;
+&lt;li&gt;设置文件路径：&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -766,8 +891,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;避坑点1&lt;/strong&gt;：Outlist需要添加初始换行，否则第一个变量将不会输出；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;避坑点2：&lt;/strong&gt;&amp;lsquo;BlOutNd&amp;rsquo;需要使用“,”来连接变量，直接赋值会导致出现&amp;quot;()&amp;quot;，造成报错；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避坑点1&lt;/strong&gt;：OutList需要添加初始换行，否则第一个变量将不会输出；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避坑点2&lt;/strong&gt;：&lt;code&gt;BlOutNd&lt;/code&gt;需要使用逗号来连接变量，直接赋值会导致出现括号，造成报错；&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

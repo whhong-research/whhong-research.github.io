@@ -8,12 +8,35 @@
         <language>zh-cn</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/rbi/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>报告解读（1）：Structural health monitoring by use of sensor data</title>
-        <link>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/</link>
+        <title>COST-TU1402-SHM价值量化指南解读</title>
+        <link>https://whhong-research.github.io/p/cost-tu1402-shm%E4%BB%B7%E5%80%BC%E9%87%8F%E5%8C%96%E6%8C%87%E5%8D%97%E8%A7%A3%E8%AF%BB/</link>
         <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225133412287.png" alt="Featured image of post 报告解读（1）：Structural health monitoring by use of sensor data" /&gt;&lt;h1 id=&#34;报告简介&#34;&gt;报告简介
+        <guid>https://whhong-research.github.io/p/cost-tu1402-shm%E4%BB%B7%E5%80%BC%E9%87%8F%E5%8C%96%E6%8C%87%E5%8D%97%E8%A7%A3%E8%AF%BB/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/cost-tu1402-shm%E4%BB%B7%E5%80%BC%E9%87%8F%E5%8C%96%E6%8C%87%E5%8D%97%E8%A7%A3%E8%AF%BB/1.png" alt="Featured image of post COST-TU1402-SHM价值量化指南解读" /&gt;&lt;h1 id=&#34;报告简介&#34;&gt;报告简介
+&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The Guides for Operators, Scientists and Practicing Engineers on Quantifying the Value of Structural Health Information (SHI) for Decision Support have emerged from the scientific networking project COST Action TU1402 (&lt;a class=&#34;link&#34; href=&#34;https://www.cost-tu1402.eu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.cost-tu1402.eu&lt;/a&gt;) in the period from 2014 to 2019. The guides are the result of the TU1402 Working Group 5 on Standardisation in conjunction with the work of the Joint Committee on Structural Safety (JCSS – &lt;a class=&#34;link&#34; href=&#34;https://www.jcss.co&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;www.jcss.co&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;该项目有三份报告，分别是GUIDE for operators, GUIDE for practicing Engineers以及GUIDE for sicientists，三份报告在数学层面上以此递增。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;&#34;&gt;
+&lt;/h1&gt;</description>
+        </item>
+        <item>
+        <title>DNV-ST-0126海上风机结构标准解读</title>
+        <link>https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225133412287.png" alt="Featured image of post DNV-ST-0126海上风机结构标准解读" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;系列导读&lt;/strong&gt;：本系列文章将深入解读海上结构健康监测与管理的相关报告和标准，涵盖结构健康监测（SHM）系统的设计与实施、基于风险的检验（RBI）、结构完整性管理（SIM）等内容。本文为系列开篇，详细解读 PSA 关于利用传感器数据进行结构健康监测的研究报告。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;报告简介&#34;&gt;报告简介
 &lt;/h1&gt;&lt;h2 id=&#34;基本信息&#34;&gt;基本信息
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;
@@ -62,10 +85,10 @@
 &lt;/ol&gt;
 &lt;h1 id=&#34;结构健康监测shm&#34;&gt;结构健康监测（SHM）
 &lt;/h1&gt;&lt;p&gt;健康监测系统的常见组件如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225180936281.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225180936281.png&#34;
 	width=&#34;976&#34;
 	height=&#34;531&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225180936281_hu_6b0fc4b4b7d65bec.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225180936281_hu_78c28de85b0c8a8f.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225180936281_hu_9d4eff56ebf7501d.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225180936281_hu_10674a5a29297ba1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;结构健康监测系统的组件&#34;
@@ -84,10 +107,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225154603992.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225154603992.png&#34;
 	width=&#34;976&#34;
 	height=&#34;453&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225154603992_hu_e10650e0b6bb28ee.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225154603992_hu_2b6ce24b4a09232a.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225154603992_hu_3367452c7a6f5317.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225154603992_hu_68393dff7b3ea9b9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;根据输入不同类别的SHM系统&#34;
@@ -138,10 +161,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225145911991.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225145911991.png&#34;
 	width=&#34;727&#34;
 	height=&#34;453&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225145911991_hu_83341a542b5d0c8d.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225145911991_hu_a446d95a4aac8863.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225145911991_hu_9e431e16599f76f4.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225145911991_hu_deedcf9a5b3e77a9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;建立SHM系统流程&#34;
@@ -158,10 +181,10 @@
 &lt;li&gt;引入SHM系统的主要目的是减少不确定性；&lt;/li&gt;
 &lt;li&gt;同时SHM系统还能够提供用于优化检查计划的其他信息&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192219780.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225192219780.png&#34;
 	width=&#34;909&#34;
 	height=&#34;322&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192219780_hu_d16ea7c37143c966.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192219780_hu_b63856477ef4d9ad.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225192219780_hu_e1aab0890b785f23.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225192219780_hu_d456cfcb0f0f1255.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;在海上结构中使用SHM创造的价值及收益&#34;
@@ -242,10 +265,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;只有将裂缝布置在浮筒上，设计传感器系统能够监测到100mm的裂缝，并认识到该裂缝未来将发展成为致命损伤，才能阻止该事故；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225201437456.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225201437456.png&#34;
 	width=&#34;706&#34;
 	height=&#34;885&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225201437456_hu_2794911751ccb3e1.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225201437456_hu_f142e7148b5c76ed.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225201437456_hu_fbeada6d3d50872c.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225201437456_hu_dc83385d8db4695e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Alexander Kjelland事故中破坏的浮筒&#34;
@@ -273,10 +296,10 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;结构全生命周期&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193006829.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225193006829.png&#34;
 	width=&#34;484&#34;
 	height=&#34;432&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193006829_hu_dc701ee07018e196.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193006829_hu_8470c9328675c766.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225193006829_hu_3b0934b232d6d6f3.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225193006829_hu_58108a6365903b83.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;结构全生命周期&#34;
@@ -290,10 +313,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;：SIM是一个连续的过程，用于展示海上结构从安装到退役全生命周期的情况。SIM为结构的检查计划、维护及维修计划提供了一个框架，如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225161204447.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225161204447.png&#34;
 	width=&#34;1011&#34;
 	height=&#34;382&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225161204447_hu_59985024a420312d.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225161204447_hu_29698ca1ed58ff92.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225161204447_hu_79ae811d21a8bb62.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225161204447_hu_fba917d6d734e006.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;引入SHM的SIM框架&#34;
@@ -329,10 +352,10 @@
 &lt;li&gt;&lt;strong&gt;屏障功能&lt;/strong&gt;：在从故障、危险或意外情况导致事故的事件链中，屏障所承担的任务或角色。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;性能影响因素&lt;/strong&gt;：对屏障功能和要素按预期运行具有重要影响的条件。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225163007335.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225163007335.png&#34;
 	width=&#34;1003&#34;
 	height=&#34;499&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225163007335_hu_7e9402c8c6490711.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225163007335_hu_7f341866d90b9942.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225163007335_hu_160b33d25b81e6db.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225163007335_hu_938a4ceadaf3f6f5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;屏障管理架构&#34;
@@ -347,10 +370,10 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;首要目标是确定：&lt;strong&gt;what, when, where and how to inspect&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194052111.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225194052111.png&#34;
 	width=&#34;1045&#34;
 	height=&#34;703&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194052111_hu_8a4652e34fd7930c.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194052111_hu_3b2a37edbd3f458d.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225194052111_hu_f385c3630565e50f.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225194052111_hu_8274ee8e5a7ec018.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;what, when, where and how to inspect&#34;
@@ -365,10 +388,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;选择检测技术需要考虑该技术的检测概率，&lt;strong&gt;PoD (Probability of detection)&lt;/strong&gt; 可以用来衡量检测技术的准确性。Trueness 和 Precision可以用来衡量一种检测技术的准确性。 Trueness指的的是测量结果和真实值的偏差程度；Precision指的是独立检测结果的一致性，如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194619657.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225194619657.png&#34;
 	width=&#34;933&#34;
 	height=&#34;298&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194619657_hu_7b2cd46ffe77643d.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225194619657_hu_820fb13cf0542fb1.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225194619657_hu_c9940562b4e18d6.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225194619657_hu_70568a3934bd0273.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;解释trueness和precision&#34;
@@ -402,10 +425,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;下图展示了RBI是如何作为选择TBI或者CBI作为检测计划的基础&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192708216.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225192708216.png&#34;
 	width=&#34;1126&#34;
 	height=&#34;454&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192708216_hu_e201eb26a3789505.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225192708216_hu_179c9c6d081ad849.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225192708216_hu_f399d836efca9ef8.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225192708216_hu_ce2e4f4aee4994e7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;RBI作为选择TBI/CBI的基础&#34;
@@ -419,10 +442,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Calendar-based inspection vs conditional-based inspection&lt;/strong&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193442952.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225193442952.png&#34;
 	width=&#34;1104&#34;
 	height=&#34;595&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193442952_hu_1aee2eb37649efbd.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225193442952_hu_7027269883a6a05a.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225193442952_hu_8be6d0d2a726d07c.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225193442952_hu_1f35276135b9061.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;左图为Calendar-based inspection，右图结合了conditional-based inspection&#34;
@@ -528,10 +551,10 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;下图中可以看出，疲劳、腐蚀、过载和振动是漂浮式结构中主要的故障原因，而固定式结构还包括基础与海床的相互作用以及平台间的连接桥。同时，还考虑了掉落物体以及船撞的因素。表3是根据下图进行总结得到的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225151959404.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225151959404.png&#34;
 	width=&#34;933&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225151959404_hu_7f1bc60cbae92197.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225151959404_hu_3f08e9acbcaeb72d.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225151959404_hu_6af8bff1b97ee9e9.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225151959404_hu_4b88aa16a9301cda.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;海上结构常见结构失效模式及原因&#34;
@@ -595,10 +618,10 @@
 &lt;/table&gt;
 &lt;h2 id=&#34;钢结构常见故障模式&#34;&gt;钢结构常见故障模式
 &lt;/h2&gt;&lt;p&gt;钢结构通常的故障模式是结构承载力的下降，造成承载力下降的故障机制包括：材料退化、材料损失、疲劳和过度负载等。导致这些故障机制的常见影响因素如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225153354229.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225153354229.png&#34;
 	width=&#34;846&#34;
 	height=&#34;594&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225153354229_hu_4c3fe2862a6c3142.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB1structural-health-monitoring-by-use-of-sensor-data/image-20250225153354229_hu_4191b4884a3f252d.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225153354229_hu_710784e51b65d6f5.png 480w, https://whhong-research.github.io/p/dnv-st-0126%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250225153354229_hu_7a84bef4b9962136.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;钢结构常见故障模式&#34;
@@ -649,26 +672,6 @@
 &lt;li&gt;DNV-RP-C210: Probabilistic methods for planning of inspection for fatigue cracks in offshore structures&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        </item>
-        <item>
-        <title>报告解读（2）：COST TU1402 Quantifying the Value of SHM</title>
-        <link>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB2cost-tu1402-quantifying-the-value-of-shm/</link>
-        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB2cost-tu1402-quantifying-the-value-of-shm/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB2cost-tu1402-quantifying-the-value-of-shm/1.png" alt="Featured image of post 报告解读（2）：COST TU1402 Quantifying the Value of SHM" /&gt;&lt;h1 id=&#34;报告简介&#34;&gt;报告简介
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;The Guides for Operators, Scientists and Practicing Engineers on Quantifying the Value of Structural Health Information (SHI) for Decision Support have emerged from the scientific networking project COST Action TU1402 (&lt;a class=&#34;link&#34; href=&#34;https://www.cost-tu1402.eu&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;www.cost-tu1402.eu&lt;/a&gt;) in the period from 2014 to 2019. The guides are the result of the TU1402 Working Group 5 on Standardisation in conjunction with the work of the Joint Committee on Structural Safety (JCSS – &lt;a class=&#34;link&#34; href=&#34;https://www.jcss.co&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;www.jcss.co&lt;/a&gt;).&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;该项目有三份报告，分别是GUIDE for operators, GUIDE for practicing Engineers以及GUIDE for sicientists，三份报告在数学层面上以此递增。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;&#34;&gt;
-&lt;/h1&gt;</description>
         </item>
         
     </channel>

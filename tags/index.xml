@@ -7,7 +7,55 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Thu, 02 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>规范标准</title>
+        <link>https://whhong-research.github.io/tags/%E8%A7%84%E8%8C%83%E6%A0%87%E5%87%86/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E8%A7%84%E8%8C%83%E6%A0%87%E5%87%86/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>疲劳测试</title>
+        <link>https://whhong-research.github.io/tags/%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>全尺寸叶片</title>
+        <link>https://whhong-research.github.io/tags/%E5%85%A8%E5%B0%BA%E5%AF%B8%E5%8F%B6%E7%89%87/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E5%85%A8%E5%B0%BA%E5%AF%B8%E5%8F%B6%E7%89%87/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>不确定性</title>
+        <link>https://whhong-research.github.io/tags/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>机会性运维</title>
+        <link>https://whhong-research.github.io/tags/%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>决策优化</title>
+        <link>https://whhong-research.github.io/tags/%E5%86%B3%E7%AD%96%E4%BC%98%E5%8C%96/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E5%86%B3%E7%AD%96%E4%BC%98%E5%8C%96/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>后缘开裂</title>
         <link>https://whhong-research.github.io/tags/%E5%90%8E%E7%BC%98%E5%BC%80%E8%A3%82/</link>
         <pubDate>Thu, 02 Oct 2025 00:00:00 +0000</pubDate>
@@ -152,11 +200,27 @@
         <description></description>
         </item>
         <item>
+        <title>AeroDyn</title>
+        <link>https://whhong-research.github.io/tags/aerodyn/</link>
+        <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/aerodyn/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Python脚本</title>
         <link>https://whhong-research.github.io/tags/python%E8%84%9A%E6%9C%AC/</link>
         <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/tags/python%E8%84%9A%E6%9C%AC/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>风力发电机</title>
+        <link>https://whhong-research.github.io/tags/%E9%A3%8E%E5%8A%9B%E5%8F%91%E7%94%B5%E6%9C%BA/</link>
+        <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E9%A3%8E%E5%8A%9B%E5%8F%91%E7%94%B5%E6%9C%BA/</guid>
         <description></description>
         </item>
         <item>
@@ -184,11 +248,27 @@
         <description></description>
         </item>
         <item>
+        <title>传感器数据</title>
+        <link>https://whhong-research.github.io/tags/%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>海上结构</title>
         <link>https://whhong-research.github.io/tags/%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84/</link>
         <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/tags/%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>结构完整性管理</title>
+        <link>https://whhong-research.github.io/tags/%E7%BB%93%E6%9E%84%E5%AE%8C%E6%95%B4%E6%80%A7%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E7%BB%93%E6%9E%84%E5%AE%8C%E6%95%B4%E6%80%A7%E7%AE%A1%E7%90%86/</guid>
         <description></description>
         </item>
         <item>
@@ -200,11 +280,35 @@
         <description></description>
         </item>
         <item>
+        <title>OpenCV</title>
+        <link>https://whhong-research.github.io/tags/opencv/</link>
+        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/opencv/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Skeletonization</title>
+        <link>https://whhong-research.github.io/tags/skeletonization/</link>
+        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/skeletonization/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>裂缝骨架化</title>
         <link>https://whhong-research.github.io/tags/%E8%A3%82%E7%BC%9D%E9%AA%A8%E6%9E%B6%E5%8C%96/</link>
         <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
         
         <guid>https://whhong-research.github.io/tags/%E8%A3%82%E7%BC%9D%E9%AA%A8%E6%9E%B6%E5%8C%96/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Cold Diffusion</title>
+        <link>https://whhong-research.github.io/tags/cold-diffusion/</link>
+        <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/cold-diffusion/</guid>
         <description></description>
         </item>
         <item>
@@ -229,6 +333,14 @@
         <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/tags/unsupervised-learning/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>无监督异常检测</title>
+        <link>https://whhong-research.github.io/tags/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/</link>
+        <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/tags/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/</guid>
         <description></description>
         </item>
         

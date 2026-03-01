@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验图像 添加负点来优化分割结果 当人工输入较为完美的裂缝提示点，且裂缝将图像分为明显两部分时，只输入正点可能导致SAM错误将大面积的一部分路面作为识别结果；此时，如果添加两个负点在掩码区域，将会出现较好识别裂缝的情况：\n">
+<title>SAM裂缝分割实验：提示点策略与性能评估</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="SAM裂缝分割实验：提示点策略与性能评估">
+<meta property='og:description' content="实验图像 添加负点来优化分割结果 当人工输入较为完美的裂缝提示点，且裂缝将图像分为明显两部分时，只输入正点可能导致SAM错误将大面积的一部分路面作为识别结果；此时，如果添加两个负点在掩码区域，将会出现较好识别裂缝的情况：\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='SAM' /><meta property='article:tag' content='提示点测试' /><meta property='article:published_time' content='2025-03-14T16:46:00&#43;08:00'/><meta property='article:modified_time' content='2025-03-14T16:46:00&#43;08:00'/><meta property='og:image' content='https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png' />
+<meta name="twitter:title" content="SAM裂缝分割实验：提示点策略与性能评估">
+<meta name="twitter:description" content="实验图像 添加负点来优化分割结果 当人工输入较为完美的裂缝提示点，且裂缝将图像分为明显两部分时，只输入正点可能导致SAM错误将大面积的一部分路面作为识别结果；此时，如果添加两个负点在掩码区域，将会出现较好识别裂缝的情况：\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#添加负点来优化分割结果">添加负点来优化分割结果</a></li>
+    <li><a href="#正点的数量和分布影响">正点的数量和分布影响</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#负点的采样策略">负点的采样策略</a>
+      <ul>
+        <li><a href="#随机采样">随机采样</a></li>
+        <li><a href="#根据提示正点的轮廓进行采样">根据提示正点的轮廓进行采样</a></li>
+      </ul>
+    </li>
+    <li><a href="#正点和负点的比例影响随机采样">正点和负点的比例影响（随机采样）</a></li>
+    <li><a href="#官网demo和github代码实现效果存在差异">官网demo和github代码实现效果存在差异</a>
+      <ul>
+        <li><a href="#官网上理想情况">官网上理想情况</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/">
+                <img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_bb277ff3b7365736.png"
+                        srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_bb277ff3b7365736.png 800w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_bedb371ccad048eb.png 1600w"
+                        width="800" 
+                        height="266" 
+                        loading="lazy"
+                        alt="Featured image of post SAM裂缝分割实验：提示点策略与性能评估" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" >
+                图像处理工具
+            </a>
+        
+            <a href="/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/" >
+                实验测试
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/">SAM裂缝分割实验：提示点策略与性能评估</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 14, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="实验图像">实验图像
+</h1><h2 id="添加负点来优化分割结果">添加负点来优化分割结果
+</h2><ul>
+<li>
+<p>当人工输入较为完美的裂缝提示点，且裂缝将图像分为明显两部分时，只输入正点可能导致SAM错误将大面积的一部分路面作为识别结果；此时，如果添加两个负点在掩码区域，将会出现较好识别裂缝的情况：</p>
+</li>
+<li>
+<p><strong>猜想结论</strong>：正确少量的负点能很大程度优化sam的分割结果；</p>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887.png"
+	width="1387"
+	height="1004"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887_hu_cc76eaf22298d20d.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887_hu_9f95b80d700802.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250307132347887"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="138"
+		data-flex-basis="331px"
+	
+><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945.png"
+	width="1490"
+	height="1045"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945_hu_775a4fb7b8e452f7.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945_hu_38d51a4b70598989.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250307135852945"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="342px"
+	
+></p>
+</li>
+</ul>
+<h2 id="正点的数量和分布影响">正点的数量和分布影响
+</h2><ul>
+<li>
+<p>当正点未能较好地分布在裂缝上时，会出现裂缝边缘识别不全的情况，产生大量错误识别图案的情况：</p>
+</li>
+<li>
+<p><strong>猜想结论</strong>：正点的覆盖区域尽量贴近裂缝形状</p>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392.png"
+	width="1531"
+	height="1093"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392_hu_235b94ebdcdf24e7.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392_hu_eb2c132fa05887d2.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250312104636392"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="336px"
+	
+></p>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917.png"
+	width="1516"
+	height="1081"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917_hu_e5efa5d3b71f3f9c.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917_hu_6c0afb1ef7ac8028.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250312104751917"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="336px"
+	
+></p>
+</li>
+</ul>
+<h1 id="github代码测试">Github代码测试
+</h1><h2 id="负点的采样策略">负点的采样策略
+</h2><h3 id="随机采样">随机采样
+</h3><ul>
+<li>
+<p>随机采样将选择difference image中亮度最高的10%中的点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 计算亮度阈值（比如取最亮的10%作为阈值）</span>
+</span></span><span class="line"><span class="cl"><span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">brightness</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 选择亮度大于阈值的点</span>
+</span></span><span class="line"><span class="cl"><span class="n">bright_mask</span> <span class="o">=</span> <span class="n">brightness</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 获取符合条件的点的坐标</span>
+</span></span><span class="line"><span class="cl"><span class="n">x_bright</span> <span class="o">=</span> <span class="n">x_coords</span><span class="p">[</span><span class="n">bright_mask</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">y_bright</span> <span class="o">=</span> <span class="n">y_coords</span><span class="p">[</span><span class="n">bright_mask</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 随机选择指定数量的点</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_bright</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_points</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_bright</span><span class="p">),</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">selected_x</span> <span class="o">=</span> <span class="n">x_bright</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">selected_y</span> <span class="o">=</span> <span class="n">y_bright</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">selected_x</span> <span class="o">=</span> <span class="n">x_bright</span>
+</span></span><span class="line"><span class="cl">    <span class="n">selected_y</span> <span class="o">=</span> <span class="n">y_bright</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="根据提示正点的轮廓进行采样">根据提示正点的轮廓进行采样
+</h3><ul>
+<li>
+<p>将计算局部骨架的方向，在垂直于骨架方法的区域使用负点进行采样；</p>
+<ul>
+<li>
+<p>使用sobel算子计算梯度</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">get_local_direction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 提取局部窗口</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y2</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x2</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 检查窗口大小</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">y2</span> <span class="o">&lt;=</span> <span class="n">y1</span> <span class="ow">or</span> <span class="n">x2</span> <span class="o">&lt;=</span> <span class="n">x1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">local_skeleton</span> <span class="o">=</span> <span class="n">skeleton</span><span class="p">[</span><span class="n">y1</span><span class="p">:</span><span class="n">y2</span><span class="p">,</span> <span class="n">x1</span><span class="p">:</span><span class="n">x2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 检查局部窗口是否为空</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">local_skeleton</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 使用Sobel算子计算梯度</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gy</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">local_skeleton</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gx</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">local_skeleton</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 确保相对坐标在有效范围内</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rel_y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">,</span> <span class="n">local_skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">rel_x</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">,</span> <span class="n">local_skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 计算局部方向角度（弧度）</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gx</span><span class="p">[</span><span class="n">rel_y</span><span class="p">,</span> <span class="n">rel_x</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">1e-10</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gy</span><span class="p">[</span><span class="n">rel_y</span><span class="p">,</span> <span class="n">rel_x</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">gy</span><span class="p">[</span><span class="n">rel_y</span><span class="p">,</span> <span class="n">rel_x</span><span class="p">],</span> <span class="n">gx</span><span class="p">[</span><span class="n">rel_y</span><span class="p">,</span> <span class="n">rel_x</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">angle</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>从垂直于angle的方向进行采样，并删去部分特别接近裂缝骨架的点: distance为设置的距离（40像素），min_skeleton_distance设置为10像素；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># 计算垂直方向的单位向量</span>
+</span></span><span class="line"><span class="cl"><span class="n">normal_y</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>  <span class="c1"># 旋转90度</span>
+</span></span><span class="line"><span class="cl"><span class="n">normal_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>  <span class="c1"># 旋转90度</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在两个方向上添加背景点</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">multiplier</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">distance</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 计算新的坐标</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">normal_y</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">multiplier</span> <span class="o">*</span> <span class="n">normal_x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 检查坐标是否在图像范围内</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">new_y</span> <span class="o">&lt;</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">new_x</span> <span class="o">&lt;</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 检查到骨架的距离</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">get_distance_to_skeleton</span><span class="p">([</span><span class="n">new_x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">],</span> <span class="n">skeleton</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_skeleton_distance</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">point_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">new_x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<h2 id="正点和负点的比例影响随机采样">正点和负点的比例影响（随机采样）
+</h2><ul>
+<li><strong>猜想1</strong>：提示点的增多会带来噪声；</li>
+<li><strong>猜想2</strong>：少量负点能够明确需要分割的对象，效果优于0负点；</li>
+</ul>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined.png"
+	width="10240"
+	height="2728"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined_hu_291bd0a05c4b6812.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined_hu_df9aa25213703a5e.png 1024w"
+	loading="lazy"
+	
+		alt="001_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="375"
+		data-flex-basis="900px"
+	
+></p>
+<ul>
+<li><strong>猜想3</strong>：即使有些区域设置了负点，得出的掩码仍然不会剔除该区域；</li>
+</ul>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined.png"
+	width="10240"
+	height="2728"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined_hu_a60e78a13b3d086e.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined_hu_df30cc5acc78db3a.png 1024w"
+	loading="lazy"
+	
+		alt="002_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="375"
+		data-flex-basis="900px"
+	
+></p>
+<ul>
+<li><strong>弊端1</strong>：随机采样可能会出现采样点大量落在单独一侧的情况，调整亮度阈值（当前为10%）可能会有所改善；</li>
+</ul>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined.png"
+	width="10240"
+	height="2728"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined_hu_c4af6819c0daa32e.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined_hu_e62ce5a52124cca7.png 1024w"
+	loading="lazy"
+	
+		alt="004_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="375"
+		data-flex-basis="900px"
+	
+></p>
+<h2 id="官网demo和github代码实现效果存在差异">官网demo和github代码实现效果存在差异
+</h2><h3 id="官网上理想情况">官网上理想情况
+</h3><p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678.png"
+	width="1454"
+	height="957"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678_hu_e61080fdd272fed7.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678_hu_839bfe9f592be038.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250310203741678"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="151"
+		data-flex-basis="364px"
+	
+></p>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016.png"
+	width="1459"
+	height="997"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016_hu_d728ce2f6f796c47.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016_hu_2b04d611a3a621fd.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250310204013016"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="146"
+		data-flex-basis="351px"
+	
+></p>
+<ul>
+<li>官方demo中识别效果好，几乎一致的提示点在本地模型权重中效果差；</li>
+</ul>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280.png"
+	width="926"
+	height="637"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280_hu_f81a05332538fdd8.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280_hu_82b208f52d06f4e.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250313185359280"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="348px"
+	
+></p>
+<p><img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png"
+	width="2048"
+	height="682"
+	srcset="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_1d6f8d317fda7ac0.png 480w, /p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_812c503201c462da.png 1024w"
+	loading="lazy"
+	
+		alt="004_True10_conf58.15"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="300"
+		data-flex-basis="720px"
+	
+></p>
+<ul>
+<li><a class="link" href="https://github.com/facebookresearch/segment-anything/issues/762"  target="_blank" rel="noopener"
+    >https://github.com/facebookresearch/segment-anything/issues/762</a></li>
+<li><a class="link" href="https://github.com/facebookresearch/segment-anything/issues/620"  target="_blank" rel="noopener"
+    >https://github.com/facebookresearch/segment-anything/issues/620</a></li>
+<li><a class="link" href="https://github.com/facebookresearch/segment-anything/issues/169"  target="_blank" rel="noopener"
+    >https://github.com/facebookresearch/segment-anything/issues/169</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/sam/">SAM</a>
+        
+            <a href="/tags/%E6%8F%90%E7%A4%BA%E7%82%B9%E6%B5%8B%E8%AF%95/">提示点测试</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">图像处理与AI</h4>
+    <span class="series-progress">第 3 篇，共 3 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <a href="/p/crack-diffusion-paper-reading/" class="series-link prev">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">深度学习裂缝检测：Cold Diffusion异常检测框架</span>
+    </a>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/crack-diffusion-experiment/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-experiment/1.3d32b2264364214342092b476dfe7813_hu_7b69c78fe8655228.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 裂缝图像处理基础：语义分割与后处理技术"
+                        data-key="crack-diffusion-experiment" 
+                        data-hash="md5-PTKyJkNkIUNCCStHbf54Ew==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">裂缝图像处理基础：语义分割与后处理技术</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction.080744c03bde1e5bd700103f5bdf89b4_hu_f15082015904914b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 系泊链疲劳预测BDLM"
+                        
+                        data-hash="md5-CAdEwDveHlvXABA/W9&#43;JtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">系泊链疲劳预测BDLM</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.b6ac8a4e2dc423f11ba73614958adb9b_hu_e4268111de6fcf60.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 离散贝叶斯网络运维规划"
+                        
+                        data-hash="md5-tqyKTi3EI/EbpzYUlYrbmw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">离散贝叶斯网络运维规划</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/crack-diffusion-paper-reading/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-paper-reading/1.42f81beb1fbd6930a80b4f0a26b2f740_hu_176c61a1e7b710d7.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 深度学习裂缝检测：Cold Diffusion异常检测框架"
+                        data-key="crack-diffusion-paper-reading" 
+                        data-hash="md5-Qvgb6x&#43;9aTCoC08KJrL3QA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深度学习裂缝检测：Cold Diffusion异常检测框架</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

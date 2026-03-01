@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Series on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/series/</link>
+        <description>Recent content in Series on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Wed, 26 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/series/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Wind Turbine Simulation and Modeling</title>
+        <link>https://whhong-research.github.io/en/series/wind-turbine-simulation-and-modeling/</link>
+        <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/series/wind-turbine-simulation-and-modeling/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Image Processing and AI</title>
+        <link>https://whhong-research.github.io/en/series/image-processing-and-ai/</link>
+        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/series/image-processing-and-ai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Image Processing &amp; AI</title>
+        <link>https://whhong-research.github.io/en/series/image-processing--ai/</link>
+        <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/series/image-processing--ai/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

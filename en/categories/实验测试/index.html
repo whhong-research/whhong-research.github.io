@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://whhong-research.github.io/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Category: 实验测试 - whhong's blog">
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Category: 实验测试 - whhong's blog">
 <meta property='og:description' content="Welcome to my blog!">
 <meta property='og:url' content='https://whhong-research.github.io/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/'>
 <meta property='og:site_name' content='whhong&#39;s blog'>
@@ -54,7 +54,7 @@
                     
                     
                         
-                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -290,7 +290,7 @@
                     <a href="/en/archives/#2025">
                         
                             <span class="year">2025</span>
-                            <span class="count">1</span>
+                            <span class="count">4</span>
                         
                     </a> 
                 </div>
@@ -317,6 +317,22 @@
 
     <div class="tagCloud-tags">
         
+            <a href="/en/categories/blade-simulation/" class="font_size_1">
+                Blade Simulation
+            </a>
+        
+            <a href="/en/categories/experimental-testing/" class="font_size_1">
+                Experimental Testing
+            </a>
+        
+            <a href="/en/categories/image-processing-tools/" class="font_size_1">
+                Image Processing Tools
+            </a>
+        
+            <a href="/en/categories/paper-reading/" class="font_size_1">
+                Paper Reading
+            </a>
+        
             <a href="/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/" class="font_size_1">
                 实验测试
             </a>
@@ -342,20 +358,44 @@
 
     <div class="tagCloud-tags">
         
+            <a href="/en/tags/aerodyn/" class="font_size_1">
+                AeroDyn
+            </a>
+        
+            <a href="/en/tags/aerodynamic-characteristics/" class="font_size_1">
+                Aerodynamic Characteristics
+            </a>
+        
+            <a href="/en/tags/anomaly-detection/" class="font_size_1">
+                Anomaly Detection
+            </a>
+        
             <a href="/en/tags/bdlm/" class="font_size_1">
                 BDLM
             </a>
         
-            <a href="/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/" class="font_size_1">
-                动态贝叶斯网络
+            <a href="/en/tags/cold-diffusion/" class="font_size_1">
+                Cold Diffusion
             </a>
         
-            <a href="/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/" class="font_size_1">
-                寿命预测
+            <a href="/en/tags/computer-vision/" class="font_size_1">
+                Computer Vision
             </a>
         
-            <a href="/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/" class="font_size_1">
-                腐蚀退化
+            <a href="/en/tags/crack-segmentation/" class="font_size_1">
+                Crack Segmentation
+            </a>
+        
+            <a href="/en/tags/crack-skeletonization/" class="font_size_1">
+                Crack Skeletonization
+            </a>
+        
+            <a href="/en/tags/diffusion/" class="font_size_1">
+                Diffusion
+            </a>
+        
+            <a href="/en/tags/opencv/" class="font_size_1">
+                OpenCV
             </a>
         
     </div>
@@ -393,7 +433,7 @@
             </footer>
         </div>
             <div class="article-image">
-                <img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_926391c49c4dd570.png" 
+                <img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction_hu_dbbab83a62a12009.png" 
                         width="120"
                         height="120" 
                         alt="贝叶斯动态线性建模：系泊链疲劳寿命预测"
@@ -409,7 +449,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 whhong
+            2025 - 
+        
+        2026 whhong
     </section>
     
     <section class="powerby">
@@ -438,5 +480,165 @@
     }());
 </script>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
     </body>
 </html>

@@ -8,16 +8,16 @@
         <language>zh-cn</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>报告解读（3）：IEC61400-28风机全寿命报告解读</title>
-        <link>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/</link>
+        <title>IEC 61400-28资产管理标准解读</title>
+        <link>https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</link>
         <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/IEC61400-28.png" alt="Featured image of post 报告解读（3）：IEC61400-28风机全寿命报告解读" /&gt;&lt;h1 id=&#34;流程介绍&#34;&gt;流程介绍
-&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664.png&#34;
+        <guid>https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/IEC61400-28.png" alt="Featured image of post IEC 61400-28资产管理标准解读" /&gt;&lt;h1 id=&#34;流程介绍&#34;&gt;流程介绍
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664.png&#34;
 	width=&#34;951&#34;
 	height=&#34;662&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_62f24c39fef9cf0c.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_d4b8e196e59de380.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_1822fb3c43587aeb.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_f8671c0b902e7f5d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250415205059664&#34;
@@ -28,10 +28,10 @@
 		data-flex-basis=&#34;344px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819.png&#34;
 	width=&#34;1054&#34;
 	height=&#34;797&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_a2f5dac2801b93fc.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_ba299e9734ef984.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_465a7245454e8afc.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_8197de5dd3839421.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250415205235819&#34;
@@ -42,10 +42,10 @@
 		data-flex-basis=&#34;317px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646.png&#34;
 	width=&#34;755&#34;
 	height=&#34;926&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_dca168d36a694d40.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_c45300f12a06abf6.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_2066ef873a1e10f2.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_603a0f64acd43ead.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250415211953646&#34;
@@ -97,10 +97,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378.png&#34;
 	width=&#34;1337&#34;
 	height=&#34;285&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_77146ee28c11c615.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_f0684c13577a89e5.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_fc7a7917febd4a8a.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_bdbdd38471c78b8f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250415212143378&#34;
@@ -158,10 +158,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;数据不确定性等级定义： （可以根据标准差和均值的比值进行定义）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878.png&#34;
 	width=&#34;939&#34;
 	height=&#34;270&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_6bfb9108b6809dc5.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_d8c280bd558a9d42.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_6e59a7f4efd11ac3.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_58323ca189e27792.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416175253878&#34;
@@ -175,10 +175,10 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;clause-6risk-management-process&#34;&gt;Clause 6：Risk management process
-&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027.png&#34;
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027.png&#34;
 	width=&#34;928&#34;
 	height=&#34;784&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_4499561b3c6964e2.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_b61b30913889f302.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_7c84ccb1fff016c0.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_3f8c5dbabafefbb6.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416210003027&#34;
@@ -198,10 +198,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;IEC 60812中定义的risk priority number (风险优先等级)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967.png&#34;
 	width=&#34;1047&#34;
 	height=&#34;270&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_4547aa03ab916239.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_782d1adccf39e868.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_ffe245e4835a5cef.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_a621e2864a8db36b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416204848967&#34;
@@ -220,10 +220,10 @@
 &lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;主要构件定义 （参考原报告3.1.20）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791.png&#34;
 	width=&#34;786&#34;
 	height=&#34;1156&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_5a6766e5311f925b.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_6c2f1cf965fb0fbc.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_b75d8020c5a7cc50.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_7f30fbc1486df920.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416210732791&#34;
@@ -252,10 +252,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;建议的检查计划包括：（全部项目请参考&lt;strong&gt;Annex C&lt;/strong&gt;）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501.png&#34;
 	width=&#34;973&#34;
 	height=&#34;972&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_e52c63679c90a64c.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_a8c9955e98ca2ea4.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_ba53c0eacea5e2de.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_8ee97ce5a7183318.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416212250501&#34;
@@ -284,10 +284,10 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;clause-8condition-and-structural-health-monitoring&#34;&gt;Clause 8：Condition and structural health monitoring
-&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330.png&#34;
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330.png&#34;
 	width=&#34;870&#34;
 	height=&#34;987&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_dc77449688aac616.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_c02ecffed92f5052.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_abd4951b1135bb6.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_ed8da46e83710af7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416213912330&#34;
@@ -307,10 +307,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Table 4中的例子说明了数据、信息、建议和决策之间的关系；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774.png&#34;
 	width=&#34;982&#34;
 	height=&#34;349&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_bceb1edf3637e7f2.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_1ae3a397ee6eb0f6.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_7b0d1e9bda5f004c.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_be70d4e957c63ed5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Table 4&#34;
@@ -326,10 +326,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Condition monitoring data requirements&lt;/strong&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
 	width=&#34;957&#34;
 	height=&#34;1168&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_e89bfc561277e599.png 480w, https://whhong-research.github.io/p/%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB3iec61400-28%E9%A3%8E%E6%9C%BA%E5%85%A8%E5%AF%BF%E5%91%BD%E6%8A%A5%E5%91%8A%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_dc380af26c5eedea.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_144a560071bb7b51.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_9f7f72517bcdbf9a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20250416214847454&#34;

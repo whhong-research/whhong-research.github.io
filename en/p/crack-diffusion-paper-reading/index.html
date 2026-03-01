@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Series Introduction: This series provides in-depth analysis of classic and cutting-edge papers in deep learning and computer vision, with a focus on structural health monitoring and defect detection applications. This article, the second in the series, explores the innovative CrackDiffusion framework for crack detection.\n1. Core Concepts 1.1 Research Background and Motivation This paper proposes CrackDiffusion, an augmented supervised monitoring framework for pavement crack segmentation. The framework adopts a two-stage architecture:\n">
+<title>Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/crack-diffusion-paper-reading/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework">
+<meta property='og:description' content=" Series Introduction: This series provides in-depth analysis of classic and cutting-edge papers in deep learning and computer vision, with a focus on structural health monitoring and defect detection applications. This article, the second in the series, explores the innovative CrackDiffusion framework for crack detection.\n1. Core Concepts 1.1 Research Background and Motivation This paper proposes CrackDiffusion, an augmented supervised monitoring framework for pavement crack segmentation. The framework adopts a two-stage architecture:\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/crack-diffusion-paper-reading/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='unsupervised learning' /><meta property='article:tag' content='Crack segmentation' /><meta property='article:tag' content='Cold Diffusion' /><meta property='article:tag' content='anomaly detection' /><meta property='article:published_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/crack-diffusion-paper-reading/1.png' />
+<meta name="twitter:title" content="Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework">
+<meta name="twitter:description" content=" Series Introduction: This series provides in-depth analysis of classic and cutting-edge papers in deep learning and computer vision, with a focus on structural health monitoring and defect detection applications. This article, the second in the series, explores the innovative CrackDiffusion framework for crack detection.\n1. Core Concepts 1.1 Research Background and Motivation This paper proposes CrackDiffusion, an augmented supervised monitoring framework for pavement crack segmentation. The framework adopts a two-stage architecture:\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/crack-diffusion-paper-reading/1.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-core-concepts">1. Core Concepts</a>
+      <ul>
+        <li><a href="#11-research-background-and-motivation">1.1 Research Background and Motivation</a></li>
+        <li><a href="#12-focus-of-this-article">1.2 Focus of This Article</a></li>
+        <li><a href="#13-core-assumption">1.3 Core Assumption</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-theoretical-foundations">2. Theoretical Foundations</a>
+      <ul>
+        <li><a href="#21-diffusion-models">2.1 Diffusion Models</a>
+          <ul>
+            <li><a href="#211-basic-concepts">2.1.1 Basic Concepts</a></li>
+            <li><a href="#212-mathematical-formulation">2.1.2 Mathematical Formulation</a></li>
+          </ul>
+        </li>
+        <li><a href="#22-diffusion-models-vs-gans">2.2 Diffusion Models vs. GANs</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-methodology-in-detail">3. Methodology in Detail</a>
+      <ul>
+        <li><a href="#31-challenges-of-direct-application-of-standard-diffusion-models">3.1 Challenges of Direct Application of Standard Diffusion Models</a></li>
+        <li><a href="#32-multi-blur-cold-diffusion-model-architecture">3.2 Multi-Blur Cold Diffusion Model Architecture</a>
+          <ul>
+            <li><a href="#321-degradation-operator-d">3.2.1 Degradation Operator D</a></li>
+            <li><a href="#322-restoration-operator-r">3.2.2 Restoration Operator R</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-loss-function">3.3 Loss Function</a></li>
+        <li><a href="#34-training-and-testing-pipeline">3.4 Training and Testing Pipeline</a>
+          <ul>
+            <li><a href="#341-training-process">3.4.1 Training Process</a></li>
+            <li><a href="#342-testing-process">3.4.2 Testing Process</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-experimental-results-and-analysis">4. Experimental Results and Analysis</a>
+      <ul>
+        <li><a href="#41-dataset-description">4.1 Dataset Description</a></li>
+        <li><a href="#42-model-training-details">4.2 Model Training Details</a></li>
+        <li><a href="#43-testing-results">4.3 Testing Results</a>
+          <ul>
+            <li><a href="#431-cases-with-good-crack-segmentation-results">4.3.1 Cases with Good Crack Segmentation Results</a></li>
+            <li><a href="#432-cases-with-poor-crack-segmentation-results">4.3.2 Cases with Poor Crack Segmentation Results</a></li>
+          </ul>
+        </li>
+        <li><a href="#44-comparison-with-other-methods">4.4 Comparison with Other Methods</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-supplementary-fundamentals">5. Supplementary Fundamentals</a>
+      <ul>
+        <li><a href="#51-latent-tensors">5.1 Latent Tensors</a>
+          <ul>
+            <li><a href="#511-basic-concepts">5.1.1 Basic Concepts</a></li>
+            <li><a href="#512-main-characteristics">5.1.2 Main Characteristics</a></li>
+            <li><a href="#513-working-principle">5.1.3 Working Principle</a></li>
+            <li><a href="#514-applications-in-different-models">5.1.4 Applications in Different Models</a></li>
+          </ul>
+        </li>
+        <li><a href="#52-l2-distance-euclidean-distance">5.2 L2 Distance (Euclidean Distance)</a>
+          <ul>
+            <li><a href="#521-definition">5.2.1 Definition</a></li>
+            <li><a href="#522-performance-in-different-dimensions">5.2.2 Performance in Different Dimensions</a></li>
+          </ul>
+        </li>
+        <li><a href="#53-gaussian-blur">5.3 Gaussian Blur</a>
+          <ul>
+            <li><a href="#531-basic-concepts">5.3.1 Basic Concepts</a></li>
+            <li><a href="#532-key-parameters">5.3.2 Key Parameters</a></li>
+          </ul>
+        </li>
+        <li><a href="#54-cold-diffusion-vs-standard-diffusion-models">5.4 Cold Diffusion vs. Standard Diffusion Models</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-summary">6. Summary</a></li>
+    <li><a href="#further-reading">Further Reading</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/crack-diffusion-paper-reading/">
+                <img src="/p/crack-diffusion-paper-reading/1_hu_b8044dd5fc3cc18d.png"
+                        srcset="/p/crack-diffusion-paper-reading/1_hu_b8044dd5fc3cc18d.png 800w, /p/crack-diffusion-paper-reading/1_hu_e940b9a1a6065658.png 1600w"
+                        width="800" 
+                        height="348" 
+                        loading="lazy"
+                        alt="Featured image of post Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                Paper Reading
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/crack-diffusion-paper-reading/">Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 24, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/crack-diffusion-paper-reading/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p><strong>Series Introduction</strong>: This series provides in-depth analysis of classic and cutting-edge papers in deep learning and computer vision, with a focus on structural health monitoring and defect detection applications. This article, the second in the series, explores the innovative CrackDiffusion framework for crack detection.</p>
+</blockquote>
+<h2 id="1-core-concepts">1. Core Concepts
+</h2><h3 id="11-research-background-and-motivation">1.1 Research Background and Motivation
+</h3><p>This paper proposes <strong>CrackDiffusion</strong>, an augmented supervised monitoring framework for pavement crack segmentation. The framework adopts a two-stage architecture:</p>
+<ul>
+<li><strong>Stage 1</strong>: Unsupervised multi-blur-based cold diffusion anomaly detection model</li>
+<li><strong>Stage 2</strong>: Supervised U-Net segmentation model</li>
+</ul>
+<h3 id="12-focus-of-this-article">1.2 Focus of This Article
+</h3><p>This article primarily focuses on <strong>the unsupervised anomaly detection process in Stage 1</strong>:</p>
+<ol>
+<li>Use <strong>crack-free images</strong> as the training set to train the diffusion model to learn the distribution characteristics of normal pavement</li>
+<li>Use <strong>cracked images</strong> as input to generate &ldquo;crack-free&rdquo; reconstructed images through the diffusion process</li>
+<li>Utilize <strong>Structural Similarity Index (SSIM)</strong> to compute the difference between original and reconstructed images to extract crack regions</li>
+</ol>
+<h3 id="13-core-assumption">1.3 Core Assumption
+</h3><blockquote>
+<p><strong>Core Assumption</strong>: When the same Gaussian blur noise is applied to both cracked and crack-free pavement images of the same surface until crack features are completely blurred in both images, the distribution difference between the two images is significantly smaller than the distribution difference in their initial state.</p>
+</blockquote>
+<hr>
+<h2 id="2-theoretical-foundations">2. Theoretical Foundations
+</h2><h3 id="21-diffusion-models">2.1 Diffusion Models
+</h3><h4 id="211-basic-concepts">2.1.1 Basic Concepts
+</h4><p><strong>Diffusion models</strong> are a class of generative models for image generation and super-resolution reconstruction, consisting of <strong>forward diffusion process</strong> and <strong>reverse denoising process</strong>:</p>
+<ul>
+<li><strong>Forward diffusion process</strong>: Gradually adds Gaussian noise to the original image, transforming the data distribution into a standard Gaussian distribution</li>
+<li><strong>Reverse denoising process</strong>: Gradually removes the added Gaussian noise, recovering the standard Gaussian distribution back to the original data distribution</li>
+</ul>
+<h4 id="212-mathematical-formulation">2.1.2 Mathematical Formulation
+</h4><p><strong>Equation (1) - Forward Diffusion Process</strong>:
+</p>
+$$x_t = \sqrt{1-\beta_t}x_{t-1} + \sqrt{\beta_t}Z_t\tag{1}\\$$<p><strong>Equation (2) - Reverse Denoising Process</strong>:
+</p>
+$$x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_\theta(x_t, t))\tag{2}$$<h3 id="22-diffusion-models-vs-gans">2.2 Diffusion Models vs. GANs
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Dimension</th>
+          <th style="text-align: left">GAN</th>
+          <th style="text-align: left">Diffusion Models</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Core Principle</strong></td>
+          <td style="text-align: left">Reconstructs anomalous images through latent tensors</td>
+          <td style="text-align: left">Gradually transforms original images into latent variable representations</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Latent Variable Dimensions</strong></td>
+          <td style="text-align: left">Latent variables typically have smaller dimensions</td>
+          <td style="text-align: left">Latent variables have the same dimensions as the original image</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Training Stability</strong></td>
+          <td style="text-align: left">More difficult to train (mode collapse issues)</td>
+          <td style="text-align: left">Relatively stable training</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Typical Applications</strong></td>
+          <td style="text-align: left">Image generation, style transfer</td>
+          <td style="text-align: left">Image generation, image inpainting, anomaly detection</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><strong>GAN Mechanism for Crack Detection</strong>:</p>
+<ul>
+<li>Cracks are treated as anomalous features</li>
+<li>The GAN network learns the distribution characteristics of normal pavement samples</li>
+<li>When cracked anomalous samples are input, the network attempts to &ldquo;pull&rdquo; them back to the normal distribution</li>
+<li>That is: repair crack regions to appear like normal pavement</li>
+</ul>
+<p><strong>Latent Tensor Comparison Diagram</strong>:
+<img src="/p/crack-diffusion-paper-reading/image-20250224115126966.png"
+	width="476"
+	height="295"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224115126966_hu_1b18fb4024e896d4.png 480w, /p/crack-diffusion-paper-reading/image-20250224115126966_hu_6e0ee5f062e1cbfc.png 1024w"
+	loading="lazy"
+	
+		alt="Comparison of latent tensors in GANs and Diffusion Models"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="161"
+		data-flex-basis="387px"
+	
+></p>
+<hr>
+<h2 id="3-methodology-in-detail">3. Methodology in Detail
+</h2><h3 id="31-challenges-of-direct-application-of-standard-diffusion-models">3.1 Challenges of Direct Application of Standard Diffusion Models
+</h3><ol>
+<li>
+<p><strong>Tiny Crack Features</strong>: Pavement cracks are typically small objects; their pixel features are similar to road debris (such as paint markings, gravel, tire marks), making them difficult to distinguish</p>
+</li>
+<li>
+<p><strong>Preservation of Crack Information During Reconstruction</strong>: When the diffusion model is well-trained, it accurately reconstructs crack and debris pixels, resulting in reconstructed images that still contain crack information</p>
+</li>
+<li>
+<p><strong>Inability to Distinguish with Insufficient Training</strong>: When the diffusion model is insufficiently trained, it cannot accurately reconstruct road debris, making it impossible to distinguish debris from cracks using SSIM</p>
+</li>
+<li>
+<p><strong>Core Requirement</strong>: In the reconstructed image, crack regions should be reconstructed as crack-free pavement, while road debris, gravel, etc., should be preserved</p>
+</li>
+</ol>
+<h3 id="32-multi-blur-cold-diffusion-model-architecture">3.2 Multi-Blur Cold Diffusion Model Architecture
+</h3><p><strong>Overall Model Flow Diagram</strong>:
+<img src="/p/crack-diffusion-paper-reading/image-20250224124120609.png"
+	width="919"
+	height="716"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224124120609_hu_988b1aec4f176465.png 480w, /p/crack-diffusion-paper-reading/image-20250224124120609_hu_6890bf508b47f9b2.png 1024w"
+	loading="lazy"
+	
+		alt="Crack detection process using multi-blur cold diffusion model"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h4 id="321-degradation-operator-d">3.2.1 Degradation Operator D
+</h4><p><strong>Function</strong>: Applies $t$ iterations of noise to a given original image $x_0$ to implement the forward diffusion process</p>
+<p><strong>Mathematical Expression</strong>:
+</p>
+$$D(x_0, 0) = x_0, \quad x_t = D(x_0,t)\tag{3}$$<p><strong>Implementation in This Study</strong>:</p>
+<ul>
+<li>Combines <strong>2D Gaussian blur</strong> and <strong>2D max pooling</strong> to form the degradation operator D</li>
+<li>2D Gaussian blur uses a (3, 3) convolution kernel</li>
+<li>In each convolution, kernel weights are computed according to a 2D Gaussian distribution</li>
+<li>Max pooling serves as a complementary operation to Gaussian blur</li>
+</ul>
+<p><strong>Complete Expression of Degradation Operator D</strong>:
+</p>
+$$D(x_t, 1, M) = x_{t+1}(i,j) = \sum_{u=-r}^r\sum_{v=-r}^r x_t(i+u,j+v)\psi(u,v)f_{MaxPool}(u,v,M)$$<p><strong>Implementation Code</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">noise_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">filtersize</span><span class="p">):</span> <span class="c1"># Forward diffusion process q</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xt</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Store diffused images</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span> <span class="c1"># Iterate over each batch</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tem_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">batch</span><span class="p">]</span> <span class="c1"># Get image for current batch</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tem_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">batch</span><span class="p">])</span> <span class="c1"># Get maximum timestep for current batch</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tem_t</span><span class="p">):</span> <span class="c1"># Perform tem_t diffusions                </span>
+</span></span><span class="line"><span class="cl">            <span class="n">tem_x1</span> <span class="o">=</span> <span class="n">tem_x</span> <span class="c1"># Save current image</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tem_x</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">tem_x</span><span class="p">,(</span><span class="n">filtersize</span><span class="p">,</span><span class="n">filtersize</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Apply Gaussian blur to image</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">25</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span> <span class="c1"># Apply max pooling every 25 steps or on first step</span>
+</span></span><span class="line"><span class="cl">                <span class="n">tem_x</span> <span class="o">=</span> <span class="n">max_pooling</span><span class="p">(</span><span class="n">tem_x</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tem_x</span><span class="p">)</span> <span class="c1"># Add diffused image to result list</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="c1"># Convert to numpy array</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">xt</span> <span class="c1"># Return noisy image at timestep t</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>About <code>cv2.GaussianBlur</code></strong>:</p>
+<ul>
+<li><code>ksize</code> represents the size of the Gaussian blur kernel</li>
+<li>When <code>sigmaX</code> and <code>sigmaY</code> are set to 0, OpenCV automatically calculates the standard deviation: $\sigma = 0.3*((ksize-1)*0.5 - 1) + 0.8$</li>
+<li>For a 3×3 kernel, the standard deviation is approximately 0.8, producing a slight blur effect</li>
+</ul>
+<h4 id="322-restoration-operator-r">3.2.2 Restoration Operator R
+</h4><p><strong>Function</strong>: Denoises and restores the noised image</p>
+<p><strong>Mathematical Expression</strong>:
+</p>
+$$R(x_t, t) \approx x_0$$<p><strong>Implementation in This Study</strong>:</p>
+<ul>
+<li>Adopts the <strong>U-Net architecture from DDPM</strong> as the restoration operator</li>
+<li>After obtaining latent tensors, reconstructs the image through the denoising diffusion probabilistic model</li>
+</ul>
+<p><strong>Restoration Operator Structure Diagram</strong>:
+<img src="/p/crack-diffusion-paper-reading/image-20250224115858087.png"
+	width="974"
+	height="429"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224115858087_hu_38dce04a6bcda507.png 480w, /p/crack-diffusion-paper-reading/image-20250224115858087_hu_327dcab4c94f2ef5.png 1024w"
+	loading="lazy"
+	
+		alt="Restoration Operator R in multi-blur cold diffusion model"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="227"
+		data-flex-basis="544px"
+	
+></p>
+<h3 id="33-loss-function">3.3 Loss Function
+</h3><p>The loss function consists of two parts:</p>
+<ol>
+<li><strong>L2 Distance</strong>: Pixel-level difference between predicted and ground truth images</li>
+<li><strong>SSIM</strong>: Structural similarity measure between predicted and ground truth images</li>
+</ol>
+<p><strong>Complete Loss Function Expression</strong>:</p>
+$$\mathcal{L} = \lambda_1||\hat{x}_0(t) - x_0||_2 + \lambda_2(1 - \text{SSIM}(\hat{x}_0(t), x_0))/2$$<p>Where:</p>
+<ul>
+<li>$\lambda_1$ and $\lambda_2$ are weight coefficients for the two components</li>
+<li>$\hat{x}_0(t)$ is the model-predicted image</li>
+<li>$x_0$ is the ground truth image</li>
+</ul>
+<p><strong>SSIM Calculation Formula</strong>:</p>
+$$\text{SSIM}(I_1,I_2) = \frac{(2\mu_1\mu_2 + C_1)(2\sigma_{12} + C_2)}{(\mu_1^2 + \mu_2^2 + C_1)(\sigma_1^2 + \sigma_2^2 + C_2)}$$<p>Where:</p>
+<ul>
+<li>$I_1$ and $I_2$ are the two images being compared</li>
+<li>$C_1$ and $C_2$ are constants for numerical stability</li>
+<li>$\mu$ represents the mean of the image</li>
+<li>$\sigma$ represents the standard deviation of the image</li>
+<li>$\sigma_{12}$ represents the covariance between the two images</li>
+</ul>
+<p><strong>Computation Method</strong>: Uses a 3×3 sliding window to calculate local SSIM, then averages to obtain global SSIM.</p>
+<h3 id="34-training-and-testing-pipeline">3.4 Training and Testing Pipeline
+</h3><h4 id="341-training-process">3.4.1 Training Process
+</h4><ol>
+<li><strong>Data Preparation</strong>: Use crack-free road images as training data</li>
+<li><strong>Diffusion Process</strong>: Apply T rounds of multi-blur processing to images to obtain $x_t$, completely eliminating crack features</li>
+<li><strong>Model Training</strong>: Train the denoising U-Net to implement restoration operator R</li>
+<li><strong>Timestep Sampling</strong>: During training, parameter t is randomly sampled from the interval (0, T]</li>
+</ol>
+<h4 id="342-testing-process">3.4.2 Testing Process
+</h4><ol>
+<li><strong>Input</strong>: Input cracked road images</li>
+<li><strong>Noising</strong>: Apply degradation operator D T times</li>
+<li><strong>Reconstruction</strong>: Use the trained denoising U-Net model to reconstruct the image</li>
+<li><strong>Difference Detection</strong>: Use SSIM to compare the original input $x_0$ with the reconstructed image $\hat{x}_0$, generating crack segmentation results</li>
+</ol>
+<hr>
+<h2 id="4-experimental-results-and-analysis">4. Experimental Results and Analysis
+</h2><h3 id="41-dataset-description">4.1 Dataset Description
+</h3><ul>
+<li>
+<p><strong>Dataset Link</strong>: <a class="link" href="https://www.kaggle.com/datasets/arunrk7/surface-crack-detection"  target="_blank" rel="noopener"
+    >Surface Crack Detection</a></p>
+</li>
+<li>
+<p><strong>Data Description</strong>:</p>
+<ul>
+<li>40,000 images (20,000 positive and 20,000 negative samples)</li>
+<li>227×227 pixels, RGB three channels</li>
+<li>High-resolution images (4032×3024 pixels) with high diversity in surface finish and lighting conditions</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Augmentation</strong>: No random rotation, flipping, or tilting data augmentation was applied</p>
+</li>
+</ul>
+<h3 id="42-model-training-details">4.2 Model Training Details
+</h3><p><strong>Experiment 1: Using MAE as Loss Function</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">sample_timesteps</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">train_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x_t</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">noise_images</span><span class="p">(</span><span class="n">train_image</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">filtersize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">predicted_noise_image</span> <span class="o">=</span> <span class="n">unet</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_image</span><span class="p">,</span> <span class="n">predicted_noise_image</span><span class="p">)</span>  <span class="c1"># MAE loss</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Training Results</strong>:</p>
+<ul>
+<li>Early stopping triggered at epoch 122</li>
+<li>Training loss continued to decrease while validation loss increased over the past 30 epochs</li>
+<li><strong>Best model appeared at epoch 92</strong></li>
+</ul>
+<p><img src="/p/crack-diffusion-paper-reading/training_history.png"
+	width="1000"
+	height="600"
+	srcset="/p/crack-diffusion-paper-reading/training_history_hu_63a696414154c407.png 480w, /p/crack-diffusion-paper-reading/training_history_hu_4e4325102cdd20a9.png 1024w"
+	loading="lazy"
+	
+		alt="Training History"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<h3 id="43-testing-results">4.3 Testing Results
+</h3><h4 id="431-cases-with-good-crack-segmentation-results">4.3.1 Cases with Good Crack Segmentation Results
+</h4><p><img src="/p/crack-diffusion-paper-reading/Image_1_best_all.png"
+	width="4440"
+	height="1305"
+	srcset="/p/crack-diffusion-paper-reading/Image_1_best_all_hu_8d3e81545e4b15ab.png 480w, /p/crack-diffusion-paper-reading/Image_1_best_all_hu_f8f097fe34de98aa.png 1024w"
+	loading="lazy"
+	
+		alt="Good crack segmentation results on CFD dataset"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="816px"
+	
+></p>
+<h4 id="432-cases-with-poor-crack-segmentation-results">4.3.2 Cases with Poor Crack Segmentation Results
+</h4><p>(Possibly due to cracks being too fine)</p>
+<p><img src="/p/crack-diffusion-paper-reading/Image_86_best_all.png"
+	width="4440"
+	height="1330"
+	srcset="/p/crack-diffusion-paper-reading/Image_86_best_all_hu_6dde3d924b46e8f1.png 480w, /p/crack-diffusion-paper-reading/Image_86_best_all_hu_21b992eec9253771.png 1024w"
+	loading="lazy"
+	
+		alt="Poor crack segmentation results on CFD dataset"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="333"
+		data-flex-basis="801px"
+	
+></p>
+<h3 id="44-comparison-with-other-methods">4.4 Comparison with Other Methods
+</h3><p>The authors also compared the proposed multi-blur cold diffusion model with other common unsupervised learning models:</p>
+<p><strong>SSIM and IoU Comparison Table</strong>:</p>
+<p><img src="/p/crack-diffusion-paper-reading/image-20250224150708204.png"
+	width="892"
+	height="249"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224150708204_hu_89602192734239e0.png 480w, /p/crack-diffusion-paper-reading/image-20250224150708204_hu_b01b224bb3309d83.png 1024w"
+	loading="lazy"
+	
+		alt="SSIM and IoU comparison of crack segmentation across seven unsupervised networks"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="358"
+		data-flex-basis="859px"
+	
+></p>
+<p><strong>Visual Comparison</strong>:</p>
+<p><img src="/p/crack-diffusion-paper-reading/image-20250224150551051.png"
+	width="895"
+	height="716"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224150551051_hu_6593e21efa26c12f.png 480w, /p/crack-diffusion-paper-reading/image-20250224150551051_hu_cbaf6a52ec0faed.png 1024w"
+	loading="lazy"
+	
+		alt="Crack segmentation results based on SSIM"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="125"
+		data-flex-basis="300px"
+	
+></p>
+<p><strong>Conclusion</strong>: The Multi-blur-based cold diffusion model achieved the highest IoU values across all four datasets, validating the effectiveness of this method.</p>
+<hr>
+<h2 id="5-supplementary-fundamentals">5. Supplementary Fundamentals
+</h2><h3 id="51-latent-tensors">5.1 Latent Tensors
+</h3><h4 id="511-basic-concepts">5.1.1 Basic Concepts
+</h4><p><strong>Latent tensors</strong> are an important concept in deep learning, representing data in &ldquo;latent space&rdquo;:</p>
+<ul>
+<li>A compressed representation obtained after encoding (encoding) the original data</li>
+<li>Usually lower dimensional than the original data, but containing key feature information from the original data</li>
+</ul>
+<h4 id="512-main-characteristics">5.1.2 Main Characteristics
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Characteristic</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Dimensionality Compression</strong></td>
+          <td style="text-align: left">For example, a 1024×1024 image might be compressed to a 16×16×512 latent tensor (16×16 represents spatial dimension compression, 512 is the number of feature channels)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Information Extraction</strong></td>
+          <td style="text-align: left">Preserves the most important features in the data, removing redundant information</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Continuity</strong></td>
+          <td style="text-align: left">In latent space, similar data points are close to each other in the space</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Interpretability</strong></td>
+          <td style="text-align: left">Each dimension in latent space may correspond to a certain feature of the original data</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="513-working-principle">5.1.3 Working Principle
+</h4><p><strong>Taking image processing as an example</strong>:</p>
+<ol>
+<li><strong>Input</strong>: Original image (e.g., 1024×1024×3 color image)</li>
+<li><strong>Encoding Process</strong>: Compress the image to a latent tensor through a neural network</li>
+<li><strong>Latent Representation</strong>: Might be a 16×16×512 tensor</li>
+<li><strong>Decoding Process</strong>: Original image can be reconstructed from the latent tensor</li>
+</ol>
+<h4 id="514-applications-in-different-models">5.1.4 Applications in Different Models
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Model</th>
+          <th style="text-align: left">Application Method</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>GAN</strong></td>
+          <td style="text-align: left">Generator creates realistic images from random latent tensors</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>VAE</strong></td>
+          <td style="text-align: left">Encodes inputs as probability distributions in latent space</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Diffusion Models</strong></td>
+          <td style="text-align: left">Forms latent representations by gradually adding noise</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="52-l2-distance-euclidean-distance">5.2 L2 Distance (Euclidean Distance)
+</h3><h4 id="521-definition">5.2.1 Definition
+</h4><p><strong>L2 Distance</strong>, also known as <strong>Euclidean Distance</strong>, is one of the most commonly used distance metrics:</p>
+$$d_{L2} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$$<h4 id="522-performance-in-different-dimensions">5.2.2 Performance in Different Dimensions
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Dimension</th>
+          <th style="text-align: left">Performance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>One-dimensional Space</strong></td>
+          <td style="text-align: left">Absolute difference between two values</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Two-dimensional Space</strong></td>
+          <td style="text-align: left">Straight-line distance between two points on a plane</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>High-dimensional Space</strong></td>
+          <td style="text-align: left">Square root of the sum of squared differences across dimensions</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="53-gaussian-blur">5.3 Gaussian Blur
+</h3><h4 id="531-basic-concepts">5.3.1 Basic Concepts
+</h4><p><strong>Gaussian blur</strong> is a technique for smoothing images using a Gaussian function. Its core is the <strong>two-dimensional Gaussian function</strong>:</p>
+$$G(x,y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2 + y^2}{2\sigma^2}}$$<p>Where:</p>
+<ul>
+<li><strong>σ</strong> is the standard deviation, controlling the blur degree</li>
+<li><strong>x, y</strong> are the pixel coordinate positions</li>
+</ul>
+<h4 id="532-key-parameters">5.3.2 Key Parameters
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Parameter</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Recommendation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Standard Deviation (σ)</strong></td>
+          <td style="text-align: left">Controls blur intensity</td>
+          <td style="text-align: left">Larger σ means higher blur degree; smaller σ means lower blur degree</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Kernel Size</strong></td>
+          <td style="text-align: left">Usually odd numbers (3×3, 5×5, 7×7, etc.)</td>
+          <td style="text-align: left">Recommended kernel size ≥ 6σ + 1; larger kernel means more computation</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="54-cold-diffusion-vs-standard-diffusion-models">5.4 Cold Diffusion vs. Standard Diffusion Models
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Aspect</th>
+          <th style="text-align: left">Cold Diffusion</th>
+          <th style="text-align: left">Standard Diffusion Models</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Noise Type</strong></td>
+          <td style="text-align: left">Not limited to Gaussian distribution; can choose Gaussian blur, snowflake noise, Gaussian mask, etc.</td>
+          <td style="text-align: left">Usually uses Gaussian noise</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Flexibility</strong></td>
+          <td style="text-align: left">Highly flexible in noise selection</td>
+          <td style="text-align: left">Relatively fixed noise types</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Modeling Approach</strong></td>
+          <td style="text-align: left">Diffusion and reverse diffusion processes are modeled as two separate operators (degradation operator D and restoration operator R)</td>
+          <td style="text-align: left">Usually uses a single diffusion process</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="6-summary">6. Summary
+</h2><p>The <strong>CrackDiffusion</strong> framework presented in this article achieves efficient pavement crack detection by combining <strong>unsupervised cold diffusion models</strong> and <strong>supervised U-Net</strong>. Core innovations include:</p>
+<ol>
+<li><strong>Multi-blur cold diffusion model</strong>: Uses various blur techniques for anomaly detection, effectively identifying crack regions</li>
+<li><strong>Two-stage framework</strong>: Stage 1 performs coarse-grained anomaly detection, Stage 2 performs fine-grained segmentation</li>
+<li><strong>SSIM difference detection</strong>: Compares original and reconstructed images using structural similarity index to extract crack features</li>
+</ol>
+<p><strong>Key Advantages</strong>:</p>
+<ul>
+<li>No need for large amounts of labeled data (Stage 1 is unsupervised learning)</li>
+<li>Adapts to different pavement conditions and lighting environments</li>
+<li>Achieves optimal IoU performance across multiple datasets</li>
+</ul>
+<hr>
+<h2 id="further-reading">Further Reading
+</h2><ul>
+<li><a class="link" href="/p/crack-diffusion-experiment/" >Crack Image Processing Basics: Semantic Segmentation and Post-processing Techniques</a></li>
+</ul>
+<hr>
+<h2 id="references">References
+</h2><ol>
+<li>
+<p>Han, C., Yang, H., Ma, T., Wang, S., Zhao, C., Yang, Y., 2024. CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes. <em>Automation in Construction</em> 160, 105332. <a class="link" href="https://doi.org/10.1016/j.autcon.2024.105332"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/j.autcon.2024.105332</a></p>
+</li>
+<li>
+<p><a class="link" href="https://github.com/ChengjiaHanSEU/CrackDiffusion"  target="_blank" rel="noopener"
+    >https://github.com/ChengjiaHanSEU/CrackDiffusion</a></p>
+</li>
+</ol>
+<hr>
+<p><em>Last updated: 2025-02-24</em></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/diffusion/">Diffusion</a>
+        
+            <a href="/en/tags/unsupervised-learning/">Unsupervised Learning</a>
+        
+            <a href="/en/tags/crack-segmentation/">Crack Segmentation</a>
+        
+            <a href="/en/tags/cold-diffusion/">Cold Diffusion</a>
+        
+            <a href="/en/tags/anomaly-detection/">Anomaly Detection</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">Image Processing &amp; AI</h4>
+    <span class="series-progress">第 2 篇，共 1 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

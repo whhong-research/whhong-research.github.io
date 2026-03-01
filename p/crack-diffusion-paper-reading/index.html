@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" 系列导读：本系列文章精读深度学习与计算机视觉领域的经典与前沿论文，重点关注结构健康监测、缺陷检测等应用场景。本文为系列第二篇，深入解读 CrackDiffusion 这一创新的裂缝检测框架。\n">
+<title>深度学习裂缝检测：Cold Diffusion异常检测框架</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/crack-diffusion-paper-reading/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="深度学习裂缝检测：Cold Diffusion异常检测框架">
+<meta property='og:description' content=" 系列导读：本系列文章精读深度学习与计算机视觉领域的经典与前沿论文，重点关注结构健康监测、缺陷检测等应用场景。本文为系列第二篇，深入解读 CrackDiffusion 这一创新的裂缝检测框架。\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/crack-diffusion-paper-reading/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='unsupervised learning' /><meta property='article:tag' content='Crack segmentation' /><meta property='article:tag' content='Cold Diffusion' /><meta property='article:tag' content='无监督异常检测' /><meta property='article:published_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/crack-diffusion-paper-reading/1.png' />
+<meta name="twitter:title" content="深度学习裂缝检测：Cold Diffusion异常检测框架">
+<meta name="twitter:description" content=" 系列导读：本系列文章精读深度学习与计算机视觉领域的经典与前沿论文，重点关注结构健康监测、缺陷检测等应用场景。本文为系列第二篇，深入解读 CrackDiffusion 这一创新的裂缝检测框架。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/crack-diffusion-paper-reading/1.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-论文核心思想">1. 论文核心思想</a>
+      <ul>
+        <li><a href="#11-研究背景与动机">1.1 研究背景与动机</a></li>
+        <li><a href="#12-本文关注重点">1.2 本文关注重点</a></li>
+        <li><a href="#13-核心假设">1.3 核心假设</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-理论基础">2. 理论基础</a>
+      <ul>
+        <li><a href="#21-扩散模型diffusion-model">2.1 扩散模型（Diffusion Model）</a>
+          <ul>
+            <li><a href="#211-基本概念">2.1.1 基本概念</a></li>
+            <li><a href="#212-数学表达">2.1.2 数学表达</a></li>
+          </ul>
+        </li>
+        <li><a href="#22-扩散模型与gan模型对比">2.2 扩散模型与GAN模型对比</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-方法论详解">3. 方法论详解</a>
+      <ul>
+        <li><a href="#31-常规扩散模型直接应用的挑战">3.1 常规扩散模型直接应用的挑战</a></li>
+        <li><a href="#32-多模糊冷扩散模型架构">3.2 多模糊冷扩散模型架构</a>
+          <ul>
+            <li><a href="#321-退化算子-ddegradation-operator">3.2.1 退化算子 D（Degradation Operator）</a></li>
+            <li><a href="#322-恢复算子-rrestoration-operator">3.2.2 恢复算子 R（Restoration Operator）</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-损失函数">3.3 损失函数</a></li>
+        <li><a href="#34-训练与测试流程">3.4 训练与测试流程</a>
+          <ul>
+            <li><a href="#341-训练过程">3.4.1 训练过程</a></li>
+            <li><a href="#342-测试过程">3.4.2 测试过程</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-实验结果与分析">4. 实验结果与分析</a>
+      <ul>
+        <li><a href="#41-数据集介绍">4.1 数据集介绍</a></li>
+        <li><a href="#42-模型训练细节">4.2 模型训练细节</a></li>
+        <li><a href="#43-测试效果">4.3 测试效果</a>
+          <ul>
+            <li><a href="#431-裂缝分割效果较好的案例">4.3.1 裂缝分割效果较好的案例</a></li>
+            <li><a href="#432-裂缝分割效果较差的案例">4.3.2 裂缝分割效果较差的案例</a></li>
+          </ul>
+        </li>
+        <li><a href="#44-与其他方法的对比">4.4 与其他方法的对比</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-基础知识补充">5. 基础知识补充</a>
+      <ul>
+        <li><a href="#51-潜在张量latent-tensors">5.1 潜在张量（Latent Tensors）</a>
+          <ul>
+            <li><a href="#511-基本概念">5.1.1 基本概念</a></li>
+            <li><a href="#512-主要特点">5.1.2 主要特点</a></li>
+            <li><a href="#513-工作原理">5.1.3 工作原理</a></li>
+            <li><a href="#514-在不同模型中的应用">5.1.4 在不同模型中的应用</a></li>
+          </ul>
+        </li>
+        <li><a href="#52-l2-距离欧几里得距离">5.2 L2 距离（欧几里得距离）</a>
+          <ul>
+            <li><a href="#521-定义">5.2.1 定义</a></li>
+            <li><a href="#522-在不同维度的表现">5.2.2 在不同维度的表现</a></li>
+          </ul>
+        </li>
+        <li><a href="#53-高斯模糊gaussian-blur">5.3 高斯模糊（Gaussian Blur）</a>
+          <ul>
+            <li><a href="#531-基本概念">5.3.1 基本概念</a></li>
+            <li><a href="#532-关键参数">5.3.2 关键参数</a></li>
+          </ul>
+        </li>
+        <li><a href="#54-冷扩散模型与标准扩散模型对比">5.4 冷扩散模型与标准扩散模型对比</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-总结">6. 总结</a></li>
+    <li><a href="#扩展阅读">扩展阅读</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/crack-diffusion-paper-reading/">
+                <img src="/p/crack-diffusion-paper-reading/1_hu_b8044dd5fc3cc18d.png"
+                        srcset="/p/crack-diffusion-paper-reading/1_hu_b8044dd5fc3cc18d.png 800w, /p/crack-diffusion-paper-reading/1_hu_e940b9a1a6065658.png 1600w"
+                        width="800" 
+                        height="348" 
+                        loading="lazy"
+                        alt="Featured image of post 深度学习裂缝检测：Cold Diffusion异常检测框架" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                论文阅读
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/crack-diffusion-paper-reading/">深度学习裂缝检测：Cold Diffusion异常检测框架</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 24, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/en/p/crack-diffusion-paper-reading/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p><strong>系列导读</strong>：本系列文章精读深度学习与计算机视觉领域的经典与前沿论文，重点关注结构健康监测、缺陷检测等应用场景。本文为系列第二篇，深入解读 CrackDiffusion 这一创新的裂缝检测框架。</p>
+</blockquote>
+<h2 id="1-论文核心思想">1. 论文核心思想
+</h2><h3 id="11-研究背景与动机">1.1 研究背景与动机
+</h3><p>本文提出了一种名为 <strong>CrackDiffusion</strong> 的增强监督监测框架，用于路面裂缝分割。该框架采用两阶段架构：</p>
+<ul>
+<li><strong>第一阶段</strong>：无监督的多模糊冷扩散（multi-blur-based cold diffusion）异常检测模型</li>
+<li><strong>第二阶段</strong>：有监督的 U-Net 分割模型</li>
+</ul>
+<h3 id="12-本文关注重点">1.2 本文关注重点
+</h3><p>本文主要聚焦于<strong>第一阶段的无监督异常检测过程</strong>：</p>
+<ol>
+<li>以<strong>无裂缝图像</strong>作为训练集，训练扩散模型学习正常路面的分布特征</li>
+<li>以<strong>含裂缝图像</strong>作为输入，通过扩散过程生成&quot;无裂缝&quot;重建图像</li>
+<li>利用**结构相似性指数（SSIM）**计算原始图像与重建图像的差异，提取裂缝区域</li>
+</ol>
+<h3 id="13-核心假设">1.3 核心假设
+</h3><blockquote>
+<p><strong>核心假设</strong>：将相同的高斯模糊噪声分别应用于含裂缝和不含裂缝的同一路面图像，直至两张图像的裂缝特征均被完全模糊。在此状态下，两张图像的分布差异显著小于初始状态的分布差异。</p>
+</blockquote>
+<hr>
+<h2 id="2-理论基础">2. 理论基础
+</h2><h3 id="21-扩散模型diffusion-model">2.1 扩散模型（Diffusion Model）
+</h3><h4 id="211-基本概念">2.1.1 基本概念
+</h4><p><strong>扩散模型</strong>是一类用于图像生成和超分辨率重建的生成模型，由<strong>前向扩散过程</strong>和<strong>逆向去噪过程</strong>组成：</p>
+<ul>
+<li><strong>前向扩散过程</strong>：通过逐步向原始图像添加高斯噪声，将数据分布转化为标准高斯分布</li>
+<li><strong>逆向去噪过程</strong>：通过逐步去除添加的高斯噪声，将标准高斯分布恢复为原始数据分布</li>
+</ul>
+<h4 id="212-数学表达">2.1.2 数学表达
+</h4><p><strong>公式（1）- 前向扩散过程</strong>：
+</p>
+$$x_t = \sqrt{1-\beta_t}x_{t-1} + \sqrt{\beta_t}Z_t\tag{1}\\$$<p><strong>公式（2）- 逆向去噪过程</strong>：
+</p>
+$$x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_\theta(x_t, t))\tag{2}$$<h3 id="22-扩散模型与gan模型对比">2.2 扩散模型与GAN模型对比
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">对比维度</th>
+          <th style="text-align: left">GAN</th>
+          <th style="text-align: left">扩散模型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>核心原理</strong></td>
+          <td style="text-align: left">通过潜在张量（latent tensors）重建异常图像</td>
+          <td style="text-align: left">将原始图像逐步转化为潜在变量表示</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>潜在变量维度</strong></td>
+          <td style="text-align: left">潜在变量维度通常较小</td>
+          <td style="text-align: left">潜在变量维度与原始图像相同</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>训练稳定性</strong></td>
+          <td style="text-align: left">训练难度较大（存在模式崩溃问题）</td>
+          <td style="text-align: left">训练相对稳定</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>典型应用</strong></td>
+          <td style="text-align: left">图像生成、风格迁移</td>
+          <td style="text-align: left">图像生成、图像修复、异常检测</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><strong>GAN处理裂缝检测的机制</strong>：</p>
+<ul>
+<li>裂缝被视为异常特征</li>
+<li>GAN网络学习正常路面样本的分布特征</li>
+<li>当输入含裂缝的异常样本时，网络试图将其&quot;拉回&quot;正常分布</li>
+<li>即：将裂缝区域修复为正常路面外观</li>
+</ul>
+<p><strong>潜在张量对比示意图</strong>：
+<img src="/p/crack-diffusion-paper-reading/image-20250224115126966.png"
+	width="476"
+	height="295"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224115126966_hu_1b18fb4024e896d4.png 480w, /p/crack-diffusion-paper-reading/image-20250224115126966_hu_6e0ee5f062e1cbfc.png 1024w"
+	loading="lazy"
+	
+		alt="潜在变量（latent tensors）在GAN和扩散模型中的对比"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="161"
+		data-flex-basis="387px"
+	
+></p>
+<hr>
+<h2 id="3-方法论详解">3. 方法论详解
+</h2><h3 id="31-常规扩散模型直接应用的挑战">3.1 常规扩散模型直接应用的挑战
+</h3><ol>
+<li>
+<p><strong>裂缝特征微小</strong>：路面裂缝通常是细小目标，其像素特征与道路杂物（如油漆标记、砾石、轮胎压痕）相似，难以区分</p>
+</li>
+<li>
+<p><strong>重建时保留裂缝信息</strong>：当扩散模型训练充分时，会准确重建裂缝和杂物像素，导致重建图像仍包含裂缝信息</p>
+</li>
+<li>
+<p><strong>训练不足时无法区分</strong>：当扩散模型训练不充分时，无法准确重建道路杂物，导致无法通过SSIM区分杂物与裂缝</p>
+</li>
+<li>
+<p><strong>核心需求</strong>：重建图像中，裂缝区域应被重建为无裂缝路面，而道路杂物、砾石等应予以保留</p>
+</li>
+</ol>
+<h3 id="32-多模糊冷扩散模型架构">3.2 多模糊冷扩散模型架构
+</h3><p><strong>模型整体流程示意图</strong>：
+<img src="/p/crack-diffusion-paper-reading/image-20250224124120609.png"
+	width="919"
+	height="716"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224124120609_hu_988b1aec4f176465.png 480w, /p/crack-diffusion-paper-reading/image-20250224124120609_hu_6890bf508b47f9b2.png 1024w"
+	loading="lazy"
+	
+		alt="多模糊冷扩散模型的裂缝检测过程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h4 id="321-退化算子-ddegradation-operator">3.2.1 退化算子 D（Degradation Operator）
+</h4><p><strong>功能</strong>：对给定原始图像 $x_0$ 施加 $t$ 次噪声，实现前向扩散过程</p>
+<p><strong>数学表达</strong>：
+</p>
+$$D(x_0, 0) = x_0, \quad x_t = D(x_0,t)\tag{3}$$<p><strong>本研究的实现方案</strong>：</p>
+<ul>
+<li>将 <strong>2D高斯模糊</strong> 与 <strong>2D最大池化</strong> 组合构成退化算子 D</li>
+<li>2D高斯模糊采用 (3, 3) 的卷积核</li>
+<li>每次卷积时，核权重按照2D高斯分布计算</li>
+<li>最大池化作为高斯模糊的补充操作</li>
+</ul>
+<p><strong>退化算子 D 的完整表达式</strong>：
+</p>
+$$D(x_t, 1, M) = x_{t+1}(i,j) = \sum_{u=-r}^r\sum_{v=-r}^r x_t(i+u,j+v)\psi(u,v)f_{MaxPool}(u,v,M)$$<p><strong>实现代码</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">noise_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">filtersize</span><span class="p">):</span> <span class="c1"># 正向扩散过程q</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xt</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 存储扩散后的图像</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span> <span class="c1"># 遍历每个batch</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tem_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">batch</span><span class="p">]</span> <span class="c1"># 获取当前batch的图像</span>
+</span></span><span class="line"><span class="cl">        <span class="n">tem_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">batch</span><span class="p">])</span> <span class="c1"># 获取当前batch的最大时间步</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tem_t</span><span class="p">):</span> <span class="c1"># 进行tem_t次扩散                </span>
+</span></span><span class="line"><span class="cl">            <span class="n">tem_x1</span> <span class="o">=</span> <span class="n">tem_x</span> <span class="c1"># 保存当前图像</span>
+</span></span><span class="line"><span class="cl">            <span class="n">tem_x</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">tem_x</span><span class="p">,(</span><span class="n">filtersize</span><span class="p">,</span><span class="n">filtersize</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 对图像进行高斯模糊</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="mi">25</span><span class="o">==</span><span class="mi">0</span><span class="p">):</span> <span class="c1"># 每25步或第一步进行一次最大池化</span>
+</span></span><span class="line"><span class="cl">                <span class="n">tem_x</span> <span class="o">=</span> <span class="n">max_pooling</span><span class="p">(</span><span class="n">tem_x</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">xt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tem_x</span><span class="p">)</span> <span class="c1"># 将扩散后的图像添加到结果列表</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xt</span><span class="p">)</span> <span class="c1"># 转换为numpy数组</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">xt</span> <span class="c1"># 返回t时刻的噪声图像</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>关于 <code>cv2.GaussianBlur</code></strong>：</p>
+<ul>
+<li><code>ksize</code> 表示高斯模糊核的大小</li>
+<li><code>sigmaX</code> 和 <code>sigmaY</code> 设置为 0 时，OpenCV 会自动计算标准差：$\sigma = 0.3*((ksize-1)*0.5 - 1) + 0.8$</li>
+<li>对于 3×3 的核来说，标准差约为 0.8，会产生轻微的模糊效果</li>
+</ul>
+<h4 id="322-恢复算子-rrestoration-operator">3.2.2 恢复算子 R（Restoration Operator）
+</h4><p><strong>功能</strong>：对加噪后的图像进行去噪恢复</p>
+<p><strong>数学表达</strong>：
+</p>
+$$R(x_t, t) \approx x_0$$<p><strong>本研究的实现方案</strong>：</p>
+<ul>
+<li>采用 <strong>DDPM中的U-Net架构</strong> 作为恢复算子</li>
+<li>获取潜在张量后，通过去噪扩散概率模型重建图像</li>
+</ul>
+<p><strong>恢复算子结构示意图</strong>：
+<img src="/p/crack-diffusion-paper-reading/image-20250224115858087.png"
+	width="974"
+	height="429"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224115858087_hu_38dce04a6bcda507.png 480w, /p/crack-diffusion-paper-reading/image-20250224115858087_hu_327dcab4c94f2ef5.png 1024w"
+	loading="lazy"
+	
+		alt="多模糊冷扩散模型中的恢复算子R"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="227"
+		data-flex-basis="544px"
+	
+></p>
+<h3 id="33-损失函数">3.3 损失函数
+</h3><p>损失函数由两部分组成：</p>
+<ol>
+<li><strong>L2 距离</strong>：预测图像与真实图像之间的像素级差异</li>
+<li><strong>SSIM</strong>：预测图像与真实图像之间的结构相似性度量</li>
+</ol>
+<p><strong>完整的损失函数表达式</strong>：</p>
+$$\mathcal{L} = \lambda_1||\hat{x}_0(t) - x_0||_2 + \lambda_2(1 - \text{SSIM}(\hat{x}_0(t), x_0))/2$$<p>其中：</p>
+<ul>
+<li>$\lambda_1$ 和 $\lambda_2$ 是两部分的权重系数</li>
+<li>$\hat{x}_0(t)$ 是模型预测的图像</li>
+<li>$x_0$ 是真实图像</li>
+</ul>
+<p><strong>SSIM 的计算公式</strong>：</p>
+$$\text{SSIM}(I_1,I_2) = \frac{(2\mu_1\mu_2 + C_1)(2\sigma_{12} + C_2)}{(\mu_1^2 + \mu_2^2 + C_1)(\sigma_1^2 + \sigma_2^2 + C_2)}$$<p>其中：</p>
+<ul>
+<li>$I_1$ 和 $I_2$ 是待比较的两张图像</li>
+<li>$C_1$ 和 $C_2$ 是常数，用于数值稳定性</li>
+<li>$\mu$ 表示图像的均值</li>
+<li>$\sigma$ 表示图像的标准差</li>
+<li>$\sigma_{12}$ 表示两张图像的协方差</li>
+</ul>
+<p><strong>计算方式</strong>：使用 3×3 大小的滑动窗口计算局部 SSIM，然后取平均得到全局 SSIM。</p>
+<h3 id="34-训练与测试流程">3.4 训练与测试流程
+</h3><h4 id="341-训练过程">3.4.1 训练过程
+</h4><ol>
+<li><strong>数据准备</strong>：使用无裂缝的道路图像作为训练数据</li>
+<li><strong>扩散过程</strong>：对图像进行 T 轮多重模糊处理，得到图像 $x_t$，完全消除裂缝特征</li>
+<li><strong>模型训练</strong>：训练去噪 U-Net 来实现恢复算子 R</li>
+<li><strong>时间步采样</strong>：训练过程中，参数 t 随机从区间 (0, T] 中采样</li>
+</ol>
+<h4 id="342-测试过程">3.4.2 测试过程
+</h4><ol>
+<li><strong>输入</strong>：输入带裂缝的道路图像</li>
+<li><strong>加噪</strong>：应用 T 次退化算子 D</li>
+<li><strong>重建</strong>：使用训练好的去噪 U-Net 模型重建图像</li>
+<li><strong>差异检测</strong>：使用 SSIM 比较原始输入 $x_0$ 与重建图像 $\hat{x}_0$，生成裂缝分割结果</li>
+</ol>
+<hr>
+<h2 id="4-实验结果与分析">4. 实验结果与分析
+</h2><h3 id="41-数据集介绍">4.1 数据集介绍
+</h3><ul>
+<li>
+<p><strong>数据集链接</strong>：<a class="link" href="https://www.kaggle.com/datasets/arunrk7/surface-crack-detection"  target="_blank" rel="noopener"
+    >Surface Crack Detection</a></p>
+</li>
+<li>
+<p><strong>数据描述</strong>：</p>
+<ul>
+<li>40,000 张图像（正负类各 20,000 张）</li>
+<li>227×227 像素，RGB 三通道</li>
+<li>高分辨率图像（4032×3024 像素）在表面饰面和照明条件方面具有高度多样性</li>
+</ul>
+</li>
+<li>
+<p><strong>数据增强</strong>：未应用随机旋转、翻转或倾斜等数据增强操作</p>
+</li>
+</ul>
+<h3 id="42-模型训练细节">4.2 模型训练细节
+</h3><p><strong>试验 1：使用 MAE 作为损失函数</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">sample_timesteps</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">train_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x_t</span> <span class="o">=</span> <span class="n">diffusion</span><span class="o">.</span><span class="n">noise_images</span><span class="p">(</span><span class="n">train_image</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">filtersize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">predicted_noise_image</span> <span class="o">=</span> <span class="n">unet</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">train_image</span><span class="p">,</span> <span class="n">predicted_noise_image</span><span class="p">)</span>  <span class="c1"># MAE loss</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>训练结果</strong>：</p>
+<ul>
+<li>训练至第 122 个 epoch 时触发早停机制</li>
+<li>训练损失持续下降，而验证损失在过去 30 个 epoch 中持续上升</li>
+<li><strong>最佳模型出现在第 92 个 epoch</strong></li>
+</ul>
+<p><img src="/p/crack-diffusion-paper-reading/training_history.png"
+	width="1000"
+	height="600"
+	srcset="/p/crack-diffusion-paper-reading/training_history_hu_63a696414154c407.png 480w, /p/crack-diffusion-paper-reading/training_history_hu_4e4325102cdd20a9.png 1024w"
+	loading="lazy"
+	
+		alt="训练历史"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<h3 id="43-测试效果">4.3 测试效果
+</h3><h4 id="431-裂缝分割效果较好的案例">4.3.1 裂缝分割效果较好的案例
+</h4><p><img src="/p/crack-diffusion-paper-reading/Image_1_best_all.png"
+	width="4440"
+	height="1305"
+	srcset="/p/crack-diffusion-paper-reading/Image_1_best_all_hu_8d3e81545e4b15ab.png 480w, /p/crack-diffusion-paper-reading/Image_1_best_all_hu_f8f097fe34de98aa.png 1024w"
+	loading="lazy"
+	
+		alt="CFD 数据集中裂缝分割效果较优的"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="340"
+		data-flex-basis="816px"
+	
+></p>
+<h4 id="432-裂缝分割效果较差的案例">4.3.2 裂缝分割效果较差的案例
+</h4><p>（可能是由于裂缝过于细微）</p>
+<p><img src="/p/crack-diffusion-paper-reading/Image_86_best_all.png"
+	width="4440"
+	height="1330"
+	srcset="/p/crack-diffusion-paper-reading/Image_86_best_all_hu_6dde3d924b46e8f1.png 480w, /p/crack-diffusion-paper-reading/Image_86_best_all_hu_21b992eec9253771.png 1024w"
+	loading="lazy"
+	
+		alt="CFD 数据集中裂缝分割效果较差的"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="333"
+		data-flex-basis="801px"
+	
+></p>
+<h3 id="44-与其他方法的对比">4.4 与其他方法的对比
+</h3><p>作者还将提出的多模糊冷扩散模型与其他常见的无监督学习模型进行了对比：</p>
+<p><strong>SSIM 和 IoU 对比表</strong>：</p>
+<p><img src="/p/crack-diffusion-paper-reading/image-20250224150708204.png"
+	width="892"
+	height="249"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224150708204_hu_89602192734239e0.png 480w, /p/crack-diffusion-paper-reading/image-20250224150708204_hu_b01b224bb3309d83.png 1024w"
+	loading="lazy"
+	
+		alt="七个无监督网络的裂缝分割 SSIM 和 IoU 对比表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="358"
+		data-flex-basis="859px"
+	
+></p>
+<p><strong>可视化对比</strong>：</p>
+<p><img src="/p/crack-diffusion-paper-reading/image-20250224150551051.png"
+	width="895"
+	height="716"
+	srcset="/p/crack-diffusion-paper-reading/image-20250224150551051_hu_6593e21efa26c12f.png 480w, /p/crack-diffusion-paper-reading/image-20250224150551051_hu_cbaf6a52ec0faed.png 1024w"
+	loading="lazy"
+	
+		alt="基于 SSIM 的裂纹分割结果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="125"
+		data-flex-basis="300px"
+	
+></p>
+<p><strong>结论</strong>：Multi-blur-based cold diffusion 模型在四个数据集中的 IoU 均取得了最优值，验证了该方法的有效性。</p>
+<hr>
+<h2 id="5-基础知识补充">5. 基础知识补充
+</h2><h3 id="51-潜在张量latent-tensors">5.1 潜在张量（Latent Tensors）
+</h3><h4 id="511-基本概念">5.1.1 基本概念
+</h4><p><strong>潜在张量</strong>是深度学习中的重要概念，表示数据在&quot;潜在空间&quot;（latent space）中的表示形式：</p>
+<ul>
+<li>是原始数据经过编码（encoding）后得到的压缩表示</li>
+<li>通常维度低于原始数据，但包含原始数据的关键特征信息</li>
+</ul>
+<h4 id="512-主要特点">5.1.2 主要特点
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">特点</th>
+          <th style="text-align: left">说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>维度压缩</strong></td>
+          <td style="text-align: left">例如一张 1024×1024 的图像，可能被压缩为 16×16×512 的潜在张量（16×16 表示空间维度压缩，512 为特征通道数）</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>信息提取</strong></td>
+          <td style="text-align: left">保留数据中最重要的特征，去除冗余信息</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>连续性</strong></td>
+          <td style="text-align: left">在潜在空间中，相似的数据点在空间中彼此靠近</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>可解释性</strong></td>
+          <td style="text-align: left">潜在空间中的每个维度可能对应原始数据的某个特征</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="513-工作原理">5.1.3 工作原理
+</h4><p><strong>以图像处理为例</strong>：</p>
+<ol>
+<li><strong>输入</strong>：原始图像（如 1024×1024×3 的彩色图像）</li>
+<li><strong>编码过程</strong>：通过神经网络将图像压缩为潜在张量</li>
+<li><strong>潜在表示</strong>：可能是 16×16×512 的张量</li>
+<li><strong>解码过程</strong>：可以从潜在张量重建原始图像</li>
+</ol>
+<h4 id="514-在不同模型中的应用">5.1.4 在不同模型中的应用
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">模型</th>
+          <th style="text-align: left">应用方式</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>GAN</strong></td>
+          <td style="text-align: left">生成器从随机潜在张量生成逼真的图像</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>VAE</strong></td>
+          <td style="text-align: left">将输入编码为潜在空间中的概率分布</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>扩散模型</strong></td>
+          <td style="text-align: left">通过逐步添加噪声形成潜在表示</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="52-l2-距离欧几里得距离">5.2 L2 距离（欧几里得距离）
+</h3><h4 id="521-定义">5.2.1 定义
+</h4><p><strong>L2 距离</strong>（L2 Distance）也称为<strong>欧几里得距离</strong>（Euclidean Distance），是最常用的距离度量方式之一：</p>
+$$d_{L2} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$$<h4 id="522-在不同维度的表现">5.2.2 在不同维度的表现
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">维度</th>
+          <th style="text-align: left">表现</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>一维空间</strong></td>
+          <td style="text-align: left">两个数值之间的绝对差值</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>二维空间</strong></td>
+          <td style="text-align: left">平面上两点间的直线距离</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>高维空间</strong></td>
+          <td style="text-align: left">各维度差值的平方和开根号</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="53-高斯模糊gaussian-blur">5.3 高斯模糊（Gaussian Blur）
+</h3><h4 id="531-基本概念">5.3.1 基本概念
+</h4><p><strong>高斯模糊</strong>是一种使用高斯函数对图像进行平滑处理的技术。其核心是<strong>二维高斯函数</strong>：</p>
+$$G(x,y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2 + y^2}{2\sigma^2}}$$<p>其中：</p>
+<ul>
+<li><strong>σ</strong> 是标准差，控制模糊程度</li>
+<li><strong>x, y</strong> 是像素的坐标位置</li>
+</ul>
+<h4 id="532-关键参数">5.3.2 关键参数
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">参数</th>
+          <th style="text-align: left">说明</th>
+          <th style="text-align: left">建议</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>标准差 (σ)</strong></td>
+          <td style="text-align: left">控制模糊强度</td>
+          <td style="text-align: left">σ 越大，模糊程度越高；σ 越小，模糊程度越低</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>核大小 (kernel size)</strong></td>
+          <td style="text-align: left">通常为奇数（3×3, 5×5, 7×7 等）</td>
+          <td style="text-align: left">建议核大小 ≥ 6σ + 1；核越大，计算量越大</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h3 id="54-冷扩散模型与标准扩散模型对比">5.4 冷扩散模型与标准扩散模型对比
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">对比项</th>
+          <th style="text-align: left">冷扩散模型（Cold Diffusion）</th>
+          <th style="text-align: left">标准扩散模型</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>噪声类型</strong></td>
+          <td style="text-align: left">不局限于高斯分布，可选择高斯模糊、雪花噪声、高斯掩膜等</td>
+          <td style="text-align: left">通常使用高斯噪声</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>灵活性</strong></td>
+          <td style="text-align: left">噪声选择具有高度灵活性</td>
+          <td style="text-align: left">噪声类型相对固定</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>建模方式</strong></td>
+          <td style="text-align: left">扩散过程和逆扩散过程被建模为两个独立的算子（退化算子 D 和恢复算子 R）</td>
+          <td style="text-align: left">通常使用单一的扩散过程</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="6-总结">6. 总结
+</h2><p>本文介绍的 <strong>CrackDiffusion</strong> 框架通过结合<strong>无监督冷扩散模型</strong>和<strong>有监督 U-Net</strong>，实现了高效的路面裂缝检测。核心创新包括：</p>
+<ol>
+<li><strong>多模糊冷扩散模型</strong>：采用多种模糊技术进行异常检测，有效识别裂缝区域</li>
+<li><strong>两阶段框架</strong>：第一阶段进行粗粒度异常检测，第二阶段进行精细化分割</li>
+<li><strong>SSIM差异检测</strong>：通过结构相似性指数比较原始图像与重建图像，提取裂缝特征</li>
+</ol>
+<p><strong>主要优势</strong>：</p>
+<ul>
+<li>无需大量标注数据（第一阶段为无监督学习）</li>
+<li>适应不同路面条件和光照环境</li>
+<li>在多个数据集上取得最优的 IoU 性能</li>
+</ul>
+<hr>
+<h2 id="扩展阅读">扩展阅读
+</h2><ul>
+<li><a class="link" href="/p/crack-diffusion-experiment/" >裂缝图像处理基础：语义分割与后处理技术</a></li>
+</ul>
+<hr>
+<h2 id="参考文献">参考文献
+</h2><ol>
+<li>
+<p>Han, C., Yang, H., Ma, T., Wang, S., Zhao, C., Yang, Y., 2024. CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes. <em>Automation in Construction</em> 160, 105332. <a class="link" href="https://doi.org/10.1016/j.autcon.2024.105332"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/j.autcon.2024.105332</a></p>
+</li>
+<li>
+<p><a class="link" href="https://github.com/ChengjiaHanSEU/CrackDiffusion"  target="_blank" rel="noopener"
+    >https://github.com/ChengjiaHanSEU/CrackDiffusion</a></p>
+</li>
+</ol>
+<hr>
+<p><em>最后更新：2025-02-24</em></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/diffusion/">Diffusion</a>
+        
+            <a href="/tags/unsupervised-learning/">Unsupervised Learning</a>
+        
+            <a href="/tags/crack-segmentation/">Crack Segmentation</a>
+        
+            <a href="/tags/cold-diffusion/">Cold Diffusion</a>
+        
+            <a href="/tags/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/">无监督异常检测</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">图像处理与AI</h4>
+    <span class="series-progress">第 2 篇，共 3 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <a href="/p/crack-diffusion-experiment/" class="series-link prev">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">裂缝图像处理基础：语义分割与后处理技术</span>
+    </a>
+    
+
+    
+    <a href="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/" class="series-link next">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">SAM裂缝分割实验：提示点策略与性能评估</span>
+    </a>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.b6ac8a4e2dc423f11ba73614958adb9b_hu_e4268111de6fcf60.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 离散贝叶斯网络运维规划"
+                        
+                        data-hash="md5-tqyKTi3EI/EbpzYUlYrbmw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">离散贝叶斯网络运维规划</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_422c271d42ea37e9.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 海上风机状态监测运维策略优化"
+                        
+                        data-hash="md5-Cmq9yjtI&#43;wIrrk7eMo&#43;PHg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">海上风机状态监测运维策略优化</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.8abc989ef495447e6057a7a44616f555_hu_771ae8f5eaf57fe3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post SAM裂缝分割实验：提示点策略与性能评估"
+                        
+                        data-hash="md5-iryYnvSVRH5gV6ekRhb1VQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SAM裂缝分割实验：提示点策略与性能评估</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/crack-diffusion-experiment/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-experiment/1.3d32b2264364214342092b476dfe7813_hu_7b69c78fe8655228.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 裂缝图像处理基础：语义分割与后处理技术"
+                        data-key="crack-diffusion-experiment" 
+                        data-hash="md5-PTKyJkNkIUNCCStHbf54Ew==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">裂缝图像处理基础：语义分割与后处理技术</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

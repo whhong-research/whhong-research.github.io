@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="风机叶片物理模型文献整理 参考文献：\nSørensen, B. F., Castro, O., Chen, X., &amp; Branner, K. (2025). Fatigue of composites for wind turbines blades. In Fatigue in Composites (pp. 555–596). Elsevier. https://doi.org/10.1016/B978-0-12-821288-2.00013-8\nBangaru, A. K., Miao, X.-Y., Sørensen, B. F., &amp; Chen, X. (2023). Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life: 43rd Risø International Symposium on Materials Science. 43rd Risoe International Symposium on Materials Science, 1293. https://doi.org/10.1088/1757-899X/1293/1/012037\n">
+<title>叶片多尺度物理建模：从微观损伤到宏观失效</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="叶片多尺度物理建模：从微观损伤到宏观失效">
+<meta property='og:description' content="风机叶片物理模型文献整理 参考文献：\nSørensen, B. F., Castro, O., Chen, X., &amp; Branner, K. (2025). Fatigue of composites for wind turbines blades. In Fatigue in Composites (pp. 555–596). Elsevier. https://doi.org/10.1016/B978-0-12-821288-2.00013-8\nBangaru, A. K., Miao, X.-Y., Sørensen, B. F., &amp; Chen, X. (2023). Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life: 43rd Risø International Symposium on Materials Science. 43rd Risoe International Symposium on Materials Science, 1293. https://doi.org/10.1088/1757-899X/1293/1/012037\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='有限元' /><meta property='article:tag' content='物理模型' /><meta property='article:tag' content='后缘开裂' /><meta property='article:published_time' content='2025-10-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png' />
+<meta name="twitter:title" content="叶片多尺度物理建模：从微观损伤到宏观失效">
+<meta name="twitter:description" content="风机叶片物理模型文献整理 参考文献：\nSørensen, B. F., Castro, O., Chen, X., &amp; Branner, K. (2025). Fatigue of composites for wind turbines blades. In Fatigue in Composites (pp. 555–596). Elsevier. https://doi.org/10.1016/B978-0-12-821288-2.00013-8\nBangaru, A. K., Miao, X.-Y., Sørensen, B. F., &amp; Chen, X. (2023). Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life: 43rd Risø International Symposium on Materials Science. 43rd Risoe International Symposium on Materials Science, 1293. https://doi.org/10.1088/1757-899X/1293/1/012037\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#multiscale-approach">Multiscale approach</a></li>
+    <li><a href="#trailing-edge-bondlines">Trailing edge bondlines</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#research-gaps">Research Gaps</a></li>
+            <li><a href="#research-purposes">Research Purposes</a></li>
+            <li><a href="#analytical-modelling">Analytical Modelling</a></li>
+            <li><a href="#fe-modelling">FE Modelling</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/">
+                <img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_1c85151e8868269.png"
+                        srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_1c85151e8868269.png 800w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_fea506dfc704f5d9.png 1600w"
+                        width="800" 
+                        height="506" 
+                        loading="lazy"
+                        alt="Featured image of post 叶片多尺度物理建模：从微观损伤到宏观失效" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%8F%B6%E7%89%87%E4%BB%BF%E7%9C%9F/" >
+                叶片仿真
+            </a>
+        
+            <a href="/categories/%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B/" >
+                物理模型
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/">叶片多尺度物理建模：从微观损伤到宏观失效</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 02, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="风机叶片物理模型文献整理">风机叶片物理模型文献整理
+</h1><p>参考文献：</p>
+<p>Sørensen, B. F., Castro, O., Chen, X., &amp; Branner, K. (2025). Fatigue of composites for wind turbines blades. In <em>Fatigue in Composites</em> (pp. 555–596). Elsevier. <a class="link" href="https://doi.org/10.1016/B978-0-12-821288-2.00013-8"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/B978-0-12-821288-2.00013-8</a></p>
+<p>Bangaru, A. K., Miao, X.-Y., Sørensen, B. F., &amp; Chen, X. (2023). Prediction of crack growth at trailing edge bondlines of a wind turbine rotor blade for the assessment of remaining service life: 43rd Risø International Symposium on Materials Science. <em>43rd Risoe International Symposium on Materials Science</em>, <em>1293</em>. <a class="link" href="https://doi.org/10.1088/1757-899X/1293/1/012037"  target="_blank" rel="noopener"
+    >https://doi.org/10.1088/1757-899X/1293/1/012037</a></p>
+<p>Miao, X. Y., &amp; Chen, X. (2023). Structural transverse cracking mechanisms of trailing edge regions in composite wind turbine blades. <em>Composite Structures</em>, <em>308</em>(116680). <a class="link" href="https://doi.org/10.1016/j.compstruct.2023.116680"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/j.compstruct.2023.116680</a></p>
+<h2 id="multiscale-approach">Multiscale approach
+</h2><ul>
+<li>
+<p><strong>为什么需要使用多尺度模型来进行模拟</strong></p>
+<ul>
+<li>损伤区域需要使用较细的网格，例如对于后缘的粘合层脱粘，需要网格尺寸在毫米级别来捕获裂缝的简短应力场；而全尺度的叶片模型长度在100m尺度；（<strong>从计算效率，计算精度角度出发</strong>）</li>
+<li><strong>从建模的最终目的出发</strong>：如果只需要计算结构频率和计算挠度，一维梁模型就可以；而想要模拟损伤发展过程，子结构模型的精度仍然不足以进行捕获，而是需要从microscale尺度进行理解；“In general, we think that damage interaction and scale effects in fracture of composite structures are so complicated that they can only be understood on the microscale, i.e., by microscale experiments and micromechanical modelling”</li>
+</ul>
+</li>
+<li>
+<p>A top-down approach to fatigue of composite structures. (由上至下，使用全局模型的位移作为子结构模型的边界条件来实现多尺度建模)</p>
+<ul>
+<li>“The displacement of a (global) full-blade model with a relative coarse mesh could be used as input (boundary conditions) for a substructure model, i.e. a more refined model of a smaller part of the blade (e.g. an FE model with much smaller element sizes, where the damage evolution prediction is made) of a smaller blade part, analogous to the control of boundary conditions for substructure testing.”</li>
+</ul>
+</li>
+<li>
+<p>&ldquo;some parts (some of the elements) in the global FE model with damage should have their properties (constitutive laws) changed so that their behaviour replicates that of the damage simulated in the submodel&rdquo; (全局模型中存在损坏的区域应该改变其属性/本构定律来和子结构模型保持一致)</p>
+</li>
+<li>
+<p>&ldquo;a ‘consistent’ approach should refer to energy, such that the work of an applied force becomes the same for the global model as for the substructure model.&rdquo;
+(跨尺度模型保持一致的方法应该涉及能量，使得全局模型和子结构模型所施加的力做的功保持一致)</p>
+</li>
+<li>
+<p>“the output from a finer length scale model should be formulated in a sufficiently simple form such that it can be applied in a model at the coarser length scale.” 微观模型的输出应当以简单的形式表达，以便应用于大尺度模型中；</p>
+</li>
+</ul>
+<h2 id="trailing-edge-bondlines">Trailing edge bondlines
+</h2><h4 id="background">Background
+</h4><p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png"
+	width="910"
+	height="576"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_b7a3328e15fa2282.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002_hu_638ed3643fcdf4e0.png 1024w"
+	loading="lazy"
+	
+		alt="20251002"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="379px"
+	
+></p>
+<ul>
+<li>后缘存在至少以下两种损伤：
+<ul>
+<li>&ldquo;Tunnelling cracks (cracking in the adhesive along its width direction)&quot;：沿叶片宽度方向；”While tunnelling cracks alone do not cause failure, in some cases can lead to the formation of interfacial cracks which can eventually fail by buckling of the blade“ 该种损伤不会导致叶片失效，但可能引发interfacial cracks</li>
+<li>”interfacial debonding, i.e., cracking along the interface between laminate and adhesive layer (in the blade length direction“ (沿叶片长度方向)</li>
+</ul>
+</li>
+<li>后缘开裂可能形成的原因：”The damage formed was due to a combination of several factors such as extreme loading conditions, complex geometries and imperfections coming from manufacturing processes.“ 极端负载，复杂外形，制造缺陷</li>
+<li>”Haselbach et al. [5] tested a 34 m long blade by four-point loads and found that the local buckling of the trailing edge led to the debonding of the joint. It was concluded that <strong>the edgewise loads</strong> are the primary loads driving the failure of the trailing edge.“ ：<strong>沿边荷载导致后缘开裂</strong></li>
+</ul>
+<h4 id="research-gaps">Research Gaps
+</h4><ul>
+<li>&ldquo;However, the method did not considered the edgewise loading that could lead to local buckling of the trailing edge laminate which can lead to debonding.&rdquo; <strong>未考虑沿边荷载作用</strong></li>
+<li>”However, boundary conditions considered in the numerical model were based on subcomponent testing and not the full-scale blade.“ <strong>基于子部件测试而非全尺寸叶片</strong></li>
+</ul>
+<h4 id="research-purposes">Research Purposes
+</h4><ul>
+<li>“<strong>The purpose of this study</strong> is to demonstrate a methodology for predicting damage growth at trailing edge joint of the wind turbine rotor blade.” ： 预测后缘裂缝增长
+<ul>
+<li>考虑作用在叶片上的应力/应变</li>
+<li>边界条件</li>
+<li>铺层厚度和刚度</li>
+<li>初始脱粘长度造成的损伤状态（”the current damage state captured by an initial debond length parameter.“）</li>
+</ul>
+</li>
+<li>使用一个一维分析模型（输入：铺层厚度，初始裂缝长度，叶片的重量分布，弹性模量，复合材料粘结层的断裂力学属性）进行裂缝预测，并使用3D有限元模型进行验证；</li>
+</ul>
+<h4 id="analytical-modelling">Analytical Modelling
+</h4><ul>
+<li>
+<p>叶片——悬臂梁：根部固定，叶尖自由端</p>
+<ul>
+<li>因此叶片自身重力将导致edgewise stress</li>
+</ul>
+</li>
+<li>
+<p>Assumption:</p>
+<ul>
+<li>&ldquo;we assume a simplified cross-sectional area of the blade model wherein, the analysis of only load-carrying laminates located at spar caps (pressure side and suction side), leading and trailing edges, are taken into account.&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>考虑重力和局部屈曲</p>
+<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910.png"
+	width="429"
+	height="104"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_a86a433664790a4e.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_b37898d8a337511c.png 1024w"
+	loading="lazy"
+	
+		alt="重力引起的edgewise stress表达式"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="412"
+		data-flex-basis="990px"
+	
+></p>
+</li>
+</ul>
+<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285.png"
+	width="865"
+	height="730"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_af610227c79f32c4.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_608407a6b75f0e57.png 1024w"
+	loading="lazy"
+	
+		alt="局部屈曲示意图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="284px"
+	
+></p>
+<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208.png"
+	width="941"
+	height="300"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_a995a6ddfac52531.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_13c07ff6f7659673.png 1024w"
+	loading="lazy"
+	
+		alt="局部屈曲导致的轴向力变化以及弯矩变化"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="313"
+		data-flex-basis="752px"
+	
+></p>
+<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585.png"
+	width="930"
+	height="186"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_68365090760c83e2.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_6deb70eeac99877d.png 1024w"
+	loading="lazy"
+	
+		alt="计算energe release rate"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="500"
+		data-flex-basis="1200px"
+	
+></p>
+<h4 id="fe-modelling">FE Modelling
+</h4><ul>
+<li>Abaqus， C3D8R，solid element</li>
+<li><strong>A 5m prismatic beam model</strong> from a 17m long Vindeby blade</li>
+<li>mesh size:
+<ul>
+<li>25 * 22 * 6 mm for spar cap</li>
+<li>25 * 11 * 14 mm for sandwich panels</li>
+<li>25 * 4 * 0.8 mm for trailing edge debondlines</li>
+<li>Mesh size is chosen based on mesh sensitivitu analysis.</li>
+</ul>
+</li>
+<li>The virtual crack closure technique (VCCT)</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%9C%89%E9%99%90%E5%85%83/">有限元</a>
+        
+            <a href="/tags/%E7%89%A9%E7%90%86%E6%A8%A1%E5%9E%8B/">物理模型</a>
+        
+            <a href="/tags/%E5%90%8E%E7%BC%98%E5%BC%80%E8%A3%82/">后缘开裂</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">风机仿真与建模</h4>
+    <span class="series-progress">第 3 篇，共 4 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <a href="/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/" class="series-link prev">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">TurbSim风场建模与OpenFast入流设置指南</span>
+    </a>
+    
+
+    
+    <a href="/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" class="series-link next">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">IEC 61400-23叶片全尺寸疲劳测试标准解读</span>
+    </a>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/">
+        
+        
+            <div class="article-image">
+                <img src="/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/TurbSim.358b3d0ac563048a427628136bc05dbc_hu_9d6b33cdbcd86f2f.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post TurbSim风场建模与OpenFast入流设置指南"
+                        
+                        data-hash="md5-NYs9CsVjBIpCdigTa8BdvA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">TurbSim风场建模与OpenFast入流设置指南</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001.078c9884b06efd7d3c77a291e6ad3671_hu_c4b7b1f89fe4b841.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 风机叶片气动弹性建模：AeroDyn模块参数化方法"
+                        
+                        data-hash="md5-B4yYhLBu/X08d6KR5q02cQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">风机叶片气动弹性建模：AeroDyn模块参数化方法</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/">
+        
+        
+            <div class="article-image">
+                <img src="/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.d44b1ed6f922c5c8205daa257f9df4af_hu_6e450390c066f03d.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post IEC 61400-23叶片全尺寸疲劳测试标准解读"
+                        
+                        data-hash="md5-1Ese1vkixcggXaolf530rw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">IEC 61400-23叶片全尺寸疲劳测试标准解读</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

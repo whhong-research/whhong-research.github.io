@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Series Introduction: This series of articles systematically introduces the application of computer vision in structural health monitoring, covering core technologies such as image preprocessing, feature extraction, and deep learning model construction. As the inaugural article of the series, this paper focuses on skeletonization techniques in crack detection and their application in fine-grained segmentation.\n1. Task Background and Motivation 1.1 Research Background In the field of structural health monitoring, crack detection is a critical step in assessing the integrity of concrete structures. Traditional manual inspection methods suffer from limitations such as low efficiency and difficulty in ensuring consistency. In recent years, automated crack detection methods based on computer vision have attracted widespread attention from academia and industry due to their high efficiency and objectivity.\n">
+<title>Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/crack-diffusion-experiment/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques">
+<meta property='og:description' content=" Series Introduction: This series of articles systematically introduces the application of computer vision in structural health monitoring, covering core technologies such as image preprocessing, feature extraction, and deep learning model construction. As the inaugural article of the series, this paper focuses on skeletonization techniques in crack detection and their application in fine-grained segmentation.\n1. Task Background and Motivation 1.1 Research Background In the field of structural health monitoring, crack detection is a critical step in assessing the integrity of concrete structures. Traditional manual inspection methods suffer from limitations such as low efficiency and difficulty in ensuring consistency. In recent years, automated crack detection methods based on computer vision have attracted widespread attention from academia and industry due to their high efficiency and objectivity.\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/crack-diffusion-experiment/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Crack Skeletonization' /><meta property='article:tag' content='Computer Vision' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='Skeletonization' /><meta property='article:published_time' content='2025-02-24T16:46:00&#43;08:00'/><meta property='article:modified_time' content='2025-02-24T16:46:00&#43;08:00'/><meta property='og:image' content='https://whhong-research.github.io/p/crack-diffusion-experiment/1.png' />
+<meta name="twitter:title" content="Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques">
+<meta name="twitter:description" content=" Series Introduction: This series of articles systematically introduces the application of computer vision in structural health monitoring, covering core technologies such as image preprocessing, feature extraction, and deep learning model construction. As the inaugural article of the series, this paper focuses on skeletonization techniques in crack detection and their application in fine-grained segmentation.\n1. Task Background and Motivation 1.1 Research Background In the field of structural health monitoring, crack detection is a critical step in assessing the integrity of concrete structures. Traditional manual inspection methods suffer from limitations such as low efficiency and difficulty in ensuring consistency. In recent years, automated crack detection methods based on computer vision have attracted widespread attention from academia and industry due to their high efficiency and objectivity.\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/crack-diffusion-experiment/1.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-task-background-and-motivation">1. Task Background and Motivation</a>
+      <ul>
+        <li><a href="#11-research-background">1.1 Research Background</a></li>
+        <li><a href="#12-technical-approach">1.2 Technical Approach</a></li>
+        <li><a href="#13-sample-images-to-be-processed">1.3 Sample Images to be Processed</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-why-use-skeletonization">2. Why Use Skeletonization?</a>
+      <ul>
+        <li><a href="#21-limitations-of-threshold-segmentation">2.1 Limitations of Threshold Segmentation</a></li>
+        <li><a href="#22-advantages-of-skeletonization">2.2 Advantages of Skeletonization</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-implementation-code-details">3. Implementation Code Details</a>
+      <ul>
+        <li><a href="#31-code-functionality-overview">3.1 Code Functionality Overview</a></li>
+        <li><a href="#32-adaptive-threshold-segmentation">3.2 Adaptive Threshold Segmentation</a></li>
+        <li><a href="#33-morphological-operations">3.3 Morphological Operations</a></li>
+        <li><a href="#34-skeletonization">3.4 Skeletonization</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-results-demonstration">4. Results Demonstration</a>
+      <ul>
+        <li><a href="#41-successful-case-analysis">4.1 Successful Case Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-post-processing-issues-and-discussion">5. Post-Processing Issues and Discussion</a>
+      <ul>
+        <li><a href="#51-parameter-selection-problem">5.1 Parameter Selection Problem</a></li>
+        <li><a href="#52-skeletonization-improvement-directions">5.2 Skeletonization Improvement Directions</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-introduction-to-related-functions">6. Introduction to Related Functions</a>
+      <ul>
+        <li><a href="#61-cv2distancetransform">6.1 cv2.distanceTransform</a></li>
+        <li><a href="#62-skimagemorphologyskeletonize">6.2 skimage.morphology.skeletonize</a>
+          <ul>
+            <li><a href="#1-zhang-suen-thinning-algorithm-default-method">1. Zhang-Suen Thinning Algorithm (Default Method)</a></li>
+            <li><a href="#2-lee-algorithm">2. LEE Algorithm</a></li>
+            <li><a href="#3-distance-transform-based-method">3. Distance Transform-Based Method</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#7-conclusion-and-future-work">7. Conclusion and Future Work</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/crack-diffusion-experiment/">
+                <img src="/p/crack-diffusion-experiment/1_hu_1ed1a6e891bc7663.png"
+                        srcset="/p/crack-diffusion-experiment/1_hu_1ed1a6e891bc7663.png 800w, /p/crack-diffusion-experiment/1_hu_7ecd7e1c1ed25558.png 1600w"
+                        width="800" 
+                        height="116" 
+                        loading="lazy"
+                        alt="Featured image of post Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/image-processing-tools/" >
+                Image Processing Tools
+            </a>
+        
+            <a href="/en/categories/experimental-testing/" >
+                Experimental Testing
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/crack-diffusion-experiment/">Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 24, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/crack-diffusion-experiment/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p><strong>Series Introduction</strong>: This series of articles systematically introduces the application of computer vision in structural health monitoring, covering core technologies such as image preprocessing, feature extraction, and deep learning model construction. As the inaugural article of the series, this paper focuses on skeletonization techniques in crack detection and their application in fine-grained segmentation.</p>
+</blockquote>
+<h2 id="1-task-background-and-motivation">1. Task Background and Motivation
+</h2><h3 id="11-research-background">1.1 Research Background
+</h3><p>In the field of structural health monitoring, crack detection is a critical step in assessing the integrity of concrete structures. Traditional manual inspection methods suffer from limitations such as low efficiency and difficulty in ensuring consistency. In recent years, automated crack detection methods based on computer vision have attracted widespread attention from academia and industry due to their high efficiency and objectivity.</p>
+<h3 id="12-technical-approach">1.2 Technical Approach
+</h3><p>The technical approach adopted in this project is as follows:</p>
+<ol>
+<li><strong>Image Generation</strong>: Utilizing Diffusion models to generate crack-free reference images</li>
+<li><strong>Difference Analysis</strong>: Computing difference maps between reconstructed and original images using SSIM (Structural Similarity Index)</li>
+<li><strong>Coarse Segmentation</strong>: Using the difference map as initial crack segmentation results</li>
+<li><strong>Fine-grained Segmentation</strong>: Inputting segmentation results as prompts into SAM (Segment Anything Model) for refined segmentation</li>
+</ol>
+<h3 id="13-sample-images-to-be-processed">1.3 Sample Images to be Processed
+</h3><p>Sample images requiring processing are shown below:</p>
+<p><img src="/p/crack-diffusion-experiment/Image_4_difference.png"
+	width="1919"
+	height="990"
+	srcset="/p/crack-diffusion-experiment/Image_4_difference_hu_2412c0f639976d3b.png 480w, /p/crack-diffusion-experiment/Image_4_difference_hu_b721507504d9f8ee.png 1024w"
+	loading="lazy"
+	
+		alt="Image_4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+></p>
+<h2 id="2-why-use-skeletonization">2. Why Use Skeletonization?
+</h2><h3 id="21-limitations-of-threshold-segmentation">2.1 Limitations of Threshold Segmentation
+</h3><p>When using simple threshold segmentation, numerous noise points are present, as shown in the figure:</p>
+<p><img src="/p/crack-diffusion-experiment/Image_4_difference_binary.png"
+	width="1919"
+	height="990"
+	srcset="/p/crack-diffusion-experiment/Image_4_difference_binary_hu_483564638ff12505.png 480w, /p/crack-diffusion-experiment/Image_4_difference_binary_hu_82217e5ad08c3072.png 1024w"
+	loading="lazy"
+	
+		alt="Image_4_difference_binary"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+></p>
+<h3 id="22-advantages-of-skeletonization">2.2 Advantages of Skeletonization
+</h3><p>The SAM model accepts two types of prompts: Mask prompts and Point prompts. Mask prompts can be regarded as dense collections of Point prompts.</p>
+<p><strong>Core Idea</strong>: Extract centerline feature points of cracks through skeletonization, using them as Prompts for the SAM model to perform fine-grained segmentation.</p>
+<p>This approach offers the following advantages:</p>
+<ul>
+<li>Effectively suppressing noise interference</li>
+<li>Accurately extracting crack centerlines</li>
+<li>Generating semantically meaningful prompt points</li>
+</ul>
+<h2 id="3-implementation-code-details">3. Implementation Code Details
+</h2><h3 id="31-code-functionality-overview">3.1 Code Functionality Overview
+</h3><ol>
+<li><strong>Image Preprocessing</strong>: Resizing images to (1024, 512) dimensions to facilitate unified definition of morphological denoising kernel sizes and connected component filtering thresholds</li>
+<li><strong>Threshold Segmentation</strong>: Selecting the darkest 5% of pixels for threshold segmentation, marking these pixels as crack regions</li>
+<li><strong>Morphological Operations</strong>: Performing morphological opening operations to remove small noise points and deleting connected components with small areas</li>
+</ol>
+<h3 id="32-adaptive-threshold-segmentation">3.2 Adaptive Threshold Segmentation
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">adaptive_threshold1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Adaptive threshold segmentation: selecting the darkest 5</span><span class="si">% o</span><span class="s2">f pixels as crack regions
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        image: Input image, can be grayscale or color image
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        binary_img: Binary image with crack regions as white (255) and background as black (0)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Resize image to standard dimensions for unified processing</span>
+</span></span><span class="line"><span class="cl">    <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Convert to grayscale (if input is color image)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gray</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Bilateral filtering: removing noise while preserving edges</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># d=15: filter neighborhood diameter</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># sigmaColor=150: color space filter sigma</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># sigmaSpace=150: coordinate space filter sigma</span>
+</span></span><span class="line"><span class="cl">    <span class="n">smoothed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">sigmaColor</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Flatten image to one-dimensional array</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flat_img</span> <span class="o">=</span> <span class="n">smoothed</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Calculate threshold: using the grayscale value of the darkest 5% of pixels as threshold</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># np.percentile calculates the 5th percentile</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">flat_img</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Binarization: create all-black background</span>
+</span></span><span class="line"><span class="cl">    <span class="n">binary_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">smoothed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Set pixels darker than threshold to white (crack regions)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">binary_img</span><span class="p">[</span><span class="n">smoothed</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">binary_img</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-morphological-operations">3.3 Morphological Operations
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">morphological_operations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Morphological operations: removing noise points and small-area connected components
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        binary: Binary image
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        closed: Image after morphological operations
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Opening operation: erosion followed by dilation, removing small noise points</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># kernel=(1,1): using 1x1 kernel, minimal morphological operation</span>
+</span></span><span class="line"><span class="cl">    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">opening</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Connected component analysis: labeling and counting each connected component</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># cv2.connectedComponentsWithStats returns:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   num_labels: number of connected components (including background)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   labels: connected component label for each pixel</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   stats: statistical information for each connected component (area, bounding box, etc.)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#   centroids: centroids of each connected component</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_labels</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">centroids</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">connectedComponentsWithStats</span><span class="p">(</span><span class="n">opening</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Create new image, keeping only large connected components</span>
+</span></span><span class="line"><span class="cl">    <span class="n">morphed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Iterate through all connected components (starting from 1, 0 is background)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># If connected component area is greater than or equal to threshold, keep it</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">stats</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CC_STAT_AREA</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_area</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Set all pixels of this connected component to white</span>
+</span></span><span class="line"><span class="cl">            <span class="n">morphed</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Closing operation: dilation followed by erosion, filling small holes</span>
+</span></span><span class="line"><span class="cl">    <span class="n">closed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">morphed</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">closed</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-skeletonization">3.4 Skeletonization
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">skeletonize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Skeletonization: extracting the centerline of cracks
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Parameters:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        binary: Binary image
+</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        skeleton: Skeleton image with crack centerline as white (255)
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Ensure input is single-channel binary image</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">binary</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">binary</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>      
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Use skimage skeletonization algorithm</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skeleton</span> <span class="o">=</span> <span class="n">skeletonize</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Add post-processing steps (such as removing small branches, etc.)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skeleton</span> <span class="o">=</span> <span class="n">process_skeleton</span><span class="p">(</span><span class="n">skeleton</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Convert to uint8 format, white as 255</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skeleton</span> <span class="o">=</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">skeleton</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4-results-demonstration">4. Results Demonstration
+</h2><h3 id="41-successful-case-analysis">4.1 Successful Case Analysis
+</h3><p><img src="/p/crack-diffusion-experiment/001_combined-1741927358170-30.png"
+	width="4770"
+	height="884"
+	srcset="/p/crack-diffusion-experiment/001_combined-1741927358170-30_hu_9c582b8254de7dcf.png 480w, /p/crack-diffusion-experiment/001_combined-1741927358170-30_hu_d10dc93b8acf9db3.png 1024w"
+	loading="lazy"
+	
+		alt="001_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="539"
+		data-flex-basis="1295px"
+	
+></p>
+<p><img src="/p/crack-diffusion-experiment/002_combined-1741927377512-32.png"
+	width="4770"
+	height="884"
+	srcset="/p/crack-diffusion-experiment/002_combined-1741927377512-32_hu_e1b36c086d6647b0.png 480w, /p/crack-diffusion-experiment/002_combined-1741927377512-32_hu_f0d89d465f71fb0a.png 1024w"
+	loading="lazy"
+	
+		alt="002_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="539"
+		data-flex-basis="1295px"
+	
+></p>
+<p><img src="/p/crack-diffusion-experiment/065_combined.png"
+	width="4770"
+	height="884"
+	srcset="/p/crack-diffusion-experiment/065_combined_hu_50647d0bc0292d65.png 480w, /p/crack-diffusion-experiment/065_combined_hu_f9d101f9d66666fa.png 1024w"
+	loading="lazy"
+	
+		alt="065_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="539"
+		data-flex-basis="1295px"
+	
+></p>
+<h2 id="5-post-processing-issues-and-discussion">5. Post-Processing Issues and Discussion
+</h2><h3 id="51-parameter-selection-problem">5.1 Parameter Selection Problem
+</h3><p>Different images correspond to different optimal thresholds, and a universally applicable adaptive threshold method has not yet been explored. The following figures show examples where excessive cropping during post-processing leads to loss of crack information:</p>
+<p><img src="/p/crack-diffusion-experiment/101_combined.png"
+	width="4770"
+	height="884"
+	srcset="/p/crack-diffusion-experiment/101_combined_hu_8b8d9b593a93c4ea.png 480w, /p/crack-diffusion-experiment/101_combined_hu_f372f93fd0d56994.png 1024w"
+	loading="lazy"
+	
+		alt="101_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="539"
+		data-flex-basis="1295px"
+	
+></p>
+<p><img src="/p/crack-diffusion-experiment/097_combined.png"
+	width="4770"
+	height="884"
+	srcset="/p/crack-diffusion-experiment/097_combined_hu_78f6e44700c91776.png 480w, /p/crack-diffusion-experiment/097_combined_hu_f6114e38b5ec2bd3.png 1024w"
+	loading="lazy"
+	
+		alt="097_combined"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="539"
+		data-flex-basis="1295px"
+	
+></p>
+<h3 id="52-skeletonization-improvement-directions">5.2 Skeletonization Improvement Directions
+</h3><ul>
+<li>Skeleton branch continuity needs improvement, with redundant branches present</li>
+<li>Further optimization of the skeletonization algorithm is needed to improve feature point extraction quality</li>
+</ul>
+<h2 id="6-introduction-to-related-functions">6. Introduction to Related Functions
+</h2><h3 id="61-cv2distancetransform">6.1 cv2.distanceTransform
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dst</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">distanceTransform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">distanceType</span><span class="p">,</span> <span class="n">maskSize</span><span class="p">[,</span> <span class="n">dstType</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Parameter Description:</strong></p>
+<ol>
+<li><strong>src</strong>: Input image, must be single-channel 8-bit binary image</li>
+<li><strong>distanceType</strong>: Distance type
+<ul>
+<li><code>cv2.DIST_L1</code>: Manhattan distance</li>
+<li><code>cv2.DIST_L2</code>: Euclidean distance</li>
+<li><code>cv2.DIST_C</code>: Chebyshev distance</li>
+</ul>
+</li>
+<li><strong>maskSize</strong>: Distance transform mask size
+<ul>
+<li><code>cv2.DIST_MASK_3</code>: 3x3 mask</li>
+<li><code>cv2.DIST_MASK_5</code>: 5x5 mask</li>
+<li><code>cv2.DIST_MASK_PRECISE</code>: More precise algorithm</li>
+</ul>
+</li>
+<li><strong>dstType</strong>: Output image type (optional)
+<ul>
+<li><code>cv2.CV_8U</code>: 8-bit unsigned integer</li>
+<li><code>cv2.CV_32F</code>: 32-bit floating point</li>
+<li><code>cv2.CV_64F</code>: 64-bit floating point</li>
+</ul>
+</li>
+</ol>
+<h3 id="62-skimagemorphologyskeletonize">6.2 skimage.morphology.skeletonize
+</h3><p>The <code>skeletonize</code> function in the scikit-image library is used for skeletonization and mainly has three methods:</p>
+<p><strong>Note:</strong> The input image must be a binary image, containing only 0 (black, background) and 255 [or represented as 1] (white, foreground)</p>
+<h4 id="1-zhang-suen-thinning-algorithm-default-method">1. Zhang-Suen Thinning Algorithm (Default Method)
+</h4><p><strong>Basic Idea</strong>: Remove non-zero pixels that are not on the skeleton</p>
+<p><strong>How to Find Non-Skeleton Points</strong>: For non-zero pixels, consider their 8-neighborhood pixels</p>
+<p><img src="/p/crack-diffusion-experiment/image-20250226111149133.png"
+	width="581"
+	height="251"
+	srcset="/p/crack-diffusion-experiment/image-20250226111149133_hu_6f484fb462298e1b.png 480w, /p/crack-diffusion-experiment/image-20250226111149133_hu_b5f90025afcfd7e8.png 1024w"
+	loading="lazy"
+	
+		alt="8-neighborhood pixels for a pixel point"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="555px"
+	
+></p>
+<p><strong>Algorithm Steps:</strong></p>
+<ul>
+<li><strong>Step 1</strong>:</li>
+</ul>
+<p><img src="/p/crack-diffusion-experiment/image-20250226111324375.png"
+	width="896"
+	height="505"
+	srcset="/p/crack-diffusion-experiment/image-20250226111324375_hu_34a5def81eaaa85b.png 480w, /p/crack-diffusion-experiment/image-20250226111324375_hu_ea9d452ffc3afa9d.png 1024w"
+	loading="lazy"
+	
+		alt="Step 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="177"
+		data-flex-basis="425px"
+	
+></p>
+<ul>
+<li><strong>Step 2</strong>:</li>
+</ul>
+<p><img src="/p/crack-diffusion-experiment/image-20250226113630599.png"
+	width="887"
+	height="432"
+	srcset="/p/crack-diffusion-experiment/image-20250226113630599_hu_a621efdd79558bcb.png 480w, /p/crack-diffusion-experiment/image-20250226113630599_hu_fa5c52acc8f99c37.png 1024w"
+	loading="lazy"
+	
+		alt="Step 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="205"
+		data-flex-basis="492px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">skeletonize</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">zhang_suen_skeleton</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Ensure input is binary image</span>
+</span></span><span class="line"><span class="cl">    <span class="n">binary</span> <span class="o">=</span> <span class="n">binary</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skeleton</span> <span class="o">=</span> <span class="n">skeletonize</span><span class="p">(</span><span class="n">binary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-lee-algorithm">2. LEE Algorithm
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">skeletonize</span><span class="p">,</span> <span class="n">lee</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">lee_skeleton</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">binary</span> <span class="o">=</span> <span class="n">binary</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skeleton</span> <span class="o">=</span> <span class="n">skeletonize</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;lee&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-distance-transform-based-method">3. Distance Transform-Based Method
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">medial_axis</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">medial_axis_skeleton</span><span class="p">(</span><span class="n">binary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Return skeleton and distance transform</span>
+</span></span><span class="line"><span class="cl">    <span class="n">skeleton</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">medial_axis</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">distance</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7-conclusion-and-future-work">7. Conclusion and Future Work
+</h2><p>This article systematically elaborates on the skeletonization-based crack detection method, covering key technical components such as adaptive threshold segmentation, morphological operations, and skeletonization. This method can effectively extract crack features and provide high-quality prompt points for fine-grained segmentation by the SAM model.</p>
+<p><strong>Future Research Directions:</strong></p>
+<ol>
+<li>Optimize the adaptive threshold algorithm to improve adaptability to images under different lighting conditions</li>
+<li>Improve the skeletonization post-processing algorithm to eliminate redundant branches</li>
+<li>Explore deep learning-based skeletonization methods</li>
+</ol>
+<hr>
+<p><strong>Further Reading:</strong></p>
+<ul>
+<li><a class="link" href="/p/crack-diffusion-paper-reading/" >CrackDiffusion Crack Detection Framework</a></li>
+</ul>
+<hr>
+<p><em>Last Updated: 2025-02-24</em></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/crack-skeletonization/">Crack Skeletonization</a>
+        
+            <a href="/en/tags/computer-vision/">Computer Vision</a>
+        
+            <a href="/en/tags/opencv/">OpenCV</a>
+        
+            <a href="/en/tags/skeletonization/">Skeletonization</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">Image Processing and AI</h4>
+    <span class="series-progress">第 1 篇，共 1 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

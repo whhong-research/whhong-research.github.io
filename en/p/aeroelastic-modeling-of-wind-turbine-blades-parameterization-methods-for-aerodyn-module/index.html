@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Series Introduction: This series of articles will systematically introduce the usage of OpenFAST wind turbine simulation software, covering the AeroDyn aerodynamics module, ElastoDyn structural dynamics module, control system integration, and more. This article, as the series opener, provides a detailed introduction to the configuration and usage of the AeroDyn aerodynamics module.\nPrerequisite Knowledge: The Actuator Line Theory is an important method for wind turbine aerodynamic modeling. It simplifies the blade into line sources distributed along the span, simulating the interaction between the blade and flow field by calculating aerodynamic forces on blade elements. This method maintains computational efficiency while effectively capturing the aerodynamic characteristics of blades.\n">
+<title>Aeroelastic Modeling of Wind Turbine Blades: Parameterization Methods for AeroDyn Module</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/aeroelastic-modeling-of-wind-turbine-blades-parameterization-methods-for-aerodyn-module/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Aeroelastic Modeling of Wind Turbine Blades: Parameterization Methods for AeroDyn Module">
+<meta property='og:description' content=" Series Introduction: This series of articles will systematically introduce the usage of OpenFAST wind turbine simulation software, covering the AeroDyn aerodynamics module, ElastoDyn structural dynamics module, control system integration, and more. This article, as the series opener, provides a detailed introduction to the configuration and usage of the AeroDyn aerodynamics module.\nPrerequisite Knowledge: The Actuator Line Theory is an important method for wind turbine aerodynamic modeling. It simplifies the blade into line sources distributed along the span, simulating the interaction between the blade and flow field by calculating aerodynamic forces on blade elements. This method maintains computational efficiency while effectively capturing the aerodynamic characteristics of blades.\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/aeroelastic-modeling-of-wind-turbine-blades-parameterization-methods-for-aerodyn-module/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenFAST' /><meta property='article:tag' content='Aerodynamic Characteristics' /><meta property='article:tag' content='Python Script' /><meta property='article:tag' content='AeroDyn' /><meta property='article:tag' content='Wind Turbine' /><meta property='article:published_time' content='2025-02-26T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-26T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001.jpg' />
+<meta name="twitter:title" content="Aeroelastic Modeling of Wind Turbine Blades: Parameterization Methods for AeroDyn Module">
+<meta name="twitter:description" content=" Series Introduction: This series of articles will systematically introduce the usage of OpenFAST wind turbine simulation software, covering the AeroDyn aerodynamics module, ElastoDyn structural dynamics module, control system integration, and more. This article, as the series opener, provides a detailed introduction to the configuration and usage of the AeroDyn aerodynamics module.\nPrerequisite Knowledge: The Actuator Line Theory is an important method for wind turbine aerodynamic modeling. It simplifies the blade into line sources distributed along the span, simulating the interaction between the blade and flow field by calculating aerodynamic forces on blade elements. This method maintains computational efficiency while effectively capturing the aerodynamic characteristics of blades.\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-introduction">Module Introduction</a></li>
+    <li><a href="#input-file-configuration">Input File Configuration</a>
+      <ul>
+        <li><a href="#general-options-settings">General Options Settings</a></li>
+        <li><a href="#modeling-parameters-recommended-settings">Modeling Parameters Recommended Settings</a></li>
+        <li><a href="#output-settings-configuration">Output Settings Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#output-file-description">Output File Description</a>
+      <ul>
+        <li><a href="#summary-file">Summary File</a></li>
+        <li><a href="#results-files">Results Files</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#input-file-example">Input File Example</a></li>
+    <li><a href="#输出文件示例">输出文件示例</a></li>
+    <li><a href="#python脚本批量化处理">Python脚本批量化处理</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/aeroelastic-modeling-of-wind-turbine-blades-parameterization-methods-for-aerodyn-module/">
+                <img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001_hu_13ed736a4945247c.jpg"
+                        srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001_hu_13ed736a4945247c.jpg 800w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_001_hu_885aaf419e986e2a.jpg 1600w"
+                        width="800" 
+                        height="199" 
+                        loading="lazy"
+                        alt="Featured image of post Aeroelastic Modeling of Wind Turbine Blades: Parameterization Methods for AeroDyn Module" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/blade-simulation/" >
+                Blade Simulation
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/aeroelastic-modeling-of-wind-turbine-blades-parameterization-methods-for-aerodyn-module/">Aeroelastic Modeling of Wind Turbine Blades: Parameterization Methods for AeroDyn Module</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 26, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p><strong>Series Introduction</strong>: This series of articles will systematically introduce the usage of OpenFAST wind turbine simulation software, covering the AeroDyn aerodynamics module, ElastoDyn structural dynamics module, control system integration, and more. This article, as the series opener, provides a detailed introduction to the configuration and usage of the AeroDyn aerodynamics module.</p>
+</blockquote>
+<blockquote>
+<p><strong>Prerequisite Knowledge</strong>: The Actuator Line Theory is an important method for wind turbine aerodynamic modeling. It simplifies the blade into line sources distributed along the span, simulating the interaction between the blade and flow field by calculating aerodynamic forces on blade elements. This method maintains computational efficiency while effectively capturing the aerodynamic characteristics of blades.</p>
+</blockquote>
+<h1 id="references">References
+</h1><ol>
+<li>Jonkman, J.M., Hayman, G.J., Jonkman, B.J., Damiani, R.R., Murray, R.E., n.d. AeroDyn v15 User&rsquo;s Guide and Theory Manual. Renewable Energy.</li>
+<li><strong>OpenFAST Official Documentation</strong>: <a class="link" href="https://openfast.readthedocs.io/en/main/index.html"  target="_blank" rel="noopener"
+    >https://openfast.readthedocs.io/en/main/index.html</a></li>
+</ol>
+<h1 id="aerodyn-module-overview">AeroDyn Module Overview
+</h1><h2 id="module-introduction">Module Introduction
+</h2><ol>
+<li>
+<p><strong>AeroDyn</strong> is a time-domain aerodynamic calculation module that can operate as a standalone program to calculate aerodynamic responses of wind turbines not coupled with OpenFAST, or be integrated into the OpenFAST framework for multi-physics coupled simulations;</p>
+</li>
+<li>
+<p>This module is primarily used to calculate aerodynamic loads on blades and towers, with its core theoretical foundation being the <strong>Actuator Line Theory</strong>;</p>
+</li>
+<li>
+<p>AeroDyn consists of six sub-models, responsible for:</p>
+<ul>
+<li>Rotor wake and induction velocity calculation (rotor wake/induction)</li>
+<li>Blade airfoil aerodynamics (blade airfoil aerodynamics)</li>
+<li>Tower influence on fluid local to blade nodes (tower influence on the fluid local to the blade nodes)</li>
+<li>Tower and nacelle aerodynamic drag (tower and nacelle drag)</li>
+<li>Aeroacoustics calculation (aeroacoustics)</li>
+<li>Buoyancy effects on blades, hub, nacelle, and tower (buoyancy)</li>
+</ul>
+</li>
+</ol>
+<h2 id="input-file-configuration">Input File Configuration
+</h2><ol>
+<li><strong>Basic Unit System</strong>: Kilogram-Meter-Second-Newton (kg, m, s, N)</li>
+</ol>
+<h3 id="general-options-settings">General Options Settings
+</h3><ol>
+<li>
+<p><strong>DTAero</strong>: Aerodynamic calculation time step, recommended to set at least 200 steps to ensure computational stability;</p>
+</li>
+<li>
+<p><strong>Wake_mod</strong> (Wake Model Selection):</p>
+<ul>
+<li>Set to 0: Do not consider induction velocity effects;</li>
+<li>Set to 1: Calculate induction velocity based on Blade Element Momentum (BEM) theory;</li>
+<li>Set to 3: Use <strong>free vortex wake model</strong>, note that this cannot be set to 3 during linear analysis phase;</li>
+</ul>
+</li>
+<li>
+<p><strong>Twrpotent</strong> (Tower Potential Flow Effect):</p>
+<ul>
+<li>Set to 0: Do not consider tower&rsquo;s potential influence on local flow field at blades;</li>
+<li>Set to 1: Use <strong>standard potential-flow model</strong>;</li>
+<li>Set to 2: Add <strong>Bak correction</strong> on top of standard potential-flow model;</li>
+</ul>
+</li>
+</ol>
+<h3 id="modeling-parameters-recommended-settings">Modeling Parameters Recommended Settings
+</h3><ol>
+<li>
+<p><strong>NumVBlNds</strong> (Number of Blade Nodes):</p>
+<ul>
+<li>Recommended to set between 10-20 to balance computational accuracy and cost;</li>
+</ul>
+</li>
+<li>
+<p><strong>Simulation configuration recommendations for operational wind turbine blades</strong>:</p>
+<ul>
+<li>Recommend enabling dynamic BEM model (<strong>Wake_Mod = 1</strong>) and unsteady aerodynamics model (<strong>AFAeroMod = 2</strong>);</li>
+<li>Enable <strong>SkewMod = 2</strong>, <strong>TipLoss = TRUE</strong>, <strong>HubLoss = TRUE</strong>, <strong>TanInd = TRUE</strong>;</li>
+<li>Note: When yaw error exceeds 45 degrees, <strong>SkewMod = 2</strong> setting becomes invalid;</li>
+<li>BEM nonlinear solving is related to inflow angle, <strong>IndToler</strong> recommended to keep default value <strong>DEFAULT</strong>;</li>
+</ul>
+</li>
+</ol>
+<h3 id="output-settings-configuration">Output Settings Configuration
+</h3><ol>
+<li>
+<p>AeroDyn supports aerodynamic and kinematic quantity output at 9 nodes along the tower and 9 nodes along the blades;</p>
+</li>
+<li>
+<p><strong>BldNd_BladesOut</strong>: Specifies the number of blades to output results for;</p>
+</li>
+<li>
+<p><strong>BldNd_BlOutNd</strong>: Specifies the node numbers to output;</p>
+</li>
+<li>
+<p><strong>Blade Node Aerodynamic Force Output Options</strong>:</p>
+<ul>
+<li>
+<p><strong>&ldquo;to plane&rdquo;</strong> (relative to rotor plane):</p>
+<ul>
+<li>Fx: Force perpendicular to blade rotation plane, suitable for evaluating overall blade performance and calculating global loads;</li>
+<li>Fy: Force parallel to blade rotation plane;</li>
+</ul>
+</li>
+<li>
+<p><strong>&ldquo;to chord&rdquo;</strong> (relative to blade chord):</p>
+<ul>
+<li>Fn: Force perpendicular to local blade chord;</li>
+<li>Ft: Force parallel to local blade chord, in the direction from leading edge to trailing edge, affecting blade torsional deformation;</li>
+<li>Suitable for analyzing local blade structural response and deformation;</li>
+</ul>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_005.png"
+	width="1037"
+	height="536"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_005_hu_74b0920dbc45704.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_005_hu_4302b64c8b1e8e36.png 1024w"
+	loading="lazy"
+	
+		alt="Blade Local Coordinate System"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="464px"
+	
+></p>
+</li>
+</ul>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_002.png"
+	width="685"
+	height="482"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_002_hu_ff342a560b3b540.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_002_hu_349bad0a983757de.png 1024w"
+	loading="lazy"
+	
+		alt="Blade Local Coordinate System"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="341px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="s2">&#34;Mm&#34;</span>        <span class="o">-</span> <span class="n">Pitching</span> <span class="n">moment</span> <span class="n">per</span> <span class="n">unit</span> <span class="n">length</span> <span class="n">at</span> <span class="n">each</span> <span class="n">node</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Fx&#34;</span>        <span class="o">-</span> <span class="n">Normal</span> <span class="n">force</span> <span class="p">(</span><span class="n">to</span> <span class="n">plane</span><span class="p">)</span> <span class="n">per</span> <span class="n">unit</span> <span class="n">length</span> <span class="n">at</span> <span class="n">each</span> <span class="n">node</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Fy&#34;</span>        <span class="o">-</span> <span class="n">Tangential</span> <span class="n">force</span> <span class="p">(</span><span class="n">to</span> <span class="n">plane</span><span class="p">)</span> <span class="n">per</span> <span class="n">unit</span> <span class="n">length</span> <span class="n">at</span> <span class="n">each</span> <span class="n">node</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Fn&#34;</span>        <span class="o">-</span> <span class="n">Normal</span> <span class="n">force</span> <span class="p">(</span><span class="n">to</span> <span class="n">chord</span><span class="p">)</span> <span class="n">per</span> <span class="n">unit</span> <span class="n">length</span> <span class="n">at</span> <span class="n">each</span> <span class="n">node</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;Ft&#34;</span>        <span class="o">-</span> <span class="n">Tangential</span> <span class="n">force</span> <span class="p">(</span><span class="n">to</span> <span class="n">chord</span><span class="p">)</span> <span class="n">per</span> <span class="n">unit</span> <span class="n">length</span> <span class="n">at</span> <span class="n">each</span> <span class="n">node</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>Output File Variable Settings</strong>:</p>
+<ul>
+<li>
+<p><strong>OutList</strong>: Node number range is 1-9. For example, entering B1N10Fx will cause an error; to output information for blade section 10, enter the corresponding node number for that section; as shown in the figure below;</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">10,11,12,13,14,15,16,17,18 BlOutNd       - Blade nodes whose values will be output (-)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Blade section 10 corresponds to output node 1, and output B1N1Fx represents the force parallel to the rotation plane for section <strong>10</strong> of blade 1;</p>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008.png"
+	width="740"
+	height="251"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_2a507bc60624ab2b.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_4a3df2c490ac32eb.png 1024w"
+	loading="lazy"
+	
+		alt="Note the correspondence of node numbers"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="294"
+		data-flex-basis="707px"
+	
+></p>
+</li>
+</ul>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_003.png"
+	width="1149"
+	height="377"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_003_hu_7e93f98463ad7d25.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_003_hu_d98f1a71969829f1.png 1024w"
+	loading="lazy"
+	
+		alt="Blade output Channel"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="304"
+		data-flex-basis="731px"
+	
+></p>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_004.png"
+	width="1142"
+	height="712"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_004_hu_8ad8d8a04beb1a2b.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_004_hu_d4e4304164739bc4.png 1024w"
+	loading="lazy"
+	
+		alt="Blade output channel 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="384px"
+	
+></p>
+</li>
+</ol>
+<h2 id="output-file-description">Output File Description
+</h2><h3 id="summary-file">Summary File
+</h3><ul>
+<li>When <strong>SumPrint</strong> is set to TRUE, the file <code>OutFileRoot.AD.sum</code> is generated, summarizing key information of the aerodynamic model, including enabled features and output settings;</li>
+</ul>
+<h3 id="results-files">Results Files
+</h3><ul>
+<li>Generate <code>OutFileRoot.#.out</code> files;</li>
+<li>Data channels are defined in the initial input file;</li>
+</ul>
+<h1 id="test-case">Test Case
+</h1><h2 id="input-file-example">Input File Example
+</h2><ul>
+<li>
+<p>Modify the output module in the AeroDyn input file (usually suffixed with <code>AeroDyn15.dat</code>):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">======  Outputs  ====================================================================================
+</span></span><span class="line"><span class="cl">True          SumPrint            - Generate a summary file listing input options and interpolated properties to &#34;&lt;rootname&gt;.AD.sum&#34;?  (flag)
+</span></span><span class="line"><span class="cl">          9   NBlOuts             - Number of blade node outputs [0 - 9] (-)
+</span></span><span class="line"><span class="cl">          1,2,3,4,5,6,7,8,9   BlOutNd             - Blade nodes whose values will be output  (-)
+</span></span><span class="line"><span class="cl">          0   NTwOuts             - Number of tower node outputs [0 - 9]  (-)
+</span></span><span class="line"><span class="cl">              TwOutNd             - Tower nodes whose values will be output  (-)
+</span></span><span class="line"><span class="cl">                   OutList             - The next line(s) contains a list of output parameters.  See OutListParameters.xlsx for a listing of available output channels, (-)
+</span></span><span class="line"><span class="cl">&#34;B1N1Fn,B1N1Ft,B1N1Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N2Fn,B1N2Ft,B1N2Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N3Fn,B1N3Ft,B1N3Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N4Fn,B1N4Ft,B1N4Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N5Fn,B1N5Ft,B1N5Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N6Fn,B1N6Ft,B1N6Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N7Fn,B1N7Ft,B1N7Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N8Fn,B1N8Ft,B1N8Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B1N9Fn,B1N9Ft,B1N9Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N1Fn,B2N1Ft,B2N1Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N2Fn,B2N2Ft,B2N2Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N3Fn,B2N3Ft,B2N3Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N4Fn,B2N4Ft,B2N4Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N5Fn,B2N5Ft,B2N5Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N6Fn,B2N6Ft,B2N6Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N7Fn,B2N7Ft,B2N7Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N8Fn,B2N8Ft,B2N8Mm&#34;
+</span></span><span class="line"><span class="cl">&#34;B2N9Fn,B2N9Ft,B2N9Mm&#34;
+</span></span><span class="line"><span class="cl">END of input file (the word &#34;END&#34; must appear in the first 3 columns of this last OutList line)
+</span></span><span class="line"><span class="cl">---------------------------------------------------------------------------------------
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="输出文件示例">输出文件示例
+</h2><ul>
+<li>
+<p>从<code>.AD.sum</code>文件中可以查看本次输出的变量</p>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008.png"
+	width="740"
+	height="251"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_2a507bc60624ab2b.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_008_hu_4a3df2c490ac32eb.png 1024w"
+	loading="lazy"
+	
+		alt="摘要文件输出变量查看"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="294"
+		data-flex-basis="707px"
+	
+></p>
+</li>
+<li>
+<p>从<code>.out</code>文件中，可以查看输出结果</p>
+<p><img src="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_007.png"
+	width="699"
+	height="395"
+	srcset="/p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_007_hu_20927af5d6273d67.png 480w, /p/%E9%A3%8E%E6%9C%BA%E5%8F%B6%E7%89%87%E6%B0%94%E5%8A%A8%E5%BC%B9%E6%80%A7%E5%BB%BA%E6%A8%A1aerodyn%E6%A8%A1%E5%9D%97%E5%8F%82%E6%95%B0%E5%8C%96%E6%96%B9%E6%B3%95/20260301_007_hu_a9857b8431da8e53.png 1024w"
+	loading="lazy"
+	
+		alt="输出结果示例"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="424px"
+	
+></p>
+</li>
+</ul>
+<h2 id="python脚本批量化处理">Python脚本批量化处理
+</h2><ul>
+<li>
+<p><strong>功能1</strong>：批量修改AeroDyn输入文件，并同步修改对应的<code>.fst</code>文件；</p>
+</li>
+<li>
+<p><strong>功能2</strong>：批量读取AeroDyn输出文件，提取并保存AeroDyn中定义的输出变量到Excel表格；</p>
+</li>
+<li>
+<p><strong>输入参数</strong>：</p>
+<ul>
+<li><code>all_nodes = list(range(1, 20))</code>：定义需要的节点数量，此处为19个节点；</li>
+<li>设置文件路径：</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">subprocess</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">time</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">openfast_toolbox.io</span> <span class="kn">import</span> <span class="n">FASTInputFile</span><span class="p">,</span> <span class="n">FASTOutputFile</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">split_nodes_into_groups</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">group_size</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;将节点列表分成每组最多9个节点&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">[</span><span class="n">nodes</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">group_size</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">),</span> <span class="n">group_size</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">modify_aerodyn</span><span class="p">(</span><span class="n">aero_file_path</span><span class="p">,</span> <span class="n">node_group</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;修改AeroDyn输入文件&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span> <span class="o">=</span> <span class="n">FASTInputFile</span><span class="p">(</span><span class="n">aero_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置输出节点数量</span>
+</span></span><span class="line"><span class="cl">    <span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_group</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;NBlOuts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_nodes</span>  <span class="c1"># 设置输出节点数量</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置节点</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;BlOutNd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">node_group</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 生成输出列表</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span>  <span class="c1"># 添加初始换行</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">blade</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">node_index</span><span class="p">,</span> <span class="n">node_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 从1开始计数</span>
+</span></span><span class="line"><span class="cl">            <span class="n">output_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s2">&#34;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s2">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}</span><span class="s2">Fn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s2">&#34;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s2">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}</span><span class="s2">Ft&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s2">&#34;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s2">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}</span><span class="s2">Mm&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="p">[</span><span class="s1">&#39;OutList&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_list</span>
+</span></span><span class="line"><span class="cl">    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">output_path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">run_openfast</span><span class="p">(</span><span class="n">fast_exe_path</span><span class="p">,</span> <span class="n">fst_file_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;运行OpenFAST&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">working_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fst_file_path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">working_dir</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="n">fast_exe_path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">fst_file_path</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;OpenFAST simulation completed successfully&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error running OpenFAST: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">extract_blade_data</span><span class="p">(</span><span class="n">outb_file</span><span class="p">,</span> <span class="n">node_group</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;从.outb文件提取数据&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span> <span class="o">=</span> <span class="n">FASTOutputFile</span><span class="p">(</span><span class="n">outb_file</span><span class="p">)</span><span class="o">.</span><span class="n">toDataFrame</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">blade_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">3</span><span class="p">:</span> <span class="p">{}}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">time</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">blade</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">:</span> <span class="n">time</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 枚举node_group获取索引和值</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">node_index</span><span class="p">,</span> <span class="n">node_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># 从1开始计数</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">measure</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Fn&#39;</span><span class="p">,</span> <span class="s1">&#39;Ft&#39;</span><span class="p">,</span> <span class="s1">&#39;Mm&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">measure</span> <span class="o">==</span> <span class="s1">&#39;Mm&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s1">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}{</span><span class="n">measure</span><span class="si">}</span><span class="s1">_[N-m/m]&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>  <span class="c1"># measure is &#39;Fn&#39; or &#39;Ft&#39;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;B</span><span class="si">{</span><span class="n">blade</span><span class="si">}</span><span class="s1">N</span><span class="si">{</span><span class="n">node_index</span><span class="si">}{</span><span class="n">measure</span><span class="si">}</span><span class="s1">_[N/m]&#39;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">data_dict</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Node</span><span class="si">{</span><span class="n">node_value</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">measure</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Found data for </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Column </span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s2"> not found&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">blade_data</span><span class="p">[</span><span class="n">blade</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">blade_data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">merge_blade_data</span><span class="p">(</span><span class="n">all_runs_data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;合并多次运行的数据&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">merged_data</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">2</span><span class="p">:</span> <span class="p">{},</span> <span class="mi">3</span><span class="p">:</span> <span class="p">{}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">blade</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 使用第一次运行的时间数据</span>
+</span></span><span class="line"><span class="cl">        <span class="n">merged_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">:</span> <span class="n">all_runs_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">blade</span><span class="p">][</span><span class="s1">&#39;Time_[s]&#39;</span><span class="p">]})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 合并所有运行的数据</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">run_data</span> <span class="ow">in</span> <span class="n">all_runs_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cols_to_merge</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">run_data</span><span class="p">[</span><span class="n">blade</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">&#39;Time_[s]&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">merged_df</span><span class="p">[</span><span class="n">cols_to_merge</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_data</span><span class="p">[</span><span class="n">blade</span><span class="p">][</span><span class="n">cols_to_merge</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">merged_data</span><span class="p">[</span><span class="n">blade</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged_df</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">merged_data</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">save_to_excel</span><span class="p">(</span><span class="n">blade_data</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;保存数据到Excel文件&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">blade_num</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">blade_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Blade_</span><span class="si">{</span><span class="n">blade_num</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Data saved to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 设置路径</span>
+</span></span><span class="line"><span class="cl">    <span class="n">work_dir</span> <span class="o">=</span> <span class="s1">&#39;E:/Study/openfast/r-test-3.5.3/glue-codes/openfast/5MW_Test_Weihao&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fast_exe_path</span> <span class="o">=</span> <span class="s1">&#39;E:/Study/openfast/r-test-3.5.3/glue-codes/openfast/5MW_Test_Weihao/openfast_x64.exe&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;5MW_Land_BD_DLL_WTurb.fst&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">aero_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;NRELOffshrBsline5MW_Onshore_AeroDyn15.dat&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">output_excel</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;blade_data_all_nodes.xlsx&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 定义所有需要的节点</span>
+</span></span><span class="line"><span class="cl">    <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">node_groups</span> <span class="o">=</span> <span class="n">split_nodes_into_groups</span><span class="p">(</span><span class="n">all_nodes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">all_runs_data</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node_group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_groups</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Processing node group </span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">node_group</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 修改后的气动文件名</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modified_aero_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;NRELOffshrBsline5MW_Onshore_AeroDyn15_group_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.dat&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 修改气动文件</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modify_aerodyn</span><span class="p">(</span><span class="n">aero_file</span><span class="p">,</span> <span class="n">node_group</span><span class="p">,</span> <span class="n">modified_aero_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 修改FST文件中的AeroDyn文件路径</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fst</span> <span class="o">=</span> <span class="n">FASTInputFile</span><span class="p">(</span><span class="n">fst_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fst</span><span class="p">[</span><span class="s1">&#39;AeroFile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&#34;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">modified_aero_file</span><span class="p">)</span><span class="si">}</span><span class="s1">&#34;&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">modified_fst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;5MW_Land_DLL_WTurb_group_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.fst&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">fst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">modified_fst_file</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 运行OpenFAST</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">run_openfast</span><span class="p">(</span><span class="n">fast_exe_path</span><span class="p">,</span> <span class="n">modified_fst_file</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 提取数据</span>
+</span></span><span class="line"><span class="cl">            <span class="n">outb_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;5MW_Land_DLL_WTurb_group_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s1">.outb&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">run_data</span> <span class="o">=</span> <span class="n">extract_blade_data</span><span class="p">(</span><span class="n">outb_file</span><span class="p">,</span> <span class="n">node_group</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">all_runs_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">run_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># 等待一小段时间确保文件写入完成</span>
+</span></span><span class="line"><span class="cl">            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 合并所有运行的数据</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">all_runs_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">merged_data</span> <span class="o">=</span> <span class="n">merge_blade_data</span><span class="p">(</span><span class="n">all_runs_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 保存最终数据</span>
+</span></span><span class="line"><span class="cl">        <span class="n">save_to_excel</span><span class="p">(</span><span class="n">merged_data</span><span class="p">,</span> <span class="n">output_excel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;No data was collected from any runs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>Pitfall 1</strong>: OutList needs an initial newline, otherwise the first variable will not be output;</li>
+<li><strong>Pitfall 2</strong>: <code>BlOutNd</code> needs to use commas to connect variables; direct assignment will result in parentheses, causing errors;</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/openfast/">OpenFAST</a>
+        
+            <a href="/en/tags/aerodynamic-characteristics/">Aerodynamic Characteristics</a>
+        
+            <a href="/en/tags/python-script/">Python Script</a>
+        
+            <a href="/en/tags/aerodyn/">AeroDyn</a>
+        
+            <a href="/en/tags/wind-turbine/">Wind Turbine</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">Wind Turbine Simulation and Modeling</h4>
+    <span class="series-progress">第 1 篇，共 1 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

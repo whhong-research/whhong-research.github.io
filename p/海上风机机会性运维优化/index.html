@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="风机运维文献整理 Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. Applied Energy, 321, 119284. https://doi.org/10.1016/j.apenergy.2022.119284 Introduction 【运维成本占全生命周期成本的14%-30%】 ”Operation and Maintenance (O&amp;M) costs have been estimated to occupy around 14%–30% of life cycle cost (LCC) “\n【海上风机不可用性显著下降至60%-70%】 once wind turbines are placed offshore instead of onshore, the availability may decrease significantly to as low as 60%–70%\n">
+<title>海上风机机会性运维优化</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="海上风机机会性运维优化">
+<meta property='og:description' content="风机运维文献整理 Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. Applied Energy, 321, 119284. https://doi.org/10.1016/j.apenergy.2022.119284 Introduction 【运维成本占全生命周期成本的14%-30%】 ”Operation and Maintenance (O&amp;M) costs have been estimated to occupy around 14%–30% of life cycle cost (LCC) “\n【海上风机不可用性显著下降至60%-70%】 once wind turbines are placed offshore instead of onshore, the availability may decrease significantly to as low as 60%–70%\n">
+<meta property='og:url' content='https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96/'>
+<meta property='og:site_name' content='whhong的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机会性运维' /><meta property='article:tag' content='不确定性' /><meta property='article:tag' content='决策优化' /><meta property='article:published_time' content='2025-10-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="海上风机机会性运维优化">
+<meta name="twitter:description" content="风机运维文献整理 Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. Applied Energy, 321, 119284. https://doi.org/10.1016/j.apenergy.2022.119284 Introduction 【运维成本占全生命周期成本的14%-30%】 ”Operation and Maintenance (O&amp;M) costs have been estimated to occupy around 14%–30% of life cycle cost (LCC) “\n【海上风机不可用性显著下降至60%-70%】 once wind turbines are placed offshore instead of onshore, the availability may decrease significantly to as low as 60%–70%\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">whhong的博客</a></h1>
+            <h2 class="site-description">欢迎来到我的博客网站</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" >English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#li-m-jiang-x-carroll-j--negenborn-r-r-2022-a-multi-objective-maintenance-strategy-optimization-framework-for-offshore-wind-farms-considering-uncertainty-applied-energy-321-119284">Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. <em>Applied Energy</em>, <em>321</em>, 119284. https://doi.org/10.1016/j.apenergy.2022.119284</a>
+      <ul>
+        <li><a href="#introduction">Introduction</a>
+          <ul>
+            <li><a href="#运维成本占全生命周期成本的14-30">【运维成本占全生命周期成本的14%-30%】</a></li>
+            <li><a href="#海上风机不可用性显著下降至60-70">【海上风机不可用性显著下降至60%-70%】</a></li>
+          </ul>
+        </li>
+        <li><a href="#literature-review">Literature Review</a>
+          <ul>
+            <li><a href="#运维策略纠正性运维预防性运维机会性运维">【运维策略】【纠正性运维】【预防性运维】【机会性运维】</a></li>
+            <li><a href="#不确定性">【不确定性】</a></li>
+            <li><a href="#maintenance-models包括哪些部分">【Maintenance models包括哪些部分】</a></li>
+            <li><a href="#运维目标">【运维目标】</a></li>
+          </ul>
+        </li>
+        <li><a href="#maintenance-model">Maintenance model</a>
+          <ul>
+            <li><a href="#assumption">【Assumption】</a></li>
+            <li><a href="#failure-modelling">【Failure Modelling】</a></li>
+            <li><a href="#maintenance-opportunities-and-component-condition">【Maintenance opportunities and component condition】</a></li>
+            <li><a href="#maintenance-categories">【Maintenance categories】</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" >
+                论文阅读
+            </a>
+        
+            <a href="/categories/%E9%A3%8E%E6%9C%BA%E8%BF%90%E7%BB%B4/" >
+                风机运维
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96/">海上风机机会性运维优化</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 27, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="风机运维文献整理">风机运维文献整理
+</h1><h2 id="li-m-jiang-x-carroll-j--negenborn-r-r-2022-a-multi-objective-maintenance-strategy-optimization-framework-for-offshore-wind-farms-considering-uncertainty-applied-energy-321-119284">Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. <em>Applied Energy</em>, <em>321</em>, 119284. <a class="link" href="https://doi.org/10.1016/j.apenergy.2022.119284"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/j.apenergy.2022.119284</a>
+</h2><h3 id="introduction">Introduction
+</h3><h4 id="运维成本占全生命周期成本的14-30">【运维成本占全生命周期成本的14%-30%】
+</h4><p>”Operation and Maintenance (O&amp;M) costs have been estimated to occupy around 14%–30% of <a class="link" href="https://www.sciencedirect.com/topics/engineering/lifecycle-cost"  target="_blank" rel="noopener"
+    >life cycle cost</a> (LCC) “</p>
+<h4 id="海上风机不可用性显著下降至60-70">【海上风机不可用性显著下降至60%-70%】
+</h4><p>once <a class="link" href="https://www.sciencedirect.com/topics/engineering/wind-turbine"  target="_blank" rel="noopener"
+    >wind turbines</a> are placed offshore instead of onshore, the availability may decrease significantly to as low as 60%–70%</p>
+<h3 id="literature-review">Literature Review
+</h3><h4 id="运维策略纠正性运维预防性运维机会性运维">【运维策略】【纠正性运维】【预防性运维】【机会性运维】
+</h4><ul>
+<li>Corrective maintenance: carried out only after turbines break down.</li>
+<li>Preventive maintenance: conducted at specific intervals, known as periodic maintenance.</li>
+<li>Corrective maintenance and preventive maintenance are still the dominated maintenance strategies applied in wind energy industry.</li>
+<li>Performing maintenance on one component generates an opportunity window which can be taken advantage of to repair other components qualified for maintenance actions in this wind farm.</li>
+<li>[决策变量与部件的可靠度或平均失效时间相关] The decision variables in the opportunistic maintenance model are mostly set as maintenance thresholds related to component reliability or mean time to failure.</li>
+<li>**[Gap 1]: ** These models did not connect the maintenance threshold with component condition.
+<ul>
+<li>Condition monitoring technique 发展用于采集诊断信号（能够反映关键部件的结构状态）</li>
+<li>剩余寿命预测模型辅助决策者根据结构未来状态进行预测性运维</li>
+</ul>
+</li>
+</ul>
+<h4 id="不确定性">【不确定性】
+</h4><ul>
+<li>全生命周期运维框架中存在诸多不确定性：statistical uncertainty of component reliability estimations, inaccessibility of maintenance affected by weather variety, insufficient maintenance sources to support maintenance.</li>
+<li><strong>[Gap 2]</strong> : 【涉及的不确定性因素少】【未讨论策略优化问题】【仅考虑传统运维策略】
+<ul>
+<li>Only study the impact of one or two types of uncertainty on the maintenance performance.</li>
+<li>Not involving optimization.</li>
+<li>Novel maintenance strategies are not considered.</li>
+<li>没有展现不确定性对maintenance性能的影响</li>
+</ul>
+</li>
+<li>文中主要考虑的不确定性包括：故障时间的随机性，真实故障时间与实际故障时间的偏差；不确定性维护后果；</li>
+<li>未考虑的不确定性因素包括：天气因素影响的可达性，船舶以及备件的可用性等；</li>
+</ul>
+<h4 id="maintenance-models包括哪些部分">【Maintenance models包括哪些部分】
+</h4><ul>
+<li>In general, the maintenance models cover the aspects including the modelling of the deterioration of the system, the description of the available information about the system state, the possible actions and consequences</li>
+<li>退化模型+系统当前状态的可用信息+可能采取的运维动作+运维后果</li>
+</ul>
+<h4 id="运维目标">【运维目标】
+</h4><ul>
+<li>运维目标可能包括：reliability, safety, life-cycle cost, carbon emission等</li>
+<li>本文考虑的运维目标：
+<ul>
+<li>minumum costs related to maintenance effort. 最小化维护费用</li>
+<li>minumum production losses caused by downtime. 最小化能源损失</li>
+</ul>
+</li>
+</ul>
+<h3 id="maintenance-model">Maintenance model
+</h3><h4 id="assumption">【Assumption】
+</h4><ul>
+<li>所有风机属于同一类型，简化为多个关键组件的集合，任何组件的损坏会导致整个系统的失效</li>
+<li>做出运维决策后，维护活动能顺利实施</li>
+<li>不考虑材料、船舶租赁以及人力相关成本的时间波动</li>
+</ul>
+<h4 id="failure-modelling">【Failure Modelling】
+</h4><ul>
+<li>
+<p>使用双参数的威布尔分布来模拟失效概率的密度函数：</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96/image-20251027205233637.png"
+	width="914"
+	height="395"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96/image-20251027205233637_hu_d22b20485fa47e2a.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E4%BC%98%E5%8C%96/image-20251027205233637_hu_c6c3580daf5d7c18.png 1024w"
+	loading="lazy"
+	
+		alt="Two-parameter Weibull Distribution"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="555px"
+	
+></p>
+</li>
+<li>
+<p>除了退化之外（degradation），还考虑了随机破坏（意外情况，例如雷击、飓风等），这种影响被建立为非均匀泊松过程。给定一个强度函数λ，利用逆分布得到撞击发生的时间；</p>
+</li>
+<li>
+<p>环境影响被分为三个决策状态：Critical, influential, and minor</p>
+<ul>
+<li>The component subject to critical impact directly breaks down.</li>
+<li>The influential impact has an effect on the degradation of components, causing an abrupt increase of age b_m;</li>
+<li>The effect of minor impact is relatively small, only affecting the operation of turbine temporarily. Then, the turbine recovers to normal operational state after a short period of time.</li>
+</ul>
+</li>
+</ul>
+<h4 id="maintenance-opportunities-and-component-condition">【Maintenance opportunities and component condition】
+</h4><ul>
+<li>
+<p>执行maintenance的机会：</p>
+<ul>
+<li>Failure-based opportunity: 风机中的一个组件由于degradation failure发生后造成wind turbine停机;</li>
+<li>Incident-based opportunity: 风机遭受了sudden critical incideng;</li>
+<li>Ageing-based opportunity: No failure occurs in the farm, but a certain percentage of components reach a specific degree of ageing.</li>
+</ul>
+</li>
+<li>
+<p>Proposed maintenance framework</p>
+<img src="image-20251027212537132.png" alt="Maintenance strategy确定框架" style="zoom:50%;" />
+</li>
+</ul>
+<h4 id="maintenance-categories">【Maintenance categories】
+</h4><ul>
+<li>考虑四种运维操作：
+<ul>
+<li>故障更换（failure replacement）</li>
+<li>预防性更换（preventive replacement）</li>
+<li>大修（major repair）</li>
+<li>基本维修（basic maintenance）</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4/">机会性运维</a>
+        
+            <a href="/tags/%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7/">不确定性</a>
+        
+            <a href="/tags/%E5%86%B3%E7%AD%96%E4%BC%98%E5%8C%96/">决策优化</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">运维决策与风险管理</h4>
+    <span class="series-progress">第 4 篇，共 4 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <a href="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/" class="series-link prev">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">系泊链疲劳预测BDLM</span>
+    </a>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction.080744c03bde1e5bd700103f5bdf89b4_hu_f15082015904914b.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 系泊链疲劳预测BDLM"
+                        
+                        data-hash="md5-CAdEwDveHlvXABA/W9&#43;JtA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">系泊链疲劳预测BDLM</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.b6ac8a4e2dc423f11ba73614958adb9b_hu_e4268111de6fcf60.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 离散贝叶斯网络运维规划"
+                        
+                        data-hash="md5-tqyKTi3EI/EbpzYUlYrbmw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">离散贝叶斯网络运维规划</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_422c271d42ea37e9.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 海上风机状态监测运维策略优化"
+                        
+                        data-hash="md5-Cmq9yjtI&#43;wIrrk7eMo&#43;PHg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">海上风机状态监测运维策略优化</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

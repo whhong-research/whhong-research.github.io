@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://whhong-research.github.io/en/tags/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="Tags">
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Tags">
 <meta property='og:description' content="Welcome to my blog!">
 <meta property='og:url' content='https://whhong-research.github.io/en/tags/'>
 <meta property='og:site_name' content='whhong&#39;s blog'>
@@ -54,7 +54,7 @@
                     
                     
                         
-                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -290,7 +290,7 @@
                     <a href="/en/archives/#2025">
                         
                             <span class="year">2025</span>
-                            <span class="count">1</span>
+                            <span class="count">4</span>
                         
                     </a> 
                 </div>
@@ -317,6 +317,22 @@
 
     <div class="tagCloud-tags">
         
+            <a href="/en/categories/blade-simulation/" class="font_size_1">
+                Blade Simulation
+            </a>
+        
+            <a href="/en/categories/experimental-testing/" class="font_size_1">
+                Experimental Testing
+            </a>
+        
+            <a href="/en/categories/image-processing-tools/" class="font_size_1">
+                Image Processing Tools
+            </a>
+        
+            <a href="/en/categories/paper-reading/" class="font_size_1">
+                Paper Reading
+            </a>
+        
             <a href="/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/" class="font_size_1">
                 实验测试
             </a>
@@ -342,20 +358,44 @@
 
     <div class="tagCloud-tags">
         
+            <a href="/en/tags/aerodyn/" class="font_size_1">
+                AeroDyn
+            </a>
+        
+            <a href="/en/tags/aerodynamic-characteristics/" class="font_size_1">
+                Aerodynamic Characteristics
+            </a>
+        
+            <a href="/en/tags/anomaly-detection/" class="font_size_1">
+                Anomaly Detection
+            </a>
+        
             <a href="/en/tags/bdlm/" class="font_size_1">
                 BDLM
             </a>
         
-            <a href="/en/tags/%E5%8A%A8%E6%80%81%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C/" class="font_size_1">
-                动态贝叶斯网络
+            <a href="/en/tags/cold-diffusion/" class="font_size_1">
+                Cold Diffusion
             </a>
         
-            <a href="/en/tags/%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/" class="font_size_1">
-                寿命预测
+            <a href="/en/tags/computer-vision/" class="font_size_1">
+                Computer Vision
             </a>
         
-            <a href="/en/tags/%E8%85%90%E8%9A%80%E9%80%80%E5%8C%96/" class="font_size_1">
-                腐蚀退化
+            <a href="/en/tags/crack-segmentation/" class="font_size_1">
+                Crack Segmentation
+            </a>
+        
+            <a href="/en/tags/crack-skeletonization/" class="font_size_1">
+                Crack Skeletonization
+            </a>
+        
+            <a href="/en/tags/diffusion/" class="font_size_1">
+                Diffusion
+            </a>
+        
+            <a href="/en/tags/opencv/" class="font_size_1">
+                OpenCV
             </a>
         
     </div>
@@ -375,7 +415,7 @@
 
         <div class="section-card">
             <div class="section-details">
-                <h3 class="section-count">4 pages</h3>
+                <h3 class="section-count">18 pages</h3>
                 <h1 class="section-term">Tags</h1>
                 
             </div>
@@ -428,12 +468,51 @@
     </a>
 </article>
         
+            <article>
+    <a href="/en/tags/aerodyn/">
+        <div class="article-details">
+            <h2 class="article-title">AeroDyn</h2>
+            <footer class="article-time">
+                <time datetime='2025-02-26T00:00:00Z'>Feb 26, 2025</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
     </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                <span class='page-link current'>1</span>
+                
+            
+            
+                    <a class='page-link' href='/en/tags/page/2/'>2</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    <a class='page-link' href='/en/tags/page/4/'>4</a>
+                
+            
+    </nav>
+
 <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
-        2025 whhong
+            2025 - 
+        
+        2026 whhong
     </section>
     
     <section class="powerby">
@@ -462,5 +541,165 @@
     }());
 </script>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
     </body>
 </html>

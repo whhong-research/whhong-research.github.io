@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cold Diffusion on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/tags/cold-diffusion/</link>
+        <description>Recent content in Cold Diffusion on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Mon, 24 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/cold-diffusion/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework</title>
+        <link>https://whhong-research.github.io/en/p/crack-diffusion-paper-reading/</link>
+        <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/crack-diffusion-paper-reading/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/crack-diffusion-paper-reading/1.png" alt="Featured image of post Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Series Introduction&lt;/strong&gt;: This series provides in-depth analysis of classic and cutting-edge papers in deep learning and computer vision, with a focus on structural health monitoring and defect detection applications. This article, the second in the series, explores the innovative CrackDiffusion framework for crack detection.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-core-concepts&#34;&gt;1. Core Concepts
+&lt;/h2&gt;&lt;h3 id=&#34;11-research-background-and-motivation&#34;&gt;1.1 Research Background and Motivation
+&lt;/h3&gt;&lt;p&gt;This paper proposes &lt;strong&gt;CrackDiffusion&lt;/strong&gt;, an augmented supervised monitoring framework for pavement crack segmentation. The framework adopts a two-stage architecture:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stage 1&lt;/strong&gt;: Unsupervised multi-blur-based cold diffusion anomaly detection model&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage 2&lt;/strong&gt;: Supervised U-Net segmentation model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-focus-of-this-article&#34;&gt;1.2 Focus of This Article
+&lt;/h3&gt;&lt;p&gt;This article primarily focuses on &lt;strong&gt;the unsupervised anomaly detection process in Stage 1&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use &lt;strong&gt;crack-free images&lt;/strong&gt; as the training set to train the diffusion model to learn the distribution characteristics of normal pavement&lt;/li&gt;
+&lt;li&gt;Use &lt;strong&gt;cracked images&lt;/strong&gt; as input to generate &amp;ldquo;crack-free&amp;rdquo; reconstructed images through the diffusion process&lt;/li&gt;
+&lt;li&gt;Utilize &lt;strong&gt;Structural Similarity Index (SSIM)&lt;/strong&gt; to compute the difference between original and reconstructed images to extract crack regions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;13-core-assumption&#34;&gt;1.3 Core Assumption
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Core Assumption&lt;/strong&gt;: When the same Gaussian blur noise is applied to both cracked and crack-free pavement images of the same surface until crack features are completely blurred in both images, the distribution difference between the two images is significantly smaller than the distribution difference in their initial state.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-theoretical-foundations&#34;&gt;2. Theoretical Foundations
+&lt;/h2&gt;&lt;h3 id=&#34;21-diffusion-models&#34;&gt;2.1 Diffusion Models
+&lt;/h3&gt;&lt;h4 id=&#34;211-basic-concepts&#34;&gt;2.1.1 Basic Concepts
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Diffusion models&lt;/strong&gt; are a class of generative models for image generation and super-resolution reconstruction, consisting of &lt;strong&gt;forward diffusion process&lt;/strong&gt; and &lt;strong&gt;reverse denoising process&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Forward diffusion process&lt;/strong&gt;: Gradually adds Gaussian noise to the original image, transforming the data distribution into a standard Gaussian distribution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reverse denoising process&lt;/strong&gt;: Gradually removes the added Gaussian noise, recovering the standard Gaussian distribution back to the original data distribution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;212-mathematical-formulation&#34;&gt;2.1.2 Mathematical Formulation
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Equation (1) - Forward Diffusion Process&lt;/strong&gt;:
+&lt;/p&gt;
+$$x_t = \sqrt{1-\beta_t}x_{t-1} + \sqrt{\beta_t}Z_t\tag{1}\\$$&lt;p&gt;&lt;strong&gt;Equation (2) - Reverse Denoising Process&lt;/strong&gt;:
+&lt;/p&gt;
+$$x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_\theta(x_t, t))\tag{2}$$&lt;h3 id=&#34;22-diffusion-models-vs-gans&#34;&gt;2.2 Diffusion Models vs. GANs
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Dimension&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;GAN&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Diffusion Models&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Principle&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Reconstructs anomalous images through latent tensors&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Gradually transforms original images into latent variable representations&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Latent Variable Dimensions&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Latent variables typically have smaller dimensions&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Latent variables have the same dimensions as the original image&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Training Stability&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;More difficult to train (mode collapse issues)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Relatively stable training&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Typical Applications&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Image generation, style transfer&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Image generation, image inpainting, anomaly detection&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;GAN Mechanism for Crack Detection&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cracks are treated as anomalous features&lt;/li&gt;
+&lt;li&gt;The GAN network learns the distribution characteristics of normal pavement samples&lt;/li&gt;
+&lt;li&gt;When cracked anomalous samples are input, the network attempts to &amp;ldquo;pull&amp;rdquo; them back to the normal distribution&lt;/li&gt;
+&lt;li&gt;That is: repair crack regions to appear like normal pavement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Latent Tensor Comparison Diagram&lt;/strong&gt;:
+&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115126966.png&#34;
+	width=&#34;476&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115126966_hu_1b18fb4024e896d4.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115126966_hu_6e0ee5f062e1cbfc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Comparison of latent tensors in GANs and Diffusion Models&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-methodology-in-detail&#34;&gt;3. Methodology in Detail
+&lt;/h2&gt;&lt;h3 id=&#34;31-challenges-of-direct-application-of-standard-diffusion-models&#34;&gt;3.1 Challenges of Direct Application of Standard Diffusion Models
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tiny Crack Features&lt;/strong&gt;: Pavement cracks are typically small objects; their pixel features are similar to road debris (such as paint markings, gravel, tire marks), making them difficult to distinguish&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Preservation of Crack Information During Reconstruction&lt;/strong&gt;: When the diffusion model is well-trained, it accurately reconstructs crack and debris pixels, resulting in reconstructed images that still contain crack information&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Inability to Distinguish with Insufficient Training&lt;/strong&gt;: When the diffusion model is insufficiently trained, it cannot accurately reconstruct road debris, making it impossible to distinguish debris from cracks using SSIM&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Core Requirement&lt;/strong&gt;: In the reconstructed image, crack regions should be reconstructed as crack-free pavement, while road debris, gravel, etc., should be preserved&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;32-multi-blur-cold-diffusion-model-architecture&#34;&gt;3.2 Multi-Blur Cold Diffusion Model Architecture
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Overall Model Flow Diagram&lt;/strong&gt;:
+&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224124120609.png&#34;
+	width=&#34;919&#34;
+	height=&#34;716&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224124120609_hu_988b1aec4f176465.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224124120609_hu_6890bf508b47f9b2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Crack detection process using multi-blur cold diffusion model&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;321-degradation-operator-d&#34;&gt;3.2.1 Degradation Operator D
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Function&lt;/strong&gt;: Applies $t$ iterations of noise to a given original image $x_0$ to implement the forward diffusion process&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mathematical Expression&lt;/strong&gt;:
+&lt;/p&gt;
+$$D(x_0, 0) = x_0, \quad x_t = D(x_0,t)\tag{3}$$&lt;p&gt;&lt;strong&gt;Implementation in This Study&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Combines &lt;strong&gt;2D Gaussian blur&lt;/strong&gt; and &lt;strong&gt;2D max pooling&lt;/strong&gt; to form the degradation operator D&lt;/li&gt;
+&lt;li&gt;2D Gaussian blur uses a (3, 3) convolution kernel&lt;/li&gt;
+&lt;li&gt;In each convolution, kernel weights are computed according to a 2D Gaussian distribution&lt;/li&gt;
+&lt;li&gt;Max pooling serves as a complementary operation to Gaussian blur&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Complete Expression of Degradation Operator D&lt;/strong&gt;:
+&lt;/p&gt;
+$$D(x_t, 1, M) = x_{t+1}(i,j) = \sum_{u=-r}^r\sum_{v=-r}^r x_t(i+u,j+v)\psi(u,v)f_{MaxPool}(u,v,M)$$&lt;p&gt;&lt;strong&gt;Implementation Code&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;noise_images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Forward diffusion process q&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Store diffused images&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Iterate over each batch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Get image for current batch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;tem_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Get maximum timestep for current batch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Perform tem_t diffusions                &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;tem_x1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Save current image&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GaussianBlur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Apply Gaussian blur to image&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Apply max pooling every 25 steps or on first step&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_pooling&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Add diffused image to result list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Convert to numpy array&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Return noisy image at timestep t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;About &lt;code&gt;cv2.GaussianBlur&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ksize&lt;/code&gt; represents the size of the Gaussian blur kernel&lt;/li&gt;
+&lt;li&gt;When &lt;code&gt;sigmaX&lt;/code&gt; and &lt;code&gt;sigmaY&lt;/code&gt; are set to 0, OpenCV automatically calculates the standard deviation: $\sigma = 0.3*((ksize-1)*0.5 - 1) + 0.8$&lt;/li&gt;
+&lt;li&gt;For a 3×3 kernel, the standard deviation is approximately 0.8, producing a slight blur effect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;322-restoration-operator-r&#34;&gt;3.2.2 Restoration Operator R
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Function&lt;/strong&gt;: Denoises and restores the noised image&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mathematical Expression&lt;/strong&gt;:
+&lt;/p&gt;
+$$R(x_t, t) \approx x_0$$&lt;p&gt;&lt;strong&gt;Implementation in This Study&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Adopts the &lt;strong&gt;U-Net architecture from DDPM&lt;/strong&gt; as the restoration operator&lt;/li&gt;
+&lt;li&gt;After obtaining latent tensors, reconstructs the image through the denoising diffusion probabilistic model&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Restoration Operator Structure Diagram&lt;/strong&gt;:
+&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115858087.png&#34;
+	width=&#34;974&#34;
+	height=&#34;429&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115858087_hu_38dce04a6bcda507.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115858087_hu_327dcab4c94f2ef5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Restoration Operator R in multi-blur cold diffusion model&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;544px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;33-loss-function&#34;&gt;3.3 Loss Function
+&lt;/h3&gt;&lt;p&gt;The loss function consists of two parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;L2 Distance&lt;/strong&gt;: Pixel-level difference between predicted and ground truth images&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSIM&lt;/strong&gt;: Structural similarity measure between predicted and ground truth images&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Complete Loss Function Expression&lt;/strong&gt;:&lt;/p&gt;
+$$\mathcal{L} = \lambda_1||\hat{x}_0(t) - x_0||_2 + \lambda_2(1 - \text{SSIM}(\hat{x}_0(t), x_0))/2$$&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\lambda_1$ and $\lambda_2$ are weight coefficients for the two components&lt;/li&gt;
+&lt;li&gt;$\hat{x}_0(t)$ is the model-predicted image&lt;/li&gt;
+&lt;li&gt;$x_0$ is the ground truth image&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SSIM Calculation Formula&lt;/strong&gt;:&lt;/p&gt;
+$$\text{SSIM}(I_1,I_2) = \frac{(2\mu_1\mu_2 + C_1)(2\sigma_{12} + C_2)}{(\mu_1^2 + \mu_2^2 + C_1)(\sigma_1^2 + \sigma_2^2 + C_2)}$$&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$I_1$ and $I_2$ are the two images being compared&lt;/li&gt;
+&lt;li&gt;$C_1$ and $C_2$ are constants for numerical stability&lt;/li&gt;
+&lt;li&gt;$\mu$ represents the mean of the image&lt;/li&gt;
+&lt;li&gt;$\sigma$ represents the standard deviation of the image&lt;/li&gt;
+&lt;li&gt;$\sigma_{12}$ represents the covariance between the two images&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Computation Method&lt;/strong&gt;: Uses a 3×3 sliding window to calculate local SSIM, then averages to obtain global SSIM.&lt;/p&gt;
+&lt;h3 id=&#34;34-training-and-testing-pipeline&#34;&gt;3.4 Training and Testing Pipeline
+&lt;/h3&gt;&lt;h4 id=&#34;341-training-process&#34;&gt;3.4.1 Training Process
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Data Preparation&lt;/strong&gt;: Use crack-free road images as training data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Diffusion Process&lt;/strong&gt;: Apply T rounds of multi-blur processing to images to obtain $x_t$, completely eliminating crack features&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model Training&lt;/strong&gt;: Train the denoising U-Net to implement restoration operator R&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timestep Sampling&lt;/strong&gt;: During training, parameter t is randomly sampled from the interval (0, T]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;342-testing-process&#34;&gt;3.4.2 Testing Process
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Input&lt;/strong&gt;: Input cracked road images&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Noising&lt;/strong&gt;: Apply degradation operator D T times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reconstruction&lt;/strong&gt;: Use the trained denoising U-Net model to reconstruct the image&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Difference Detection&lt;/strong&gt;: Use SSIM to compare the original input $x_0$ with the reconstructed image $\hat{x}_0$, generating crack segmentation results&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-experimental-results-and-analysis&#34;&gt;4. Experimental Results and Analysis
+&lt;/h2&gt;&lt;h3 id=&#34;41-dataset-description&#34;&gt;4.1 Dataset Description
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dataset Link&lt;/strong&gt;: &lt;a class=&#34;link&#34; href=&#34;https://www.kaggle.com/datasets/arunrk7/surface-crack-detection&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surface Crack Detection&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Description&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;40,000 images (20,000 positive and 20,000 negative samples)&lt;/li&gt;
+&lt;li&gt;227×227 pixels, RGB three channels&lt;/li&gt;
+&lt;li&gt;High-resolution images (4032×3024 pixels) with high diversity in surface finish and lighting conditions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Augmentation&lt;/strong&gt;: No random rotation, flipping, or tilting data augmentation was applied&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;42-model-training-details&#34;&gt;4.2 Model Training Details
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Experiment 1: Using MAE as Loss Function&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GradientTape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;diffusion&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sample_timesteps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;diffusion&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;noise_images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;predicted_noise_image&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;loss&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;losses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean_absolute_error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;predicted_noise_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# MAE loss&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;loss&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reduce_mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Training Results&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Early stopping triggered at epoch 122&lt;/li&gt;
+&lt;li&gt;Training loss continued to decrease while validation loss increased over the past 30 epochs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Best model appeared at epoch 92&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/training_history.png&#34;
+	width=&#34;1000&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/training_history_hu_63a696414154c407.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/training_history_hu_4e4325102cdd20a9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Training History&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;43-testing-results&#34;&gt;4.3 Testing Results
+&lt;/h3&gt;&lt;h4 id=&#34;431-cases-with-good-crack-segmentation-results&#34;&gt;4.3.1 Cases with Good Crack Segmentation Results
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_1_best_all.png&#34;
+	width=&#34;4440&#34;
+	height=&#34;1305&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_1_best_all_hu_8d3e81545e4b15ab.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_1_best_all_hu_f8f097fe34de98aa.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Good crack segmentation results on CFD dataset&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;432-cases-with-poor-crack-segmentation-results&#34;&gt;4.3.2 Cases with Poor Crack Segmentation Results
+&lt;/h4&gt;&lt;p&gt;(Possibly due to cracks being too fine)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_86_best_all.png&#34;
+	width=&#34;4440&#34;
+	height=&#34;1330&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_86_best_all_hu_6dde3d924b46e8f1.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_86_best_all_hu_21b992eec9253771.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Poor crack segmentation results on CFD dataset&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;333&#34;
+		data-flex-basis=&#34;801px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;44-comparison-with-other-methods&#34;&gt;4.4 Comparison with Other Methods
+&lt;/h3&gt;&lt;p&gt;The authors also compared the proposed multi-blur cold diffusion model with other common unsupervised learning models:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSIM and IoU Comparison Table&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150708204.png&#34;
+	width=&#34;892&#34;
+	height=&#34;249&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150708204_hu_89602192734239e0.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150708204_hu_b01b224bb3309d83.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SSIM and IoU comparison of crack segmentation across seven unsupervised networks&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;358&#34;
+		data-flex-basis=&#34;859px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Visual Comparison&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150551051.png&#34;
+	width=&#34;895&#34;
+	height=&#34;716&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150551051_hu_6593e21efa26c12f.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150551051_hu_cbaf6a52ec0faed.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Crack segmentation results based on SSIM&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;300px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;: The Multi-blur-based cold diffusion model achieved the highest IoU values across all four datasets, validating the effectiveness of this method.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-supplementary-fundamentals&#34;&gt;5. Supplementary Fundamentals
+&lt;/h2&gt;&lt;h3 id=&#34;51-latent-tensors&#34;&gt;5.1 Latent Tensors
+&lt;/h3&gt;&lt;h4 id=&#34;511-basic-concepts&#34;&gt;5.1.1 Basic Concepts
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Latent tensors&lt;/strong&gt; are an important concept in deep learning, representing data in &amp;ldquo;latent space&amp;rdquo;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A compressed representation obtained after encoding (encoding) the original data&lt;/li&gt;
+&lt;li&gt;Usually lower dimensional than the original data, but containing key feature information from the original data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;512-main-characteristics&#34;&gt;5.1.2 Main Characteristics
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Characteristic&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Dimensionality Compression&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;For example, a 1024×1024 image might be compressed to a 16×16×512 latent tensor (16×16 represents spatial dimension compression, 512 is the number of feature channels)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Information Extraction&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Preserves the most important features in the data, removing redundant information&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Continuity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;In latent space, similar data points are close to each other in the space&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Interpretability&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Each dimension in latent space may correspond to a certain feature of the original data&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;513-working-principle&#34;&gt;5.1.3 Working Principle
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Taking image processing as an example&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Input&lt;/strong&gt;: Original image (e.g., 1024×1024×3 color image)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Encoding Process&lt;/strong&gt;: Compress the image to a latent tensor through a neural network&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Latent Representation&lt;/strong&gt;: Might be a 16×16×512 tensor&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decoding Process&lt;/strong&gt;: Original image can be reconstructed from the latent tensor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;514-applications-in-different-models&#34;&gt;5.1.4 Applications in Different Models
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Model&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Application Method&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;GAN&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Generator creates realistic images from random latent tensors&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;VAE&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Encodes inputs as probability distributions in latent space&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Diffusion Models&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Forms latent representations by gradually adding noise&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;52-l2-distance-euclidean-distance&#34;&gt;5.2 L2 Distance (Euclidean Distance)
+&lt;/h3&gt;&lt;h4 id=&#34;521-definition&#34;&gt;5.2.1 Definition
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;L2 Distance&lt;/strong&gt;, also known as &lt;strong&gt;Euclidean Distance&lt;/strong&gt;, is one of the most commonly used distance metrics:&lt;/p&gt;
+$$d_{L2} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$$&lt;h4 id=&#34;522-performance-in-different-dimensions&#34;&gt;5.2.2 Performance in Different Dimensions
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Dimension&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Performance&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;One-dimensional Space&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Absolute difference between two values&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Two-dimensional Space&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Straight-line distance between two points on a plane&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;High-dimensional Space&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Square root of the sum of squared differences across dimensions&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;53-gaussian-blur&#34;&gt;5.3 Gaussian Blur
+&lt;/h3&gt;&lt;h4 id=&#34;531-basic-concepts&#34;&gt;5.3.1 Basic Concepts
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Gaussian blur&lt;/strong&gt; is a technique for smoothing images using a Gaussian function. Its core is the &lt;strong&gt;two-dimensional Gaussian function&lt;/strong&gt;:&lt;/p&gt;
+$$G(x,y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2 + y^2}{2\sigma^2}}$$&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;σ&lt;/strong&gt; is the standard deviation, controlling the blur degree&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;x, y&lt;/strong&gt; are the pixel coordinate positions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;532-key-parameters&#34;&gt;5.3.2 Key Parameters
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Parameter&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Recommendation&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Standard Deviation (σ)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Controls blur intensity&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Larger σ means higher blur degree; smaller σ means lower blur degree&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Kernel Size&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Usually odd numbers (3×3, 5×5, 7×7, etc.)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Recommended kernel size ≥ 6σ + 1; larger kernel means more computation&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;54-cold-diffusion-vs-standard-diffusion-models&#34;&gt;5.4 Cold Diffusion vs. Standard Diffusion Models
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Aspect&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Cold Diffusion&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Standard Diffusion Models&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Noise Type&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Not limited to Gaussian distribution; can choose Gaussian blur, snowflake noise, Gaussian mask, etc.&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Usually uses Gaussian noise&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Highly flexible in noise selection&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Relatively fixed noise types&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Modeling Approach&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Diffusion and reverse diffusion processes are modeled as two separate operators (degradation operator D and restoration operator R)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Usually uses a single diffusion process&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6-summary&#34;&gt;6. Summary
+&lt;/h2&gt;&lt;p&gt;The &lt;strong&gt;CrackDiffusion&lt;/strong&gt; framework presented in this article achieves efficient pavement crack detection by combining &lt;strong&gt;unsupervised cold diffusion models&lt;/strong&gt; and &lt;strong&gt;supervised U-Net&lt;/strong&gt;. Core innovations include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-blur cold diffusion model&lt;/strong&gt;: Uses various blur techniques for anomaly detection, effectively identifying crack regions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Two-stage framework&lt;/strong&gt;: Stage 1 performs coarse-grained anomaly detection, Stage 2 performs fine-grained segmentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSIM difference detection&lt;/strong&gt;: Compares original and reconstructed images using structural similarity index to extract crack features&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Key Advantages&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No need for large amounts of labeled data (Stage 1 is unsupervised learning)&lt;/li&gt;
+&lt;li&gt;Adapts to different pavement conditions and lighting environments&lt;/li&gt;
+&lt;li&gt;Achieves optimal IoU performance across multiple datasets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;further-reading&#34;&gt;Further Reading
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://whhong-research.github.io/p/crack-diffusion-experiment/&#34; &gt;Crack Image Processing Basics: Semantic Segmentation and Post-processing Techniques&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34;&gt;References
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Han, C., Yang, H., Ma, T., Wang, S., Zhao, C., Yang, Y., 2024. CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes. &lt;em&gt;Automation in Construction&lt;/em&gt; 160, 105332. &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.autcon.2024.105332&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1016/j.autcon.2024.105332&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ChengjiaHanSEU/CrackDiffusion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ChengjiaHanSEU/CrackDiffusion&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Last updated: 2025-02-24&lt;/em&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

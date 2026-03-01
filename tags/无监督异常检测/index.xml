@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>无监督异常检测 on whhong的博客</title>
+        <link>https://whhong-research.github.io/tags/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/</link>
+        <description>Recent content in 无监督异常检测 on whhong的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Mon, 24 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E6%97%A0%E7%9B%91%E7%9D%A3%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>深度学习裂缝检测：Cold Diffusion异常检测框架</title>
+        <link>https://whhong-research.github.io/p/crack-diffusion-paper-reading/</link>
+        <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/p/crack-diffusion-paper-reading/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/crack-diffusion-paper-reading/1.png" alt="Featured image of post 深度学习裂缝检测：Cold Diffusion异常检测框架" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;系列导读&lt;/strong&gt;：本系列文章精读深度学习与计算机视觉领域的经典与前沿论文，重点关注结构健康监测、缺陷检测等应用场景。本文为系列第二篇，深入解读 CrackDiffusion 这一创新的裂缝检测框架。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-论文核心思想&#34;&gt;1. 论文核心思想
+&lt;/h2&gt;&lt;h3 id=&#34;11-研究背景与动机&#34;&gt;1.1 研究背景与动机
+&lt;/h3&gt;&lt;p&gt;本文提出了一种名为 &lt;strong&gt;CrackDiffusion&lt;/strong&gt; 的增强监督监测框架，用于路面裂缝分割。该框架采用两阶段架构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;第一阶段&lt;/strong&gt;：无监督的多模糊冷扩散（multi-blur-based cold diffusion）异常检测模型&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第二阶段&lt;/strong&gt;：有监督的 U-Net 分割模型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;12-本文关注重点&#34;&gt;1.2 本文关注重点
+&lt;/h3&gt;&lt;p&gt;本文主要聚焦于&lt;strong&gt;第一阶段的无监督异常检测过程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;以&lt;strong&gt;无裂缝图像&lt;/strong&gt;作为训练集，训练扩散模型学习正常路面的分布特征&lt;/li&gt;
+&lt;li&gt;以&lt;strong&gt;含裂缝图像&lt;/strong&gt;作为输入，通过扩散过程生成&amp;quot;无裂缝&amp;quot;重建图像&lt;/li&gt;
+&lt;li&gt;利用**结构相似性指数（SSIM）**计算原始图像与重建图像的差异，提取裂缝区域&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;13-核心假设&#34;&gt;1.3 核心假设
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;核心假设&lt;/strong&gt;：将相同的高斯模糊噪声分别应用于含裂缝和不含裂缝的同一路面图像，直至两张图像的裂缝特征均被完全模糊。在此状态下，两张图像的分布差异显著小于初始状态的分布差异。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-理论基础&#34;&gt;2. 理论基础
+&lt;/h2&gt;&lt;h3 id=&#34;21-扩散模型diffusion-model&#34;&gt;2.1 扩散模型（Diffusion Model）
+&lt;/h3&gt;&lt;h4 id=&#34;211-基本概念&#34;&gt;2.1.1 基本概念
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;扩散模型&lt;/strong&gt;是一类用于图像生成和超分辨率重建的生成模型，由&lt;strong&gt;前向扩散过程&lt;/strong&gt;和&lt;strong&gt;逆向去噪过程&lt;/strong&gt;组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;前向扩散过程&lt;/strong&gt;：通过逐步向原始图像添加高斯噪声，将数据分布转化为标准高斯分布&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;逆向去噪过程&lt;/strong&gt;：通过逐步去除添加的高斯噪声，将标准高斯分布恢复为原始数据分布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;212-数学表达&#34;&gt;2.1.2 数学表达
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;公式（1）- 前向扩散过程&lt;/strong&gt;：
+&lt;/p&gt;
+$$x_t = \sqrt{1-\beta_t}x_{t-1} + \sqrt{\beta_t}Z_t\tag{1}\\$$&lt;p&gt;&lt;strong&gt;公式（2）- 逆向去噪过程&lt;/strong&gt;：
+&lt;/p&gt;
+$$x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}}\epsilon_\theta(x_t, t))\tag{2}$$&lt;h3 id=&#34;22-扩散模型与gan模型对比&#34;&gt;2.2 扩散模型与GAN模型对比
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;对比维度&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;GAN&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;扩散模型&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;核心原理&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通过潜在张量（latent tensors）重建异常图像&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;将原始图像逐步转化为潜在变量表示&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;潜在变量维度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;潜在变量维度通常较小&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;潜在变量维度与原始图像相同&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;训练稳定性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;训练难度较大（存在模式崩溃问题）&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;训练相对稳定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;典型应用&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;图像生成、风格迁移&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;图像生成、图像修复、异常检测&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;GAN处理裂缝检测的机制&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;裂缝被视为异常特征&lt;/li&gt;
+&lt;li&gt;GAN网络学习正常路面样本的分布特征&lt;/li&gt;
+&lt;li&gt;当输入含裂缝的异常样本时，网络试图将其&amp;quot;拉回&amp;quot;正常分布&lt;/li&gt;
+&lt;li&gt;即：将裂缝区域修复为正常路面外观&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;潜在张量对比示意图&lt;/strong&gt;：
+&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115126966.png&#34;
+	width=&#34;476&#34;
+	height=&#34;295&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115126966_hu_1b18fb4024e896d4.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115126966_hu_6e0ee5f062e1cbfc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;潜在变量（latent tensors）在GAN和扩散模型中的对比&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;387px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-方法论详解&#34;&gt;3. 方法论详解
+&lt;/h2&gt;&lt;h3 id=&#34;31-常规扩散模型直接应用的挑战&#34;&gt;3.1 常规扩散模型直接应用的挑战
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;裂缝特征微小&lt;/strong&gt;：路面裂缝通常是细小目标，其像素特征与道路杂物（如油漆标记、砾石、轮胎压痕）相似，难以区分&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;重建时保留裂缝信息&lt;/strong&gt;：当扩散模型训练充分时，会准确重建裂缝和杂物像素，导致重建图像仍包含裂缝信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;训练不足时无法区分&lt;/strong&gt;：当扩散模型训练不充分时，无法准确重建道路杂物，导致无法通过SSIM区分杂物与裂缝&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;核心需求&lt;/strong&gt;：重建图像中，裂缝区域应被重建为无裂缝路面，而道路杂物、砾石等应予以保留&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;32-多模糊冷扩散模型架构&#34;&gt;3.2 多模糊冷扩散模型架构
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;模型整体流程示意图&lt;/strong&gt;：
+&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224124120609.png&#34;
+	width=&#34;919&#34;
+	height=&#34;716&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224124120609_hu_988b1aec4f176465.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224124120609_hu_6890bf508b47f9b2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;多模糊冷扩散模型的裂缝检测过程&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;321-退化算子-ddegradation-operator&#34;&gt;3.2.1 退化算子 D（Degradation Operator）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;功能&lt;/strong&gt;：对给定原始图像 $x_0$ 施加 $t$ 次噪声，实现前向扩散过程&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数学表达&lt;/strong&gt;：
+&lt;/p&gt;
+$$D(x_0, 0) = x_0, \quad x_t = D(x_0,t)\tag{3}$$&lt;p&gt;&lt;strong&gt;本研究的实现方案&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将 &lt;strong&gt;2D高斯模糊&lt;/strong&gt; 与 &lt;strong&gt;2D最大池化&lt;/strong&gt; 组合构成退化算子 D&lt;/li&gt;
+&lt;li&gt;2D高斯模糊采用 (3, 3) 的卷积核&lt;/li&gt;
+&lt;li&gt;每次卷积时，核权重按照2D高斯分布计算&lt;/li&gt;
+&lt;li&gt;最大池化作为高斯模糊的补充操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;退化算子 D 的完整表达式&lt;/strong&gt;：
+&lt;/p&gt;
+$$D(x_t, 1, M) = x_{t+1}(i,j) = \sum_{u=-r}^r\sum_{v=-r}^r x_t(i+u,j+v)\psi(u,v)f_{MaxPool}(u,v,M)$$&lt;p&gt;&lt;strong&gt;实现代码&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;noise_images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 正向扩散过程q&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 存储扩散后的图像&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 遍历每个batch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 获取当前batch的图像&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;tem_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;batch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 获取当前batch的最大时间步&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 进行tem_t次扩散                &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;tem_x1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 保存当前图像&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GaussianBlur&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 对图像进行高斯模糊&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 每25步或第一步进行一次最大池化&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_pooling&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tem_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 将扩散后的图像添加到结果列表&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 转换为numpy数组&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xt&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 返回t时刻的噪声图像&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;关于 &lt;code&gt;cv2.GaussianBlur&lt;/code&gt;&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ksize&lt;/code&gt; 表示高斯模糊核的大小&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sigmaX&lt;/code&gt; 和 &lt;code&gt;sigmaY&lt;/code&gt; 设置为 0 时，OpenCV 会自动计算标准差：$\sigma = 0.3*((ksize-1)*0.5 - 1) + 0.8$&lt;/li&gt;
+&lt;li&gt;对于 3×3 的核来说，标准差约为 0.8，会产生轻微的模糊效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;322-恢复算子-rrestoration-operator&#34;&gt;3.2.2 恢复算子 R（Restoration Operator）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;功能&lt;/strong&gt;：对加噪后的图像进行去噪恢复&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数学表达&lt;/strong&gt;：
+&lt;/p&gt;
+$$R(x_t, t) \approx x_0$$&lt;p&gt;&lt;strong&gt;本研究的实现方案&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;采用 &lt;strong&gt;DDPM中的U-Net架构&lt;/strong&gt; 作为恢复算子&lt;/li&gt;
+&lt;li&gt;获取潜在张量后，通过去噪扩散概率模型重建图像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;恢复算子结构示意图&lt;/strong&gt;：
+&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115858087.png&#34;
+	width=&#34;974&#34;
+	height=&#34;429&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115858087_hu_38dce04a6bcda507.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224115858087_hu_327dcab4c94f2ef5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;多模糊冷扩散模型中的恢复算子R&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;544px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;33-损失函数&#34;&gt;3.3 损失函数
+&lt;/h3&gt;&lt;p&gt;损失函数由两部分组成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;L2 距离&lt;/strong&gt;：预测图像与真实图像之间的像素级差异&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSIM&lt;/strong&gt;：预测图像与真实图像之间的结构相似性度量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;完整的损失函数表达式&lt;/strong&gt;：&lt;/p&gt;
+$$\mathcal{L} = \lambda_1||\hat{x}_0(t) - x_0||_2 + \lambda_2(1 - \text{SSIM}(\hat{x}_0(t), x_0))/2$$&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\lambda_1$ 和 $\lambda_2$ 是两部分的权重系数&lt;/li&gt;
+&lt;li&gt;$\hat{x}_0(t)$ 是模型预测的图像&lt;/li&gt;
+&lt;li&gt;$x_0$ 是真实图像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SSIM 的计算公式&lt;/strong&gt;：&lt;/p&gt;
+$$\text{SSIM}(I_1,I_2) = \frac{(2\mu_1\mu_2 + C_1)(2\sigma_{12} + C_2)}{(\mu_1^2 + \mu_2^2 + C_1)(\sigma_1^2 + \sigma_2^2 + C_2)}$$&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$I_1$ 和 $I_2$ 是待比较的两张图像&lt;/li&gt;
+&lt;li&gt;$C_1$ 和 $C_2$ 是常数，用于数值稳定性&lt;/li&gt;
+&lt;li&gt;$\mu$ 表示图像的均值&lt;/li&gt;
+&lt;li&gt;$\sigma$ 表示图像的标准差&lt;/li&gt;
+&lt;li&gt;$\sigma_{12}$ 表示两张图像的协方差&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;计算方式&lt;/strong&gt;：使用 3×3 大小的滑动窗口计算局部 SSIM，然后取平均得到全局 SSIM。&lt;/p&gt;
+&lt;h3 id=&#34;34-训练与测试流程&#34;&gt;3.4 训练与测试流程
+&lt;/h3&gt;&lt;h4 id=&#34;341-训练过程&#34;&gt;3.4.1 训练过程
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据准备&lt;/strong&gt;：使用无裂缝的道路图像作为训练数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;扩散过程&lt;/strong&gt;：对图像进行 T 轮多重模糊处理，得到图像 $x_t$，完全消除裂缝特征&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模型训练&lt;/strong&gt;：训练去噪 U-Net 来实现恢复算子 R&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间步采样&lt;/strong&gt;：训练过程中，参数 t 随机从区间 (0, T] 中采样&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;342-测试过程&#34;&gt;3.4.2 测试过程
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;：输入带裂缝的道路图像&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;加噪&lt;/strong&gt;：应用 T 次退化算子 D&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重建&lt;/strong&gt;：使用训练好的去噪 U-Net 模型重建图像&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;差异检测&lt;/strong&gt;：使用 SSIM 比较原始输入 $x_0$ 与重建图像 $\hat{x}_0$，生成裂缝分割结果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-实验结果与分析&#34;&gt;4. 实验结果与分析
+&lt;/h2&gt;&lt;h3 id=&#34;41-数据集介绍&#34;&gt;4.1 数据集介绍
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据集链接&lt;/strong&gt;：&lt;a class=&#34;link&#34; href=&#34;https://www.kaggle.com/datasets/arunrk7/surface-crack-detection&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Surface Crack Detection&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据描述&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;40,000 张图像（正负类各 20,000 张）&lt;/li&gt;
+&lt;li&gt;227×227 像素，RGB 三通道&lt;/li&gt;
+&lt;li&gt;高分辨率图像（4032×3024 像素）在表面饰面和照明条件方面具有高度多样性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据增强&lt;/strong&gt;：未应用随机旋转、翻转或倾斜等数据增强操作&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;42-模型训练细节&#34;&gt;4.2 模型训练细节
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;试验 1：使用 MAE 作为损失函数&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;with&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GradientTape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;diffusion&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sample_timesteps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x_t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;diffusion&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;noise_images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filtersize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;predicted_noise_image&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unet&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;loss&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;keras&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;losses&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mean_absolute_error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;train_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;predicted_noise_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# MAE loss&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;loss&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tf&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reduce_mean&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;训练结果&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;训练至第 122 个 epoch 时触发早停机制&lt;/li&gt;
+&lt;li&gt;训练损失持续下降，而验证损失在过去 30 个 epoch 中持续上升&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最佳模型出现在第 92 个 epoch&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/training_history.png&#34;
+	width=&#34;1000&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/training_history_hu_63a696414154c407.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/training_history_hu_4e4325102cdd20a9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;训练历史&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;43-测试效果&#34;&gt;4.3 测试效果
+&lt;/h3&gt;&lt;h4 id=&#34;431-裂缝分割效果较好的案例&#34;&gt;4.3.1 裂缝分割效果较好的案例
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_1_best_all.png&#34;
+	width=&#34;4440&#34;
+	height=&#34;1305&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_1_best_all_hu_8d3e81545e4b15ab.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_1_best_all_hu_f8f097fe34de98aa.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CFD 数据集中裂缝分割效果较优的&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;340&#34;
+		data-flex-basis=&#34;816px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;432-裂缝分割效果较差的案例&#34;&gt;4.3.2 裂缝分割效果较差的案例
+&lt;/h4&gt;&lt;p&gt;（可能是由于裂缝过于细微）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_86_best_all.png&#34;
+	width=&#34;4440&#34;
+	height=&#34;1330&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_86_best_all_hu_6dde3d924b46e8f1.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/Image_86_best_all_hu_21b992eec9253771.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CFD 数据集中裂缝分割效果较差的&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;333&#34;
+		data-flex-basis=&#34;801px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;44-与其他方法的对比&#34;&gt;4.4 与其他方法的对比
+&lt;/h3&gt;&lt;p&gt;作者还将提出的多模糊冷扩散模型与其他常见的无监督学习模型进行了对比：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSIM 和 IoU 对比表&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150708204.png&#34;
+	width=&#34;892&#34;
+	height=&#34;249&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150708204_hu_89602192734239e0.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150708204_hu_b01b224bb3309d83.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;七个无监督网络的裂缝分割 SSIM 和 IoU 对比表&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;358&#34;
+		data-flex-basis=&#34;859px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可视化对比&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150551051.png&#34;
+	width=&#34;895&#34;
+	height=&#34;716&#34;
+	srcset=&#34;https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150551051_hu_6593e21efa26c12f.png 480w, https://whhong-research.github.io/p/crack-diffusion-paper-reading/image-20250224150551051_hu_cbaf6a52ec0faed.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;基于 SSIM 的裂纹分割结果&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;300px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;结论&lt;/strong&gt;：Multi-blur-based cold diffusion 模型在四个数据集中的 IoU 均取得了最优值，验证了该方法的有效性。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-基础知识补充&#34;&gt;5. 基础知识补充
+&lt;/h2&gt;&lt;h3 id=&#34;51-潜在张量latent-tensors&#34;&gt;5.1 潜在张量（Latent Tensors）
+&lt;/h3&gt;&lt;h4 id=&#34;511-基本概念&#34;&gt;5.1.1 基本概念
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;潜在张量&lt;/strong&gt;是深度学习中的重要概念，表示数据在&amp;quot;潜在空间&amp;quot;（latent space）中的表示形式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;是原始数据经过编码（encoding）后得到的压缩表示&lt;/li&gt;
+&lt;li&gt;通常维度低于原始数据，但包含原始数据的关键特征信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;512-主要特点&#34;&gt;5.1.2 主要特点
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;特点&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;维度压缩&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;例如一张 1024×1024 的图像，可能被压缩为 16×16×512 的潜在张量（16×16 表示空间维度压缩，512 为特征通道数）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;信息提取&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;保留数据中最重要的特征，去除冗余信息&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;连续性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;在潜在空间中，相似的数据点在空间中彼此靠近&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;可解释性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;潜在空间中的每个维度可能对应原始数据的某个特征&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;513-工作原理&#34;&gt;5.1.3 工作原理
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;以图像处理为例&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;输入&lt;/strong&gt;：原始图像（如 1024×1024×3 的彩色图像）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码过程&lt;/strong&gt;：通过神经网络将图像压缩为潜在张量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;潜在表示&lt;/strong&gt;：可能是 16×16×512 的张量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解码过程&lt;/strong&gt;：可以从潜在张量重建原始图像&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;514-在不同模型中的应用&#34;&gt;5.1.4 在不同模型中的应用
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;模型&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;应用方式&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;GAN&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;生成器从随机潜在张量生成逼真的图像&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;VAE&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;将输入编码为潜在空间中的概率分布&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;扩散模型&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通过逐步添加噪声形成潜在表示&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;52-l2-距离欧几里得距离&#34;&gt;5.2 L2 距离（欧几里得距离）
+&lt;/h3&gt;&lt;h4 id=&#34;521-定义&#34;&gt;5.2.1 定义
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;L2 距离&lt;/strong&gt;（L2 Distance）也称为&lt;strong&gt;欧几里得距离&lt;/strong&gt;（Euclidean Distance），是最常用的距离度量方式之一：&lt;/p&gt;
+$$d_{L2} = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$$&lt;h4 id=&#34;522-在不同维度的表现&#34;&gt;5.2.2 在不同维度的表现
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;维度&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;表现&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;一维空间&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;两个数值之间的绝对差值&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;二维空间&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;平面上两点间的直线距离&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;高维空间&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;各维度差值的平方和开根号&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;53-高斯模糊gaussian-blur&#34;&gt;5.3 高斯模糊（Gaussian Blur）
+&lt;/h3&gt;&lt;h4 id=&#34;531-基本概念&#34;&gt;5.3.1 基本概念
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;高斯模糊&lt;/strong&gt;是一种使用高斯函数对图像进行平滑处理的技术。其核心是&lt;strong&gt;二维高斯函数&lt;/strong&gt;：&lt;/p&gt;
+$$G(x,y) = \frac{1}{2\pi\sigma^2}e^{-\frac{x^2 + y^2}{2\sigma^2}}$$&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;σ&lt;/strong&gt; 是标准差，控制模糊程度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;x, y&lt;/strong&gt; 是像素的坐标位置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;532-关键参数&#34;&gt;5.3.2 关键参数
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;参数&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;说明&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;建议&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;标准差 (σ)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;控制模糊强度&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;σ 越大，模糊程度越高；σ 越小，模糊程度越低&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;核大小 (kernel size)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通常为奇数（3×3, 5×5, 7×7 等）&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;建议核大小 ≥ 6σ + 1；核越大，计算量越大&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;54-冷扩散模型与标准扩散模型对比&#34;&gt;5.4 冷扩散模型与标准扩散模型对比
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;对比项&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;冷扩散模型（Cold Diffusion）&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;标准扩散模型&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;噪声类型&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;不局限于高斯分布，可选择高斯模糊、雪花噪声、高斯掩膜等&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通常使用高斯噪声&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;灵活性&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;噪声选择具有高度灵活性&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;噪声类型相对固定&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;建模方式&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;扩散过程和逆扩散过程被建模为两个独立的算子（退化算子 D 和恢复算子 R）&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;通常使用单一的扩散过程&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6-总结&#34;&gt;6. 总结
+&lt;/h2&gt;&lt;p&gt;本文介绍的 &lt;strong&gt;CrackDiffusion&lt;/strong&gt; 框架通过结合&lt;strong&gt;无监督冷扩散模型&lt;/strong&gt;和&lt;strong&gt;有监督 U-Net&lt;/strong&gt;，实现了高效的路面裂缝检测。核心创新包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;多模糊冷扩散模型&lt;/strong&gt;：采用多种模糊技术进行异常检测，有效识别裂缝区域&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;两阶段框架&lt;/strong&gt;：第一阶段进行粗粒度异常检测，第二阶段进行精细化分割&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSIM差异检测&lt;/strong&gt;：通过结构相似性指数比较原始图像与重建图像，提取裂缝特征&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;主要优势&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无需大量标注数据（第一阶段为无监督学习）&lt;/li&gt;
+&lt;li&gt;适应不同路面条件和光照环境&lt;/li&gt;
+&lt;li&gt;在多个数据集上取得最优的 IoU 性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;扩展阅读&#34;&gt;扩展阅读
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://whhong-research.github.io/p/crack-diffusion-experiment/&#34; &gt;裂缝图像处理基础：语义分割与后处理技术&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Han, C., Yang, H., Ma, T., Wang, S., Zhao, C., Yang, Y., 2024. CrackDiffusion: A two-stage semantic segmentation framework for pavement crack combining unsupervised and supervised processes. &lt;em&gt;Automation in Construction&lt;/em&gt; 160, 105332. &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.autcon.2024.105332&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1016/j.autcon.2024.105332&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ChengjiaHanSEU/CrackDiffusion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ChengjiaHanSEU/CrackDiffusion&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;最后更新：2025-02-24&lt;/em&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

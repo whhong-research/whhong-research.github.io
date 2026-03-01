@@ -6,14 +6,14 @@
 
 <link rel='canonical' href='https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.6a692fd055deae459f2a9767f57f3855ba80cafd5041317f24f7360f6ca47cdf.css"><meta property='og:title' content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
 <meta property='og:description' content="Experimental Objectives Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm; Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors; Mooring Chain Corrosion Degradation Mechanism Modified S-N curve expressions fitted from the dataset:\n">
 <meta property='og:url' content='https://whhong-research.github.io/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/'>
 <meta property='og:site_name' content='whhong&#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='BDLM' /><meta property='article:tag' content='动态贝叶斯网络' /><meta property='article:tag' content='寿命预测' /><meta property='article:tag' content='腐蚀退化' /><meta property='article:published_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='BDLM' /><meta property='article:tag' content='动态贝叶斯网络' /><meta property='article:tag' content='寿命预测' /><meta property='article:tag' content='腐蚀退化' /><meta property='article:published_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction.png' />
 <meta name="twitter:title" content="贝叶斯动态线性建模：系泊链疲劳寿命预测">
 <meta name="twitter:description" content="Experimental Objectives Due to the difficulty in obtaining real strain data from fatigue-sensitive locations on floating offshore platforms, this study uses measured strain data from typical fatigue-sensitive components to validate the fatigue life prediction algorithm; Considering the corrosion susceptibility of metal structures in marine environments, modified S-N curves are used in conjunction with standards to calculate fatigue factors; Mooring Chain Corrosion Degradation Mechanism Modified S-N curve expressions fitted from the dataset:\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png' />
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction.png' />
     </head>
     <body class="
     article-page
@@ -57,7 +57,7 @@
                     
                     
                         
-                        <img src="/img/whhong_hu_958d487e12faef98.jpg" width="300"
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -269,20 +269,11 @@
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ol>
-    <li><a href="#experimental-objectives">Experimental Objectives</a></li>
-    <li><a href="#mooring-chain-corrosion-degradation-mechanism">Mooring Chain Corrosion Degradation Mechanism</a></li>
-    <li><a href="#data-processing-workflow">Data Processing Workflow</a></li>
-    <li><a href="#bdlm-algorithm-principles">BDLM Algorithm Principles</a>
-      <ol>
-        <li><a href="#model-definition">Model Definition</a></li>
-        <li><a href="#bayesian-recursive-framework">Bayesian Recursive Framework</a></li>
-        <li><a href="#case-study">Case Study</a></li>
-      </ol>
-    </li>
-    <li><a href="#results-demonstration">Results Demonstration</a></li>
-    <li><a href="#references">References</a></li>
-  </ol>
+  <ul>
+    <li><a href="#model-definition">Model Definition</a></li>
+    <li><a href="#bayesian-recursive-framework">Bayesian Recursive Framework</a></li>
+    <li><a href="#case-study">Case Study</a></li>
+  </ul>
 </nav>
         </div>
     </section>
@@ -297,8 +288,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/en/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/">
-                <img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_fd773c07f5185cd4.png"
-                        srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_fd773c07f5185cd4.png 800w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_df3b2d890d7cf8b7.png 1600w"
+                <img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction_hu_b68b1c3265b6748f.png"
+                        srcset="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction_hu_b68b1c3265b6748f.png 800w, /p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction_hu_fd3dfa82f6ef9fff.png 1600w"
                         width="800" 
                         height="566" 
                         loading="lazy"
@@ -366,7 +357,7 @@
 
             <div>
                 
-                    <a href="https://whhong-research.github.io/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/" class="link">简体中文</a>
+                    <a href="https://whhong-research.github.io/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/" class="link">简体中文</a>
                 
             </div>
         </footer>
@@ -516,10 +507,10 @@ $$
 </h1><ul>
 <li>
 <p>Calculate stress spectrum for each month, below shows stress spectrum distribution for April 2006:</p>
-<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution.png"
+<p><img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/stress_distribution.png"
 	width="1160"
 	height="756"
-	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_30ddbfd0843ab083.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/stress_distribution_hu_fa6e1bb5fdb2178a.png 1024w"
+	srcset="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/stress_distribution_hu_8c9725dc3e666762.png 480w, /p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/stress_distribution_hu_a398a51a6634dacd.png 1024w"
 	loading="lazy"
 	
 		alt="stress_distribution"
@@ -533,10 +524,10 @@ $$
 </li>
 <li>
 <p>Calculate daily fatigue damage factors considering corrosion grade 4:</p>
-<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear.png"
+<p><img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Corrosion_4_log_linear.png"
 	width="1302"
 	height="774"
-	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_ecdbf02c8eceda2d.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Corrosion_4_log_linear_hu_cfbdb88b70be7968.png 1024w"
+	srcset="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Corrosion_4_log_linear_hu_7845f3aa220b4327.png 480w, /p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Corrosion_4_log_linear_hu_7c31c28d596bab55.png 1024w"
 	loading="lazy"
 	
 		alt="Corrosion_4_log_linear"
@@ -566,10 +557,10 @@ $$
 </ul>
 </li>
 </ul>
-<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index.png"
+<p><img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Damage_index.png"
 	width="1109"
 	height="712"
-	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_38a18bcb6c96f4fa.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Damage_index_hu_a922fd03ee171dd4.png 1024w"
+	srcset="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Damage_index_hu_5ff42658fa9b8b74.png 480w, /p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Damage_index_hu_3cf35a5c44fe289a.png 1024w"
 	loading="lazy"
 	
 		alt="Damage_index"
@@ -583,10 +574,10 @@ $$
 <ul>
 <li>Use model trained on 2006 data to predict fatigue damage factors for 2007;</li>
 </ul>
-<p><img src="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction.png"
+<p><img src="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction.png"
 	width="895"
 	height="633"
-	srcset="/p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_e6f584f864087f9b.png 480w, /p/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%8A%A8%E6%80%81%E7%BA%BF%E6%80%A7%E5%BB%BA%E6%A8%A1%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E5%AF%BF%E5%91%BD%E9%A2%84%E6%B5%8B/Prediction_hu_3d8df5c310c0ef04.png 1024w"
+	srcset="/p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction_hu_eec1e0a42ceaa44e.png 480w, /p/%E7%B3%BB%E6%B3%8A%E9%93%BE%E7%96%B2%E5%8A%B3%E9%A2%84%E6%B5%8Bbdlm/Prediction_hu_6eea24bf1863c35c.png 1024w"
 	loading="lazy"
 	
 		alt="Prediction"
@@ -667,6 +658,8 @@ $$
 
     
 
+    
+
      
     
         
@@ -695,7 +688,9 @@ $$
     <section class="copyright">
         &copy; 
         
-        2025 whhong
+            2025 - 
+        
+        2026 whhong
     </section>
     
     <section class="powerby">
@@ -802,5 +797,165 @@ $$
     }());
 </script>
 
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
     </body>
 </html>
