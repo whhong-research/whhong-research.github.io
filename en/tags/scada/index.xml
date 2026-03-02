@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>SCADA on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/tags/scada/</link>
+        <description>Recent content in SCADA on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/scada/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework</title>
+        <link>https://whhong-research.github.io/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.png" alt="Featured image of post Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Article Information&lt;/strong&gt;: This article is a reading note of the paper &lt;em&gt;&amp;ldquo;A generic framework for the optimisation of maintenance strategies for offshore wind turbines&amp;rdquo;&lt;/em&gt;. This study constructs a generic framework for optimizing maintenance strategies for offshore wind turbines, with particular focus on the synergistic application of SCADA systems and dedicated Condition Monitoring Systems (CMS).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;research-background-and-core-questions&#34;&gt;Research Background and Core Questions
+&lt;/h1&gt;&lt;h2 id=&#34;research-objectives&#34;&gt;Research Objectives
+&lt;/h2&gt;&lt;p&gt;This paper aims to address two key questions in offshore wind turbine operation and maintenance:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Feasibility of Monitoring Systems&lt;/strong&gt;: Can SCADA systems in wind farms serve as a viable alternative to dedicated Condition Monitoring Systems (CMS)?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Integrated Optimization Strategy&lt;/strong&gt;: How can CMS be combined with O&amp;amp;M strategies to maximize the financial benefits of Offshore Wind Turbines (OWTs)?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;core-contributions&#34;&gt;Core Contributions
+&lt;/h2&gt;&lt;p&gt;This research establishes a &lt;strong&gt;comprehensive simulation framework&lt;/strong&gt; capable of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simulating the degradation process of wind turbine components&lt;/li&gt;
+&lt;li&gt;Evaluating the detection capabilities of different monitoring systems&lt;/li&gt;
+&lt;li&gt;Optimizing the cost-effectiveness ratio of maintenance strategies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;basic-model-assumptions&#34;&gt;Basic Model Assumptions
+&lt;/h1&gt;&lt;h2 id=&#34;health-state-classification&#34;&gt;Health State Classification
+&lt;/h2&gt;&lt;p&gt;The research divides the health state of each subsystem into &lt;strong&gt;four levels&lt;/strong&gt;:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;State Level&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;O&amp;amp;M Impact&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Normal&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;No faults&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Normal operation&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Minor Fault&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Minor defects exist&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Allowed to continue operation&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Critical Fault&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Serious defects exist&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Can still operate, but needs attention&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Failure&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Complete failure&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Triggers shutdown&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Key Assumptions&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In minor fault and critical fault states, the subsystem is still allowed to operate&lt;/li&gt;
+&lt;li&gt;Critical faults are more easily detected by CMS&lt;/li&gt;
+&lt;li&gt;Different components have different false alarm rates at different stages of fault development&lt;/li&gt;
+&lt;li&gt;Any subsystem failure will trigger wind turbine shutdown&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;degradation-process-model&#34;&gt;Degradation Process Model
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;The degradation process of each subsystem follows the &lt;strong&gt;Weibull Distribution&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Parameters of the Weibull Distribution are derived from publicly available failure rate data in the literature&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803.png&#34;
+	width=&#34;874&#34;
+	height=&#34;471&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803_hu_d6169eec14c02c29.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803_hu_f329c832a8019a0b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Failure Rate Data&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;other-assumptions&#34;&gt;Other Assumptions
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Parameter&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Setting&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Wind Turbine Service Life&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;20 years&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Standard design life&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Post-repair State&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&amp;ldquo;as good as new&amp;rdquo;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Complete repair assumption&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;om-strategy-system&#34;&gt;O&amp;amp;M Strategy System
+&lt;/h1&gt;&lt;h2 id=&#34;1-corrective-maintenance&#34;&gt;1. Corrective Maintenance
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: Maintenance performed after a substructure has completely failed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Characteristics&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Passive responsive maintenance&lt;/li&gt;
+&lt;li&gt;Usually highest cost (including downtime losses and emergency repair costs)&lt;/li&gt;
+&lt;li&gt;Suitable for non-critical components or situations where failure consequences are not serious&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-time-based-maintenance&#34;&gt;2. Time-Based Maintenance
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: Maintenance performed according to predetermined time intervals.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Classification&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Basic Service (BS)&lt;/strong&gt;: Discover and fix common, easy-to-repair but difficult-to-monitor problems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Advanced Service (AS)&lt;/strong&gt;: Comprehensive inspection of all structural components&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Optimization Direction&lt;/strong&gt;: Shortening the time interval between adjacent AS can improve wind turbine availability, but is still not as effective as using a monitoring system.&lt;/p&gt;
+&lt;h2 id=&#34;3-condition-based-maintenance-cbm&#34;&gt;3. Condition-Based Maintenance (CBM)
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: Maintenance based on the actual health state of the wind turbine.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Core Elements&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Relies on CMS fault detection capability&lt;/li&gt;
+&lt;li&gt;Real-time assessment of equipment health status&lt;/li&gt;
+&lt;li&gt;Intervention before failure occurs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Effectiveness&lt;/strong&gt;: Depends on CMS detection accuracy, response speed, and timeliness of maintenance decisions.&lt;/p&gt;
+&lt;h2 id=&#34;maintenance-framework-system&#34;&gt;Maintenance Framework System
+&lt;/h2&gt;&lt;p&gt;The research defines three maintenance levels:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Maintenance Level&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Corresponding Fault Type&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Maintenance Content&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance 1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Minor Fault&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Repair minor defects, prevent deterioration&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance 2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Critical Fault&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Repair serious defects, restore function&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance 3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Complete Failure&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Comprehensive repair or component replacement&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843.png&#34;
+	width=&#34;1376&#34;
+	height=&#34;824&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843_hu_d74ad046dee78bd1.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843_hu_51a1a938e8222f16.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Maintenance Framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;om-strategy-combinations&#34;&gt;O&amp;amp;M Strategy Combinations
+&lt;/h2&gt;&lt;p&gt;The research designs &lt;strong&gt;five different O&amp;amp;M strategies&lt;/strong&gt;, combined with &lt;strong&gt;four monitoring system configurations&lt;/strong&gt;:&lt;/p&gt;
+&lt;h3 id=&#34;five-om-strategies&#34;&gt;Five O&amp;amp;M Strategies
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738.png&#34;
+	width=&#34;989&#34;
+	height=&#34;226&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738_hu_37f34ea708fa176a.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738_hu_d64c41b267ae55eb.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;O&amp;M Strategy Formulation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;437&#34;
+		data-flex-basis=&#34;1050px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;four-monitoring-system-configurations&#34;&gt;Four Monitoring System Configurations
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Configuration&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Characteristics&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;No Monitoring System&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Only relies on periodic inspections and post-failure repairs&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Lowest cost, but highest risk&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SCADA&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Utilizes existing wind turbine monitoring and data acquisition systems&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Low cost, but limited detection capability&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CMS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Dedicated condition monitoring system&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Strong detection capability, but higher cost&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SCADA+CMS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Two systems working synergistically&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Comprehensive advantages, strongest detection capability&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;degradation-and-detection-models&#34;&gt;Degradation and Detection Models
+&lt;/h1&gt;&lt;h2 id=&#34;system-degradation-model-architecture&#34;&gt;System Degradation Model Architecture
+&lt;/h2&gt;&lt;p&gt;The research adopts &lt;strong&gt;Petri Nets&lt;/strong&gt; to model the system degradation process:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353.png&#34;
+	width=&#34;662&#34;
+	height=&#34;851&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353_hu_eb98ae57232d80ea.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353_hu_e3f7321bfecb8599.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;System Petri Net&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;186px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Weibull Distribution parameter settings:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715.png&#34;
+	width=&#34;916&#34;
+	height=&#34;259&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715_hu_2a43ab72ff4b1e7f.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715_hu_1128ff5c7c73cdb0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Weibull Distribution Parameters&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;353&#34;
+		data-flex-basis=&#34;848px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;detection-models&#34;&gt;Detection Models
+&lt;/h2&gt;&lt;h3 id=&#34;dedicated-cms-detection-model&#34;&gt;Dedicated CMS Detection Model
+&lt;/h3&gt;&lt;p&gt;Overall framework is as follows:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860.png&#34;
+	width=&#34;746&#34;
+	height=&#34;709&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860_hu_d82ae12e1f379137.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860_hu_ee81c54a93f88e4b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Detection Model Overall Framework&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;252px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Model Components&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hardware Health Status Simulation&lt;/strong&gt; (considering sensor failure probability):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C1: Probability that the sensor detects system faults&lt;/li&gt;
+&lt;li&gt;C2: Probability of sensor damage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443.png&#34;
+	width=&#34;420&#34;
+	height=&#34;445&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443_hu_7bc7812685a48c0e.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443_hu_f7de2e100660d5c9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Part-one&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;94&#34;
+		data-flex-basis=&#34;226px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Acquisition System (DAQ) Fault Simulation&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644.png&#34;
+	width=&#34;467&#34;
+	height=&#34;56&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644_hu_a5ca8cd46a93cc33.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644_hu_e8ea4ad49038fe11.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DAQ System Fault Simulation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;833&#34;
+		data-flex-basis=&#34;2001px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fault Warning Signals and Fault Type Probabilities&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Normal : Minor Fault : Critical Fault = 0.4 : 0.5 : 0.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506.png&#34;
+	width=&#34;339&#34;
+	height=&#34;279&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506_hu_c94ebc6ba296764d.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506_hu_71cd851464535c2a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Warning Signals and Corresponding Fault Type Probabilities&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;121&#34;
+		data-flex-basis=&#34;291px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;scada-based-cms&#34;&gt;SCADA-based CMS
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147.png&#34;
+	width=&#34;821&#34;
+	height=&#34;460&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147_hu_ab7719dbc3a60c41.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147_hu_3c7dcc4cd3fe31f3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CMS &amp;#43; SCADA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;178&#34;
+		data-flex-basis=&#34;428px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Probability of Detection: Directly derived through assumptions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580.png&#34;
+	width=&#34;477&#34;
+	height=&#34;209&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580_hu_791155ca5620c503.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580_hu_bdd4dff88bab3970.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Probability of Detection&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;228&#34;
+		data-flex-basis=&#34;547px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;repair-models&#34;&gt;Repair Models
+&lt;/h1&gt;&lt;h2 id=&#34;maintenance-costs&#34;&gt;Maintenance Costs
+&lt;/h2&gt;&lt;p&gt;Vessel charter costs required for different faults:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375.png&#34;
+	width=&#34;495&#34;
+	height=&#34;380&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375_hu_89d8083601c20468.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375_hu_cb98617d2e84aeee.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Vessel Charter Costs for Different Faults&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;maintenance-process&#34;&gt;Maintenance Process
+&lt;/h2&gt;&lt;p&gt;Time node definitions in the maintenance process:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Phase&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Code&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Fault Detection to Repair Order&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time from fault detection to repair order issuance&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance Planning Meeting&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time to arrange meeting to formulate maintenance plan&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Plan Formulation&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time to formulate detailed maintenance plan&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Resource Preparation&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M4+M5&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time to charter vessel, dispatch personnel, prepare maintenance equipment&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Spare Parts Call&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M6&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time to activate spare parts if available (much shorter than M5)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Departure Preparation&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance vessel preparation for departure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Transport to Site&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M8/M9&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time for transport vessel to reach site, M9 considers weather factors (waiting for suitable weather window)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance Implementation&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M11&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Time required for maintenance operations&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918.png&#34;
+	width=&#34;799&#34;
+	height=&#34;439&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918_hu_598f43dee14409c4.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918_hu_716ae04bf1cd5df1.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Maintenance Process&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;436px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Related parameters in the repair model:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196.png&#34;
+	width=&#34;991&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196_hu_d0cda188608c9bf3.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196_hu_67afde48e95ffd20.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Related Parameters in Repair Model&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;283&#34;
+		data-flex-basis=&#34;681px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;simulation-process-and-service-life-simulation&#34;&gt;Simulation Process and Service Life Simulation
+&lt;/h1&gt;&lt;h2 id=&#34;wind-turbine-service-life-simulation&#34;&gt;Wind Turbine Service Life Simulation
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165.png&#34;
+	width=&#34;822&#34;
+	height=&#34;729&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165_hu_7aa9a22bbc12cc34.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165_hu_754d519d7a6adb95.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Service Life Simulation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;112&#34;
+		data-flex-basis=&#34;270px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;simulation-summary&#34;&gt;Simulation Summary
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Parameter Sampling&lt;/strong&gt;: Sample all random variables to generate parameters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Single Turbine Simulation&lt;/strong&gt;: Execute all above processes for one turbine until reaching service life&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Iterative Convergence&lt;/strong&gt;: Repeat iterations until convergence (converges to stable values after 30,000 iterations, all simulations performed 50,000 iterations)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;simulation-results-and-performance-indicators&#34;&gt;Simulation Results and Performance Indicators
+&lt;/h1&gt;&lt;h2 id=&#34;wind-turbine-availability&#34;&gt;Wind Turbine Availability
+&lt;/h2&gt;&lt;h3 id=&#34;key-findings&#34;&gt;Key Findings
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Shortening AS Intervals&lt;/strong&gt;: Shortening adjacent Advanced Service (AS) time intervals can improve wind turbine availability, but is still not as effective as using any monitoring system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring System Advantages&lt;/strong&gt;: Using SCADA or CMS monitoring systems can significantly improve availability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dual System Effects&lt;/strong&gt;: When performing frequent AS, combining two monitoring systems may lead to decreased availability, because the downtime for repairing the turbine after damage detection becomes longer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dataset-a-results&#34;&gt;Dataset A Results
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652.png&#34;
+	width=&#34;791&#34;
+	height=&#34;419&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652_hu_4897ec5c8a45afb3.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652_hu_17cffc26ddcafee.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Wind Turbine Availability Under Different Maintenance Strategies-DatasetA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dataset-b-results&#34;&gt;Dataset B Results
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402.png&#34;
+	width=&#34;766&#34;
+	height=&#34;434&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402_hu_727c7ec9434883fc.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402_hu_9e5b466488bbd9f1.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Wind Turbine Availability Under Different Maintenance Strategies-DatasetB&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;423px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cost-to-availability-ratio-coa&#34;&gt;Cost to Availability Ratio (COA)
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;COA Definition&lt;/strong&gt;: The ratio of maintenance cost to availability, measuring the maintenance cost required per unit of availability.&lt;/p&gt;
+&lt;h3 id=&#34;dataset-a-results-1&#34;&gt;Dataset A Results
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188.png&#34;
+	width=&#34;762&#34;
+	height=&#34;435&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188_hu_9e02281951f7ffa.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188_hu_510da10a8a67bdab.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;COA Under Different Maintenance Strategies-DatasetA&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;dataset-b-results-1&#34;&gt;Dataset B Results
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729.png&#34;
+	width=&#34;771&#34;
+	height=&#34;467&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729_hu_adca78140fcd7820.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729_hu_ef7ff15c599e13d9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;COA Under Different Maintenance Strategies-DatasetB&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;396px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;research-conclusions-and-practical-implications&#34;&gt;Research Conclusions and Practical Implications
+&lt;/h1&gt;&lt;h2 id=&#34;main-conclusions&#34;&gt;Main Conclusions
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Value of Monitoring Systems&lt;/strong&gt;: Both dedicated CMS and SCADA systems can significantly improve wind turbine availability, but SCADA, as a lower-cost alternative, has considerable economic benefits&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Maintenance Strategy Optimization&lt;/strong&gt;: Condition-Based Maintenance (CBM) combined with appropriate monitoring systems can maximize availability while controlling costs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;System Synergy Effects&lt;/strong&gt;: The synergistic use of SCADA and CMS may produce diminishing marginal returns in some cases, requiring trade-offs between additional detection capabilities and downtime costs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cost-Effectiveness Balance&lt;/strong&gt;: COA indicators show that the optimal strategy is not always the most advanced monitoring system, but rather the best balance point between cost and benefit&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;engineering-practice-recommendations&#34;&gt;Engineering Practice Recommendations
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Application Scenario&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Recommended Strategy&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Rationale&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;New Wind Farm&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CMS + CBM&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maximizing lifecycle benefits&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Existing Wind Farm Retrofit&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SCADA Upgrade + Targeted CMS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Balancing cost control and benefits&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Budget-Constrained Scenarios&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Optimized SCADA Algorithms + Periodic Maintenance&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Minimal input for considerable returns&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;High-Risk Environments&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Complete CMS + Dual Monitoring&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ensuring reliability and safety&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;future-research-directions&#34;&gt;Future Research Directions
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Machine Learning Integration&lt;/strong&gt;: Incorporating AI algorithms into SCADA data analysis to improve fault prediction accuracy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Digital Twin Applications&lt;/strong&gt;: Building digital twin models for wind turbines to achieve real-time status simulation and prediction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Wind Farm Collaboration&lt;/strong&gt;: Researching wind farm-level centralized monitoring and maintenance resource optimization scheduling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Full Lifecycle Cost Models&lt;/strong&gt;: Establishing more comprehensive LCOE and maintenance cost correlation models&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -20,7 +20,7 @@
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_1822fb3c43587aeb.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_f8671c0b902e7f5d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250415205059664&#34;
+		alt=&#34;流程图1&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -34,7 +34,7 @@
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_465a7245454e8afc.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_8197de5dd3839421.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250415205235819&#34;
+		alt=&#34;流程图2&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -48,7 +48,7 @@
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_2066ef873a1e10f2.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_603a0f64acd43ead.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250415211953646&#34;
+		alt=&#34;流程图3&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -56,46 +56,59 @@
 		data-flex-basis=&#34;195px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Decisions should be based on a thorough risk management process. (决策应当基于彻底的风险管理流程；)&lt;/li&gt;
-&lt;li&gt;Inspection / maintenance scheme should be reviewed and optimized (instigated if not initially present) （检测/维护方案应该进行审查和优化）&lt;/li&gt;
-&lt;li&gt;Condition monitoring scheme should be reviewed and optimized (instigated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals) （监测系统应进行审查和优化）&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Step1&lt;/strong&gt;: 获取历史数据和维护状态
-&lt;ul&gt;
-&lt;li&gt;表征站点的数据：风速和湍流尤为重要；&lt;/li&gt;
-&lt;li&gt;任何关于更换部件、维修历史和荷载历史的信息都非常重要；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Annex B&lt;/strong&gt; des cribes which information is important for assessing the loading history of components. &lt;strong&gt;Clause 5&lt;/strong&gt; gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information.&lt;/li&gt;
+&lt;h2 id=&#34;核心原则&#34;&gt;核心原则
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;决策应当基于彻底的风险管理流程&lt;/li&gt;
+&lt;li&gt;检测/维护方案应该进行审查和优化（如果最初未建立，则应启动）&lt;/li&gt;
+&lt;li&gt;监测系统应进行审查和优化（如果初始设置不足以评估资产健康状况，无法识别最重要的风险或失效模式，且时间间隔不够频繁）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Step2&lt;/strong&gt;: Risk management process (风险管理过程)
-&lt;ul&gt;
-&lt;li&gt;Risk-based: 在进行资产管理前，应进行评估、分类和排名 （针对不同的risk采用不同的运维策略）&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Clause 6&lt;/strong&gt; provides guidance on the assessment and ranking of risk s. A risk assessment will help to prioritise efforts in the further steps.&lt;/li&gt;
+&lt;h2 id=&#34;六步实施流程&#34;&gt;六步实施流程
+&lt;/h2&gt;&lt;h3 id=&#34;step-1-获取历史数据和维护状态&#34;&gt;Step 1: 获取历史数据和维护状态
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;表征站点的数据&lt;/strong&gt;：风速和湍流尤为重要&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;任何关于更换部件、维修历史和荷载历史的信息都非常重要&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annex B&lt;/strong&gt; 描述了评估部件荷载历史所需的重要信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clause 5&lt;/strong&gt; 给出了关于资产全生命周期内生成数据的收集和存储的一般建议，同时也提供了关于信息来源和类别的建议&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Step3&lt;/strong&gt;: Operation, maintenance and inspection
-&lt;ul&gt;
-&lt;li&gt;A maintenance and inspection scheme can be drawn up, as described in &lt;strong&gt;Clause 7&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施；&lt;/li&gt;
-&lt;li&gt;根据检查信息来更新第二步中的风险排名并估计RUL；&lt;/li&gt;
+&lt;h3 id=&#34;step-2-风险管理过程&#34;&gt;Step 2: 风险管理过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基于风险&lt;/strong&gt;：在进行资产管理前，应进行评估、分类和排名（针对不同的风险采用不同的运维策略）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clause 6&lt;/strong&gt; 提供了风险评估和排名的指导，风险评估将有助于确定后续步骤中工作的优先级&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Step4&lt;/strong&gt;: Condition monitoring (&lt;strong&gt;Clause 8&lt;/strong&gt;)
-&lt;ul&gt;
-&lt;li&gt;Condition monitoring能够提供不断更新的资产信息，可用于更新数值模型，优化运维操作，预测和检测结构失效概率，并收集数据用于可靠性统计分析和规划inspection&amp;amp;Maintenance planning，判断能否延长结构寿命；&lt;/li&gt;
-&lt;li&gt;能够为风险评估提供更多的输入，进而进一步优化检测和运维方案；&lt;/li&gt;
+&lt;h3 id=&#34;step-3-运维和检测&#34;&gt;Step 3: 运维和检测
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以制定维护和检测方案，如&lt;strong&gt;Clause 7&lt;/strong&gt;所述&lt;/li&gt;
+&lt;li&gt;对于正在运行的风机，若没有维护记录，则假设未实施相关的设备维养措施&lt;/li&gt;
+&lt;li&gt;根据检查信息来更新第二步中的风险排名并估计RUL&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Step5&lt;/strong&gt;:  Health and safety review&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Step6&lt;/strong&gt;: Analytical assessments of RUL
+&lt;h3 id=&#34;step-4-状态监测clause-8&#34;&gt;Step 4: 状态监测（Clause 8）
+&lt;/h3&gt;&lt;p&gt;Condition monitoring能够提供不断更新的资产信息，可用于：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;资产剩余使用寿命分析方法可分为简单的比例估算到绝对评估；&lt;/li&gt;
-&lt;li&gt;第一种方法依赖于比例函数或比率（应用于等效损伤载荷），首先使用设计时的参数进行推导，其次使用具体运行场地的参数进行推导。当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的；&lt;/li&gt;
-&lt;li&gt;第二种方法仅适用于特性、运行状态、机器和模型定义准确的情况 (&lt;strong&gt;Clause 10&lt;/strong&gt;)；&lt;/li&gt;
-&lt;li&gt;分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Annex D&lt;/strong&gt;中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算；&lt;/li&gt;
+&lt;li&gt;更新数值模型&lt;/li&gt;
+&lt;li&gt;优化运维操作&lt;/li&gt;
+&lt;li&gt;预测和检测结构失效概率&lt;/li&gt;
+&lt;li&gt;收集数据用于可靠性统计分析和规划Inspection &amp;amp; Maintenance&lt;/li&gt;
+&lt;li&gt;判断能否延长结构寿命&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
+&lt;p&gt;能够为风险评估提供更多的输入，进而进一步优化检测和运维方案。&lt;/p&gt;
+&lt;h3 id=&#34;step-5-健康和安全审查&#34;&gt;Step 5: 健康和安全审查
+&lt;/h3&gt;&lt;h3 id=&#34;step-6-rul分析评估&#34;&gt;Step 6: RUL分析评估
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;资产剩余使用寿命分析方法&lt;/strong&gt;可分为简单的比例估算到绝对评估：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一种方法（相对评估）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;依赖于比例函数或比率（应用于等效损伤载荷）&lt;/li&gt;
+&lt;li&gt;首先使用设计时的参数进行推导&lt;/li&gt;
+&lt;li&gt;其次使用具体运行场地的参数进行推导&lt;/li&gt;
+&lt;li&gt;当可用的模型、假设或参数不够明确或无法验证时，这种方法可能是适合的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;第二种方法（绝对评估）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;仅适用于特性、运行状态、机器和模型定义准确的情况（&lt;strong&gt;Clause 10&lt;/strong&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;重要原则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分析评估应始终伴随着对不确定性和准确性的估计，涵盖输入数据以及计算模型本身的相关内容&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annex D&lt;/strong&gt;中描述了一些基于概率的模型，其中一些模型来源于测量载荷，这些模型旨在充分利用历史数据，改进对特定部件和结构的剩余使用寿命估算&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378.png&#34;
 	width=&#34;1337&#34;
@@ -103,7 +116,7 @@
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_fc7a7917febd4a8a.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_bdbdd38471c78b8f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250415212143378&#34;
+		alt=&#34;RUL评估流程&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -111,60 +124,73 @@
 		data-flex-basis=&#34;1125px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;clause-5data-management-requirements-and-uncertainty&#34;&gt;Clause 5：Data management, requirements and uncertainty
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;There are benefits to filling gaps in measured operating data. Not all data are captured comprehensively during the lifetime of each individual turbine. Strategies exist to address the issue of regenerating missing data retrospectively, based on scrutiny of data from turbines of similar design, site conditions, maintenance history and operational philosophy. (可以根据其他相似设计/现场条件等经验来重建缺失的数据)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;数据/信息类别定义：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-5数据管理要求和不确定性&#34;&gt;Clause 5：数据管理、要求和不确定性
+&lt;/h1&gt;&lt;h2 id=&#34;缺失数据重建&#34;&gt;缺失数据重建
+&lt;/h2&gt;&lt;p&gt;填充实测运行数据中的空白是有益的。并非所有数据在每台单独风机的整个生命周期内都被全面捕获。存在一些策略，可以根据对相似设计、场地条件、维护历史和运行理念的风机数据的仔细审查，来追溯性地重建缺失数据。&lt;/p&gt;
+&lt;h2 id=&#34;数据信息类别定义&#34;&gt;数据/信息类别定义
+&lt;/h2&gt;&lt;h3 id=&#34;动态数据dynamic-data&#34;&gt;动态数据（Dynamic Data）
+&lt;/h3&gt;&lt;p&gt;在风机运行过程中会迅速变化的数据，例如：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;动态数据&lt;/strong&gt;（Dynamic data）:  在风机运行过程中会迅速变化的数据，例如风速、转速、角度、频率、温度等和状态监测数据（CM数据），例如振动信号、腐蚀深度、oil analysis、裂缝深度（？）等；需要评估数据和模型的不确定性，对于测量数据，应该根据&lt;strong&gt;ISO/IEC Guide 98- 3&lt;/strong&gt;来估算不确定性。该指南指出，&lt;strong&gt;必须评估测量数据的不确定性&lt;/strong&gt;；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;静态数据&lt;/strong&gt;（Static data）：例如检测报告、手册等；这类型的数据没有不确定性，而是有公差（tolerance），These do not have uncertainty but tolerances (allowable variations of thicknesses, diameters, rated power, weights, position of centre of gravity (CoG, inertia) . Such t olerances can induce variance into the assessment by altering the strength or the dynamic loads.&lt;/li&gt;
+&lt;li&gt;风速、转速、角度、频率、温度等&lt;/li&gt;
+&lt;li&gt;状态监测数据（CM数据），例如振动信号、腐蚀深度、油液分析、裂缝深度等&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CM数据部分可以用于衡量预测评估方法的准确性（例如确定预测的裂缝或者腐蚀深度是否准确），部分可以用于监测无法预测寿命的结构退化速度；&lt;strong&gt;也可以用于作为检查干预措施的触发因素&lt;/strong&gt;；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;风力测量应以&lt;strong&gt;10分钟为间隔&lt;/strong&gt;进行（理想情况下，应使用安装在不同测风塔上的多个仪器，在不同高度进行测量，包括轮毂高度），测量周期应至少为6个月，并在风电场安装之前完成。但如果季节性变化对风况有显著影响，则&lt;strong&gt;监测周期应至少为12个月&lt;/strong&gt;，以涵盖这些影响。数据应包括风速、风向、温度和气压的汇总统计信息（对于所有参数，至少包括平均值、最小值、最大值和标准差）；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;SCADA数据 （IEC 61400-25-1 AND IEC 61400-25-2）中强烈建议记录的信息：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;重要要求&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;working hour&lt;/li&gt;
-&lt;li&gt;alarm, warning and operational logs&lt;/li&gt;
-&lt;li&gt;nacelle orientation&lt;/li&gt;
-&lt;li&gt;wind direction at nacelle wind vane&lt;/li&gt;
-&lt;li&gt;temperature of main components (average, maximum, minimum)&lt;/li&gt;
+&lt;li&gt;需要评估数据和模型的不确定性&lt;/li&gt;
+&lt;li&gt;对于测量数据，应该根据&lt;strong&gt;ISO/IEC Guide 98-3&lt;/strong&gt;来估算不确定性&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;必须评估测量数据的不确定性&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;当风电场（或多个风电场）中出现常见故障时，应进行适当的统计分析，以建立预测未来故障可能性的统计模型。例如，可以将统计分布（如韦伯分布或韦伯贝叶斯分布）拟合到数据中。这将有助于维护计划的制定和备件的储备。然而，如果针对特定组件、故障模式和场地条件的组合所提供的数据集较小（例如，某一特定场地的风机数量较少），则这些模型的结果将具有较大的不确定性 (&lt;strong&gt;Clause 10&lt;/strong&gt;);&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;检测记录和报告可以包括以下内容：&lt;/p&gt;
+&lt;h3 id=&#34;静态数据static-data&#34;&gt;静态数据（Static Data）
+&lt;/h3&gt;&lt;p&gt;例如检测报告、手册等。这类数据没有不确定性，而是有公差（tolerance），即可接受的厚度、直径、额定功率、重量、重心位置（CoG）、转动惯量等的允许变化范围。这种公差可以通过改变强度或动态载荷来引起评估中的方差。&lt;/p&gt;
+&lt;h2 id=&#34;cm数据应用&#34;&gt;CM数据应用
+&lt;/h2&gt;&lt;p&gt;CM数据部分可以用于：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;structural integrity (for example, dye penetrant or NDE for detection of cracks)&lt;/li&gt;
-&lt;li&gt;boroscopy 内窥镜检查 (for example, main bearing, gearbox bearings, gears)&lt;/li&gt;
-&lt;li&gt;dimensional (for example, wear, free movement, play, backlash)&lt;/li&gt;
-&lt;li&gt;visual (for example, leakage, overheating, loose / missing / fractured bolts, corrosion, dents, stress raisers)&lt;/li&gt;
-&lt;li&gt;bolt tension (for example, re-torquing)&lt;/li&gt;
-&lt;li&gt;grease and oil sample analyses 润滑脂和油样分析&lt;/li&gt;
+&lt;li&gt;衡量预测评估方法的准确性（例如确定预测的裂缝或腐蚀深度是否准确）&lt;/li&gt;
+&lt;li&gt;监测无法预测寿命的结构退化速度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作为检查干预措施的触发因素&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;IEC 61400-13&lt;/strong&gt;：load measurements&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;数据不确定性等级定义： （可以根据标准差和均值的比值进行定义）&lt;/p&gt;
+&lt;h2 id=&#34;风力测量要求&#34;&gt;风力测量要求
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;测量间隔&lt;/strong&gt;：应以10分钟为间隔进行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;理想设置&lt;/strong&gt;：使用安装在不同测风塔上的多个仪器，在不同高度进行测量，包括轮毂高度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;测量周期&lt;/strong&gt;：应至少为6个月，并在风电场安装之前完成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;季节性考虑&lt;/strong&gt;：如果季节性变化对风况有显著影响，则监测周期应至少为12个月，以涵盖这些影响&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据内容&lt;/strong&gt;：应包括风速、风向、温度和气压的汇总统计信息（对于所有参数，至少包括平均值、最小值、最大值和标准差）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scada数据iec-61400-25-1和iec-61400-25-2&#34;&gt;SCADA数据（IEC 61400-25-1和IEC 61400-25-2）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;强烈建议记录的信息&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;运行小时数（working hour）&lt;/li&gt;
+&lt;li&gt;报警、警告和运行日志&lt;/li&gt;
+&lt;li&gt;机舱方位&lt;/li&gt;
+&lt;li&gt;机舱风向标的风向&lt;/li&gt;
+&lt;li&gt;主要部件的温度（平均值、最大值、最小值）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;故障统计分析&#34;&gt;故障统计分析
+&lt;/h2&gt;&lt;p&gt;当风电场（或多个风电场）中出现常见故障时，应进行适当的统计分析，以建立预测未来故障可能性的统计模型。例如，可以将统计分布（如韦伯分布或韦伯贝叶斯分布）拟合到数据中。这将有助于维护计划的制定和备件的储备。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意事项&lt;/strong&gt;：如果针对特定组件、故障模式和场地条件的组合所提供的数据集较小（例如，某一特定场地的风机数量较少），则这些模型的结果将具有较大的不确定性（&lt;strong&gt;Clause 10&lt;/strong&gt;）。&lt;/p&gt;
+&lt;h2 id=&#34;检测记录和报告&#34;&gt;检测记录和报告
+&lt;/h2&gt;&lt;p&gt;可以包括以下内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;结构完整性&lt;/strong&gt;（例如，染料渗透或无损检测用于检测裂缝）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内窥镜检查&lt;/strong&gt;（例如，主轴承、齿轮箱轴承、齿轮）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;尺寸测量&lt;/strong&gt;（例如，磨损、自由运动、游隙、齿隙）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目视检查&lt;/strong&gt;（例如，泄漏、过热、松动/缺失/断裂的螺栓、腐蚀、凹痕、应力集中源）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;螺栓张力&lt;/strong&gt;（例如，重新拧紧）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;润滑脂和油样分析&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iec-61400-13&#34;&gt;IEC 61400-13
+&lt;/h2&gt;&lt;p&gt;载荷测量标准。&lt;/p&gt;
+&lt;h2 id=&#34;数据不确定性等级定义&#34;&gt;数据不确定性等级定义
+&lt;/h2&gt;&lt;p&gt;可以根据标准差和均值的比值进行定义。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878.png&#34;
 	width=&#34;939&#34;
 	height=&#34;270&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_6e59a7f4efd11ac3.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_58323ca189e27792.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416175253878&#34;
+		alt=&#34;数据不确定性等级&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -172,16 +198,15 @@
 		data-flex-basis=&#34;834px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;clause-6risk-management-process&#34;&gt;Clause 6：Risk management process
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-6风险管理流程&#34;&gt;Clause 6：风险管理流程
 &lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027.png&#34;
 	width=&#34;928&#34;
 	height=&#34;784&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_7c84ccb1fff016c0.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_3f8c5dbabafefbb6.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416210003027&#34;
+		alt=&#34;风险管理流程&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -189,22 +214,20 @@
 		data-flex-basis=&#34;284px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h2 id=&#34;风险评估要求&#34;&gt;风险评估要求
+&lt;/h2&gt;&lt;p&gt;风险评估至少应能够估算以下情况，并以适当的置信度限制：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;风险评估至少应能够估算以下情况，并以适当的置信度限制：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;系统中所有组成构件的风险优先级的数值；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;IEC 60812中定义的risk priority number (风险优先等级)：&lt;/p&gt;
+&lt;li&gt;系统中所有组成构件的风险优先级的数值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;风险优先等级rpn&#34;&gt;风险优先等级（RPN）
+&lt;/h3&gt;&lt;p&gt;根据&lt;strong&gt;IEC 60812&lt;/strong&gt;定义：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967.png&#34;
 	width=&#34;1047&#34;
 	height=&#34;270&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_ffe245e4835a5cef.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_a621e2864a8db36b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416204848967&#34;
+		alt=&#34;RPN定义&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -212,21 +235,17 @@
 		data-flex-basis=&#34;930px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;clause-7wind-farm-operation-maintenance-and-inspections&#34;&gt;Clause 7：Wind farm operation, maintenance and inspections
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;主要构件定义 （参考原报告3.1.20）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-7风电场运维和检测&#34;&gt;Clause 7：风电场运维和检测
+&lt;/h1&gt;&lt;h2 id=&#34;主要构件定义&#34;&gt;主要构件定义
+&lt;/h2&gt;&lt;p&gt;参考原报告3.1.20。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791.png&#34;
 	width=&#34;786&#34;
 	height=&#34;1156&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_b75d8020c5a7cc50.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_7f30fbc1486df920.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416210732791&#34;
+		alt=&#34;主要构件定义&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -234,31 +253,23 @@
 		data-flex-basis=&#34;163px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Principles of risk based inspection (RBI) (see &lt;strong&gt;API 581:2000&lt;/strong&gt;) or reliability -centred maintenance (RCM) (see &lt;strong&gt;IEC 60300-3-11:2009&lt;/strong&gt;) may be applied.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CMS（状态监测系统）可以用于触发或者替换常规的inspection；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Early life inspections (15 % to 25 % through operational life)&lt;/strong&gt;：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;检测保修期结束前要求的损伤并执行修复；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;作为风机整体状态的基准；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;建议的检查计划包括：（全部项目请参考&lt;strong&gt;Annex C&lt;/strong&gt;）&lt;/p&gt;
+&lt;h2 id=&#34;检测和维护原则&#34;&gt;检测和维护原则
+&lt;/h2&gt;&lt;p&gt;可以采用基于风险的检测（RBI）原则（参见&lt;strong&gt;API 581:2000&lt;/strong&gt;）或以可靠性为中心的维护（RCM）原则（参见&lt;strong&gt;IEC 60300-3-11:2009&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;CMS（状态监测系统）可以用于触发或替换常规的检测。&lt;/p&gt;
+&lt;h2 id=&#34;生命周期检测策略&#34;&gt;生命周期检测策略
+&lt;/h2&gt;&lt;h3 id=&#34;早期寿命检测运行寿命的15-25&#34;&gt;早期寿命检测（运行寿命的15%-25%）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;检测保修期结束前要求的损伤并执行修复&lt;/li&gt;
+&lt;li&gt;作为风机整体状态的基准&lt;/li&gt;
+&lt;li&gt;建议的检查计划包括：（全部项目请参考&lt;strong&gt;Annex C&lt;/strong&gt;）&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501.png&#34;
 	width=&#34;973&#34;
 	height=&#34;972&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_ba53c0eacea5e2de.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_8ee97ce5a7183318.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416212250501&#34;
+		alt=&#34;早期检测项目&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -266,31 +277,24 @@
 		data-flex-basis=&#34;240px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;h3 id=&#34;中期寿命检测运行寿命的45-55&#34;&gt;中期寿命检测（运行寿命的45%-55%）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;提供关于结构退化率的其他信息&lt;/li&gt;
+&lt;li&gt;用于指导预防性维护措施&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Mid-life inspections (45 % to 55 % through operational life)&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提供关于结构退化率的其他信息；&lt;/li&gt;
-&lt;li&gt;用于指导预防性维护措施；&lt;/li&gt;
+&lt;h3 id=&#34;延寿准备检测运行寿命的70-80&#34;&gt;延寿准备检测（运行寿命的70%-80%）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;构成了评估风机部件剩余使用寿命（RUL）的基础&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Life extension preparation inspections (70 % to 80 % through operational life)&lt;/strong&gt;：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;构成了评估风机部件剩余使用寿命（RUL）的基础；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;clause-8condition-and-structural-health-monitoring&#34;&gt;Clause 8：Condition and structural health monitoring
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-8状态和结构健康监测&#34;&gt;Clause 8：状态和结构健康监测
 &lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330.png&#34;
 	width=&#34;870&#34;
 	height=&#34;987&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_abd4951b1135bb6.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_ed8da46e83710af7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416213912330&#34;
+		alt=&#34;状态监测&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -298,15 +302,14 @@
 		data-flex-basis=&#34;211px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h2 id=&#34;结构健康监测shm&#34;&gt;结构健康监测（SHM）
+&lt;/h2&gt;&lt;p&gt;实时跟踪与主结构部分健康状态相关的参数。&lt;/p&gt;
+&lt;p&gt;在全生命周期期间，使用监测指标来：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;structural health monitoring&lt;/strong&gt;： real time tracking of parameters correlated with the state of health of part of the primary structure.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;在全生命周期期间，使用监测指标来检测结构健康状况的变化并预测失效过程；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Table 4中的例子说明了数据、信息、建议和决策之间的关系；&lt;/p&gt;
+&lt;li&gt;检测结构健康状况的变化&lt;/li&gt;
+&lt;li&gt;预测失效过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Table 4中的例子说明了数据、信息、建议和决策之间的关系：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774.png&#34;
 	width=&#34;982&#34;
 	height=&#34;349&#34;
@@ -321,18 +324,14 @@
 		data-flex-basis=&#34;675px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Condition monitoring data requirements&lt;/strong&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
+&lt;h2 id=&#34;状态监测数据要求&#34;&gt;状态监测数据要求
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
 	width=&#34;957&#34;
 	height=&#34;1168&#34;
 	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_144a560071bb7b51.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_9f7f72517bcdbf9a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250416214847454&#34;
+		alt=&#34;CM数据要求&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -340,41 +339,50 @@
 		data-flex-basis=&#34;196px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;clause-10analytical-assessment-of-turbine-lifetime&#34;&gt;Clause 10：Analytical assessment of turbine lifetime
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;相对评估：&lt;strong&gt;现场条件下的载荷&lt;/strong&gt;与按照认证设计条件计算的载荷进行比较。这些载荷使用**气弹模型（aero-elastic model）**计算。通过获得的载荷比，可以使用适当的损伤模型（例如，利用简单的 S-N 曲线对等损伤载荷进行比较）推导出剩余使用寿命（RUL）。在这种方法中，通常不考虑设计裕度。只有在有适当的设计文档可用时，才可能考虑设计裕度。在这种情况下，需要特别注意设计文档的正确性和完整性，以及相对评估的准确性。由于其相对性质，这种方法比下面描述的绝对方法对模型误差的敏感性更低；&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-10风机寿命分析评估&#34;&gt;Clause 10：风机寿命分析评估
+&lt;/h1&gt;&lt;h2 id=&#34;相对评估&#34;&gt;相对评估
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;现场条件下的载荷&lt;/strong&gt;与按照认证设计条件计算的载荷进行比较。这些载荷使用**气弹模型（aero-elastic model）**计算。&lt;/p&gt;
+&lt;p&gt;通过获得的载荷比，可以使用适当的损伤模型（例如，利用简单的S-N曲线对等损伤载荷进行比较）推导出剩余使用寿命（RUL）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;通常不考虑设计裕度&lt;/li&gt;
+&lt;li&gt;只有在有适当的设计文档可用时，才可能考虑设计裕度&lt;/li&gt;
+&lt;li&gt;需要特别注意设计文档的正确性和完整性，以及相对评估的准确性&lt;/li&gt;
+&lt;li&gt;由于其相对性质，这种方法比下面描述的绝对方法对模型误差的敏感性更低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实施步骤&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;使用气弹模型（可以通过载荷测量进行验证）&lt;/li&gt;
 &lt;li&gt;根据设计条件和现场特定的风况条件计算相对剩余使用寿命（RUL）&lt;/li&gt;
-&lt;li&gt;充分估计 RUL 的不确定性&lt;/li&gt;
-&lt;li&gt;基于获得的 RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;绝对评估&lt;/strong&gt;：旨在确定组件的&lt;strong&gt;绝对损伤&lt;/strong&gt;，从而估算其剩余使用寿命（RUL）。与相对评估相比，所采用的损伤模型更加复杂，因此&lt;strong&gt;需要更多关于风机或组件的相关数据和信息&lt;/strong&gt;。由于使用的是&lt;strong&gt;绝对值&lt;/strong&gt;而非相对值，这种方法对模型不准确性（或在载荷测量情况下，对测量不准确性）的敏感性更高，因此只有在对风机或组件的物理和几何特性以及风机控制和安全系统有准确了解的情况下才应采用这种方法；&lt;/p&gt;
+&lt;li&gt;充分估计RUL的不确定性&lt;/li&gt;
+&lt;li&gt;基于获得的RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;绝对评估&#34;&gt;绝对评估
+&lt;/h2&gt;&lt;p&gt;旨在确定组件的&lt;strong&gt;绝对损伤&lt;/strong&gt;，从而估算其剩余使用寿命（RUL）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;与相对评估相比，所采用的损伤模型更加复杂&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;需要更多关于风机或组件的相关数据和信息&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;由于使用的是&lt;strong&gt;绝对值&lt;/strong&gt;而非相对值，这种方法对模型不准确性（或在载荷测量情况下，对测量不准确性）的敏感性更高&lt;/li&gt;
+&lt;li&gt;只有在对风机或组件的物理和几何特性以及风机控制和安全系统有准确了解的情况下才应采用这种方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实施步骤&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;使用经过充分验证的气弹模型和组件模型，例如通过载荷测量进行验证&lt;/li&gt;
 &lt;li&gt;基于现场特定的风况条件计算绝对剩余使用寿命（RUL）&lt;/li&gt;
-&lt;li&gt;充分估计 RUL 的不确定性&lt;/li&gt;
-&lt;li&gt;基于获得的 RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;不确定性评估&lt;/strong&gt;，至少应包括以下几个方面：&lt;/p&gt;
+&lt;li&gt;充分估计RUL的不确定性&lt;/li&gt;
+&lt;li&gt;基于获得的RUL、不确定性以及&lt;strong&gt;Clause 6&lt;/strong&gt;所述的风险评估程序，制定检查、维护和监测策略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;不确定性评估&#34;&gt;不确定性评估
+&lt;/h2&gt;&lt;p&gt;至少应包括以下几个方面：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;环境数据（例如大气湍流，风速分布，波浪分布）&lt;/li&gt;
+&lt;li&gt;环境数据（例如大气湍流、风速分布、波浪分布）&lt;/li&gt;
 &lt;li&gt;气弹性模型（气动力计算模型）&lt;/li&gt;
 &lt;li&gt;测量数据&lt;/li&gt;
-&lt;li&gt;疲劳损伤模型（for example, the application of simplified damage equivalent loads, S-N curve parameters, theories of crack initiation, growth, and possible application of fracture mechanics）&lt;/li&gt;
+&lt;li&gt;疲劳损伤模型（例如，简化损伤等效载荷的应用、S-N曲线参数、裂纹萌生理论、扩展理论以及可能的断裂力学应用）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Relevant failure modes for structural or major components shall be defined in accordance with &lt;strong&gt;IEC 61400-1&lt;/strong&gt;, for example, fatigue crack initiation of fibre or matrix in the spar caps of the blade structure.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;失效模式定义&lt;/strong&gt;：结构或主要构件的相关失效模式应按照&lt;strong&gt;IEC 61400-1&lt;/strong&gt;定义，例如，叶片结构梁帽中纤维或基体的疲劳裂纹萌生。&lt;/p&gt;
 </description>
         </item>
         

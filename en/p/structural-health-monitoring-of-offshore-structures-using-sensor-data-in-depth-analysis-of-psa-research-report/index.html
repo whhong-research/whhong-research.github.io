@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Series Introduction: This series of articles provides in-depth interpretation of reports and standards related to offshore structural health monitoring and management, covering the design and implementation of Structural Health Monitoring (SHM) systems, Risk-Based Inspection (RBI), and Structural Integrity Management (SIM). This inaugural article presents a detailed analysis of the research report on structural health monitoring of offshore structures using sensor data by the Petroleum Safety Authority Norway (PSA).\nExecutive Summary Basic Information Project Name: PSA study: Structural health monitoring of offshore structure by use of sensor data\n">
+<title>Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/structural-health-monitoring-of-offshore-structures-using-sensor-data-in-depth-analysis-of-psa-research-report/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report">
+<meta property='og:description' content=" Series Introduction: This series of articles provides in-depth interpretation of reports and standards related to offshore structural health monitoring and management, covering the design and implementation of Structural Health Monitoring (SHM) systems, Risk-Based Inspection (RBI), and Structural Integrity Management (SIM). This inaugural article presents a detailed analysis of the research report on structural health monitoring of offshore structures using sensor data by the Petroleum Safety Authority Norway (PSA).\nExecutive Summary Basic Information Project Name: PSA study: Structural health monitoring of offshore structure by use of sensor data\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/structural-health-monitoring-of-offshore-structures-using-sensor-data-in-depth-analysis-of-psa-research-report/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='offshore structures' /><meta property='article:tag' content='health monitoring' /><meta property='article:tag' content='RBI' /><meta property='article:tag' content='structural integrity management' /><meta property='article:tag' content='sensor data' /><meta property='article:published_time' content='2025-02-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-25T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225133412287.png' />
+<meta name="twitter:title" content="Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report">
+<meta name="twitter:description" content=" Series Introduction: This series of articles provides in-depth interpretation of reports and standards related to offshore structural health monitoring and management, covering the design and implementation of Structural Health Monitoring (SHM) systems, Risk-Based Inspection (RBI), and Structural Integrity Management (SIM). This inaugural article presents a detailed analysis of the research report on structural health monitoring of offshore structures using sensor data by the Petroleum Safety Authority Norway (PSA).\nExecutive Summary Basic Information Project Name: PSA study: Structural health monitoring of offshore structure by use of sensor data\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225133412287.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-information">Basic Information</a></li>
+    <li><a href="#key-terminology">Key Terminology</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#classification-of-shm-systems">Classification of SHM Systems</a>
+      <ul>
+        <li><a href="#1-by-input-type">1. By Input Type</a></li>
+        <li><a href="#2-by-function-level">2. By Function Level</a></li>
+      </ul>
+    </li>
+    <li><a href="#shm-system-implementation-process">SHM System Implementation Process</a>
+      <ul>
+        <li><a href="#phase-1-assess-structural-operating-environment">Phase 1: Assess Structural Operating Environment</a></li>
+        <li><a href="#phase-2-build-shm-system">Phase 2: Build SHM System</a></li>
+        <li><a href="#phase-3-data-analysis-and-processing">Phase 3: Data Analysis and Processing</a></li>
+        <li><a href="#phase-4-structural-integrity-assessment">Phase 4: Structural Integrity Assessment</a></li>
+      </ul>
+    </li>
+    <li><a href="#value-of-shm-systems">Value of SHM Systems</a>
+      <ul>
+        <li><a href="#shm-system-value-matrix">SHM System Value Matrix</a></li>
+      </ul>
+    </li>
+    <li><a href="#can-shm-prevent-major-accidents">Can SHM Prevent Major Accidents?</a>
+      <ul>
+        <li><a href="#case-1-alexander-kjelland-platform-capsizing-accident-1981">Case 1: Alexander Kjelland Platform Capsizing Accident (1981)</a></li>
+        <li><a href="#case-2-ekofisk-24-w-platform-ship-collision-accident-2009">Case 2: Ekofisk 2/4 W Platform Ship Collision Accident (2009)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#sim-overview">SIM Overview</a>
+      <ul>
+        <li><a href="#structure-lifecycle">Structure Lifecycle</a></li>
+        <li><a href="#sim-definition">SIM Definition</a></li>
+        <li><a href="#sim-framework-core-modules">SIM Framework Core Modules</a></li>
+      </ul>
+    </li>
+    <li><a href="#barrier-management">Barrier Management</a>
+      <ul>
+        <li><a href="#core-concepts">Core Concepts</a></li>
+      </ul>
+    </li>
+    <li><a href="#inspection-planning">Inspection Planning</a>
+      <ul>
+        <li><a href="#core-questions">Core Questions</a></li>
+        <li><a href="#population-based-shm">Population-based SHM</a></li>
+        <li><a href="#inspection-technology-evaluation-metrics">Inspection Technology Evaluation Metrics</a>
+          <ul>
+            <li><a href="#probability-of-detection-pod">Probability of Detection (PoD)</a></li>
+            <li><a href="#trueness-and-precision">Trueness and Precision</a></li>
+            <li><a href="#classification-model-evaluation-metrics">Classification Model Evaluation Metrics</a></li>
+          </ul>
+        </li>
+        <li><a href="#inspection-timing-selection">Inspection Timing Selection</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-driven-inspection-planning">Data-driven Inspection Planning</a>
+      <ul>
+        <li><a href="#regulatory-basis">Regulatory Basis</a></li>
+        <li><a href="#rbi-implementation-methods">RBI Implementation Methods</a></li>
+        <li><a href="#rbi-and-inspection-strategy-selection">RBI and Inspection Strategy Selection</a></li>
+        <li><a href="#tbi-vs-cbi-comparison">TBI vs. CBI Comparison</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#classification-of-structural-limit-states">Classification of Structural Limit States</a></li>
+    <li><a href="#typical-structural-failure-scenarios">Typical Structural Failure Scenarios</a>
+      <ul>
+        <li><a href="#comparison-of-failure-causes-between-floating-and-fixed-structures">Comparison of Failure Causes Between Floating and Fixed Structures</a></li>
+      </ul>
+    </li>
+    <li><a href="#common-failure-modes-in-steel-structures">Common Failure Modes in Steel Structures</a></li>
+    <li><a href="#statistics-on-major-offshore-structural-accident-reports">Statistics on Major Offshore Structural Accident Reports</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/structural-health-monitoring-of-offshore-structures-using-sensor-data-in-depth-analysis-of-psa-research-report/">
+                <img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225133412287_hu_c9ecaeac01c0f83c.png"
+                        srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225133412287_hu_c9ecaeac01c0f83c.png 800w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225133412287_hu_9ab4a9df797b59f1.png 1600w"
+                        width="800" 
+                        height="275" 
+                        loading="lazy"
+                        alt="Featured image of post Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/project-reports/" >
+                Project Reports
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/structural-health-monitoring-of-offshore-structures-using-sensor-data-in-depth-analysis-of-psa-research-report/">Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Feb 25, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p><strong>Series Introduction</strong>: This series of articles provides in-depth interpretation of reports and standards related to offshore structural health monitoring and management, covering the design and implementation of Structural Health Monitoring (SHM) systems, Risk-Based Inspection (RBI), and Structural Integrity Management (SIM). This inaugural article presents a detailed analysis of the research report on structural health monitoring of offshore structures using sensor data by the Petroleum Safety Authority Norway (PSA).</p>
+</blockquote>
+<h1 id="executive-summary">Executive Summary
+</h1><h2 id="basic-information">Basic Information
+</h2><ol>
+<li>
+<p><strong>Project Name</strong>: PSA study: Structural health monitoring of offshore structure by use of sensor data</p>
+</li>
+<li>
+<p><strong>Publication Date</strong>: February 21, 2024</p>
+</li>
+<li>
+<p><strong>Project Objectives</strong>:</p>
+<ul>
+<li>Explore how SHM can serve as a decision support tool for assessing the health of offshore structures</li>
+<li>Investigate how to use SHM (including sensor data, structural failure history, etc.) to guide operation and maintenance decisions</li>
+<li>Evaluate and compare the advantages and disadvantages of different SHM approaches</li>
+<li>Present case studies of offshore structures using SHM for maintenance planning</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;This report explores structural health monitoring (SHM) as a decision support tool to assess the structural health of offshore structures. The main objective of this report is to evaluate how SHM may be used to improve safety and inspection and maintenance planning with use of sensor data and structural failure history. The report evaluates different SHM approaches, including strengths and weaknesses, and contains some examples of use of SHM for both maintenance planning and to capture safety critical behavior of offshore structures.&rdquo;</em></p>
+</blockquote>
+<h2 id="key-terminology">Key Terminology
+</h2><ol>
+<li><strong>SHM (Structural Health Monitoring)</strong>: A diagnostic tool used to detect structural failures, which may also include functions such as warning, localizing, and evaluating the consequences of structural failures.</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;SHM is a diagnostic tool that has the objective to detect a structural failure, and may in addition warn, localize and evaluate the consequence of a structural failure.&rdquo;</em></p>
+</blockquote>
+<ol start="2">
+<li><strong>Digital Twin</strong>: A virtual representation of a system or asset that calculates system states and makes system information available through integrated models and data, with the purpose of providing decision support over its life cycle.</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;A digital twin is a virtual representation of a system or asset that calculates system states and makes system information available, through integrated models and data, with the purpose of providing decision support over its life cycle.&rdquo;</em></p>
+</blockquote>
+<ol start="3">
+<li><strong>Inspection</strong>: The process of examination, measurement, and/or testing to determine the condition or state of an item.</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;Process of examination, measurement and/or testing to determine a condition or state of an item&rdquo;</em></p>
+</blockquote>
+<ol start="4">
+<li><strong>Virtual Sensors</strong>: Numerical sensors or sensors derived based on physical sensor data.</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;Virtual sensors are numerical sensors or derived based on physical sensors&rdquo;</em></p>
+</blockquote>
+<ol start="5">
+<li><strong>Monitoring System</strong>: A system that receives information about the system through measuring devices (sensors) and makes it available to the operator.</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;A monitoring system receives information about the system through measuring devices (sensors), and makes it available to the operator&rdquo;</em></p>
+</blockquote>
+<ol start="6">
+<li><strong>Risk-Based Inspection (RBI)</strong>: A process that identifies, assesses, and maps industrial risks (due to corrosion and stress cracking) that could compromise equipment integrity in both pressurized equipment and structural elements. RBI addresses risks that can be controlled through proper inspections and analysis. During the RBI process, engineers design inspection strategies (what, when, how to inspect) that most efficiently match forecasted or observed degradation mechanisms.</li>
+</ol>
+<blockquote>
+<p><em>&ldquo;Risk-based inspection (RBI) is a process that identifies, assesses and maps industrial risks (due to corrosion and stress cracking), which could compromise equipment integrity in both pressurized equipment and structural elements. RBI addresses risks that can be controlled through proper inspections and analysis. During the RBI process, engineers design inspection strategies (what, when, how to inspect) that most efficiently match forecasted or observed degradation mechanisms.&rdquo;</em></p>
+</blockquote>
+<hr>
+<h1 id="structural-health-monitoring-shm-systems">Structural Health Monitoring (SHM) Systems
+</h1><p>The typical components of a structural health monitoring system are shown in the following figure:</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225180936281.png"
+	width="976"
+	height="531"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225180936281_hu_9d4eff56ebf7501d.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225180936281_hu_10674a5a29297ba1.png 1024w"
+	loading="lazy"
+	
+		alt="Components of Structural Health Monitoring System"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="441px"
+	
+></p>
+<h2 id="classification-of-shm-systems">Classification of SHM Systems
+</h2><h3 id="1-by-input-type">1. By Input Type
+</h3><p>Can be classified into sensor data, indicators, numerical twin, hybrid twin, and data-driven models.</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225154603992.png"
+	width="976"
+	height="453"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225154603992_hu_3367452c7a6f5317.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225154603992_hu_68393dff7b3ea9b9.png 1024w"
+	loading="lazy"
+	
+		alt="SHM System Categories by Input Type"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="215"
+		data-flex-basis="517px"
+	
+></p>
+<h3 id="2-by-function-level">2. By Function Level
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Level</th>
+          <th style="text-align: left">Function</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Level 1</td>
+          <td style="text-align: left">Detection</td>
+          <td style="text-align: left">Qualitatively determine that damage may exist in the structure</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Level 2</td>
+          <td style="text-align: left">Localization</td>
+          <td style="text-align: left">Provide location information of the fault</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Level 3</td>
+          <td style="text-align: left">Assessment</td>
+          <td style="text-align: left">Provide information on the severity of the fault</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Level 4</td>
+          <td style="text-align: left">Consequence</td>
+          <td style="text-align: left">Evaluate the impact of the fault on actual structural safety</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">-</td>
+          <td style="text-align: left">Prognostic</td>
+          <td style="text-align: left">Predict that damage will occur to the structure in the near future</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">-</td>
+          <td style="text-align: left">Fit for Purpose</td>
+          <td style="text-align: left">Verify that the structural strength is adequate</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="shm-system-implementation-process">SHM System Implementation Process
+</h2><p>The standard process for establishing an SHM system includes the following phases:</p>
+<h3 id="phase-1-assess-structural-operating-environment">Phase 1: Assess Structural Operating Environment
+</h3><ul>
+<li>Identify structural failure modes, degradation mechanisms, and their consequences</li>
+<li>Select appropriate sensors, installation schemes, and cost budgets</li>
+</ul>
+<h3 id="phase-2-build-shm-system">Phase 2: Build SHM System
+</h3><ul>
+<li>Sensor installation, calibration, and data logging system configuration</li>
+<li>System integration testing</li>
+<li>Data recording, filtering, compression, and transmission</li>
+</ul>
+<h3 id="phase-3-data-analysis-and-processing">Phase 3: Data Analysis and Processing
+</h3><ul>
+<li>Fault diagnosis, damage identification</li>
+<li>Modal analysis</li>
+</ul>
+<h3 id="phase-4-structural-integrity-assessment">Phase 4: Structural Integrity Assessment
+</h3><ul>
+<li>Structural condition assessment</li>
+<li>Remaining life prediction</li>
+</ul>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225145911991.png"
+	width="727"
+	height="453"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225145911991_hu_9e431e16599f76f4.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225145911991_hu_deedcf9a5b3e77a9.png 1024w"
+	loading="lazy"
+	
+		alt="SHM System Establishment Process"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="385px"
+	
+></p>
+<h2 id="value-of-shm-systems">Value of SHM Systems
+</h2><blockquote>
+<p><strong>Reference</strong>: PSA: Svendsen et al., 2021, <em>The use of digital solutions and structural health monitoring for integrity management of offshore structures</em>, Rambøll report no. REN2021N00099-RAM-RP-00004 dated 14th February 2022</p>
+</blockquote>
+<p>The core values of introducing SHM systems are manifested in:</p>
+<ol>
+<li><strong>Reducing Uncertainty</strong>: Lowering uncertain factors in structural condition assessment</li>
+<li><strong>Optimizing Inspection Plans</strong>: Providing key information for optimizing inspection plans</li>
+</ol>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192219780.png"
+	width="909"
+	height="322"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192219780_hu_e1aab0890b785f23.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192219780_hu_d456cfcb0f0f1255.png 1024w"
+	loading="lazy"
+	
+		alt="Value and Benefits of Using SHM in Offshore Structures"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="282"
+		data-flex-basis="677px"
+	
+></p>
+<h3 id="shm-system-value-matrix">SHM System Value Matrix
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">CAPEX (Capital Expenditure)</th>
+          <th style="text-align: left">OPEX (Operating Expenditure)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Actual design verification</td>
+          <td style="text-align: left">Actual safety and risk assessment</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Design basis optimization</td>
+          <td style="text-align: left">Predictive maintenance</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Implementing new learnings/knowledge gaps</td>
+          <td style="text-align: left">Immediate information for unexpected events</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Minimizing downtime</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Change (damage) detection</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Capturing unexpected behavior</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Root cause analysis</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Lifecycle history</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Early warning systems</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Decision making support</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="can-shm-prevent-major-accidents">Can SHM Prevent Major Accidents?
+</h2><h3 id="case-1-alexander-kjelland-platform-capsizing-accident-1981">Case 1: Alexander Kjelland Platform Capsizing Accident (1981)
+</h3><p>Norway&rsquo;s largest industrial accident was the capsizing of the Alexander Kjelland platform in 1981. The structural damage originated from a 6mm fillet weld defect, followed by fatigue crack propagation in the support structure, leading to the failure of one of the platform&rsquo;s legs.</p>
+<p><strong>SHM System Applicability Analysis in This Scenario</strong>:</p>
+<ul>
+<li>
+<p><strong>Limitations</strong>: Using sensor data-based SHM systems <strong>might not have prevented</strong> this accident, as the platform was a non-redundant structure where single-point failure led to overall capsizing.</p>
+</li>
+<li>
+<p><strong>Potential Value</strong>:</p>
+<ul>
+<li>SHM can support decision-making and reduce the likelihood of accidents</li>
+<li>The crack would have to be detected before it developed into critical damage to potentially prevent the accident</li>
+<li>However, the crack location was not a critical part assessed during the design phase, and sensors would typically not be placed there</li>
+<li>Only if the sensor system could detect cracks larger than 100mm and recognize that such a crack would develop into critical damage could the accident potentially have been prevented</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225201437456.png"
+	width="706"
+	height="885"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225201437456_hu_fbeada6d3d50872c.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225201437456_hu_dc83385d8db4695e.png 1024w"
+	loading="lazy"
+	
+		alt="Damaged Pontoon in Alexander Kjelland Accident"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="79"
+		data-flex-basis="191px"
+	
+></p>
+<h3 id="case-2-ekofisk-24-w-platform-ship-collision-accident-2009">Case 2: Ekofisk 2/4 W Platform Ship Collision Accident (2009)
+</h3><p>In the 2009 ship collision accident at the Ekofisk 2/4 W platform in Norway, the value of SHM was manifested in:</p>
+<ul>
+<li>
+<p><strong>Decision Support Tool</strong>: SHM can serve as a decision support tool for assessing structural damage, providing preliminary assessment before more detailed inspection</p>
+</li>
+<li>
+<p><strong>Real-time Safety Assessment</strong>:</p>
+<ul>
+<li>Providing real-time structural load-bearing capacity assessment</li>
+<li>Assessing remaining life</li>
+<li>Determining whether personnel can be arranged to enter the structure after collision for inspection</li>
+</ul>
+</li>
+<li>
+<p><strong>Technical Requirements</strong>: Achieving the above functions requires the SHM system to be able to monitor large deformations caused by ship collision</p>
+</li>
+</ul>
+<hr>
+<h1 id="structural-integrity-management-sim">Structural Integrity Management (SIM)
+</h1><h2 id="sim-overview">SIM Overview
+</h2><h3 id="structure-lifecycle">Structure Lifecycle
+</h3><p>Structural integrity management covers the entire lifecycle of offshore structures from design, construction, and installation to operation, maintenance, and decommissioning.</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193006829.png"
+	width="484"
+	height="432"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193006829_hu_3b0934b232d6d6f3.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193006829_hu_58108a6365903b83.png 1024w"
+	loading="lazy"
+	
+		alt="Structure Lifecycle"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="268px"
+	
+></p>
+<h3 id="sim-definition">SIM Definition
+</h3><p><strong>Structural Integrity Management (SIM)</strong> is a continuous process for managing the integrity status of offshore structures from installation to decommissioning throughout their lifecycle. SIM provides a systematic management framework for structural inspection planning, maintenance, and repair planning.</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225161204447.png"
+	width="1011"
+	height="382"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225161204447_hu_79ae811d21a8bb62.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225161204447_hu_fba917d6d734e006.png 1024w"
+	loading="lazy"
+	
+		alt="SIM Framework with SHM"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="264"
+		data-flex-basis="635px"
+	
+></p>
+<h3 id="sim-framework-core-modules">SIM Framework Core Modules
+</h3><p>The framework mainly includes the following four core modules:</p>
+<ol>
+<li>
+<p><strong>Data and Information Collection</strong>: Gathering structural monitoring data, inspection records, maintenance history, and other information</p>
+</li>
+<li>
+<p><strong>Structural Condition Assessment</strong>: Evaluating the current health status of the structure based on collected data</p>
+</li>
+<li>
+<p><strong>Maintenance Strategy Evaluation and Selection</strong>: Developing and selecting optimal maintenance and repair strategies</p>
+</li>
+<li>
+<p><strong>Inspection Plan Establishment</strong>: Developing risk-based or condition-based inspection plans</p>
+</li>
+</ol>
+<h2 id="barrier-management">Barrier Management
+</h2><blockquote>
+<p><strong>Reference</strong>: PSA, 2013, <em>Principles for barrier management in the petroleum industry</em>, dated 29th of January 2013</p>
+</blockquote>
+<h3 id="core-concepts">Core Concepts
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Concept</th>
+          <th style="text-align: left">Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Barrier</strong></td>
+          <td style="text-align: left">Technical, operational, and organizational elements that individually or jointly reduce the likelihood of specific errors, hazards, or accidents, or limit their harm/adverse effects</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Barrier Element</strong></td>
+          <td style="text-align: left">Technical, operational, or organizational measures or solutions that implement barrier functions</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Barrier Function</strong></td>
+          <td style="text-align: left">The task or role undertaken by a barrier in the event chain from faults, hazards, or unexpected situations leading to accidents</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Performance Influencing Factors</strong></td>
+          <td style="text-align: left">Conditions that significantly affect the operation of barrier functions and elements as expected</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225163007335.png"
+	width="1003"
+	height="499"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225163007335_hu_160b33d25b81e6db.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225163007335_hu_938a4ceadaf3f6f5.png 1024w"
+	loading="lazy"
+	
+		alt="Barrier Management Architecture"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="482px"
+	
+></p>
+<h2 id="inspection-planning">Inspection Planning
+</h2><h3 id="core-questions">Core Questions
+</h3><p>The primary goal of inspection planning is to determine four key questions: <strong>what, when, where, and how to inspect</strong>.</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194052111.png"
+	width="1045"
+	height="703"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194052111_hu_f385c3630565e50f.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194052111_hu_8274ee8e5a7ec018.png 1024w"
+	loading="lazy"
+	
+		alt="What, When, Where and How to Inspect"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
+	
+></p>
+<h3 id="population-based-shm">Population-based SHM
+</h3><p>As shown in the figure above, <strong>population-based SHM</strong> is an important component of SIM. Taking wind farms as an example, selecting representative wind turbines in the farm (usually those with the highest utilization or load), and collecting monitoring information from these structures to guide asset management strategies for other turbines in the farm.</p>
+<h3 id="inspection-technology-evaluation-metrics">Inspection Technology Evaluation Metrics
+</h3><h4 id="probability-of-detection-pod">Probability of Detection (PoD)
+</h4><p>When selecting inspection technologies, the <strong>Probability of Detection (PoD)</strong> should be considered, which measures the accuracy of inspection technologies.</p>
+<h4 id="trueness-and-precision">Trueness and Precision
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Metric</th>
+          <th style="text-align: left">Definition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Trueness</strong></td>
+          <td style="text-align: left">The degree of deviation between measurement results and true values</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Precision</strong></td>
+          <td style="text-align: left">The consistency of independent inspection results</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194619657.png"
+	width="933"
+	height="298"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194619657_hu_c9940562b4e18d6.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194619657_hu_70568a3934bd0273.png 1024w"
+	loading="lazy"
+	
+		alt="Trueness and Precision Explanation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="313"
+		data-flex-basis="751px"
+	
+></p>
+<h4 id="classification-model-evaluation-metrics">Classification Model Evaluation Metrics
+</h4><p>For classification models, the following metrics can be used for evaluation:</p>
+<ul>
+<li>Confusion matrix</li>
+<li>AUC (Area Under Curve)</li>
+<li>Recall rate</li>
+<li>Classifier accuracy</li>
+<li>F1 score</li>
+</ul>
+<h3 id="inspection-timing-selection">Inspection Timing Selection
+</h3><p><strong>When to inspect</strong> should be based on a combination of <strong>Time-Based Inspection (TBI)</strong> and <strong>Condition-Based Inspection (CBI)</strong>:</p>
+<ul>
+<li>TBI should be set based on RBI results</li>
+<li>As SHM system information increases, TBI can gradually be replaced by CBI</li>
+</ul>
+<h2 id="data-driven-inspection-planning">Data-driven Inspection Planning
+</h2><h3 id="regulatory-basis">Regulatory Basis
+</h3><p>According to Norwegian standard Norsok N-005, inspection plans should consider risk-based inspection analysis results.</p>
+<h3 id="rbi-implementation-methods">RBI Implementation Methods
+</h3><p><strong>Risk-Based Inspection (RBI)</strong> can be implemented at the following three levels:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Level</th>
+          <th style="text-align: left">Method</th>
+          <th style="text-align: left">Characteristics</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Generic Design Basis</strong></td>
+          <td style="text-align: left">Using historical data or engineering experience from the same type or similar structures</td>
+          <td style="text-align: left">Inspection scope based on conservative assumptions for operational use</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Qualitative Analysis</strong></td>
+          <td style="text-align: left">Combining historical data or engineering experience from the same or similar structures, with specific design details</td>
+          <td style="text-align: left">Inspection scope more targeted to concentrate on special areas with high utilization</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Quantitative Analysis</strong></td>
+          <td style="text-align: left">Probabilistic analysis based on specific design</td>
+          <td style="text-align: left">Most precise method, requiring detailed structural information and reliability data</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="rbi-and-inspection-strategy-selection">RBI and Inspection Strategy Selection
+</h3><p>The following figure shows how RBI serves as the basis for selecting TBI or CBI as inspection planning strategies:</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192708216.png"
+	width="1126"
+	height="454"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192708216_hu_f399d836efca9ef8.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192708216_hu_ce2e4f4aee4994e7.png 1024w"
+	loading="lazy"
+	
+		alt="RBI as the Basis for Selecting TBI/CBI"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="595px"
+	
+></p>
+<h3 id="tbi-vs-cbi-comparison">TBI vs. CBI Comparison
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Inspection Method</th>
+          <th style="text-align: left">Characteristics</th>
+          <th style="text-align: left">Illustration</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Time-Based Inspection (TBI)</strong></td>
+          <td style="text-align: left">Inspection at fixed time intervals</td>
+          <td style="text-align: left">Left figure</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Condition-Based Inspection (CBI)</strong></td>
+          <td style="text-align: left">Determining inspection timing based on actual structural condition</td>
+          <td style="text-align: left">Right figure</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193442952.png"
+	width="1104"
+	height="595"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193442952_hu_8be6d0d2a726d07c.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193442952_hu_1f35276135b9061.png 1024w"
+	loading="lazy"
+	
+		alt="Left: TBI, Right: Combined with CBI"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<hr>
+<h1 id="analysis-of-common-offshore-structural-failures">Analysis of Common Offshore Structural Failures
+</h1><h2 id="classification-of-structural-limit-states">Classification of Structural Limit States
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Limit State</th>
+          <th style="text-align: left">Full English Name</th>
+          <th style="text-align: left">Definition</th>
+          <th style="text-align: left">Focus Areas</th>
+          <th style="text-align: left">Objectives</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>SLS</strong></td>
+          <td style="text-align: left">Serviceability Limit State</td>
+          <td style="text-align: left">Functional requirements that structures should meet under normal service conditions</td>
+          <td style="text-align: left">Deformation, vibration, crack width, etc.</td>
+          <td style="text-align: left">Ensure structural functionality and comfort</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>FLS</strong></td>
+          <td style="text-align: left">Fatigue Limit State</td>
+          <td style="text-align: left">Ability of structures to resist fatigue failure under cyclic loading</td>
+          <td style="text-align: left">Cyclic stress, fatigue life, crack propagation, etc.</td>
+          <td style="text-align: left">Prevent fatigue failure caused by cyclic loading</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>ULS</strong></td>
+          <td style="text-align: left">Ultimate Limit State</td>
+          <td style="text-align: left">Ability of structures to resist failure under maximum loading</td>
+          <td style="text-align: left">Strength, stability, overall stability, etc.</td>
+          <td style="text-align: left">Ensure safety under extreme conditions, prevent collapse or severe damage</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>ALS</strong></td>
+          <td style="text-align: left">Accidental Limit State</td>
+          <td style="text-align: left">Performance of structures under accidental events (such as explosion, impact, fire, etc.)</td>
+          <td style="text-align: left">Residual load-bearing capacity, overall stability, local damage, etc.</td>
+          <td style="text-align: left">Ensure no catastrophic failure occurs during accidental events, minimize losses</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="typical-structural-failure-scenarios">Typical Structural Failure Scenarios
+</h2><p><strong>Table 5: Overview of Different Failure Scenarios</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Scenario No.</th>
+          <th style="text-align: left">Scenario Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">Fatigue cracking due to low-cycle and high-cycle fatigue</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">HISC (Hydrogen Induced Stress Cracking) related cracking</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">Pitting and corrosion</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">Dropped object impact on deck</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">Yield overload due to extreme loads</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left">Local and global buckling due to extreme loads</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left">Global collapse due to extreme loads</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left">Dents due to local wave impact</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left">Mooring line or tendon failure</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">11</td>
+          <td style="text-align: left">Flooding due to leakage</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">12</td>
+          <td style="text-align: left">Effects of abnormal environmental conditions (waves on deck)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">13</td>
+          <td style="text-align: left">Explosion</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="comparison-of-failure-causes-between-floating-and-fixed-structures">Comparison of Failure Causes Between Floating and Fixed Structures
+</h3><p>From the figure below, it can be seen that <strong>fatigue, corrosion, overload, and vibration</strong> are the main failure causes in floating structures, while fixed structures also include <strong>foundation-seabed interaction</strong> and <strong>bridge connections between platforms</strong>. Additionally, <strong>dropped objects</strong> and <strong>ship collisions</strong> must also be considered.</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225151959404.png"
+	width="933"
+	height="738"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225151959404_hu_6af8bff1b97ee9e9.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225151959404_hu_4b88aa16a9301cda.png 1024w"
+	loading="lazy"
+	
+		alt="Common Structural Failure Modes and Causes in Offshore Structures"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p><strong>Table 6: Summary of Important Failure Modes</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Failure Mode No.</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">1</td>
+          <td style="text-align: left">Through-thickness cracking due to fatigue and corrosion</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">2</td>
+          <td style="text-align: left">Member separation due to fatigue or corrosion</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">3</td>
+          <td style="text-align: left">Member loss due to fatigue or corrosion</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">4</td>
+          <td style="text-align: left">Dents and deformation due to ship collision or dropped objects</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">5</td>
+          <td style="text-align: left">Grouted connections for fixed installations (slip and failure)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">6</td>
+          <td style="text-align: left">Overload for fixed installations (settlement and subsidence)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">7</td>
+          <td style="text-align: left">Scour for fixed installations</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">8</td>
+          <td style="text-align: left">Excessive/unexpected vibration due to various causes</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">9</td>
+          <td style="text-align: left">Bridge support issues due to various causes (interconnecting bridges)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">10</td>
+          <td style="text-align: left">Vortex-induced vibration issues caused by wind, waves, or current</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="common-failure-modes-in-steel-structures">Common Failure Modes in Steel Structures
+</h2><p>The typical failure mode in steel structures is <strong>degradation of structural load-bearing capacity</strong>. The failure mechanisms causing this degradation include <strong>material degradation, material loss, fatigue, and excessive loading</strong>. The main influencing factors leading to these failure mechanisms are shown in the figure below:</p>
+<p><img src="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225153354229.png"
+	width="846"
+	height="594"
+	srcset="/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225153354229_hu_710784e51b65d6f5.png 480w, /p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225153354229_hu_7a84bef4b9962136.png 1024w"
+	loading="lazy"
+	
+		alt="Common Failure Modes in Steel Structures"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="341px"
+	
+></p>
+<h2 id="statistics-on-major-offshore-structural-accident-reports">Statistics on Major Offshore Structural Accident Reports
+</h2><p>The table below summarizes reports of major structural accidents by major offshore structural management organizations in recent years.</p>
+<p><strong>Table 7: Reported Events Defined as Major Accidents in the Past Five Years</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Region</th>
+          <th style="text-align: left">Reported Events</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>EU</strong>: Offshore Oil and Gas Operations Safety</td>
+          <td style="text-align: left">Statistics on reported structural integrity loss events:<br>• 2016: 0<br>• 2017: 0<br>• 2018: 0<br>• 2019: 2 (specific events could not be identified)<br>• 2020: 1 (total loss of Croatian INA gas platform)<br>• 2021: 0<br><a class="link" href="https://www.croatiaweek.com/inas-missing-gas-platform-found-on-seabed/"  target="_blank" rel="noopener"
+    >Reference link</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>UK</strong>: RIDDOR Dangerous Occurrence Reporting</td>
+          <td style="text-align: left">Types of accidents that operators should report:<br>• <strong>Collapse</strong>: Any unintentional collapse or partial collapse of any offshore installation or equipment on an offshore installation that endangers the overall structural integrity of the installation<br>• <strong>Seabed subsidence or collapse</strong>: Any seabed subsidence or collapse that may affect the foundation or overall structural integrity of an offshore installation<br><br>Informal discussions with regulatory authorities show no records of the above major failures. Some failures have occurred but did not reach the level requiring reporting.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>IOGP</strong></td>
+          <td style="text-align: left">No major structural failure events reported; informal feedback indicates no structural failure situations.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>USA</strong>: BSEE Offshore Accident Statistics</td>
+          <td style="text-align: left">Searching for major accidents from 2018-2021, only various crane</td>
+      </tr>
+  </tbody>
+</table></div>
+<h1 id="reference">Reference
+</h1><ol>
+<li>NORSOK N-005:2017+AC:2019 In-service integrity management of structures and marine systems</li>
+<li>DNV-RP-C210: Probabilistic methods for planning of inspection for fatigue cracks in offshore structures</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/offshore-structures/">Offshore Structures</a>
+        
+            <a href="/en/tags/health-monitoring/">Health Monitoring</a>
+        
+            <a href="/en/tags/rbi/">RBI</a>
+        
+            <a href="/en/tags/structural-integrity-management/">Structural Integrity Management</a>
+        
+            <a href="/en/tags/sensor-data/">Sensor Data</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">Report Interpretation and Standards</h4>
+    <span class="series-progress">第 1 篇，共 2 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <a href="/en/p/iec-61400-28-asset-management-standard-interpretation/" class="series-link next">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">IEC 61400-28 Asset Management Standard Interpretation</span>
+    </a>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/en/p/iec-61400-28-asset-management-standard-interpretation/">
+        
+        
+            <div class="article-image">
+                <img src="/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/IEC61400-28.edfc26a29da885b40783e234e6dfe217_hu_d4697bc567d14935.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post IEC 61400-28 Asset Management Standard Interpretation"
+                        
+                        data-hash="md5-7fwmop2ohbQHg&#43;I05t/iFw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">IEC 61400-28 Asset Management Standard Interpretation</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

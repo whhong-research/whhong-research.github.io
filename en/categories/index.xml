@@ -7,7 +7,55 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IEC Standards</title>
+        <link>https://whhong-research.github.io/en/categories/iec-standards/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/categories/iec-standards/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Wind Turbine Blades</title>
+        <link>https://whhong-research.github.io/en/categories/wind-turbine-blades/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/categories/wind-turbine-blades/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Paper Reading</title>
+        <link>https://whhong-research.github.io/en/categories/paper-reading/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/categories/paper-reading/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/categories/paper-reading/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Paper Reading" /&gt;</description>
+        </item>
+        <item>
+        <title>Wind Turbine OM</title>
+        <link>https://whhong-research.github.io/en/categories/wind-turbine-om/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/categories/wind-turbine-om/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Blade Simulation</title>
+        <link>https://whhong-research.github.io/en/categories/blade-simulation/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/categories/blade-simulation/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Project Reports</title>
+        <link>https://whhong-research.github.io/en/categories/project-reports/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/categories/project-reports/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>实验测试</title>
         <link>https://whhong-research.github.io/en/categories/%E5%AE%9E%E9%AA%8C%E6%B5%8B%E8%AF%95/</link>
         <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
@@ -16,17 +64,9 @@
         <description></description>
         </item>
         <item>
-        <title>Blade Simulation</title>
-        <link>https://whhong-research.github.io/en/categories/blade-simulation/</link>
-        <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/en/categories/blade-simulation/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Experimental Testing</title>
         <link>https://whhong-research.github.io/en/categories/experimental-testing/</link>
-        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/en/categories/experimental-testing/</guid>
         <description></description>
@@ -34,18 +74,10 @@
         <item>
         <title>Image Processing Tools</title>
         <link>https://whhong-research.github.io/en/categories/image-processing-tools/</link>
-        <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
         
         <guid>https://whhong-research.github.io/en/categories/image-processing-tools/</guid>
         <description></description>
-        </item>
-        <item>
-        <title>Paper Reading</title>
-        <link>https://whhong-research.github.io/en/categories/paper-reading/</link>
-        <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/en/categories/paper-reading/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/categories/paper-reading/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Paper Reading" /&gt;</description>
         </item>
         
     </channel>

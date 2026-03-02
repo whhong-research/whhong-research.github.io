@@ -7,7 +7,365 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Mon, 24 Feb 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/en/categories/image-processing-tools/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 14 Mar 2025 16:46:00 +0800</lastBuildDate><atom:link href="https://whhong-research.github.io/en/categories/image-processing-tools/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SAM Crack Segmentation Experiments: Prompt Point Strategies and Performance Evaluation</title>
+        <link>https://whhong-research.github.io/en/p/sam-crack-segmentation-experiments-prompt-point-strategies-and-performance-evaluation/</link>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/sam-crack-segmentation-experiments-prompt-point-strategies-and-performance-evaluation/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png" alt="Featured image of post SAM Crack Segmentation Experiments: Prompt Point Strategies and Performance Evaluation" /&gt;&lt;h1 id=&#34;experiment-objectives-and-background&#34;&gt;Experiment Objectives and Background
+&lt;/h1&gt;&lt;p&gt;This experiment aims to explore the application of the Segment Anything Model (SAM) in crack image segmentation tasks, with a focus on investigating how different prompt point strategies affect segmentation quality. Through systematic testing of positive and negative points, we have summarized a series of practical optimization strategies.&lt;/p&gt;
+&lt;h1 id=&#34;prompt-point-strategy-experiments&#34;&gt;Prompt Point Strategy Experiments
+&lt;/h1&gt;&lt;h2 id=&#34;the-optimization-role-of-negative-points&#34;&gt;The Optimization Role of Negative Points
+&lt;/h2&gt;&lt;p&gt;In practical testing, when manually inputting relatively accurate crack prompt points, and when the crack clearly divides the image into two parts, using only positive points may cause SAM to incorrectly identify large road surface areas as segmentation targets. In such cases, adding two negative points in the mask region can significantly improve segmentation results and accurately identify the crack area.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key Finding&lt;/strong&gt;: Properly setting a small number of negative points can effectively constrain SAM&amp;rsquo;s segmentation range and significantly improve crack identification accuracy.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887.png&#34;
+	width=&#34;1387&#34;
+	height=&#34;1004&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887_hu_cc76eaf22298d20d.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887_hu_9f95b80d700802.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Negative Points Optimization Effect Comparison&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;138&#34;
+		data-flex-basis=&#34;331px&#34;
+	
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945.png&#34;
+	width=&#34;1490&#34;
+	height=&#34;1045&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945_hu_775a4fb7b8e452f7.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945_hu_38d51a4b70598989.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Negative Points Optimization Effect Comparison 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;impact-of-positive-point-distribution&#34;&gt;Impact of Positive Point Distribution
+&lt;/h2&gt;&lt;p&gt;When positive points fail to adequately cover the crack region, incomplete edge recognition occurs, leading to a large number of incorrect segmentations:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Optimization Recommendation&lt;/strong&gt;: The distribution of positive points should closely match the actual shape of the crack, ensuring complete coverage of the crack path.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392.png&#34;
+	width=&#34;1531&#34;
+	height=&#34;1093&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392_hu_235b94ebdcdf24e7.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392_hu_eb2c132fa05887d2.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Segmentation Issues Caused by Improper Positive Point Distribution&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917.png&#34;
+	width=&#34;1516&#34;
+	height=&#34;1081&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917_hu_e5efa5d3b71f3f9c.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917_hu_6c0afb1ef7ac8028.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Optimized Segmentation Effect&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;code-implementation-and-sampling-strategies&#34;&gt;Code Implementation and Sampling Strategies
+&lt;/h1&gt;&lt;h2 id=&#34;negative-point-sampling-methods&#34;&gt;Negative Point Sampling Methods
+&lt;/h2&gt;&lt;h3 id=&#34;random-sampling-strategy&#34;&gt;Random Sampling Strategy
+&lt;/h3&gt;&lt;p&gt;Random sampling selects points from the top 10% brightest regions in the difference image:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Calculate brightness threshold (take the top 10% brightest as threshold)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;threshold&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;percentile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;brightness&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Select points with brightness greater than threshold&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;bright_mask&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;brightness&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;threshold&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Get coordinates of qualified points&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;y_coords&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_coords&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bright_mask&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;skeleton-based-directional-sampling&#34;&gt;Skeleton-Based Directional Sampling
+&lt;/h3&gt;&lt;p&gt;This method calculates local skeleton direction and performs negative point sampling in directions perpendicular to the skeleton:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Calculate Gradient Using Sobel Operator&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;get_local_direction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;window_size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;try&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Extract local window&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;y1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;window_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;y2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;min&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;skeleton&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;window_size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;window_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;min&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;skeleton&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;window_size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Check window size&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y1&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;or&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;local_skeleton&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;skeleton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Check if local window is empty&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;local_skeleton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Calculate gradient using Sobel operator&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;gy&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ndimage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sobel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;local_skeleton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;gx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ndimage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sobel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;local_skeleton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Ensure relative coordinates are within valid range&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rel_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;min&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;local_skeleton&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;rel_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;min&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;local_skeleton&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Calculate local direction angle (radians)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rel_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rel_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e-10&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rel_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rel_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e-10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;angle&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arctan2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rel_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rel_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rel_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rel_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;angle&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;2. Perpendicular Direction Sampling&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Sample from directions perpendicular to the skeleton direction, filtering out points too close to the skeleton (distance set to 40 pixels, minimum skeleton distance set to 10 pixels):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Calculate unit vector in perpendicular direction&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;normal_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cos&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;direction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Rotate 90 degrees&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;normal_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;direction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# Rotate 90 degrees&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Add background points in both directions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;multiplier&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;distance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;distance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Calculate new coordinates&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;round&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;multiplier&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;normal_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;round&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;multiplier&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;normal_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Check if coordinates are within image bounds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;not&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;skeleton&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;skeleton&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Check distance to skeleton&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;get_distance_to_skeleton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;skeleton&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;min_skeleton_distance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;point_list&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;positive-negative-point-ratio-experiments-random-sampling&#34;&gt;Positive-Negative Point Ratio Experiments (Random Sampling)
+&lt;/h2&gt;&lt;p&gt;Through systematic experiments, the following conclusions were drawn:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Impact of Prompt Point Quantity&lt;/strong&gt;: Too many prompt points introduce noise and reduce segmentation accuracy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Value of Negative Points&lt;/strong&gt;: An appropriate amount of negative points can effectively clarify segmentation targets, performing better than using only positive points.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined.png&#34;
+	width=&#34;10240&#34;
+	height=&#34;2728&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined_hu_291bd0a05c4b6812.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined_hu_df9aa25213703a5e.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Positive-Negative Point Ratio Experiment Results 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;375&#34;
+		data-flex-basis=&#34;900px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Mask Region Limitations&lt;/strong&gt;: Even with negative points set, certain regions&amp;rsquo; masks may still be retained and cannot be completely removed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined.png&#34;
+	width=&#34;10240&#34;
+	height=&#34;2728&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined_hu_a60e78a13b3d086e.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined_hu_df30cc5acc78db3a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Mask Region Limitations&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;375&#34;
+		data-flex-basis=&#34;900px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Sampling Strategy Optimization&lt;/strong&gt;: Random sampling may cause sampling points to concentrate on one side; adjusting the brightness threshold (currently 10%) can improve distribution uniformity.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined.png&#34;
+	width=&#34;10240&#34;
+	height=&#34;2728&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined_hu_c4af6819c0daa32e.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined_hu_e62ce5a52124cca7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Sampling Distribution Issues&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;375&#34;
+		data-flex-basis=&#34;900px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;model-performance-comparison&#34;&gt;Model Performance Comparison
+&lt;/h1&gt;&lt;h2 id=&#34;differences-between-official-demo-and-local-implementation&#34;&gt;Differences Between Official Demo and Local Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;official-online-demo-effects&#34;&gt;Official Online Demo Effects
+&lt;/h3&gt;&lt;p&gt;In the online demo provided by Meta, SAM demonstrates excellent segmentation effects:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678.png&#34;
+	width=&#34;1454&#34;
+	height=&#34;957&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678_hu_e61080fdd272fed7.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678_hu_839bfe9f592be038.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Official Demo Effect 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;151&#34;
+		data-flex-basis=&#34;364px&#34;
+	
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016.png&#34;
+	width=&#34;1459&#34;
+	height=&#34;997&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016_hu_d728ce2f6f796c47.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016_hu_2b04d611a3a621fd.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Official Demo Effect 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;351px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;local-model-implementation-effects&#34;&gt;Local Model Implementation Effects
+&lt;/h3&gt;&lt;p&gt;However, when testing with the same prompt point configuration in the local model weights, the segmentation effect is significantly worse:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280.png&#34;
+	width=&#34;926&#34;
+	height=&#34;637&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280_hu_f81a05332538fdd8.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280_hu_82b208f52d06f4e.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Local Implementation Effect 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;348px&#34;
+	
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png&#34;
+	width=&#34;2048&#34;
+	height=&#34;682&#34;
+	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_1d6f8d317fda7ac0.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_812c503201c462da.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Local Implementation Effect 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;300&#34;
+		data-flex-basis=&#34;720px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;problem-analysis&#34;&gt;Problem Analysis
+&lt;/h3&gt;&lt;p&gt;After investigation, it was found that this issue is not isolated. Relevant GitHub Issue discussions are as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/762&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;facebookresearch/segment-anything#762&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/620&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;facebookresearch/segment-anything#620&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/169&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;facebookresearch/segment-anything#169&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Possible Causes&lt;/strong&gt;: The official demo may use different versions of model weights, post-processing optimizations, or additional inference strategies.&lt;/p&gt;
+&lt;h1 id=&#34;summary-and-recommendations&#34;&gt;Summary and Recommendations
+&lt;/h1&gt;&lt;h2 id=&#34;key-findings&#34;&gt;Key Findings
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Negative Point Strategy&lt;/strong&gt;: Reasonable use of negative points can effectively constrain SAM&amp;rsquo;s segmentation range and significantly improve crack identification accuracy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Positive Point Distribution&lt;/strong&gt;: Positive points should fully cover the crack region and match the actual shape of the crack.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sampling Optimization&lt;/strong&gt;: Skeleton-based directional sampling strategy outperforms random sampling and can generate more targeted negative points.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Point Quantity Balance&lt;/strong&gt;: The number of prompt points should be moderate; too many will introduce noise.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;practical-application-recommendations&#34;&gt;Practical Application Recommendations
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;In crack segmentation tasks, it is recommended to adopt a combination strategy of &amp;ldquo;small number of positive points + appropriate number of negative points&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Prioritize using skeleton-based directional negative point sampling methods&lt;/li&gt;
+&lt;li&gt;For complex crack morphologies, adopt a multi-point gradual refinement interaction approach&lt;/li&gt;
+&lt;li&gt;Pay attention to performance differences between local models and official demos, and perform post-processing optimization when necessary&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;future-research-directions&#34;&gt;Future Research Directions
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Explore intelligent strategies for adaptive negative point quantity and position&lt;/li&gt;
+&lt;li&gt;Study optimal prompt point configurations for different crack types (horizontal/vertical/mesh)&lt;/li&gt;
+&lt;li&gt;Combine traditional image processing methods with SAM for hybrid segmentation strategies&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques</title>
         <link>https://whhong-research.github.io/en/p/crack-diffusion-experiment/</link>
         <pubDate>Mon, 24 Feb 2025 16:46:00 +0800</pubDate>

@@ -270,7 +270,11 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#multiscale-approach">Multiscale approach</a></li>
+    <li><a href="#multiscale-approach">Multiscale approach</a>
+      <ul>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
     <li><a href="#trailing-edge-bondlines">Trailing edge bondlines</a>
       <ul>
         <li>
@@ -376,9 +380,16 @@
 <h2 id="multiscale-approach">Multiscale approach
 </h2><ul>
 <li>
+<p><strong>两条线路：</strong></p>
+<ul>
+<li>多尺度建模（挑战在于多尺度模型之间如何保持“一致性”）</li>
+<li>精细化的3D全尺寸模型（计算效率问题）</li>
+</ul>
+</li>
+<li>
 <p><strong>为什么需要使用多尺度模型来进行模拟</strong></p>
 <ul>
-<li>损伤区域需要使用较细的网格，例如对于后缘的粘合层脱粘，需要网格尺寸在毫米级别来捕获裂缝的简短应力场；而全尺度的叶片模型长度在100m尺度；（<strong>从计算效率，计算精度角度出发</strong>）</li>
+<li>损伤区域需要使用较细的网格，例如对于后缘的粘合层脱粘，需要网格尺寸在毫米级别来捕获裂缝的尖端应力场；而全尺度的叶片模型长度在100m尺度；（<strong>从计算效率，计算精度角度出发</strong>）</li>
 <li><strong>从建模的最终目的出发</strong>：如果只需要计算结构频率和计算挠度，一维梁模型就可以；而想要模拟损伤发展过程，子结构模型的精度仍然不足以进行捕获，而是需要从microscale尺度进行理解；“In general, we think that damage interaction and scale effects in fracture of composite structures are so complicated that they can only be understood on the microscale, i.e., by microscale experiments and micromechanical modelling”</li>
 </ul>
 </li>
@@ -399,6 +410,36 @@
 <p>“the output from a finer length scale model should be formulated in a sufficiently simple form such that it can be applied in a model at the coarser length scale.” 微观模型的输出应当以简单的形式表达，以便应用于大尺度模型中；</p>
 </li>
 </ul>
+<h3 id="example">Example
+</h3><ul>
+<li>研究复合材料中片轴层中的多裂纹疲劳损伤
+<ul>
+<li>子结构长度尺度：研究承受循环弯曲荷载的薄壁梁试样的损伤演化；</li>
+<li>宏观尺度：双轴循环加载的十字形试样，重点是双轴加载下的循环裂纹扩展、裂缝密度和刚度退化；</li>
+<li>微观尺度：单轴循环加载的层压板试样，重点是循环加载下横向裂纹的扩展速率的实验表征和建模；</li>
+</ul>
+</li>
+<li>各尺度之间的联系：
+<ul>
+<li>子结构长度尺度 vs 宏观尺度（十字形试样）：保持相同的双轴应变状态</li>
+<li>宏观尺度 vs 微观尺度（层压板）：保持相同的能量释放能（energy release rate）和模式混合度（mode mixity）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/3-s2.0-B9780128212882000138-f18-29-9780128212882.jpg"
+	width="298"
+	height="336"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/3-s2.0-B9780128212882000138-f18-29-9780128212882_hu_afafcaf90c855d7c.jpg 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/3-s2.0-B9780128212882000138-f18-29-9780128212882_hu_fe1b34529f663270.jpg 1024w"
+	loading="lazy"
+	
+		alt="3-s2.0-B9780128212882000138-f18-29-9780128212882"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="88"
+		data-flex-basis="212px"
+	
+></p>
 <h2 id="trailing-edge-bondlines">Trailing edge bondlines
 </h2><h4 id="background">Background
 </h4><p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png"
@@ -458,69 +499,61 @@
 </li>
 <li>
 <p>考虑重力和局部屈曲</p>
-<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910.png"
-	width="429"
-	height="104"
-	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_a86a433664790a4e.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_b37898d8a337511c.png 1024w"
+<p><img src="/image-20251014171356910.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="重力引起的edgewise stress表达式"
 	
 	
-		class="gallery-image" 
-		data-flex-grow="412"
-		data-flex-basis="990px"
-	
 ></p>
 </li>
 </ul>
-<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285.png"
-	width="865"
-	height="730"
-	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_af610227c79f32c4.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_608407a6b75f0e57.png 1024w"
+<p><img src="/image-20251014171430285.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="局部屈曲示意图"
 	
 	
-		class="gallery-image" 
-		data-flex-grow="118"
-		data-flex-basis="284px"
-	
 ></p>
-<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208.png"
-	width="941"
-	height="300"
-	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_a995a6ddfac52531.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_13c07ff6f7659673.png 1024w"
+<p><img src="/image-20251014171452208.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="局部屈曲导致的轴向力变化以及弯矩变化"
 	
 	
-		class="gallery-image" 
-		data-flex-grow="313"
-		data-flex-basis="752px"
-	
 ></p>
-<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585.png"
-	width="930"
-	height="186"
-	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_68365090760c83e2.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_6deb70eeac99877d.png 1024w"
+<p><img src="/image-20251014171519585.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="计算energe release rate"
 	
 	
-		class="gallery-image" 
-		data-flex-grow="500"
-		data-flex-basis="1200px"
-	
 ></p>
 <h4 id="fe-modelling">FE Modelling
 </h4><ul>
-<li>Abaqus， C3D8R，solid element</li>
-<li><strong>A 5m prismatic beam model</strong> from a 17m long Vindeby blade</li>
-<li>mesh size:
+<li>
+<p>VCCT模型操作教学：“https://www.youtube.com/watch?v=lMDYXt4CDm0”</p>
+</li>
+<li>
+<p>Abaqus， C3D8R，solid element</p>
+</li>
+<li>
+<p><strong>A 5m prismatic beam model</strong> from a 17m long Vindeby blade</p>
+</li>
+<li>
+<p>mesh size:</p>
 <ul>
 <li>25 * 22 * 6 mm for spar cap</li>
 <li>25 * 11 * 14 mm for sandwich panels</li>
@@ -528,8 +561,24 @@
 <li>Mesh size is chosen based on mesh sensitivitu analysis.</li>
 </ul>
 </li>
-<li>The virtual crack closure technique (VCCT)</li>
+<li>
+<p>The virtual crack closure technique (VCCT)</p>
+</li>
 </ul>
+<p><img src="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251022125136114.png"
+	width="811"
+	height="569"
+	srcset="/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251022125136114_hu_347ece900d7adbdf.png 480w, /p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251022125136114_hu_efb32cc864717971.png 1024w"
+	loading="lazy"
+	
+		alt="FEM叶片节段模型"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="342px"
+	
+></p>
 
 </section>
 
@@ -603,14 +652,14 @@
     
     <a href="/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/" class="series-link prev">
       <span class="link-label">← 上一篇</span>
-      <span class="link-title">TurbSim风场建模与OpenFast入流设置指南</span>
+      <span class="link-title">TurbSim风场建模与OpenFAST入流设置指南</span>
     </a>
     
 
     
-    <a href="/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" class="series-link next">
+    <a href="/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/" class="series-link next">
       <span class="link-label">下一篇 →</span>
-      <span class="link-title">IEC 61400-23叶片全尺寸疲劳测试标准解读</span>
+      <span class="link-title">IEC 61400-23 叶片全尺寸疲劳测试标准解读</span>
     </a>
     
   </div>
@@ -739,7 +788,7 @@
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post TurbSim风场建模与OpenFast入流设置指南"
+                        alt="Featured image of post TurbSim风场建模与OpenFAST入流设置指南"
                         
                         data-hash="md5-NYs9CsVjBIpCdigTa8BdvA==">
                 
@@ -747,7 +796,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">TurbSim风场建模与OpenFast入流设置指南</h2>
+            <h2 class="article-title">TurbSim风场建模与OpenFAST入流设置指南</h2>
         </div>
     </a>
 </article>
@@ -779,15 +828,15 @@
             
                 
 <article class="has-image">
-    <a href="/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/">
+    <a href="/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/">
         
         
             <div class="article-image">
-                <img src="/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.d44b1ed6f922c5c8205daa257f9df4af_hu_6e450390c066f03d.png" 
+                <img src="/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.d44b1ed6f922c5c8205daa257f9df4af_hu_6e450390c066f03d.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post IEC 61400-23叶片全尺寸疲劳测试标准解读"
+                        alt="Featured image of post IEC 61400-23 叶片全尺寸疲劳测试标准解读"
                         
                         data-hash="md5-1Ese1vkixcggXaolf530rw==">
                 
@@ -795,7 +844,7 @@
         
 
         <div class="article-details">
-            <h2 class="article-title">IEC 61400-23叶片全尺寸疲劳测试标准解读</h2>
+            <h2 class="article-title">IEC 61400-23 叶片全尺寸疲劳测试标准解读</h2>
         </div>
     </a>
 </article>

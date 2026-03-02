@@ -13,34 +13,33 @@
         <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
         
         <guid>https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png" alt="Featured image of post SAM裂缝分割实验：提示点策略与性能评估" /&gt;&lt;h1 id=&#34;实验图像&#34;&gt;实验图像
-&lt;/h1&gt;&lt;h2 id=&#34;添加负点来优化分割结果&#34;&gt;添加负点来优化分割结果
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;当人工输入较为完美的裂缝提示点，且裂缝将图像分为明显两部分时，只输入正点可能导致SAM错误将大面积的一部分路面作为识别结果；此时，如果添加两个负点在掩码区域，将会出现较好识别裂缝的情况：&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;猜想结论&lt;/strong&gt;：正确少量的负点能很大程度优化sam的分割结果；&lt;/p&gt;
+        <description>&lt;img src="https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png" alt="Featured image of post SAM裂缝分割实验：提示点策略与性能评估" /&gt;&lt;h1 id=&#34;实验目标与背景&#34;&gt;实验目标与背景
+&lt;/h1&gt;&lt;p&gt;本实验旨在探索Segment Anything Model（SAM）在裂缝图像分割任务中的应用效果，重点研究不同提示点（prompt points）策略对分割质量的影响。通过对正点（positive points）和负点（negative points）的系统性测试，总结出一系列实用的优化策略。&lt;/p&gt;
+&lt;h1 id=&#34;提示点策略实验&#34;&gt;提示点策略实验
+&lt;/h1&gt;&lt;h2 id=&#34;负点的优化作用&#34;&gt;负点的优化作用
+&lt;/h2&gt;&lt;p&gt;在实际测试中，当人工输入较为精准的裂缝提示点，且裂缝将图像明显分为两部分时，仅使用正点可能导致SAM错误地将大面积路面区域识别为分割目标。此时，通过在掩码区域添加两个负点，能够显著改善分割效果，准确识别出裂缝区域。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关键发现&lt;/strong&gt;：合理设置少量负点能够有效约束SAM的分割范围，显著提升裂缝识别的准确性。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887.png&#34;
 	width=&#34;1387&#34;
 	height=&#34;1004&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887_hu_cc76eaf22298d20d.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307132347887_hu_9f95b80d700802.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250307132347887&#34;
+		alt=&#34;负点优化效果对比&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;138&#34;
 		data-flex-basis=&#34;331px&#34;
 	
-&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945.png&#34;
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945.png&#34;
 	width=&#34;1490&#34;
 	height=&#34;1045&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945_hu_775a4fb7b8e452f7.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250307135852945_hu_38d51a4b70598989.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250307135852945&#34;
+		alt=&#34;负点优化效果对比2&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -48,36 +47,30 @@
 		data-flex-basis=&#34;342px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;正点的数量和分布影响&#34;&gt;正点的数量和分布影响
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;当正点未能较好地分布在裂缝上时，会出现裂缝边缘识别不全的情况，产生大量错误识别图案的情况：&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;猜想结论&lt;/strong&gt;：正点的覆盖区域尽量贴近裂缝形状&lt;/p&gt;
+&lt;h2 id=&#34;正点分布的影响&#34;&gt;正点分布的影响
+&lt;/h2&gt;&lt;p&gt;当正点未能充分覆盖裂缝区域时，会出现边缘识别不完整的问题，导致大量错误分割：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优化建议&lt;/strong&gt;：正点的分布应尽量贴合裂缝的实际形状，确保对裂缝路径的完整覆盖。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392.png&#34;
 	width=&#34;1531&#34;
 	height=&#34;1093&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392_hu_235b94ebdcdf24e7.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104636392_hu_eb2c132fa05887d2.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250312104636392&#34;
+		alt=&#34;正点分布不当导致的分割问题&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;140&#34;
 		data-flex-basis=&#34;336px&#34;
 	
-&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917.png&#34;
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917.png&#34;
 	width=&#34;1516&#34;
 	height=&#34;1081&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917_hu_e5efa5d3b71f3f9c.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250312104751917_hu_6c0afb1ef7ac8028.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250312104751917&#34;
+		alt=&#34;优化后的分割效果&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -85,61 +78,31 @@
 		data-flex-basis=&#34;336px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;github代码测试&#34;&gt;Github代码测试
-&lt;/h1&gt;&lt;h2 id=&#34;负点的采样策略&#34;&gt;负点的采样策略
-&lt;/h2&gt;&lt;h3 id=&#34;随机采样&#34;&gt;随机采样
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;随机采样将选择difference image中亮度最高的10%中的点&lt;/p&gt;
+&lt;h1 id=&#34;代码实现与采样策略&#34;&gt;代码实现与采样策略
+&lt;/h1&gt;&lt;h2 id=&#34;负点采样方法&#34;&gt;负点采样方法
+&lt;/h2&gt;&lt;h3 id=&#34;随机采样策略&#34;&gt;随机采样策略
+&lt;/h3&gt;&lt;p&gt;随机采样从差分图像（difference image）中选取亮度最高的前10%区域中的点：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 计算亮度阈值（比如取最亮的10%作为阈值）&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;threshold&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;percentile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;brightness&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 计算亮度阈值（取最亮的10%作为阈值）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;threshold&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;percentile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;brightness&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;90&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 选择亮度大于阈值的点&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;bright_mask&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;brightness&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;threshold&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 获取符合条件的点的坐标&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x_bright&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_coords&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bright_mask&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;y_bright&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_coords&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bright_mask&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 随机选择指定数量的点&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_bright&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num_points&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choice&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_bright&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num_points&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;selected_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_bright&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;selected_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_bright&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;selected_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_bright&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;selected_y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y_bright&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;y_coords&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x_coords&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bright_mask&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;根据提示正点的轮廓进行采样&#34;&gt;根据提示正点的轮廓进行采样
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;将计算局部骨架的方向，在垂直于骨架方法的区域使用负点进行采样；&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;使用sobel算子计算梯度&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&#34;基于骨架方向的采样&#34;&gt;基于骨架方向的采样
+&lt;/h3&gt;&lt;p&gt;该方法计算局部骨架方向，在垂直于骨架的方向上进行负点采样：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 使用Sobel算子计算梯度&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -210,9 +173,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;angle&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从垂直于angle的方向进行采样，并删去部分特别接近裂缝骨架的点: distance为设置的距离（40像素），min_skeleton_distance设置为10像素；&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;2. 垂直方向采样&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从垂直于骨架方向的角度进行采样，并过滤掉距离骨架过近的点（设置距离为40像素，最小骨架距离为10像素）：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
@@ -253,22 +215,19 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;point_list&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;正点和负点的比例影响随机采样&#34;&gt;正点和负点的比例影响（随机采样）
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;猜想1&lt;/strong&gt;：提示点的增多会带来噪声；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;猜想2&lt;/strong&gt;：少量负点能够明确需要分割的对象，效果优于0负点；&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;&lt;h2 id=&#34;正负点比例实验随机采样&#34;&gt;正负点比例实验（随机采样）
+&lt;/h2&gt;&lt;p&gt;通过系统性实验，得出以下结论：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;提示点数量的影响&lt;/strong&gt;：过多的提示点会引入噪声，降低分割精度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;负点的价值&lt;/strong&gt;：适量负点能够有效明确分割目标，效果优于仅使用正点。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined.png&#34;
 	width=&#34;10240&#34;
 	height=&#34;2728&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined_hu_291bd0a05c4b6812.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/001_combined_hu_df9aa25213703a5e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;001_combined&#34;
+		alt=&#34;正负点比例实验结果1&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -276,16 +235,16 @@
 		data-flex-basis=&#34;900px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;猜想3&lt;/strong&gt;：即使有些区域设置了负点，得出的掩码仍然不会剔除该区域；&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;掩码区域限制&lt;/strong&gt;：即使设置了负点，某些区域的掩码仍可能保留，无法完全剔除。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined.png&#34;
 	width=&#34;10240&#34;
 	height=&#34;2728&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined_hu_a60e78a13b3d086e.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/002_combined_hu_df30cc5acc78db3a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;002_combined&#34;
+		alt=&#34;掩码区域限制&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -293,16 +252,16 @@
 		data-flex-basis=&#34;900px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;弊端1&lt;/strong&gt;：随机采样可能会出现采样点大量落在单独一侧的情况，调整亮度阈值（当前为10%）可能会有所改善；&lt;/li&gt;
-&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;采样策略优化&lt;/strong&gt;：随机采样可能导致采样点集中于某一侧，调整亮度阈值（当前为10%）可改善分布均匀性。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined.png&#34;
 	width=&#34;10240&#34;
 	height=&#34;2728&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined_hu_c4af6819c0daa32e.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_combined_hu_e62ce5a52124cca7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;004_combined&#34;
+		alt=&#34;采样分布问题&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -310,29 +269,31 @@
 		data-flex-basis=&#34;900px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;官网demo和github代码实现效果存在差异&#34;&gt;官网demo和github代码实现效果存在差异
-&lt;/h2&gt;&lt;h3 id=&#34;官网上理想情况&#34;&gt;官网上理想情况
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678.png&#34;
+&lt;h1 id=&#34;模型效果对比&#34;&gt;模型效果对比
+&lt;/h1&gt;&lt;h2 id=&#34;官方demo与本地实现的差异&#34;&gt;官方Demo与本地实现的差异
+&lt;/h2&gt;&lt;h3 id=&#34;官方在线演示效果&#34;&gt;官方在线演示效果
+&lt;/h3&gt;&lt;p&gt;在Meta官方提供的在线演示中，SAM展现出优异的分割效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678.png&#34;
 	width=&#34;1454&#34;
 	height=&#34;957&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678_hu_e61080fdd272fed7.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310203741678_hu_839bfe9f592be038.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250310203741678&#34;
+		alt=&#34;官方Demo效果1&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;151&#34;
 		data-flex-basis=&#34;364px&#34;
 	
-&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016.png&#34;
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016.png&#34;
 	width=&#34;1459&#34;
 	height=&#34;997&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016_hu_d728ce2f6f796c47.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250310204013016_hu_2b04d611a3a621fd.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250310204013016&#34;
+		alt=&#34;官方Demo效果2&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -340,30 +301,29 @@
 		data-flex-basis=&#34;351px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;官方demo中识别效果好，几乎一致的提示点在本地模型权重中效果差；&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&#34;本地模型实现效果&#34;&gt;本地模型实现效果
+&lt;/h3&gt;&lt;p&gt;然而，使用相同的提示点配置在本地模型权重中测试时，分割效果明显较差：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280.png&#34;
 	width=&#34;926&#34;
 	height=&#34;637&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280_hu_f81a05332538fdd8.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/image-20250313185359280_hu_82b208f52d06f4e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250313185359280&#34;
+		alt=&#34;本地实现效果1&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;145&#34;
 		data-flex-basis=&#34;348px&#34;
 	
-&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png&#34;
+&gt;
+&lt;img src=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.png&#34;
 	width=&#34;2048&#34;
 	height=&#34;682&#34;
 	srcset=&#34;https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_1d6f8d317fda7ac0.png 480w, https://whhong-research.github.io/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15_hu_812c503201c462da.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;004_True10_conf58.15&#34;
+		alt=&#34;本地实现效果2&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -371,13 +331,37 @@
 		data-flex-basis=&#34;720px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h3 id=&#34;问题分析&#34;&gt;问题分析
+&lt;/h3&gt;&lt;p&gt;经过调研，发现该问题并非个例。相关GitHub Issue讨论如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/762&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/facebookresearch/segment-anything/issues/762&lt;/a&gt;&lt;/li&gt;
+    &gt;facebookresearch/segment-anything#762&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/620&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/facebookresearch/segment-anything/issues/620&lt;/a&gt;&lt;/li&gt;
+    &gt;facebookresearch/segment-anything#620&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/facebookresearch/segment-anything/issues/169&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/facebookresearch/segment-anything/issues/169&lt;/a&gt;&lt;/li&gt;
+    &gt;facebookresearch/segment-anything#169&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;可能原因&lt;/strong&gt;：官方Demo可能使用了不同版本的模型权重、后处理优化或额外的推理策略。&lt;/p&gt;
+&lt;h1 id=&#34;总结与建议&#34;&gt;总结与建议
+&lt;/h1&gt;&lt;h2 id=&#34;关键发现&#34;&gt;关键发现
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;负点策略&lt;/strong&gt;：合理使用负点能够有效约束SAM的分割范围，显著提升裂缝识别精度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;正点分布&lt;/strong&gt;：正点应充分覆盖裂缝区域，贴合裂缝实际形状。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;采样优化&lt;/strong&gt;：基于骨架方向的采样策略优于随机采样，能够生成更有针对性的负点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;点数平衡&lt;/strong&gt;：提示点数量需适中，过多会引入噪声。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实际应用建议&#34;&gt;实际应用建议
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在裂缝分割任务中，建议采用&amp;quot;少量正点+适量负点&amp;quot;的组合策略&lt;/li&gt;
+&lt;li&gt;优先使用基于骨架方向的负点采样方法&lt;/li&gt;
+&lt;li&gt;对于复杂裂缝形态，可采用多点逐步细化的交互方式&lt;/li&gt;
+&lt;li&gt;注意本地模型与官方Demo的性能差异，必要时进行后处理优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;后续研究方向&#34;&gt;后续研究方向
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;探索自适应负点数量与位置的智能策略&lt;/li&gt;
+&lt;li&gt;研究不同裂缝类型（横向/纵向/网状）的最优提示点配置&lt;/li&gt;
+&lt;li&gt;结合传统图像处理方法与SAM进行混合分割策略&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>

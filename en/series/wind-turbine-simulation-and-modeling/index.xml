@@ -7,7 +7,455 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Wed, 26 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/series/wind-turbine-simulation-and-modeling/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/series/wind-turbine-simulation-and-modeling/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IEC 61400-23: Interpretation of Full-Scale Blade Fatigue Testing Standard</title>
+        <link>https://whhong-research.github.io/en/p/iec-61400-23-interpretation-of-full-scale-blade-fatigue-testing-standard/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/iec-61400-23-interpretation-of-full-scale-blade-fatigue-testing-standard/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.png" alt="Featured image of post IEC 61400-23: Interpretation of Full-Scale Blade Fatigue Testing Standard" /&gt;&lt;h1 id=&#34;blade-fatigue-testing-standards&#34;&gt;Blade Fatigue Testing Standards
+&lt;/h1&gt;&lt;h2 id=&#34;iec-61400-232014-full-scale-structural-testing-of-rotor-blades&#34;&gt;IEC 61400-23:2014 Full-scale Structural Testing of Rotor Blades
+&lt;/h2&gt;&lt;h3 id=&#34;blade-coordinate-system-definition&#34;&gt;Blade Coordinate System Definition
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Blade Local Chordwise Coordinate System&lt;/strong&gt; (flapwise direction, edgewise direction)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576.png&#34;
+	width=&#34;776&#34;
+	height=&#34;539&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_a62c90abebf96c61.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_d4b1599bdfc27cbc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Blade Coordinate System&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;345px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Blade Global Coordinate System&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769.png&#34;
+	width=&#34;810&#34;
+	height=&#34;448&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_217a6be575c424f8.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_18fdf1956ed8ccd0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Blade Global Coordinate System&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;433px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;retesting-requirements-after-design-modifications&#34;&gt;Retesting Requirements After Design Modifications
+&lt;/h3&gt;&lt;p&gt;Generally, blade reinforcements or updates to areas with large safety margins do not require retesting. However, changes affecting blade load distribution require careful evaluation:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519.png&#34;
+	width=&#34;806&#34;
+	height=&#34;425&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_b4c090ae41592a6.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_d5aea3b80a962400.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Case Illustration for Retesting Requirements&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Typically No Retesting Required&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modification of blade tip geometry&lt;/li&gt;
+&lt;li&gt;Extension of partial fiber layers&lt;/li&gt;
+&lt;li&gt;Minor raw material adjustments (supplier changes may require specimen-level retesting)&lt;/li&gt;
+&lt;li&gt;Core material chamfer adjustments&lt;/li&gt;
+&lt;li&gt;Minor laminate adjustments for large laminates&lt;/li&gt;
+&lt;li&gt;Minor production process adjustments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Typically Retesting Required&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Airfoil change at critical test locations (e.g., maximum chord)&lt;/li&gt;
+&lt;li&gt;Shortening of partial fiber layers&lt;/li&gt;
+&lt;li&gt;Resin or fiber type change (e.g., glass to carbon fiber, polyester to epoxy resin)&lt;/li&gt;
+&lt;li&gt;Core material change with different Young&amp;rsquo;s modulus or shear modulus&lt;/li&gt;
+&lt;li&gt;Large-scale laminate modifications in sandwich structures&lt;/li&gt;
+&lt;li&gt;Production process change&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;test-region-selection&#34;&gt;Test Region Selection
+&lt;/h3&gt;&lt;p&gt;Test regions should include the following areas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Gradual Section Transition Region&lt;/strong&gt;: From blade root to locations where section properties change gradually&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calculated Weak Regions&lt;/strong&gt;: Areas where calculations show minimum reserve factors against buckling, strength, or fatigue life&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aerodynamic Brake Device Influence Region&lt;/strong&gt;: If the blade incorporates an aerodynamic braking device (or other blade systems), include the region incorporating this device, particularly where the structure is affected&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Consider cutting the blade tip before testing, as tip regions typically have large safety margins.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;test-procedure&#34;&gt;Test Procedure
+&lt;/h3&gt;&lt;p&gt;The standard test protocol includes the following phases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mass Property Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Weight measurement&lt;/li&gt;
+&lt;li&gt;Center of gravity determination&lt;/li&gt;
+&lt;li&gt;Natural frequency testing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Static Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verification of structural capacity under ultimate loads&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fatigue Loading Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simulation of cyclic loads under long-term operating conditions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Post-Fatigue Static Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluation of residual strength after fatigue damage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;safety-factors&#34;&gt;Safety Factors
+&lt;/h3&gt;&lt;p&gt;The following safety factors should be considered during design:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Material Factor&lt;/strong&gt;: Material property variability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Damage Consequence Factor&lt;/strong&gt;: Non-fail-safe or fail-safe design&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Factor&lt;/strong&gt;: Load prediction uncertainty&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;uncertainty-in-fatigue-formulas&#34;&gt;Uncertainty in Fatigue Formulas
+&lt;/h4&gt;&lt;p&gt;The fewer cycles required for fatigue testing, the greater the uncertainty. Recommended fatigue parameter uncertainty factors are shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196.png&#34;
+	width=&#34;700&#34;
+	height=&#34;215&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_1662b60ce0de2a83.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_21998d1f99f2a50.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Recommended Safety Factors for Different Cyclic Loads&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;325&#34;
+		data-flex-basis=&#34;781px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;key-points-for-fatigue-testing&#34;&gt;Key Points for Fatigue Testing
+&lt;/h3&gt;&lt;h4 id=&#34;load-amplification-limits&#34;&gt;Load Amplification Limits
+&lt;/h4&gt;&lt;p&gt;When amplifying fatigue loads to reduce test time, the following limits must be observed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maximum stress and strain must not exceed static strength or cause static damage/failure&lt;/li&gt;
+&lt;li&gt;Stress and strain must not be so large as to exceed the assumption of linear relationship between force and stress (e.g., buckling)&lt;/li&gt;
+&lt;li&gt;High-stress regions may generate internal heat&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;mean-load-requirements&#34;&gt;Mean Load Requirements
+&lt;/h4&gt;&lt;p&gt;The mean load applied during fatigue testing should be as close as possible to the mean load under operating conditions that are most severe for fatigue strength.&lt;/p&gt;
+&lt;h4 id=&#34;damage-assessment&#34;&gt;Damage Assessment
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;If the theoretical damage during fatigue testing (e.g., based on Miner&amp;rsquo;s rule) equals or exceeds the design theoretical damage, the location is considered adequately tested&lt;/li&gt;
+&lt;li&gt;Theoretical test damage can be evaluated by accumulation of damage from all partial tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;pass-criteria&#34;&gt;Pass Criteria
+&lt;/h4&gt;&lt;p&gt;A region that develops theoretical damage after being subjected to test loads equal to or exceeding target loads is considered to have passed the test. In principle, blade testing can continue until other regions reach equivalent damage levels, provided that stress redistribution due to damage has not occurred.&lt;/p&gt;
+&lt;h3 id=&#34;testing-requirements&#34;&gt;Testing Requirements
+&lt;/h3&gt;&lt;h4 id=&#34;measurement-uncertainty&#34;&gt;Measurement Uncertainty
+&lt;/h4&gt;&lt;p&gt;The following measurement uncertainties must be considered:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Magnitude, direction, and position of applied loads&lt;/li&gt;
+&lt;li&gt;Magnitude, direction, and position of displacements&lt;/li&gt;
+&lt;li&gt;Magnitude, direction, and position of measured strains&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;test-rig-stiffness&#34;&gt;Test Rig Stiffness
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Measured blade deflections must be corrected for deformation of the blade root fixture and test rig&lt;/li&gt;
+&lt;li&gt;For very stiff test rigs (contributing less than 1% to blade tip deflection), the influence of the test rig may be neglected&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;strain-measurement-requirements&#34;&gt;Strain Measurement Requirements
+&lt;/h4&gt;&lt;p&gt;Strain measurements should cover the following regions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Primary Load-Bearing Structures&lt;/strong&gt;: Spar caps and spar flanges, four cross-sections, longitudinal along the blade spanwise axis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Leading and Trailing Edge Regions&lt;/strong&gt;: Leading and trailing edges at maximum chord/half blade length, typically parallel to the blade edges&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Root and Web Regions&lt;/strong&gt;: Blade root region and web sections with calculated high strains; shear strain measurement also required (using strain rosettes)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Connection Bolts&lt;/strong&gt;: Tensile and bending strains at connection bolts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Reference Standard&lt;/strong&gt;: IEC 61400-23:2014 &lt;em&gt;Full-scale Structural Testing of Rotor Blades&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>TurbSim Wind Field Modeling and OpenFAST Inflow Setup Guide</title>
+        <link>https://whhong-research.github.io/en/p/turbsim-wind-field-modeling-and-openfast-inflow-setup-guide/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/turbsim-wind-field-modeling-and-openfast-inflow-setup-guide/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post TurbSim Wind Field Modeling and OpenFAST Inflow Setup Guide" /&gt;&lt;h1 id=&#34;input-parameters&#34;&gt;Input Parameters
+&lt;/h1&gt;&lt;h2 id=&#34;random-number-generation-parameters&#34;&gt;Random Number Generation Parameters
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Parameter&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Recommended Value&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RandSeed1&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Random seed generator, used with RandSeed2&lt;/td&gt;
+          &lt;td&gt;Set according to requirements&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RandSeed2&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Random number generator specification&lt;/td&gt;
+          &lt;td&gt;Recommended &amp;ldquo;&lt;strong&gt;RanLux&lt;/strong&gt;&amp;rdquo;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;output-format-parameters&#34;&gt;Output Format Parameters
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Parameter&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Options&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WrAdFF&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Output format specification, meets AeroDyn requirements&lt;/td&gt;
+          &lt;td&gt;&amp;ldquo;True&amp;rdquo; or &amp;ldquo;False&amp;rdquo;, outputs .bts file&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;time-parameters&#34;&gt;Time Parameters
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Parameter&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Recommended Value&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;TimeStep&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Time step, determines maximum frequency&lt;/td&gt;
+          &lt;td&gt;0.05 seconds (corresponds to 20Hz)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Analysis Time&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Simulation duration&lt;/td&gt;
+          &lt;td&gt;At least 600 seconds&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Usable Time&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Usable time&lt;/td&gt;
+          &lt;td&gt;Set to &amp;ldquo;All&amp;rdquo;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;grid-parameters&#34;&gt;Grid Parameters
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Parameter&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Notes&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;NumGrid_Z&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Z-direction grid points&lt;/td&gt;
+          &lt;td&gt;Integer greater than 1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;NumGrid_Y&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Y-direction grid points&lt;/td&gt;
+          &lt;td&gt;Odd number means center point falls on tower centerline&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HubHt&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Hub height (m)&lt;/td&gt;
+          &lt;td&gt;Reference height for grid positioning&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GridHeight&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Grid height&lt;/td&gt;
+          &lt;td&gt;1/2 of grid height should be less than HubHt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GridWidth&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Grid width&lt;/td&gt;
+          &lt;td&gt;Ensure blade rotation stays within grid range&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;iec-standard-parameters&#34;&gt;IEC Standard Parameters
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Parameter&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Options&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IECstandard&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;IEC standard type&lt;/td&gt;
+          &lt;td&gt;1: 61400-1, 2: 61400-2, 3: 61400-3 (offshore)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IECturbc&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Turbulence intensity class&lt;/td&gt;
+          &lt;td&gt;A (highest), B (default), C&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IEC_WindType&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;IEC turbulence model&lt;/td&gt;
+          &lt;td&gt;NTM (Normal Turbulence), ETM (Extreme Turbulence), NWM (Extreme Wind)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;openfast-common-errors-and-solutions&#34;&gt;OpenFAST Common Errors and Solutions
+&lt;/h1&gt;&lt;h2 id=&#34;1-blade-tower-collision&#34;&gt;1. Blade-Tower Collision
+&lt;/h2&gt;&lt;h3 id=&#34;problem-description&#34;&gt;Problem Description
+&lt;/h3&gt;&lt;p&gt;Blade collides with tower during simulation.&lt;/p&gt;
+&lt;h3 id=&#34;possible-causes-and-solutions&#34;&gt;Possible Causes and Solutions
+&lt;/h3&gt;&lt;h4 id=&#34;cause-1-improper-initial-pitch-angle-setting&#34;&gt;Cause 1: Improper Initial Pitch Angle Setting
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Problem&lt;/strong&gt;: Initial blade pitch angle set unreasonably, causing blades too close to tower&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solution&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Check &lt;code&gt;BlPitch&lt;/code&gt; parameter in &lt;code&gt;.fst&lt;/code&gt; file&lt;/li&gt;
+&lt;li&gt;Set reasonable initial pitch angle (typically 3-5 degrees)&lt;/li&gt;
+&lt;li&gt;Ensure all blades have consistent pitch angles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097.png&#34;
+	width=&#34;840&#34;
+	height=&#34;1194&#34;
+	srcset=&#34;https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097_hu_840df227b5d51aef.png 480w, https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097_hu_7e7448cca983ff2f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Initial Pitch Angle Setting&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;70&#34;
+		data-flex-basis=&#34;168px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;cause-2-tower-shadow-effect-parameter-issues&#34;&gt;Cause 2: Tower Shadow Effect Parameter Issues
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Problem&lt;/strong&gt;: Tower shadow effect calculation causes abnormal aerodynamic forces&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solution&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Check &lt;code&gt;TwrShadow&lt;/code&gt; and &lt;code&gt;TwrPotent&lt;/code&gt; settings in AeroDyn&lt;/li&gt;
+&lt;li&gt;Ensure tower geometry parameters are correct&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;cause-3-structural-model-problems&#34;&gt;Cause 3: Structural Model Problems
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Problem&lt;/strong&gt;: Unreasonable stiffness or mass distribution of blades or tower&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solution&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Check Blade and Tower property files&lt;/li&gt;
+&lt;li&gt;Verify modal frequencies are reasonable&lt;/li&gt;
+&lt;li&gt;Ensure mass distribution matches reality&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-numerical-instability&#34;&gt;2. Numerical Instability
+&lt;/h2&gt;&lt;h3 id=&#34;symptoms&#34;&gt;Symptoms
+&lt;/h3&gt;&lt;p&gt;Simulation diverges in short time, showing extremely large displacement or velocity values.&lt;/p&gt;
+&lt;h3 id=&#34;solutions&#34;&gt;Solutions
+&lt;/h3&gt;&lt;h4 id=&#34;check-time-step&#34;&gt;Check Time Step
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Reduce &lt;code&gt;DT&lt;/code&gt; time step (try 0.001 or smaller)&lt;/li&gt;
+&lt;li&gt;Ensure CFL condition is satisfied&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;check-numerical-damping&#34;&gt;Check Numerical Damping
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Adjust damping parameters in &lt;code&gt;CompElast&lt;/code&gt; or &lt;code&gt;CompSub&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add artificial damping to stabilize calculation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-wind-field-file-errors&#34;&gt;3. Wind Field File Errors
+&lt;/h2&gt;&lt;h3 id=&#34;symptoms-1&#34;&gt;Symptoms
+&lt;/h3&gt;&lt;p&gt;Prompt says wind field file format error or cannot read.&lt;/p&gt;
+&lt;h3 id=&#34;solutions-1&#34;&gt;Solutions
+&lt;/h3&gt;&lt;h4 id=&#34;check-turbsim-output&#34;&gt;Check TurbSim Output
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Confirm &lt;code&gt;.bts&lt;/code&gt; file is generated correctly&lt;/li&gt;
+&lt;li&gt;Check if file path is set correctly&lt;/li&gt;
+&lt;li&gt;Verify &lt;code&gt;WindType&lt;/code&gt; setting in InflowWind (should be 2 for .bts file)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;check-wind-field-parameter-matching&#34;&gt;Check Wind Field Parameter Matching
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Confirm TurbSim&amp;rsquo;s &lt;code&gt;HubHt&lt;/code&gt; matches OpenFAST&lt;/li&gt;
+&lt;li&gt;Check if &lt;code&gt;GridWidth&lt;/code&gt; and &lt;code&gt;GridHeight&lt;/code&gt; satisfy blade sweep range&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-controller-related-issues&#34;&gt;4. Controller-Related Issues
+&lt;/h2&gt;&lt;h3 id=&#34;symptoms-2&#34;&gt;Symptoms
+&lt;/h3&gt;&lt;p&gt;Control-related errors occur or turbine behavior is abnormal.&lt;/p&gt;
+&lt;h3 id=&#34;solutions-2&#34;&gt;Solutions
+&lt;/h3&gt;&lt;h4 id=&#34;check-discondll&#34;&gt;Check DISCON.dll
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Ensure controller DLL file path is correct&lt;/li&gt;
+&lt;li&gt;Verify controller parameter file (usually &lt;code&gt;DISCON.IN&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Check &lt;code&gt;DLL_FileName&lt;/code&gt; and &lt;code&gt;DLL_InFile&lt;/code&gt; settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;check-initial-conditions&#34;&gt;Check Initial Conditions
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Ensure initial rotational speed and pitch angle are within reasonable range&lt;/li&gt;
+&lt;li&gt;Check correspondence between generator torque and rotational speed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;debugging-suggestions&#34;&gt;Debugging Suggestions
+&lt;/h2&gt;&lt;h3 id=&#34;step-by-step-troubleshooting&#34;&gt;Step-by-Step Troubleshooting
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Simplify Model&lt;/strong&gt;: First test with rigid blades and fixed tower&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gradually Add Complexity&lt;/strong&gt;: Sequentially enable elastic blades, tower, controller&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Check Each Component&lt;/strong&gt;: Separately verify AeroDyn, ElastoDyn, InflowWind settings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;common-checklist&#34;&gt;Common Checklist
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; All input file paths are correct&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Geometric parameters are consistent (hub height, blade length, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Time step is appropriate&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Initial conditions are reasonable&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Wind field files are correctly generated and readable&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Controller parameters are set correctly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;reference-materials&#34;&gt;Reference Materials
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;OpenFAST Official Documentation: &lt;a class=&#34;link&#34; href=&#34;https://openfast.readthedocs.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://openfast.readthedocs.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NREL Forum: &lt;a class=&#34;link&#34; href=&#34;https://forums.nrel.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://forums.nrel.gov/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Issues Page: &lt;a class=&#34;link&#34; href=&#34;https://github.com/OpenFAST/openfast/issues&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/OpenFAST/openfast/issues&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This article is written based on OpenFAST v3.5.0 and TurbSim v2.0. Different versions may have parameter differences.&lt;/em&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Aeroelastic Modeling of Wind Turbine Blades: Parameterization Methods for AeroDyn Module</title>
         <link>https://whhong-research.github.io/en/p/aeroelastic-modeling-of-wind-turbine-blades-parameterization-methods-for-aerodyn-module/</link>
         <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>

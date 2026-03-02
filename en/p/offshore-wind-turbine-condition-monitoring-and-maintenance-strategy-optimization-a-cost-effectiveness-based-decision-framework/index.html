@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" Article Information: This article is a reading note of the paper &ldquo;A generic framework for the optimisation of maintenance strategies for offshore wind turbines&rdquo;. This study constructs a generic framework for optimizing maintenance strategies for offshore wind turbines, with particular focus on the synergistic application of SCADA systems and dedicated Condition Monitoring Systems (CMS).\nResearch Background and Core Questions Research Objectives This paper aims to address two key questions in offshore wind turbine operation and maintenance:\n">
+<title>Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework">
+<meta property='og:description' content=" Article Information: This article is a reading note of the paper &ldquo;A generic framework for the optimisation of maintenance strategies for offshore wind turbines&rdquo;. This study constructs a generic framework for optimizing maintenance strategies for offshore wind turbines, with particular focus on the synergistic application of SCADA systems and dedicated Condition Monitoring Systems (CMS).\nResearch Background and Core Questions Research Objectives This paper aims to address two key questions in offshore wind turbine operation and maintenance:\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='maintenance framework' /><meta property='article:tag' content='CBM' /><meta property='article:tag' content='health monitoring' /><meta property='article:tag' content='SCADA' /><meta property='article:tag' content='CMS' /><meta property='article:tag' content='maintenance optimization' /><meta property='article:published_time' content='2025-03-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.png' />
+<meta name="twitter:title" content="Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework">
+<meta name="twitter:description" content=" Article Information: This article is a reading note of the paper &ldquo;A generic framework for the optimisation of maintenance strategies for offshore wind turbines&rdquo;. This study constructs a generic framework for optimizing maintenance strategies for offshore wind turbines, with particular focus on the synergistic application of SCADA systems and dedicated Condition Monitoring Systems (CMS).\nResearch Background and Core Questions Research Objectives This paper aims to address two key questions in offshore wind turbine operation and maintenance:\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#research-objectives">Research Objectives</a></li>
+    <li><a href="#core-contributions">Core Contributions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#health-state-classification">Health State Classification</a></li>
+    <li><a href="#degradation-process-model">Degradation Process Model</a></li>
+    <li><a href="#other-assumptions">Other Assumptions</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1-corrective-maintenance">1. Corrective Maintenance</a></li>
+    <li><a href="#2-time-based-maintenance">2. Time-Based Maintenance</a></li>
+    <li><a href="#3-condition-based-maintenance-cbm">3. Condition-Based Maintenance (CBM)</a></li>
+    <li><a href="#maintenance-framework-system">Maintenance Framework System</a></li>
+    <li><a href="#om-strategy-combinations">O&amp;M Strategy Combinations</a>
+      <ul>
+        <li><a href="#five-om-strategies">Five O&amp;M Strategies</a></li>
+        <li><a href="#four-monitoring-system-configurations">Four Monitoring System Configurations</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#system-degradation-model-architecture">System Degradation Model Architecture</a></li>
+    <li><a href="#detection-models">Detection Models</a>
+      <ul>
+        <li><a href="#dedicated-cms-detection-model">Dedicated CMS Detection Model</a></li>
+        <li><a href="#scada-based-cms">SCADA-based CMS</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#maintenance-costs">Maintenance Costs</a></li>
+    <li><a href="#maintenance-process">Maintenance Process</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#wind-turbine-service-life-simulation">Wind Turbine Service Life Simulation</a></li>
+    <li><a href="#simulation-summary">Simulation Summary</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#wind-turbine-availability">Wind Turbine Availability</a>
+      <ul>
+        <li><a href="#key-findings">Key Findings</a></li>
+        <li><a href="#dataset-a-results">Dataset A Results</a></li>
+        <li><a href="#dataset-b-results">Dataset B Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#cost-to-availability-ratio-coa">Cost to Availability Ratio (COA)</a>
+      <ul>
+        <li><a href="#dataset-a-results-1">Dataset A Results</a></li>
+        <li><a href="#dataset-b-results-1">Dataset B Results</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#main-conclusions">Main Conclusions</a></li>
+    <li><a href="#engineering-practice-recommendations">Engineering Practice Recommendations</a></li>
+    <li><a href="#future-research-directions">Future Research Directions</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/">
+                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1_hu_ed9ee6c2262e3ff5.png"
+                        srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1_hu_ed9ee6c2262e3ff5.png 800w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1_hu_336d420803f5a094.png 1600w"
+                        width="800" 
+                        height="374" 
+                        loading="lazy"
+                        alt="Featured image of post Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                Paper Reading
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/">Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 03, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p><strong>Article Information</strong>: This article is a reading note of the paper <em>&ldquo;A generic framework for the optimisation of maintenance strategies for offshore wind turbines&rdquo;</em>. This study constructs a generic framework for optimizing maintenance strategies for offshore wind turbines, with particular focus on the synergistic application of SCADA systems and dedicated Condition Monitoring Systems (CMS).</p>
+</blockquote>
+<h1 id="research-background-and-core-questions">Research Background and Core Questions
+</h1><h2 id="research-objectives">Research Objectives
+</h2><p>This paper aims to address two key questions in offshore wind turbine operation and maintenance:</p>
+<ol>
+<li>
+<p><strong>Feasibility of Monitoring Systems</strong>: Can SCADA systems in wind farms serve as a viable alternative to dedicated Condition Monitoring Systems (CMS)?</p>
+</li>
+<li>
+<p><strong>Integrated Optimization Strategy</strong>: How can CMS be combined with O&amp;M strategies to maximize the financial benefits of Offshore Wind Turbines (OWTs)?</p>
+</li>
+</ol>
+<h2 id="core-contributions">Core Contributions
+</h2><p>This research establishes a <strong>comprehensive simulation framework</strong> capable of:</p>
+<ul>
+<li>Simulating the degradation process of wind turbine components</li>
+<li>Evaluating the detection capabilities of different monitoring systems</li>
+<li>Optimizing the cost-effectiveness ratio of maintenance strategies</li>
+</ul>
+<hr>
+<h1 id="basic-model-assumptions">Basic Model Assumptions
+</h1><h2 id="health-state-classification">Health State Classification
+</h2><p>The research divides the health state of each subsystem into <strong>four levels</strong>:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">State Level</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">O&amp;M Impact</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Normal</td>
+          <td style="text-align: left">No faults</td>
+          <td style="text-align: left">Normal operation</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Minor Fault</td>
+          <td style="text-align: left">Minor defects exist</td>
+          <td style="text-align: left">Allowed to continue operation</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Critical Fault</td>
+          <td style="text-align: left">Serious defects exist</td>
+          <td style="text-align: left">Can still operate, but needs attention</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Failure</td>
+          <td style="text-align: left">Complete failure</td>
+          <td style="text-align: left">Triggers shutdown</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><strong>Key Assumptions</strong>:</p>
+<ul>
+<li>In minor fault and critical fault states, the subsystem is still allowed to operate</li>
+<li>Critical faults are more easily detected by CMS</li>
+<li>Different components have different false alarm rates at different stages of fault development</li>
+<li>Any subsystem failure will trigger wind turbine shutdown</li>
+</ul>
+<h2 id="degradation-process-model">Degradation Process Model
+</h2><ul>
+<li>The degradation process of each subsystem follows the <strong>Weibull Distribution</strong></li>
+<li>Parameters of the Weibull Distribution are derived from publicly available failure rate data in the literature</li>
+</ul>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803.png"
+	width="874"
+	height="471"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803_hu_d6169eec14c02c29.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803_hu_f329c832a8019a0b.png 1024w"
+	loading="lazy"
+	
+		alt="Failure Rate Data"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<h2 id="other-assumptions">Other Assumptions
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Parameter</th>
+          <th style="text-align: left">Setting</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Wind Turbine Service Life</td>
+          <td style="text-align: left">20 years</td>
+          <td style="text-align: left">Standard design life</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Post-repair State</td>
+          <td style="text-align: left">&ldquo;as good as new&rdquo;</td>
+          <td style="text-align: left">Complete repair assumption</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h1 id="om-strategy-system">O&amp;M Strategy System
+</h1><h2 id="1-corrective-maintenance">1. Corrective Maintenance
+</h2><p><strong>Definition</strong>: Maintenance performed after a substructure has completely failed.</p>
+<p><strong>Characteristics</strong>:</p>
+<ul>
+<li>Passive responsive maintenance</li>
+<li>Usually highest cost (including downtime losses and emergency repair costs)</li>
+<li>Suitable for non-critical components or situations where failure consequences are not serious</li>
+</ul>
+<h2 id="2-time-based-maintenance">2. Time-Based Maintenance
+</h2><p><strong>Definition</strong>: Maintenance performed according to predetermined time intervals.</p>
+<p><strong>Classification</strong>:</p>
+<ul>
+<li><strong>Basic Service (BS)</strong>: Discover and fix common, easy-to-repair but difficult-to-monitor problems</li>
+<li><strong>Advanced Service (AS)</strong>: Comprehensive inspection of all structural components</li>
+</ul>
+<p><strong>Optimization Direction</strong>: Shortening the time interval between adjacent AS can improve wind turbine availability, but is still not as effective as using a monitoring system.</p>
+<h2 id="3-condition-based-maintenance-cbm">3. Condition-Based Maintenance (CBM)
+</h2><p><strong>Definition</strong>: Maintenance based on the actual health state of the wind turbine.</p>
+<p><strong>Core Elements</strong>:</p>
+<ul>
+<li>Relies on CMS fault detection capability</li>
+<li>Real-time assessment of equipment health status</li>
+<li>Intervention before failure occurs</li>
+</ul>
+<p><strong>Effectiveness</strong>: Depends on CMS detection accuracy, response speed, and timeliness of maintenance decisions.</p>
+<h2 id="maintenance-framework-system">Maintenance Framework System
+</h2><p>The research defines three maintenance levels:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Maintenance Level</th>
+          <th style="text-align: left">Corresponding Fault Type</th>
+          <th style="text-align: left">Maintenance Content</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Maintenance 1</td>
+          <td style="text-align: left">Minor Fault</td>
+          <td style="text-align: left">Repair minor defects, prevent deterioration</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Maintenance 2</td>
+          <td style="text-align: left">Critical Fault</td>
+          <td style="text-align: left">Repair serious defects, restore function</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Maintenance 3</td>
+          <td style="text-align: left">Complete Failure</td>
+          <td style="text-align: left">Comprehensive repair or component replacement</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843.png"
+	width="1376"
+	height="824"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843_hu_d74ad046dee78bd1.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843_hu_51a1a938e8222f16.png 1024w"
+	loading="lazy"
+	
+		alt="Maintenance Framework"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<h2 id="om-strategy-combinations">O&amp;M Strategy Combinations
+</h2><p>The research designs <strong>five different O&amp;M strategies</strong>, combined with <strong>four monitoring system configurations</strong>:</p>
+<h3 id="five-om-strategies">Five O&amp;M Strategies
+</h3><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738.png"
+	width="989"
+	height="226"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738_hu_37f34ea708fa176a.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738_hu_d64c41b267ae55eb.png 1024w"
+	loading="lazy"
+	
+		alt="O&M Strategy Formulation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="437"
+		data-flex-basis="1050px"
+	
+></p>
+<h3 id="four-monitoring-system-configurations">Four Monitoring System Configurations
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Configuration</th>
+          <th style="text-align: left">Description</th>
+          <th style="text-align: left">Characteristics</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">No Monitoring System</td>
+          <td style="text-align: left">Only relies on periodic inspections and post-failure repairs</td>
+          <td style="text-align: left">Lowest cost, but highest risk</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SCADA</td>
+          <td style="text-align: left">Utilizes existing wind turbine monitoring and data acquisition systems</td>
+          <td style="text-align: left">Low cost, but limited detection capability</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">CMS</td>
+          <td style="text-align: left">Dedicated condition monitoring system</td>
+          <td style="text-align: left">Strong detection capability, but higher cost</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SCADA+CMS</td>
+          <td style="text-align: left">Two systems working synergistically</td>
+          <td style="text-align: left">Comprehensive advantages, strongest detection capability</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h1 id="degradation-and-detection-models">Degradation and Detection Models
+</h1><h2 id="system-degradation-model-architecture">System Degradation Model Architecture
+</h2><p>The research adopts <strong>Petri Nets</strong> to model the system degradation process:</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353.png"
+	width="662"
+	height="851"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353_hu_eb98ae57232d80ea.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353_hu_e3f7321bfecb8599.png 1024w"
+	loading="lazy"
+	
+		alt="System Petri Net"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="77"
+		data-flex-basis="186px"
+	
+></p>
+<p>Weibull Distribution parameter settings:</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715.png"
+	width="916"
+	height="259"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715_hu_2a43ab72ff4b1e7f.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715_hu_1128ff5c7c73cdb0.png 1024w"
+	loading="lazy"
+	
+		alt="Weibull Distribution Parameters"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="353"
+		data-flex-basis="848px"
+	
+></p>
+<h2 id="detection-models">Detection Models
+</h2><h3 id="dedicated-cms-detection-model">Dedicated CMS Detection Model
+</h3><p>Overall framework is as follows:</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860.png"
+	width="746"
+	height="709"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860_hu_d82ae12e1f379137.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860_hu_ee81c54a93f88e4b.png 1024w"
+	loading="lazy"
+	
+		alt="Detection Model Overall Framework"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="105"
+		data-flex-basis="252px"
+	
+></p>
+<p><strong>Model Components</strong>:</p>
+<ol>
+<li>
+<p><strong>Hardware Health Status Simulation</strong> (considering sensor failure probability):</p>
+<ul>
+<li>C1: Probability that the sensor detects system faults</li>
+<li>C2: Probability of sensor damage</li>
+</ul>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443.png"
+	width="420"
+	height="445"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443_hu_7bc7812685a48c0e.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443_hu_f7de2e100660d5c9.png 1024w"
+	loading="lazy"
+	
+		alt="Part-one"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="94"
+		data-flex-basis="226px"
+	
+></p>
+</li>
+<li>
+<p><strong>Data Acquisition System (DAQ) Fault Simulation</strong>:</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644.png"
+	width="467"
+	height="56"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644_hu_a5ca8cd46a93cc33.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644_hu_e8ea4ad49038fe11.png 1024w"
+	loading="lazy"
+	
+		alt="DAQ System Fault Simulation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="833"
+		data-flex-basis="2001px"
+	
+></p>
+</li>
+<li>
+<p><strong>Fault Warning Signals and Fault Type Probabilities</strong>:</p>
+<ul>
+<li>Normal : Minor Fault : Critical Fault = 0.4 : 0.5 : 0.1</li>
+</ul>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506.png"
+	width="339"
+	height="279"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506_hu_c94ebc6ba296764d.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506_hu_71cd851464535c2a.png 1024w"
+	loading="lazy"
+	
+		alt="Warning Signals and Corresponding Fault Type Probabilities"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="121"
+		data-flex-basis="291px"
+	
+></p>
+</li>
+</ol>
+<h3 id="scada-based-cms">SCADA-based CMS
+</h3><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147.png"
+	width="821"
+	height="460"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147_hu_ab7719dbc3a60c41.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147_hu_3c7dcc4cd3fe31f3.png 1024w"
+	loading="lazy"
+	
+		alt="CMS &#43; SCADA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="428px"
+	
+></p>
+<ul>
+<li>Probability of Detection: Directly derived through assumptions</li>
+</ul>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580.png"
+	width="477"
+	height="209"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580_hu_791155ca5620c503.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580_hu_bdd4dff88bab3970.png 1024w"
+	loading="lazy"
+	
+		alt="Probability of Detection"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="228"
+		data-flex-basis="547px"
+	
+></p>
+<hr>
+<h1 id="repair-models">Repair Models
+</h1><h2 id="maintenance-costs">Maintenance Costs
+</h2><p>Vessel charter costs required for different faults:</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375.png"
+	width="495"
+	height="380"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375_hu_89d8083601c20468.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375_hu_cb98617d2e84aeee.png 1024w"
+	loading="lazy"
+	
+		alt="Vessel Charter Costs for Different Faults"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="312px"
+	
+></p>
+<h2 id="maintenance-process">Maintenance Process
+</h2><p>Time node definitions in the maintenance process:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Phase</th>
+          <th style="text-align: left">Code</th>
+          <th style="text-align: left">Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Fault Detection to Repair Order</td>
+          <td style="text-align: left">M1</td>
+          <td style="text-align: left">Time from fault detection to repair order issuance</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Maintenance Planning Meeting</td>
+          <td style="text-align: left">M2</td>
+          <td style="text-align: left">Time to arrange meeting to formulate maintenance plan</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Plan Formulation</td>
+          <td style="text-align: left">M3</td>
+          <td style="text-align: left">Time to formulate detailed maintenance plan</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Resource Preparation</td>
+          <td style="text-align: left">M4+M5</td>
+          <td style="text-align: left">Time to charter vessel, dispatch personnel, prepare maintenance equipment</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Spare Parts Call</td>
+          <td style="text-align: left">M6</td>
+          <td style="text-align: left">Time to activate spare parts if available (much shorter than M5)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Departure Preparation</td>
+          <td style="text-align: left">M7</td>
+          <td style="text-align: left">Maintenance vessel preparation for departure</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Transport to Site</td>
+          <td style="text-align: left">M8/M9</td>
+          <td style="text-align: left">Time for transport vessel to reach site, M9 considers weather factors (waiting for suitable weather window)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Maintenance Implementation</td>
+          <td style="text-align: left">M11</td>
+          <td style="text-align: left">Time required for maintenance operations</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918.png"
+	width="799"
+	height="439"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918_hu_598f43dee14409c4.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918_hu_716ae04bf1cd5df1.png 1024w"
+	loading="lazy"
+	
+		alt="Maintenance Process"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="436px"
+	
+></p>
+<p>Related parameters in the repair model:</p>
+<p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196.png"
+	width="991"
+	height="349"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196_hu_d0cda188608c9bf3.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196_hu_67afde48e95ffd20.png 1024w"
+	loading="lazy"
+	
+		alt="Related Parameters in Repair Model"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="283"
+		data-flex-basis="681px"
+	
+></p>
+<hr>
+<h1 id="simulation-process-and-service-life-simulation">Simulation Process and Service Life Simulation
+</h1><h2 id="wind-turbine-service-life-simulation">Wind Turbine Service Life Simulation
+</h2><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165.png"
+	width="822"
+	height="729"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165_hu_7aa9a22bbc12cc34.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165_hu_754d519d7a6adb95.png 1024w"
+	loading="lazy"
+	
+		alt="Service Life Simulation"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="270px"
+	
+></p>
+<h2 id="simulation-summary">Simulation Summary
+</h2><ol>
+<li><strong>Parameter Sampling</strong>: Sample all random variables to generate parameters</li>
+<li><strong>Single Turbine Simulation</strong>: Execute all above processes for one turbine until reaching service life</li>
+<li><strong>Iterative Convergence</strong>: Repeat iterations until convergence (converges to stable values after 30,000 iterations, all simulations performed 50,000 iterations)</li>
+</ol>
+<hr>
+<h1 id="simulation-results-and-performance-indicators">Simulation Results and Performance Indicators
+</h1><h2 id="wind-turbine-availability">Wind Turbine Availability
+</h2><h3 id="key-findings">Key Findings
+</h3><ul>
+<li><strong>Shortening AS Intervals</strong>: Shortening adjacent Advanced Service (AS) time intervals can improve wind turbine availability, but is still not as effective as using any monitoring system</li>
+<li><strong>Monitoring System Advantages</strong>: Using SCADA or CMS monitoring systems can significantly improve availability</li>
+<li><strong>Dual System Effects</strong>: When performing frequent AS, combining two monitoring systems may lead to decreased availability, because the downtime for repairing the turbine after damage detection becomes longer</li>
+</ul>
+<h3 id="dataset-a-results">Dataset A Results
+</h3><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652.png"
+	width="791"
+	height="419"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652_hu_4897ec5c8a45afb3.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652_hu_17cffc26ddcafee.png 1024w"
+	loading="lazy"
+	
+		alt="Wind Turbine Availability Under Different Maintenance Strategies-DatasetA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="453px"
+	
+></p>
+<h3 id="dataset-b-results">Dataset B Results
+</h3><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402.png"
+	width="766"
+	height="434"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402_hu_727c7ec9434883fc.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402_hu_9e5b466488bbd9f1.png 1024w"
+	loading="lazy"
+	
+		alt="Wind Turbine Availability Under Different Maintenance Strategies-DatasetB"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="176"
+		data-flex-basis="423px"
+	
+></p>
+<h2 id="cost-to-availability-ratio-coa">Cost to Availability Ratio (COA)
+</h2><p><strong>COA Definition</strong>: The ratio of maintenance cost to availability, measuring the maintenance cost required per unit of availability.</p>
+<h3 id="dataset-a-results-1">Dataset A Results
+</h3><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188.png"
+	width="762"
+	height="435"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188_hu_9e02281951f7ffa.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188_hu_510da10a8a67bdab.png 1024w"
+	loading="lazy"
+	
+		alt="COA Under Different Maintenance Strategies-DatasetA"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<h3 id="dataset-b-results-1">Dataset B Results
+</h3><p><img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729.png"
+	width="771"
+	height="467"
+	srcset="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729_hu_adca78140fcd7820.png 480w, /p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729_hu_ef7ff15c599e13d9.png 1024w"
+	loading="lazy"
+	
+		alt="COA Under Different Maintenance Strategies-DatasetB"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="396px"
+	
+></p>
+<hr>
+<h1 id="research-conclusions-and-practical-implications">Research Conclusions and Practical Implications
+</h1><h2 id="main-conclusions">Main Conclusions
+</h2><ol>
+<li>
+<p><strong>Value of Monitoring Systems</strong>: Both dedicated CMS and SCADA systems can significantly improve wind turbine availability, but SCADA, as a lower-cost alternative, has considerable economic benefits</p>
+</li>
+<li>
+<p><strong>Maintenance Strategy Optimization</strong>: Condition-Based Maintenance (CBM) combined with appropriate monitoring systems can maximize availability while controlling costs</p>
+</li>
+<li>
+<p><strong>System Synergy Effects</strong>: The synergistic use of SCADA and CMS may produce diminishing marginal returns in some cases, requiring trade-offs between additional detection capabilities and downtime costs</p>
+</li>
+<li>
+<p><strong>Cost-Effectiveness Balance</strong>: COA indicators show that the optimal strategy is not always the most advanced monitoring system, but rather the best balance point between cost and benefit</p>
+</li>
+</ol>
+<h2 id="engineering-practice-recommendations">Engineering Practice Recommendations
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Application Scenario</th>
+          <th style="text-align: left">Recommended Strategy</th>
+          <th style="text-align: left">Rationale</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">New Wind Farm</td>
+          <td style="text-align: left">CMS + CBM</td>
+          <td style="text-align: left">Maximizing lifecycle benefits</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Existing Wind Farm Retrofit</td>
+          <td style="text-align: left">SCADA Upgrade + Targeted CMS</td>
+          <td style="text-align: left">Balancing cost control and benefits</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Budget-Constrained Scenarios</td>
+          <td style="text-align: left">Optimized SCADA Algorithms + Periodic Maintenance</td>
+          <td style="text-align: left">Minimal input for considerable returns</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">High-Risk Environments</td>
+          <td style="text-align: left">Complete CMS + Dual Monitoring</td>
+          <td style="text-align: left">Ensuring reliability and safety</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="future-research-directions">Future Research Directions
+</h2><ol>
+<li><strong>Machine Learning Integration</strong>: Incorporating AI algorithms into SCADA data analysis to improve fault prediction accuracy</li>
+<li><strong>Digital Twin Applications</strong>: Building digital twin models for wind turbines to achieve real-time status simulation and prediction</li>
+<li><strong>Multi-Wind Farm Collaboration</strong>: Researching wind farm-level centralized monitoring and maintenance resource optimization scheduling</li>
+<li><strong>Full Lifecycle Cost Models</strong>: Establishing more comprehensive LCOE and maintenance cost correlation models</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/maintenance-framework/">Maintenance Framework</a>
+        
+            <a href="/en/tags/cbm/">CBM</a>
+        
+            <a href="/en/tags/health-monitoring/">Health Monitoring</a>
+        
+            <a href="/en/tags/scada/">SCADA</a>
+        
+            <a href="/en/tags/cms/">CMS</a>
+        
+            <a href="/en/tags/maintenance-optimization/">Maintenance Optimization</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">O&amp;M Decision and Risk Management</h4>
+    <span class="series-progress">第 2 篇，共 1 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.b6ac8a4e2dc423f11ba73614958adb9b_hu_e4268111de6fcf60.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Discrete Bayesian Network for Operation and Maintenance Planning"
+                        
+                        data-hash="md5-tqyKTi3EI/EbpzYUlYrbmw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Discrete Bayesian Network for Operation and Maintenance Planning</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/crack-diffusion-paper-reading/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-paper-reading/1.42f81beb1fbd6930a80b4f0a26b2f740_hu_176c61a1e7b710d7.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework"
+                        data-key="crack-diffusion-paper-reading" 
+                        data-hash="md5-Qvgb6x&#43;9aTCoC08KJrL3QA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

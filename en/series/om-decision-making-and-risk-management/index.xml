@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>OM Decision Making and Risk Management on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/series/om-decision-making-and-risk-management/</link>
+        <description>Recent content in OM Decision Making and Risk Management on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Mon, 27 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/series/om-decision-making-and-risk-management/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty</title>
+        <link>https://whhong-research.github.io/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/</guid>
+        <description>&lt;h1 id=&#34;paper-review-multi-objective-maintenance-strategy-optimization-for-offshore-wind-farms-considering-uncertainty&#34;&gt;Paper Review: Multi-Objective Maintenance Strategy Optimization for Offshore Wind Farms Considering Uncertainty
+&lt;/h1&gt;&lt;h2 id=&#34;li-m-jiang-x-carroll-j--negenborn-r-r-2022-a-multi-objective-maintenance-strategy-optimization-framework-for-offshore-wind-farms-considering-uncertainty-applied-energy-321-119284&#34;&gt;Li, M., Jiang, X., Carroll, J., &amp;amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. &lt;em&gt;Applied Energy&lt;/em&gt;, &lt;em&gt;321&lt;/em&gt;, 119284. &lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.1016/j.apenergy.2022.119284&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://doi.org/10.1016/j.apenergy.2022.119284&lt;/a&gt;
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h2 id=&#34;research-background&#34;&gt;Research Background
+&lt;/h2&gt;&lt;p&gt;Offshore wind farm operation and maintenance (O&amp;amp;M) faces unique challenges. Research indicates that &lt;strong&gt;O&amp;amp;M costs account for 14%-30% of total life cycle costs (LCC)&lt;/strong&gt;, while the offshore environment significantly reduces turbine availability—&lt;strong&gt;offshore wind turbine availability may drop to as low as 60%-70%&lt;/strong&gt;. Therefore, developing efficient O&amp;amp;M strategies is crucial for reducing offshore wind energy costs.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;literature-review&#34;&gt;Literature Review
+&lt;/h2&gt;&lt;h3 id=&#34;traditional-maintenance-strategies&#34;&gt;Traditional Maintenance Strategies
+&lt;/h3&gt;&lt;p&gt;The wind energy industry currently employs two main traditional maintenance strategies:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Strategy Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Corrective Maintenance&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Repairs performed only after turbine failure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Preventive Maintenance&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Scheduled maintenance conducted at fixed intervals&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;These strategies remain mainstream in the industry but suffer from efficiency limitations.&lt;/p&gt;
+&lt;h3 id=&#34;opportunistic-maintenance&#34;&gt;Opportunistic Maintenance
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Core Concept&lt;/strong&gt;: Performing maintenance on one component creates an &amp;ldquo;opportunity window&amp;rdquo; that can be leveraged to simultaneously repair other qualified components within the same wind farm.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Characteristics of Existing Models&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Decision variables are typically set as maintenance thresholds related to component reliability or mean time to failure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Research Gap 1&lt;/strong&gt;: Existing models do not connect maintenance thresholds with actual component condition
+&lt;ul&gt;
+&lt;li&gt;Condition monitoring techniques can collect diagnostic signals reflecting key component structural health&lt;/li&gt;
+&lt;li&gt;Remaining useful life prediction models can assist decision-makers in performing predictive maintenance based on future component states&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uncertainty-factors&#34;&gt;Uncertainty Factors
+&lt;/h3&gt;&lt;p&gt;Offshore wind O&amp;amp;M faces multiple uncertainties:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Uncertainty Sources in Life Cycle O&amp;amp;M Framework&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Statistical uncertainty in component reliability estimation&lt;/li&gt;
+&lt;li&gt;Maintenance accessibility issues due to weather variability&lt;/li&gt;
+&lt;li&gt;Insufficient maintenance resources&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Limitations of Existing Research (Research Gap 2)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Only study the impact of one or two types of uncertainty on maintenance performance&lt;/li&gt;
+&lt;li&gt;Do not involve optimization problems&lt;/li&gt;
+&lt;li&gt;Do not consider novel maintenance strategies&lt;/li&gt;
+&lt;li&gt;Do not adequately demonstrate the impact of uncertainty on maintenance performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Uncertainties Considered in This Paper&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Randomness of failure times&lt;/li&gt;
+&lt;li&gt;Deviation between true and actual failure times&lt;/li&gt;
+&lt;li&gt;Uncertain maintenance consequences&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Uncertainties Not Considered&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Accessibility affected by weather factors&lt;/li&gt;
+&lt;li&gt;Vessel and spare part availability&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;basic-components-of-maintenance-models&#34;&gt;Basic Components of Maintenance Models
+&lt;/h3&gt;&lt;p&gt;Typical maintenance models include the following elements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Degradation Model&lt;/strong&gt;: Describes the system performance degradation process over time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State Information&lt;/strong&gt;: Describes available information about the current system state&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maintenance Actions&lt;/strong&gt;: Possible O&amp;amp;M measures that can be taken&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maintenance Consequences&lt;/strong&gt;: Expected outcomes of maintenance actions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;om-optimization-objectives&#34;&gt;O&amp;amp;M Optimization Objectives
+&lt;/h3&gt;&lt;p&gt;O&amp;amp;M objectives typically include: reliability, safety, life cycle cost, carbon emissions, etc.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Optimization Objectives Considered in This Paper&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimize maintenance costs&lt;/strong&gt; (costs related to maintenance effort)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimize energy losses&lt;/strong&gt; (production losses caused by downtime)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;maintenance-model&#34;&gt;Maintenance Model
+&lt;/h2&gt;&lt;h3 id=&#34;basic-assumptions&#34;&gt;Basic Assumptions
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;All wind turbines are of the same type, simplified as a collection of multiple key components; failure of any component leads to complete system failure&lt;/li&gt;
+&lt;li&gt;Once O&amp;amp;M decisions are made, maintenance activities can be implemented smoothly&lt;/li&gt;
+&lt;li&gt;Temporal fluctuations in material costs, vessel chartering, and labor-related costs are not considered&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;failure-modeling&#34;&gt;Failure Modeling
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Weibull Distribution Modeling&lt;/strong&gt;:
+A two-parameter Weibull distribution is used to simulate the failure probability density function:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20251027205233637.png&#34;
+	width=&#34;914&#34;
+	height=&#34;395&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20251027205233637_hu_d22b20485fa47e2a.png 480w, https://whhong-research.github.io/p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20251027205233637_hu_c6c3580daf5d7c18.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Two-parameter Weibull Distribution&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;231&#34;
+		data-flex-basis=&#34;555px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Random Shock Modeling&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In addition to degradation failures, random damage is considered (unexpected events such as lightning strikes, hurricanes, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-homogeneous Poisson process&lt;/strong&gt; is used to model random shocks&lt;/li&gt;
+&lt;li&gt;Given an intensity function λ, the inverse distribution method is used to generate shock occurrence times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Environmental Impact Classification&lt;/strong&gt;:
+Environmental impacts are divided into three levels:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Level&lt;/th&gt;
+          &lt;th&gt;Impact Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Critical&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Component fails directly&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Influential&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Accelerates component degradation, causing abrupt increase in equivalent age $b_m$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Minor&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Only temporarily affects turbine operation; turbine returns to normal operational state after a short period&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;maintenance-opportunities-and-component-condition&#34;&gt;Maintenance Opportunities and Component Condition
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Three Types of Maintenance Opportunities&lt;/strong&gt;:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Opportunity Type&lt;/th&gt;
+          &lt;th&gt;Trigger Condition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Failure-based Opportunity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;A component in the wind turbine experiences degradation failure, causing turbine shutdown&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Incident-based Opportunity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;The wind turbine suffers a sudden critical environmental impact&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Ageing-based Opportunity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;No failure occurs in the farm, but a certain percentage of components reach a specific degree of ageing&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Maintenance Strategy Determination Framework&lt;/strong&gt;:&lt;/p&gt;
+&lt;img src=&#34;image-20251027212537132.png&#34; alt=&#34;Maintenance strategy determination framework&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h3 id=&#34;maintenance-categories&#34;&gt;Maintenance Categories
+&lt;/h3&gt;&lt;p&gt;Four types of maintenance operations are considered:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Maintenance Type&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Failure Replacement&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Replacement after complete component failure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Preventive Replacement&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Replacement before component failure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Major Repair&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Significant restoration of components&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Basic Maintenance&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Routine maintenance and minor repairs&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary
+&lt;/h2&gt;&lt;p&gt;The multi-objective maintenance strategy optimization framework proposed in this paper has the following characteristics:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Comprehensive Uncertainty Consideration&lt;/strong&gt;: Simultaneously considers failure time randomness, observation errors, and maintenance consequence uncertainty&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Opportunity Trigger Mechanism&lt;/strong&gt;: Establishes a unified framework for three types of maintenance opportunities: failure-based, incident-based, and ageing-based&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Objective Optimization&lt;/strong&gt;: Balances two competing objectives of maintenance cost and energy loss&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State-Associated Decision Making&lt;/strong&gt;: Combines maintenance thresholds with actual component conditions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This framework provides theoretical foundation and decision support tools for economically efficient O&amp;amp;M of offshore wind farms.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Life Cycle on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/tags/life-cycle/</link>
+        <description>Recent content in Life Cycle on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Tue, 15 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/life-cycle/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IEC 61400-28 Asset Management Standard Interpretation</title>
+        <link>https://whhong-research.github.io/en/p/iec-61400-28-asset-management-standard-interpretation/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/iec-61400-28-asset-management-standard-interpretation/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/IEC61400-28.png" alt="Featured image of post IEC 61400-28 Asset Management Standard Interpretation" /&gt;&lt;h1 id=&#34;process-overview&#34;&gt;Process Overview
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664.png&#34;
+	width=&#34;951&#34;
+	height=&#34;662&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_1822fb3c43587aeb.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205059664_hu_f8671c0b902e7f5d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Process Diagram 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;344px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819.png&#34;
+	width=&#34;1054&#34;
+	height=&#34;797&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_465a7245454e8afc.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415205235819_hu_8197de5dd3839421.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Process Diagram 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;317px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646.png&#34;
+	width=&#34;755&#34;
+	height=&#34;926&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_2066ef873a1e10f2.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415211953646_hu_603a0f64acd43ead.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Process Diagram 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;195px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;core-principles&#34;&gt;Core Principles
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Decisions should be based on a thorough risk management process&lt;/li&gt;
+&lt;li&gt;Inspection/maintenance schemes should be reviewed and optimized (initiated if not initially present)&lt;/li&gt;
+&lt;li&gt;Condition monitoring schemes should be reviewed and optimized (initiated if initially inadequate for assessment of asset health with respect to the most significant risks or modes of failure, at sufficiently frequent time intervals)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;six-step-implementation-process&#34;&gt;Six-Step Implementation Process
+&lt;/h2&gt;&lt;h3 id=&#34;step-1-historical-data-and-maintenance-status-acquisition&#34;&gt;Step 1: Historical Data and Maintenance Status Acquisition
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Site characterization data&lt;/strong&gt;: Wind speed and turbulence are particularly important&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Any information about replacement parts, maintenance history, and load history is very important&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annex B&lt;/strong&gt; describes which information is important for assessing the loading history of components&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clause 5&lt;/strong&gt; gives general recommendations regarding collection and storage of data generated during the asset lifetime. Recommendations are also made regarding sources and categories of information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;step-2-risk-management-process&#34;&gt;Step 2: Risk Management Process
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Risk-based&lt;/strong&gt;: Before conducting asset management, assessment, classification, and ranking should be performed (different O&amp;amp;M strategies for different risks)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clause 6&lt;/strong&gt; provides guidance on the assessment and ranking of risks. A risk assessment will help to prioritize efforts in the further steps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;step-3-operation-maintenance-and-inspection&#34;&gt;Step 3: Operation, Maintenance and Inspection
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;A maintenance and inspection scheme can be drawn up, as described in &lt;strong&gt;Clause 7&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;For operating wind turbines, if no maintenance records exist, it is assumed that relevant equipment maintenance measures have not been implemented&lt;/li&gt;
+&lt;li&gt;Update risk rankings from Step 2 and estimate RUL based on inspection information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;step-4-condition-monitoring-clause-8&#34;&gt;Step 4: Condition Monitoring (Clause 8)
+&lt;/h3&gt;&lt;p&gt;Condition monitoring can provide continuously updated asset information, which can be used for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Updating numerical models&lt;/li&gt;
+&lt;li&gt;Optimizing O&amp;amp;M operations&lt;/li&gt;
+&lt;li&gt;Predicting and detecting structural failure probabilities&lt;/li&gt;
+&lt;li&gt;Collecting data for reliability statistical analysis and planning Inspection &amp;amp; Maintenance&lt;/li&gt;
+&lt;li&gt;Determining whether structural life can be extended&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Can provide more inputs for risk assessment, thereby further optimizing inspection and O&amp;amp;M schemes.&lt;/p&gt;
+&lt;h3 id=&#34;step-5-health-and-safety-review&#34;&gt;Step 5: Health and Safety Review
+&lt;/h3&gt;&lt;h3 id=&#34;step-6-analytical-assessment-of-rul&#34;&gt;Step 6: Analytical Assessment of RUL
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Asset remaining useful life analysis methods&lt;/strong&gt; can range from simple proportional estimation to absolute assessment:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;First Method (Relative Assessment)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Relies on proportional functions or ratios (applied to equivalent damage loads)&lt;/li&gt;
+&lt;li&gt;First derived using design-time parameters&lt;/li&gt;
+&lt;li&gt;Then derived using site-specific operational parameters&lt;/li&gt;
+&lt;li&gt;This method may be suitable when available models, assumptions, or parameters are not sufficiently clear or cannot be verified&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Second Method (Absolute Assessment)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Only applicable when characteristics, operating conditions, machines, and model definitions are accurate (&lt;strong&gt;Clause 10&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Important Principles&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Analytical assessments should always be accompanied by estimates of uncertainty and accuracy, covering input data and the computational model itself&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annex D&lt;/strong&gt; describes some probability-based models, some of which are derived from measured loads. These models aim to make full use of historical data to improve estimates of remaining useful life for specific components and structures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378.png&#34;
+	width=&#34;1337&#34;
+	height=&#34;285&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_fc7a7917febd4a8a.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250415212143378_hu_bdbdd38471c78b8f.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RUL Assessment Process&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;469&#34;
+		data-flex-basis=&#34;1125px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-5-data-management-requirements-and-uncertainty&#34;&gt;Clause 5: Data Management, Requirements and Uncertainty
+&lt;/h1&gt;&lt;h2 id=&#34;missing-data-reconstruction&#34;&gt;Missing Data Reconstruction
+&lt;/h2&gt;&lt;p&gt;There are benefits to filling gaps in measured operating data. Not all data are captured comprehensively during the lifetime of each individual turbine. Strategies exist to address the issue of regenerating missing data retrospectively, based on scrutiny of data from turbines of similar design, site conditions, maintenance history and operational philosophy.&lt;/p&gt;
+&lt;h2 id=&#34;datainformation-category-definitions&#34;&gt;Data/Information Category Definitions
+&lt;/h2&gt;&lt;h3 id=&#34;dynamic-data&#34;&gt;Dynamic Data
+&lt;/h3&gt;&lt;p&gt;Data that changes rapidly during wind turbine operation, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wind speed, rotational speed, angle, frequency, temperature, etc.&lt;/li&gt;
+&lt;li&gt;Condition monitoring data (CM data), such as vibration signals, corrosion depth, oil analysis, crack depth, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Important Requirements&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Need to assess data and model uncertainty&lt;/li&gt;
+&lt;li&gt;For measurement data, uncertainty should be estimated according to &lt;strong&gt;ISO/IEC Guide 98-3&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Measurement data uncertainty must be assessed&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;static-data&#34;&gt;Static Data
+&lt;/h3&gt;&lt;p&gt;Such as inspection reports, manuals, etc. This type of data does not have uncertainty but tolerances, i.e., allowable variations in thicknesses, diameters, rated power, weights, center of gravity (CoG) positions, moments of inertia, etc. Such tolerances can induce variance into the assessment by altering the strength or the dynamic loads.&lt;/p&gt;
+&lt;h2 id=&#34;cm-data-applications&#34;&gt;CM Data Applications
+&lt;/h2&gt;&lt;p&gt;CM data can be used for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Measuring the accuracy of predictive assessment methods (e.g., determining whether predicted cracks or corrosion depths are accurate)&lt;/li&gt;
+&lt;li&gt;Monitoring structural degradation rates where life cannot be predicted&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;As a trigger factor for inspection intervention measures&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;wind-measurement-requirements&#34;&gt;Wind Measurement Requirements
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Measurement interval&lt;/strong&gt;: Should be at 10-minute intervals&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ideal setup&lt;/strong&gt;: Use multiple instruments installed on different meteorological towers, at different heights including hub height&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Measurement period&lt;/strong&gt;: Should be at least 6 months and completed before wind farm installation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Seasonal considerations&lt;/strong&gt;: If seasonal variations significantly affect wind conditions, the monitoring period should be at least 12 months to cover these effects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data content&lt;/strong&gt;: Should include summary statistics for wind speed, wind direction, temperature and atmospheric pressure (for all parameters, at least including mean, minimum, maximum and standard deviation)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scada-data-iec-61400-25-1-and-iec-61400-25-2&#34;&gt;SCADA Data (IEC 61400-25-1 and IEC 61400-25-2)
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Strongly recommended recorded information&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Working hours&lt;/li&gt;
+&lt;li&gt;Alarm, warning and operational logs&lt;/li&gt;
+&lt;li&gt;Nacelle orientation&lt;/li&gt;
+&lt;li&gt;Wind direction at nacelle wind vane&lt;/li&gt;
+&lt;li&gt;Temperature of main components (average, maximum, minimum)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;fault-statistical-analysis&#34;&gt;Fault Statistical Analysis
+&lt;/h2&gt;&lt;p&gt;When common failures occur in wind farms (or multiple wind farms), appropriate statistical analysis should be conducted to establish statistical models for predicting the likelihood of future failures. For example, statistical distributions (such as Weibull distribution or Weibull Bayesian distribution) can be fitted to the data. This will help in maintenance planning and spare parts reserves.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: If the dataset provided for a specific combination of component, failure mode and site conditions is small (e.g., fewer wind turbines at a specific site), these models will have greater uncertainty (&lt;strong&gt;Clause 10&lt;/strong&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;inspection-records-and-reports&#34;&gt;Inspection Records and Reports
+&lt;/h2&gt;&lt;p&gt;Can include the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Structural integrity&lt;/strong&gt; (e.g., dye penetrant or NDE for crack detection)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Boroscopy&lt;/strong&gt; (e.g., main bearing, gearbox bearings, gears)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dimensional&lt;/strong&gt; (e.g., wear, free movement, play, backlash)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visual&lt;/strong&gt; (e.g., leakage, overheating, loose/missing/fractured bolts, corrosion, dents, stress raisers)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bolt tension&lt;/strong&gt; (e.g., re-torquing)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grease and oil sample analyses&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iec-61400-13&#34;&gt;IEC 61400-13
+&lt;/h2&gt;&lt;p&gt;Load measurement standards.&lt;/p&gt;
+&lt;h2 id=&#34;data-uncertainty-level-definition&#34;&gt;Data Uncertainty Level Definition
+&lt;/h2&gt;&lt;p&gt;Can be defined based on the ratio of standard deviation to mean.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878.png&#34;
+	width=&#34;939&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_6e59a7f4efd11ac3.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416175253878_hu_58323ca189e27792.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Data Uncertainty Levels&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;347&#34;
+		data-flex-basis=&#34;834px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-6-risk-management-process&#34;&gt;Clause 6: Risk Management Process
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027.png&#34;
+	width=&#34;928&#34;
+	height=&#34;784&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_7c84ccb1fff016c0.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210003027_hu_3f8c5dbabafefbb6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Risk Management Process&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;284px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;risk-assessment-requirements&#34;&gt;Risk Assessment Requirements
+&lt;/h2&gt;&lt;p&gt;Risk assessment should at least be able to estimate the following with appropriate confidence limits:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Numerical values of risk priority for all constituent components in the system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;risk-priority-number-rpn&#34;&gt;Risk Priority Number (RPN)
+&lt;/h3&gt;&lt;p&gt;Defined according to &lt;strong&gt;IEC 60812&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967.png&#34;
+	width=&#34;1047&#34;
+	height=&#34;270&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_ffe245e4835a5cef.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416204848967_hu_a621e2864a8db36b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RPN Definition&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;387&#34;
+		data-flex-basis=&#34;930px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-7-wind-farm-operation-maintenance-and-inspections&#34;&gt;Clause 7: Wind Farm Operation, Maintenance and Inspections
+&lt;/h1&gt;&lt;h2 id=&#34;major-component-definitions&#34;&gt;Major Component Definitions
+&lt;/h2&gt;&lt;p&gt;Refer to original report 3.1.20.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791.png&#34;
+	width=&#34;786&#34;
+	height=&#34;1156&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_b75d8020c5a7cc50.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416210732791_hu_7f30fbc1486df920.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Major Component Definitions&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;67&#34;
+		data-flex-basis=&#34;163px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;inspection-and-maintenance-principles&#34;&gt;Inspection and Maintenance Principles
+&lt;/h2&gt;&lt;p&gt;Risk-based inspection (RBI) principles (see &lt;strong&gt;API 581:2000&lt;/strong&gt;) or reliability-centered maintenance (RCM) principles (see &lt;strong&gt;IEC 60300-3-11:2009&lt;/strong&gt;) may be applied.&lt;/p&gt;
+&lt;p&gt;CMS (Condition Monitoring System) can be used to trigger or replace routine inspections.&lt;/p&gt;
+&lt;h2 id=&#34;life-cycle-inspection-strategies&#34;&gt;Life Cycle Inspection Strategies
+&lt;/h2&gt;&lt;h3 id=&#34;early-life-inspections-15-to-25-through-operational-life&#34;&gt;Early Life Inspections (15% to 25% through operational life)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Detect damage required before end of warranty period and perform repairs&lt;/li&gt;
+&lt;li&gt;Serve as baseline for overall wind turbine condition&lt;/li&gt;
+&lt;li&gt;Recommended inspection plan includes: (for full list refer to &lt;strong&gt;Annex C&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501.png&#34;
+	width=&#34;973&#34;
+	height=&#34;972&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_ba53c0eacea5e2de.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416212250501_hu_8ee97ce5a7183318.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Early Inspection Items&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;mid-life-inspections-45-to-55-through-operational-life&#34;&gt;Mid-life Inspections (45% to 55% through operational life)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Provide additional information about structural degradation rates&lt;/li&gt;
+&lt;li&gt;Used to guide preventive maintenance measures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;life-extension-preparation-inspections-70-to-80-through-operational-life&#34;&gt;Life Extension Preparation Inspections (70% to 80% through operational life)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Form the basis for assessing remaining useful life (RUL) of wind turbine components&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-8-condition-and-structural-health-monitoring&#34;&gt;Clause 8: Condition and Structural Health Monitoring
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330.png&#34;
+	width=&#34;870&#34;
+	height=&#34;987&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_abd4951b1135bb6.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416213912330_hu_ed8da46e83710af7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Condition Monitoring&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;211px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;structural-health-monitoring-shm&#34;&gt;Structural Health Monitoring (SHM)
+&lt;/h2&gt;&lt;p&gt;Real-time tracking of parameters correlated with the state of health of part of the primary structure.&lt;/p&gt;
+&lt;p&gt;During the entire life cycle, use monitoring indicators to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Detect changes in structural health status&lt;/li&gt;
+&lt;li&gt;Predict failure processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Table 4 illustrates the relationship between data, information, recommendations and decisions:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774.png&#34;
+	width=&#34;982&#34;
+	height=&#34;349&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_7b0d1e9bda5f004c.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214342774_hu_be70d4e957c63ed5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Table 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;675px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;condition-monitoring-data-requirements&#34;&gt;Condition Monitoring Data Requirements
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454.png&#34;
+	width=&#34;957&#34;
+	height=&#34;1168&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_144a560071bb7b51.png 480w, https://whhong-research.github.io/p/iec-61400-28%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20250416214847454_hu_9f7f72517bcdbf9a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;CM Data Requirements&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;196px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;clause-10-analytical-assessment-of-turbine-lifetime&#34;&gt;Clause 10: Analytical Assessment of Turbine Lifetime
+&lt;/h1&gt;&lt;h2 id=&#34;relative-assessment&#34;&gt;Relative Assessment
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Loads under site conditions&lt;/strong&gt; are compared with loads calculated according to certified design conditions. These loads are calculated using &lt;strong&gt;aero-elastic models&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Through the obtained load ratios, remaining useful life (RUL) can be derived using appropriate damage models (e.g., comparing equivalent damage loads using simple S-N curves).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Characteristics&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Design margins are generally not considered&lt;/li&gt;
+&lt;li&gt;Design margins may only be considered when appropriate design documentation is available&lt;/li&gt;
+&lt;li&gt;Special attention is needed to the correctness and completeness of design documentation, as well as the accuracy of relative assessment&lt;/li&gt;
+&lt;li&gt;Due to its relative nature, this method is less sensitive to model errors than the absolute method described below&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Implementation Steps&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use aero-elastic models (can be verified through load measurements)&lt;/li&gt;
+&lt;li&gt;Calculate relative remaining useful life (RUL) based on design conditions and site-specific wind conditions&lt;/li&gt;
+&lt;li&gt;Fully estimate RUL uncertainty&lt;/li&gt;
+&lt;li&gt;Based on obtained RUL, uncertainty, and risk assessment procedures described in &lt;strong&gt;Clause 6&lt;/strong&gt;, formulate inspection, maintenance and monitoring strategies&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;absolute-assessment&#34;&gt;Absolute Assessment
+&lt;/h2&gt;&lt;p&gt;Aims to determine &lt;strong&gt;absolute damage&lt;/strong&gt; of components to estimate their remaining useful life (RUL).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Characteristics&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Compared with relative assessment, the damage models used are more complex&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Requires more data and information about the wind turbine or components&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Due to the use of &lt;strong&gt;absolute values&lt;/strong&gt; rather than relative values, this method is more sensitive to model inaccuracies (or measurement inaccuracies in the case of load measurements)&lt;/li&gt;
+&lt;li&gt;Should only be used when there is accurate understanding of the physical and geometric characteristics of the wind turbine or components, as well as the wind turbine control and safety systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Implementation Steps&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use well-verified aero-elastic models and component models, e.g., verified through load measurements&lt;/li&gt;
+&lt;li&gt;Calculate absolute remaining useful life (RUL) based on site-specific wind conditions&lt;/li&gt;
+&lt;li&gt;Fully estimate RUL uncertainty&lt;/li&gt;
+&lt;li&gt;Based on obtained RUL, uncertainty, and risk assessment procedures described in &lt;strong&gt;Clause 6&lt;/strong&gt;, formulate inspection, maintenance and monitoring strategies&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;uncertainty-assessment&#34;&gt;Uncertainty Assessment
+&lt;/h2&gt;&lt;p&gt;Should include at least the following aspects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Environmental data (e.g., atmospheric turbulence, wind speed distribution, wave distribution)&lt;/li&gt;
+&lt;li&gt;Aero-elastic models (aerodynamic calculation models)&lt;/li&gt;
+&lt;li&gt;Measurement data&lt;/li&gt;
+&lt;li&gt;Fatigue damage models (e.g., application of simplified damage equivalent loads, S-N curve parameters, theories of crack initiation, growth, and possible application of fracture mechanics)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Failure Mode Definition&lt;/strong&gt;: Relevant failure modes for structural or major components shall be defined in accordance with &lt;strong&gt;IEC 61400-1&lt;/strong&gt;, for example, fatigue crack initiation of fibre or matrix in the spar caps of the blade structure.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

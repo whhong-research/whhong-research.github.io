@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Wind Turbine Blades on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/categories/wind-turbine-blades/</link>
+        <description>Recent content in Wind Turbine Blades on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/categories/wind-turbine-blades/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IEC 61400-23: Interpretation of Full-Scale Blade Fatigue Testing Standard</title>
+        <link>https://whhong-research.github.io/en/p/iec-61400-23-interpretation-of-full-scale-blade-fatigue-testing-standard/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/iec-61400-23-interpretation-of-full-scale-blade-fatigue-testing-standard/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.png" alt="Featured image of post IEC 61400-23: Interpretation of Full-Scale Blade Fatigue Testing Standard" /&gt;&lt;h1 id=&#34;blade-fatigue-testing-standards&#34;&gt;Blade Fatigue Testing Standards
+&lt;/h1&gt;&lt;h2 id=&#34;iec-61400-232014-full-scale-structural-testing-of-rotor-blades&#34;&gt;IEC 61400-23:2014 Full-scale Structural Testing of Rotor Blades
+&lt;/h2&gt;&lt;h3 id=&#34;blade-coordinate-system-definition&#34;&gt;Blade Coordinate System Definition
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Blade Local Chordwise Coordinate System&lt;/strong&gt; (flapwise direction, edgewise direction)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576.png&#34;
+	width=&#34;776&#34;
+	height=&#34;539&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_a62c90abebf96c61.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_d4b1599bdfc27cbc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Blade Coordinate System&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;143&#34;
+		data-flex-basis=&#34;345px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Blade Global Coordinate System&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769.png&#34;
+	width=&#34;810&#34;
+	height=&#34;448&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_217a6be575c424f8.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_18fdf1956ed8ccd0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Blade Global Coordinate System&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;433px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;retesting-requirements-after-design-modifications&#34;&gt;Retesting Requirements After Design Modifications
+&lt;/h3&gt;&lt;p&gt;Generally, blade reinforcements or updates to areas with large safety margins do not require retesting. However, changes affecting blade load distribution require careful evaluation:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519.png&#34;
+	width=&#34;806&#34;
+	height=&#34;425&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_b4c090ae41592a6.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_d5aea3b80a962400.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Case Illustration for Retesting Requirements&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Typically No Retesting Required&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modification of blade tip geometry&lt;/li&gt;
+&lt;li&gt;Extension of partial fiber layers&lt;/li&gt;
+&lt;li&gt;Minor raw material adjustments (supplier changes may require specimen-level retesting)&lt;/li&gt;
+&lt;li&gt;Core material chamfer adjustments&lt;/li&gt;
+&lt;li&gt;Minor laminate adjustments for large laminates&lt;/li&gt;
+&lt;li&gt;Minor production process adjustments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Typically Retesting Required&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Airfoil change at critical test locations (e.g., maximum chord)&lt;/li&gt;
+&lt;li&gt;Shortening of partial fiber layers&lt;/li&gt;
+&lt;li&gt;Resin or fiber type change (e.g., glass to carbon fiber, polyester to epoxy resin)&lt;/li&gt;
+&lt;li&gt;Core material change with different Young&amp;rsquo;s modulus or shear modulus&lt;/li&gt;
+&lt;li&gt;Large-scale laminate modifications in sandwich structures&lt;/li&gt;
+&lt;li&gt;Production process change&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;test-region-selection&#34;&gt;Test Region Selection
+&lt;/h3&gt;&lt;p&gt;Test regions should include the following areas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Gradual Section Transition Region&lt;/strong&gt;: From blade root to locations where section properties change gradually&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calculated Weak Regions&lt;/strong&gt;: Areas where calculations show minimum reserve factors against buckling, strength, or fatigue life&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aerodynamic Brake Device Influence Region&lt;/strong&gt;: If the blade incorporates an aerodynamic braking device (or other blade systems), include the region incorporating this device, particularly where the structure is affected&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Consider cutting the blade tip before testing, as tip regions typically have large safety margins.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;test-procedure&#34;&gt;Test Procedure
+&lt;/h3&gt;&lt;p&gt;The standard test protocol includes the following phases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Mass Property Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Weight measurement&lt;/li&gt;
+&lt;li&gt;Center of gravity determination&lt;/li&gt;
+&lt;li&gt;Natural frequency testing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Static Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verification of structural capacity under ultimate loads&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fatigue Loading Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simulation of cyclic loads under long-term operating conditions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Post-Fatigue Static Testing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluation of residual strength after fatigue damage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;safety-factors&#34;&gt;Safety Factors
+&lt;/h3&gt;&lt;p&gt;The following safety factors should be considered during design:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Material Factor&lt;/strong&gt;: Material property variability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Damage Consequence Factor&lt;/strong&gt;: Non-fail-safe or fail-safe design&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Factor&lt;/strong&gt;: Load prediction uncertainty&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;uncertainty-in-fatigue-formulas&#34;&gt;Uncertainty in Fatigue Formulas
+&lt;/h4&gt;&lt;p&gt;The fewer cycles required for fatigue testing, the greater the uncertainty. Recommended fatigue parameter uncertainty factors are shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196.png&#34;
+	width=&#34;700&#34;
+	height=&#34;215&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_1662b60ce0de2a83.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_21998d1f99f2a50.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Recommended Safety Factors for Different Cyclic Loads&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;325&#34;
+		data-flex-basis=&#34;781px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;key-points-for-fatigue-testing&#34;&gt;Key Points for Fatigue Testing
+&lt;/h3&gt;&lt;h4 id=&#34;load-amplification-limits&#34;&gt;Load Amplification Limits
+&lt;/h4&gt;&lt;p&gt;When amplifying fatigue loads to reduce test time, the following limits must be observed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maximum stress and strain must not exceed static strength or cause static damage/failure&lt;/li&gt;
+&lt;li&gt;Stress and strain must not be so large as to exceed the assumption of linear relationship between force and stress (e.g., buckling)&lt;/li&gt;
+&lt;li&gt;High-stress regions may generate internal heat&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;mean-load-requirements&#34;&gt;Mean Load Requirements
+&lt;/h4&gt;&lt;p&gt;The mean load applied during fatigue testing should be as close as possible to the mean load under operating conditions that are most severe for fatigue strength.&lt;/p&gt;
+&lt;h4 id=&#34;damage-assessment&#34;&gt;Damage Assessment
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;If the theoretical damage during fatigue testing (e.g., based on Miner&amp;rsquo;s rule) equals or exceeds the design theoretical damage, the location is considered adequately tested&lt;/li&gt;
+&lt;li&gt;Theoretical test damage can be evaluated by accumulation of damage from all partial tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;pass-criteria&#34;&gt;Pass Criteria
+&lt;/h4&gt;&lt;p&gt;A region that develops theoretical damage after being subjected to test loads equal to or exceeding target loads is considered to have passed the test. In principle, blade testing can continue until other regions reach equivalent damage levels, provided that stress redistribution due to damage has not occurred.&lt;/p&gt;
+&lt;h3 id=&#34;testing-requirements&#34;&gt;Testing Requirements
+&lt;/h3&gt;&lt;h4 id=&#34;measurement-uncertainty&#34;&gt;Measurement Uncertainty
+&lt;/h4&gt;&lt;p&gt;The following measurement uncertainties must be considered:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Magnitude, direction, and position of applied loads&lt;/li&gt;
+&lt;li&gt;Magnitude, direction, and position of displacements&lt;/li&gt;
+&lt;li&gt;Magnitude, direction, and position of measured strains&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;test-rig-stiffness&#34;&gt;Test Rig Stiffness
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Measured blade deflections must be corrected for deformation of the blade root fixture and test rig&lt;/li&gt;
+&lt;li&gt;For very stiff test rigs (contributing less than 1% to blade tip deflection), the influence of the test rig may be neglected&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;strain-measurement-requirements&#34;&gt;Strain Measurement Requirements
+&lt;/h4&gt;&lt;p&gt;Strain measurements should cover the following regions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Primary Load-Bearing Structures&lt;/strong&gt;: Spar caps and spar flanges, four cross-sections, longitudinal along the blade spanwise axis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Leading and Trailing Edge Regions&lt;/strong&gt;: Leading and trailing edges at maximum chord/half blade length, typically parallel to the blade edges&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Root and Web Regions&lt;/strong&gt;: Blade root region and web sections with calculated high strains; shear strain measurement also required (using strain rosettes)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Connection Bolts&lt;/strong&gt;: Tensile and bending strains at connection bolts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Reference Standard&lt;/strong&gt;: IEC 61400-23:2014 &lt;em&gt;Full-scale Structural Testing of Rotor Blades&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

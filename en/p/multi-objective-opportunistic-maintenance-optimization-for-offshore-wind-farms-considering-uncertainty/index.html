@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Paper Review: Multi-Objective Maintenance Strategy Optimization for Offshore Wind Farms Considering Uncertainty Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. Applied Energy, 321, 119284. https://doi.org/10.1016/j.apenergy.2022.119284 Research Background Offshore wind farm operation and maintenance (O&amp;M) faces unique challenges. Research indicates that O&amp;M costs account for 14%-30% of total life cycle costs (LCC), while the offshore environment significantly reduces turbine availability—offshore wind turbine availability may drop to as low as 60%-70%. Therefore, developing efficient O&amp;M strategies is crucial for reducing offshore wind energy costs.\n">
+<title>Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty">
+<meta property='og:description' content="Paper Review: Multi-Objective Maintenance Strategy Optimization for Offshore Wind Farms Considering Uncertainty Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. Applied Energy, 321, 119284. https://doi.org/10.1016/j.apenergy.2022.119284 Research Background Offshore wind farm operation and maintenance (O&amp;M) faces unique challenges. Research indicates that O&amp;M costs account for 14%-30% of total life cycle costs (LCC), while the offshore environment significantly reduces turbine availability—offshore wind turbine availability may drop to as low as 60%-70%. Therefore, developing efficient O&amp;M strategies is crucial for reducing offshore wind energy costs.\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Opportunistic Maintenance' /><meta property='article:tag' content='Uncertainty' /><meta property='article:tag' content='Decision Optimization' /><meta property='article:published_time' content='2025-10-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-10-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty">
+<meta name="twitter:description" content="Paper Review: Multi-Objective Maintenance Strategy Optimization for Offshore Wind Farms Considering Uncertainty Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. Applied Energy, 321, 119284. https://doi.org/10.1016/j.apenergy.2022.119284 Research Background Offshore wind farm operation and maintenance (O&amp;M) faces unique challenges. Research indicates that O&amp;M costs account for 14%-30% of total life cycle costs (LCC), while the offshore environment significantly reduces turbine availability—offshore wind turbine availability may drop to as low as 60%-70%. Therefore, developing efficient O&amp;M strategies is crucial for reducing offshore wind energy costs.\n">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#li-m-jiang-x-carroll-j--negenborn-r-r-2022-a-multi-objective-maintenance-strategy-optimization-framework-for-offshore-wind-farms-considering-uncertainty-applied-energy-321-119284">Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. <em>Applied Energy</em>, <em>321</em>, 119284. https://doi.org/10.1016/j.apenergy.2022.119284</a></li>
+    <li><a href="#research-background">Research Background</a></li>
+    <li><a href="#literature-review">Literature Review</a>
+      <ul>
+        <li><a href="#traditional-maintenance-strategies">Traditional Maintenance Strategies</a></li>
+        <li><a href="#opportunistic-maintenance">Opportunistic Maintenance</a></li>
+        <li><a href="#uncertainty-factors">Uncertainty Factors</a></li>
+        <li><a href="#basic-components-of-maintenance-models">Basic Components of Maintenance Models</a></li>
+        <li><a href="#om-optimization-objectives">O&amp;M Optimization Objectives</a></li>
+      </ul>
+    </li>
+    <li><a href="#maintenance-model">Maintenance Model</a>
+      <ul>
+        <li><a href="#basic-assumptions">Basic Assumptions</a></li>
+        <li><a href="#failure-modeling">Failure Modeling</a></li>
+        <li><a href="#maintenance-opportunities-and-component-condition">Maintenance Opportunities and Component Condition</a></li>
+        <li><a href="#maintenance-categories">Maintenance Categories</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                Paper Reading
+            </a>
+        
+            <a href="/en/categories/wind-turbine-om/" >
+                Wind Turbine OM
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/">Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 27, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="paper-review-multi-objective-maintenance-strategy-optimization-for-offshore-wind-farms-considering-uncertainty">Paper Review: Multi-Objective Maintenance Strategy Optimization for Offshore Wind Farms Considering Uncertainty
+</h1><h2 id="li-m-jiang-x-carroll-j--negenborn-r-r-2022-a-multi-objective-maintenance-strategy-optimization-framework-for-offshore-wind-farms-considering-uncertainty-applied-energy-321-119284">Li, M., Jiang, X., Carroll, J., &amp; Negenborn, R. R. (2022). A multi-objective maintenance strategy optimization framework for offshore wind farms considering uncertainty. <em>Applied Energy</em>, <em>321</em>, 119284. <a class="link" href="https://doi.org/10.1016/j.apenergy.2022.119284"  target="_blank" rel="noopener"
+    >https://doi.org/10.1016/j.apenergy.2022.119284</a>
+</h2><hr>
+<h2 id="research-background">Research Background
+</h2><p>Offshore wind farm operation and maintenance (O&amp;M) faces unique challenges. Research indicates that <strong>O&amp;M costs account for 14%-30% of total life cycle costs (LCC)</strong>, while the offshore environment significantly reduces turbine availability—<strong>offshore wind turbine availability may drop to as low as 60%-70%</strong>. Therefore, developing efficient O&amp;M strategies is crucial for reducing offshore wind energy costs.</p>
+<hr>
+<h2 id="literature-review">Literature Review
+</h2><h3 id="traditional-maintenance-strategies">Traditional Maintenance Strategies
+</h3><p>The wind energy industry currently employs two main traditional maintenance strategies:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Strategy Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Corrective Maintenance</strong></td>
+          <td>Repairs performed only after turbine failure</td>
+      </tr>
+      <tr>
+          <td><strong>Preventive Maintenance</strong></td>
+          <td>Scheduled maintenance conducted at fixed intervals</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>These strategies remain mainstream in the industry but suffer from efficiency limitations.</p>
+<h3 id="opportunistic-maintenance">Opportunistic Maintenance
+</h3><p><strong>Core Concept</strong>: Performing maintenance on one component creates an &ldquo;opportunity window&rdquo; that can be leveraged to simultaneously repair other qualified components within the same wind farm.</p>
+<p><strong>Characteristics of Existing Models</strong>:</p>
+<ul>
+<li>Decision variables are typically set as maintenance thresholds related to component reliability or mean time to failure</li>
+<li><strong>Research Gap 1</strong>: Existing models do not connect maintenance thresholds with actual component condition
+<ul>
+<li>Condition monitoring techniques can collect diagnostic signals reflecting key component structural health</li>
+<li>Remaining useful life prediction models can assist decision-makers in performing predictive maintenance based on future component states</li>
+</ul>
+</li>
+</ul>
+<h3 id="uncertainty-factors">Uncertainty Factors
+</h3><p>Offshore wind O&amp;M faces multiple uncertainties:</p>
+<p><strong>Uncertainty Sources in Life Cycle O&amp;M Framework</strong>:</p>
+<ul>
+<li>Statistical uncertainty in component reliability estimation</li>
+<li>Maintenance accessibility issues due to weather variability</li>
+<li>Insufficient maintenance resources</li>
+</ul>
+<p><strong>Limitations of Existing Research (Research Gap 2)</strong>:</p>
+<ul>
+<li>Only study the impact of one or two types of uncertainty on maintenance performance</li>
+<li>Do not involve optimization problems</li>
+<li>Do not consider novel maintenance strategies</li>
+<li>Do not adequately demonstrate the impact of uncertainty on maintenance performance</li>
+</ul>
+<p><strong>Uncertainties Considered in This Paper</strong>:</p>
+<ul>
+<li>Randomness of failure times</li>
+<li>Deviation between true and actual failure times</li>
+<li>Uncertain maintenance consequences</li>
+</ul>
+<p><strong>Uncertainties Not Considered</strong>:</p>
+<ul>
+<li>Accessibility affected by weather factors</li>
+<li>Vessel and spare part availability</li>
+</ul>
+<h3 id="basic-components-of-maintenance-models">Basic Components of Maintenance Models
+</h3><p>Typical maintenance models include the following elements:</p>
+<ul>
+<li><strong>Degradation Model</strong>: Describes the system performance degradation process over time</li>
+<li><strong>State Information</strong>: Describes available information about the current system state</li>
+<li><strong>Maintenance Actions</strong>: Possible O&amp;M measures that can be taken</li>
+<li><strong>Maintenance Consequences</strong>: Expected outcomes of maintenance actions</li>
+</ul>
+<h3 id="om-optimization-objectives">O&amp;M Optimization Objectives
+</h3><p>O&amp;M objectives typically include: reliability, safety, life cycle cost, carbon emissions, etc.</p>
+<p><strong>Optimization Objectives Considered in This Paper</strong>:</p>
+<ul>
+<li><strong>Minimize maintenance costs</strong> (costs related to maintenance effort)</li>
+<li><strong>Minimize energy losses</strong> (production losses caused by downtime)</li>
+</ul>
+<hr>
+<h2 id="maintenance-model">Maintenance Model
+</h2><h3 id="basic-assumptions">Basic Assumptions
+</h3><ol>
+<li>All wind turbines are of the same type, simplified as a collection of multiple key components; failure of any component leads to complete system failure</li>
+<li>Once O&amp;M decisions are made, maintenance activities can be implemented smoothly</li>
+<li>Temporal fluctuations in material costs, vessel chartering, and labor-related costs are not considered</li>
+</ol>
+<h3 id="failure-modeling">Failure Modeling
+</h3><p><strong>Weibull Distribution Modeling</strong>:
+A two-parameter Weibull distribution is used to simulate the failure probability density function:</p>
+<p><img src="/p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20251027205233637.png"
+	width="914"
+	height="395"
+	srcset="/p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20251027205233637_hu_d22b20485fa47e2a.png 480w, /p/%E8%80%83%E8%99%91%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%9A%84%E6%B5%B7%E4%B8%8A%E9%A3%8E%E7%94%B5%E5%9C%BA%E6%9C%BA%E4%BC%9A%E6%80%A7%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20251027205233637_hu_c6c3580daf5d7c18.png 1024w"
+	loading="lazy"
+	
+		alt="Two-parameter Weibull Distribution"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="555px"
+	
+></p>
+<p><strong>Random Shock Modeling</strong>:</p>
+<ul>
+<li>In addition to degradation failures, random damage is considered (unexpected events such as lightning strikes, hurricanes, etc.)</li>
+<li><strong>Non-homogeneous Poisson process</strong> is used to model random shocks</li>
+<li>Given an intensity function λ, the inverse distribution method is used to generate shock occurrence times</li>
+</ul>
+<p><strong>Environmental Impact Classification</strong>:
+Environmental impacts are divided into three levels:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Level</th>
+          <th>Impact Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Critical</strong></td>
+          <td>Component fails directly</td>
+      </tr>
+      <tr>
+          <td><strong>Influential</strong></td>
+          <td>Accelerates component degradation, causing abrupt increase in equivalent age $b_m$</td>
+      </tr>
+      <tr>
+          <td><strong>Minor</strong></td>
+          <td>Only temporarily affects turbine operation; turbine returns to normal operational state after a short period</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="maintenance-opportunities-and-component-condition">Maintenance Opportunities and Component Condition
+</h3><p><strong>Three Types of Maintenance Opportunities</strong>:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Opportunity Type</th>
+          <th>Trigger Condition</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Failure-based Opportunity</strong></td>
+          <td>A component in the wind turbine experiences degradation failure, causing turbine shutdown</td>
+      </tr>
+      <tr>
+          <td><strong>Incident-based Opportunity</strong></td>
+          <td>The wind turbine suffers a sudden critical environmental impact</td>
+      </tr>
+      <tr>
+          <td><strong>Ageing-based Opportunity</strong></td>
+          <td>No failure occurs in the farm, but a certain percentage of components reach a specific degree of ageing</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><strong>Maintenance Strategy Determination Framework</strong>:</p>
+<img src="image-20251027212537132.png" alt="Maintenance strategy determination framework" style="zoom:50%;" />
+<h3 id="maintenance-categories">Maintenance Categories
+</h3><p>Four types of maintenance operations are considered:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Maintenance Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Failure Replacement</strong></td>
+          <td>Replacement after complete component failure</td>
+      </tr>
+      <tr>
+          <td><strong>Preventive Replacement</strong></td>
+          <td>Replacement before component failure</td>
+      </tr>
+      <tr>
+          <td><strong>Major Repair</strong></td>
+          <td>Significant restoration of components</td>
+      </tr>
+      <tr>
+          <td><strong>Basic Maintenance</strong></td>
+          <td>Routine maintenance and minor repairs</td>
+      </tr>
+  </tbody>
+</table></div>
+<hr>
+<h2 id="summary">Summary
+</h2><p>The multi-objective maintenance strategy optimization framework proposed in this paper has the following characteristics:</p>
+<ol>
+<li><strong>Comprehensive Uncertainty Consideration</strong>: Simultaneously considers failure time randomness, observation errors, and maintenance consequence uncertainty</li>
+<li><strong>Multi-Opportunity Trigger Mechanism</strong>: Establishes a unified framework for three types of maintenance opportunities: failure-based, incident-based, and ageing-based</li>
+<li><strong>Multi-Objective Optimization</strong>: Balances two competing objectives of maintenance cost and energy loss</li>
+<li><strong>State-Associated Decision Making</strong>: Combines maintenance thresholds with actual component conditions</li>
+</ol>
+<p>This framework provides theoretical foundation and decision support tools for economically efficient O&amp;M of offshore wind farms.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/opportunistic-maintenance/">Opportunistic Maintenance</a>
+        
+            <a href="/en/tags/uncertainty/">Uncertainty</a>
+        
+            <a href="/en/tags/decision-optimization/">Decision Optimization</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">OM Decision Making and Risk Management</h4>
+    <span class="series-progress">第 4 篇，共 1 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.b6ac8a4e2dc423f11ba73614958adb9b_hu_e4268111de6fcf60.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Discrete Bayesian Network for Operation and Maintenance Planning"
+                        
+                        data-hash="md5-tqyKTi3EI/EbpzYUlYrbmw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Discrete Bayesian Network for Operation and Maintenance Planning</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_422c271d42ea37e9.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework"
+                        
+                        data-hash="md5-Cmq9yjtI&#43;wIrrk7eMo&#43;PHg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/crack-diffusion-paper-reading/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-paper-reading/1.42f81beb1fbd6930a80b4f0a26b2f740_hu_176c61a1e7b710d7.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework"
+                        data-key="crack-diffusion-paper-reading" 
+                        data-hash="md5-Qvgb6x&#43;9aTCoC08KJrL3QA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

@@ -7,7 +7,95 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>whhong</copyright>
-        <lastBuildDate>Thu, 27 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Fatigue Testing</title>
+        <link>https://whhong-research.github.io/en/tags/fatigue-testing/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/fatigue-testing/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Full-Scale Blades</title>
+        <link>https://whhong-research.github.io/en/tags/full-scale-blades/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/full-scale-blades/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Standards and Specifications</title>
+        <link>https://whhong-research.github.io/en/tags/standards-and-specifications/</link>
+        <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/standards-and-specifications/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Decision Optimization</title>
+        <link>https://whhong-research.github.io/en/tags/decision-optimization/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/decision-optimization/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Opportunistic Maintenance</title>
+        <link>https://whhong-research.github.io/en/tags/opportunistic-maintenance/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/opportunistic-maintenance/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Uncertainty</title>
+        <link>https://whhong-research.github.io/en/tags/uncertainty/</link>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/uncertainty/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Load Simulation</title>
+        <link>https://whhong-research.github.io/en/tags/load-simulation/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/load-simulation/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>OpenFAST</title>
+        <link>https://whhong-research.github.io/en/tags/openfast/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/openfast/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>TurbSim</title>
+        <link>https://whhong-research.github.io/en/tags/turbsim/</link>
+        <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/turbsim/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>IEC Standards</title>
+        <link>https://whhong-research.github.io/en/tags/iec-standards/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/iec-standards/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Life Cycle</title>
+        <link>https://whhong-research.github.io/en/tags/life-cycle/</link>
+        <pubDate>Tue, 15 Apr 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/life-cycle/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>BDLM</title>
         <link>https://whhong-research.github.io/en/tags/bdlm/</link>
         <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
@@ -40,6 +128,86 @@
         <description></description>
         </item>
         <item>
+        <title>Discrete Bayesian Network</title>
+        <link>https://whhong-research.github.io/en/tags/discrete-bayesian-network/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/discrete-bayesian-network/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>O&amp;M Framework</title>
+        <link>https://whhong-research.github.io/en/tags/om-framework/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/om-framework/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Prompt Points Testing</title>
+        <link>https://whhong-research.github.io/en/tags/prompt-points-testing/</link>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/prompt-points-testing/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>SAM</title>
+        <link>https://whhong-research.github.io/en/tags/sam/</link>
+        <pubDate>Fri, 14 Mar 2025 16:46:00 +0800</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/sam/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CBM</title>
+        <link>https://whhong-research.github.io/en/tags/cbm/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/cbm/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>CMS</title>
+        <link>https://whhong-research.github.io/en/tags/cms/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/cms/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Health Monitoring</title>
+        <link>https://whhong-research.github.io/en/tags/health-monitoring/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/health-monitoring/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Maintenance Framework</title>
+        <link>https://whhong-research.github.io/en/tags/maintenance-framework/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/maintenance-framework/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Maintenance Optimization</title>
+        <link>https://whhong-research.github.io/en/tags/maintenance-optimization/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/maintenance-optimization/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>SCADA</title>
+        <link>https://whhong-research.github.io/en/tags/scada/</link>
+        <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/scada/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>AeroDyn</title>
         <link>https://whhong-research.github.io/en/tags/aerodyn/</link>
         <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
@@ -56,14 +224,6 @@
         <description></description>
         </item>
         <item>
-        <title>OpenFAST</title>
-        <link>https://whhong-research.github.io/en/tags/openfast/</link>
-        <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://whhong-research.github.io/en/tags/openfast/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Python Script</title>
         <link>https://whhong-research.github.io/en/tags/python-script/</link>
         <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
@@ -77,6 +237,38 @@
         <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/en/tags/wind-turbine/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Offshore Structures</title>
+        <link>https://whhong-research.github.io/en/tags/offshore-structures/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/offshore-structures/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>RBI</title>
+        <link>https://whhong-research.github.io/en/tags/rbi/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/rbi/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Sensor Data</title>
+        <link>https://whhong-research.github.io/en/tags/sensor-data/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/sensor-data/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Structural Integrity Management</title>
+        <link>https://whhong-research.github.io/en/tags/structural-integrity-management/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/tags/structural-integrity-management/</guid>
         <description></description>
         </item>
         <item>

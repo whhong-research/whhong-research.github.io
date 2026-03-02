@@ -16,23 +16,27 @@
         <description>&lt;img src="https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.png" alt="Featured image of post 离散贝叶斯网络运维规划" /&gt;&lt;h1 id=&#34;rbi建模方法&#34;&gt;RBI建模方法
 &lt;/h1&gt;&lt;h2 id=&#34;不同模型&#34;&gt;不同模型
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Decision tree: 决策树；&lt;/li&gt;
-&lt;li&gt;Crude Monte Carlo simulations: 粗略蒙特卡洛模拟；&lt;/li&gt;
-&lt;li&gt;Discrete Bayesian networks (dBN): 离散贝叶斯网络；&lt;/li&gt;
-&lt;li&gt;Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟；&lt;/li&gt;
-&lt;li&gt;Limited memory influence diagrams (LIMID): 有限内存影响图；&lt;/li&gt;
-&lt;li&gt;Partially observable Markov decision process: 部分可观察马尔可夫决策过程；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decision tree&lt;/strong&gt;：决策树&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Crude Monte Carlo simulations&lt;/strong&gt;：粗略蒙特卡洛模拟&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Discrete Bayesian networks (dBN)&lt;/strong&gt;：离散贝叶斯网络&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Markov chain Monte Carlo simulation&lt;/strong&gt;：马尔科夫链蒙特卡洛模拟&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limited memory influence diagrams (LIMID)&lt;/strong&gt;：有限内存影响图&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Partially observable Markov decision process&lt;/strong&gt;：部分可观察马尔可夫决策过程&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;模型对比&#34;&gt;模型对比
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;MCMC不需要连续变量的离散化，dBN需要；&lt;/li&gt;
-&lt;li&gt;MCMC相比于dBN更加耗时，因为其是基于采样进行推断的；&lt;/li&gt;
+&lt;li&gt;MCMC不需要连续变量的离散化，而dBN需要&lt;/li&gt;
+&lt;li&gt;MCMC相比于dBN更加耗时，因为其基于采样进行推断&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;本文计算框架&#34;&gt;本文计算框架
 &lt;/h1&gt;&lt;h2 id=&#34;两种决策模型&#34;&gt;两种决策模型
 &lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）；&lt;/li&gt;
-&lt;li&gt;Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）；&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Bayesian network based&lt;/strong&gt;：使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Simulation-based&lt;/strong&gt;：通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319150235335.png&#34;
 	width=&#34;1083&#34;
@@ -50,23 +54,20 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;模型输入设定&#34;&gt;模型输入设定
 &lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;specific cost： 执行inspection，repair和a corrective repair的成本；&lt;/li&gt;
-&lt;li&gt;specification of models: 退化概率模型、修复概率模型、检测概率模型以及监测概率模型；&lt;/li&gt;
-&lt;li&gt;strategy and parameters：不同的维养策略；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Specific cost&lt;/strong&gt;：执行inspection、repair和corrective repair的成本&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Specification of models&lt;/strong&gt;：退化概率模型、修复概率模型、检测概率模型以及监测概率模型&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Strategy and parameters&lt;/strong&gt;：不同的维养策略&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;基础dbn架构&#34;&gt;基础dBN架构
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;下图所示的dBN架构主要适用于simulation-based的模型；
+&lt;/h2&gt;&lt;p&gt;下图所示的dBN架构主要适用于simulation-based的模型：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;$M_0$ 表示初始的模型参数，不同的模型参数可以对应不同类型的退化模型；&lt;/li&gt;
-&lt;li&gt;$D_0$ 表示初始的损伤状态，一般初始状态默认为健康无损；&lt;/li&gt;
-&lt;li&gt;$I_i$ 是第 $i$ 个时间步的检测结果；&lt;/li&gt;
-&lt;li&gt;$I_{M,i}$ 是第 $i$ 个时间步的监测结果；&lt;/li&gt;
-&lt;li&gt;$I_{D,i}$ 是第 $i$ 个时间步的是否要进行检测的判断；&lt;/li&gt;
-&lt;li&gt;$R_i$ 是第 $i$ 个时间步是否要进行修复，包括两种状态（&amp;ldquo;repair&amp;rdquo; and &amp;ldquo;not repair&amp;rdquo;）；&lt;/li&gt;
-&lt;li&gt;$D_{R,i}$ 是第 $i$ 个时间步进行修复/或者不修复后的损伤状态；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;$M_0$：表示初始的模型参数，不同的模型参数可以对应不同类型的退化模型&lt;/li&gt;
+&lt;li&gt;$D_0$：表示初始的损伤状态，一般初始状态默认为健康无损&lt;/li&gt;
+&lt;li&gt;$I_i$：第 $i$ 个时间步的检测结果&lt;/li&gt;
+&lt;li&gt;$I_{M,i}$：第 $i$ 个时间步的监测结果&lt;/li&gt;
+&lt;li&gt;$I_{D,i}$：第 $i$ 个时间步的是否要进行检测的判断&lt;/li&gt;
+&lt;li&gt;$R_i$：第 $i$ 个时间步是否要进行修复，包括两种状态（&amp;ldquo;repair&amp;rdquo; and &amp;ldquo;not repair&amp;rdquo;）&lt;/li&gt;
+&lt;li&gt;$D_{R,i}$：第 $i$ 个时间步进行修复/或者不修复后的损伤状态&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319151022557.png&#34;
 	width=&#34;541&#34;
@@ -82,129 +83,158 @@
 		data-flex-basis=&#34;353px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h3 id=&#34;概率分布说明&#34;&gt;概率分布说明
+&lt;/h3&gt;&lt;p&gt;举例来说：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;举例来说
-&lt;ul&gt;
-&lt;li&gt;如果有 $n_d$ 种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ 的向量；&lt;/li&gt;
-&lt;li&gt;如果有 $n_M$ 种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ 的向量；&lt;/li&gt;
-&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M*n_M$的矩阵，用于表示不同时间步过程中模型参数的变化；&lt;/li&gt;
-&lt;li&gt;$P(D_i|D_{R，i-1}，M_i)$是一个$n_D&lt;em&gt;n_D&lt;/em&gt;n_M$的三维矩阵；&lt;/li&gt;
-&lt;li&gt;当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$ ;&lt;/li&gt;
-&lt;li&gt;$P(D_{R,i}|D_{i}，R_i)$是一个 $n_D&lt;em&gt;n_D&lt;/em&gt;2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布；&lt;/li&gt;
-&lt;li&gt;如果有$n_I$种检测结果，那么检测模型将以$P(I_i|D_i,I_{D,i})$ 的形式进行建模，大小为$n_I&lt;em&gt;n_D&lt;/em&gt;2$ ；&lt;/li&gt;
-&lt;li&gt;健康检测系统被假设为仅仅与损伤尺寸$D_i$相关，用$P(I_{M,i}|D_i)$ 的形式进行表示，如果有$n_{I_M}$种健康监测系统报警结果，那么$P(I_{M,i}|D_i)$是一个$n_{I_M}*n_D$的矩阵；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;如果有 $n_d$ 种结构损伤状态，那么$P(D_0)$应该是一个长度为$n_d$的向量&lt;/li&gt;
+&lt;li&gt;如果有 $n_M$ 种结构参数，那么$P(M_0)$应该是一个长度为$n_M$的向量&lt;/li&gt;
+&lt;li&gt;$P(M_i|M_{i-1})$是一个$n_M \times n_M$的矩阵，用于表示不同时间步过程中模型参数的变化&lt;/li&gt;
+&lt;li&gt;$P(D_i|D_{R,i-1},M_i)$是一个$n_D \times n_D \times n_M$的三维矩阵&lt;/li&gt;
+&lt;li&gt;当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$&lt;/li&gt;
+&lt;li&gt;$P(D_{R,i}|D_{i},R_i)$是一个 $n_D \times n_D \times 2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布&lt;/li&gt;
+&lt;li&gt;如果有$n_I$种检测结果，那么检测模型将以$P(I_i|D_i,I_{D,i})$的形式进行建模，大小为$n_I \times n_D \times 2$&lt;/li&gt;
+&lt;li&gt;健康检测系统被假设为仅仅与损伤尺寸$D_i$相关，用$P(I_{M,i}|D_i)$的形式进行表示，如果有$n_{I_M}$种健康监测系统报警结果，那么$P(I_{M,i}|D_i)$是一个$n_{I_M} \times n_D$的矩阵&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;维护策略&#34;&gt;维护策略
-&lt;/h2&gt;&lt;p&gt;本文考虑了13种不同的维护策略&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;本文考虑了13种不同的维护策略：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;纠正性运维；&lt;/li&gt;
-&lt;li&gt;无检测，定期修复；&lt;/li&gt;
-&lt;li&gt;无检测，根据CM报警结果来确定是否进行修复；&lt;/li&gt;
-&lt;li&gt;等间距检测，根据检测结果确定是否进行修复；&lt;/li&gt;
-&lt;li&gt;根据CM报警结果来确定是否进行检测，根据检测结果确定是否进行修复；&lt;/li&gt;
-&lt;li&gt;无检测，根据失效概率决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;等距检测，根据失效概率决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;根据失效概率决定是否进行检测；根据失效概率决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;根据失效概率决定是否进行检测；根据检测结果决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;不检测，根据损伤尺寸的期望值决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;等距检测，根据损伤尺寸的期望值决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;根据损伤尺寸的期望值决定是否进行检测，根据损伤尺寸的期望值决定是否进行修复；&lt;/li&gt;
-&lt;li&gt;根据损伤尺寸的期望值决定是否进行检测；根据检测结果决定是否进行修复；&lt;/li&gt;
+&lt;li&gt;纠正性运维&lt;/li&gt;
+&lt;li&gt;无检测，定期修复&lt;/li&gt;
+&lt;li&gt;无检测，根据CM报警结果来确定是否进行修复&lt;/li&gt;
+&lt;li&gt;等间距检测，根据检测结果确定是否进行修复&lt;/li&gt;
+&lt;li&gt;根据CM报警结果来确定是否进行检测，根据检测结果确定是否进行修复&lt;/li&gt;
+&lt;li&gt;无检测，根据失效概率决定是否进行修复&lt;/li&gt;
+&lt;li&gt;等距检测，根据失效概率决定是否进行修复&lt;/li&gt;
+&lt;li&gt;根据失效概率决定是否进行检测；根据失效概率决定是否进行修复&lt;/li&gt;
+&lt;li&gt;根据失效概率决定是否进行检测；根据检测结果决定是否进行修复&lt;/li&gt;
+&lt;li&gt;不检测，根据损伤尺寸的期望值决定是否进行修复&lt;/li&gt;
+&lt;li&gt;等距检测，根据损伤尺寸的期望值决定是否进行修复&lt;/li&gt;
+&lt;li&gt;根据损伤尺寸的期望值决定是否进行检测，根据损伤尺寸的期望值决定是否进行修复&lt;/li&gt;
+&lt;li&gt;根据损伤尺寸的期望值决定是否进行检测；根据检测结果决定是否进行修复&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;简单策略下的算法说明&#34;&gt;简单策略下的算法说明
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$​, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;概率更新公式&#34;&gt;概率更新公式
+&lt;/h3&gt;&lt;p&gt;公式（1）为每一个时间步中，对结构损伤状态概率的更新：（需要注意的是，这里存在6个变量，$D_i, D_{i-1}, M_{i}, M_{i-1}, R_{i-1}$以及$D_{R,i-1}$，因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）&lt;/p&gt;
 $$
-  P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
-  \times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
-  $$&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;公式（2）为公式（1）的详细表示（以7种损伤状态，3种模型参数为例），值得解释的是，这里公式中的✖并不是代表标准的矩阵乘法，而是表示概率的乘积运算；&lt;/p&gt;
+P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
+\times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
+$$&lt;p&gt;公式（2）为公式（1）的详细表示（以7种损伤状态，3种模型参数为例），值得解释的是，这里公式中的$\times$并不是代表标准的矩阵乘法，而是表示概率的乘积运算：&lt;/p&gt;
 $$
-  P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1})
-  $$&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;公式（3）是进行变量消去后的公式，能够很好地提高计算效率和减少内存资源，依次消去了$M_{i-1},R_{i-1},D_{i-1}$，最终消去了$D_{R,i-1}$​ 变量：&lt;/p&gt;
+P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1}})
+$$&lt;p&gt;公式（3）是进行变量消去后的公式，能够很好地提高计算效率和减少内存资源，依次消去了$M_{i-1}, R_{i-1}, D_{i-1}$，最终消去了$D_{R,i-1}$变量：&lt;/p&gt;
 $$
-  P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
-  \times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
-  \times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
-  $$&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;失效概率等于损伤状态$D_i$ 等于”fault“的概率；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;repair的概率为节点$R_i$ 中取值为&amp;quot;repair&amp;quot;的概率；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;需要根据不同的策略来制定$P(R_i|D_i)$ , 例如对于策略1而言，所有的$R_i$ 均为0，即不进行repair；&lt;/p&gt;
-&lt;/li&gt;
+P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
+\times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
+\times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
+$$&lt;h3 id=&#34;失效与修复概率&#34;&gt;失效与修复概率
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;失效概率等于损伤状态$D_i$等于&amp;quot;fault&amp;quot;的概率&lt;/li&gt;
+&lt;li&gt;Repair的概率为节点$R_i$中取值为&amp;quot;repair&amp;quot;的概率&lt;/li&gt;
+&lt;li&gt;需要根据不同的策略来制定$P(R_i|D_i)$，例如对于策略1而言，所有的$R_i$均为0，即不进行repair&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;复杂策略下的算法说明&#34;&gt;复杂策略下的算法说明
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;随机从$P(D_0)$ 分布中选取$d_0$；&lt;/li&gt;
-&lt;li&gt;随机从$P(M_0)$ 分布中选取$m_0$；&lt;/li&gt;
-&lt;li&gt;计算初始的$P(D_0,M_0)=P(D_0)P(M_0)$ ;&lt;/li&gt;
-&lt;li&gt;对每一个时间步$i$ :
+&lt;li&gt;随机从$P(D_0)$分布中选取$d_0$&lt;/li&gt;
+&lt;li&gt;随机从$P(M_0)$分布中选取$m_0$&lt;/li&gt;
+&lt;li&gt;计算初始的$P(D_0,M_0)=P(D_0)P(M_0)$&lt;/li&gt;
+&lt;li&gt;对每一个时间步$i$:
 &lt;ul&gt;
-&lt;li&gt;从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$ ;&lt;/li&gt;
-&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$  ;*&lt;/li&gt;
-&lt;li&gt;根据决策规则$i_{D,i}$ 做出是否进行检测的决策；&lt;/li&gt;
-&lt;li&gt;从分布$P(I_{i}|D_i=d_i，I_{D,i}=i_{D,i})$ 中抽取检测结果$i_i$ ;&lt;/li&gt;
+&lt;li&gt;从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$&lt;/li&gt;
 &lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ;*&lt;/li&gt;
-&lt;li&gt;根据决策规则$r_i$ 做出是否进行修复的决策；&lt;/li&gt;
-&lt;li&gt;从分布$P(D_{R，i}|D_i=d_i，R_{i}=r_{i})$ 中抽取进行修复后的结构损伤状态$d_{R,i}$ ;&lt;/li&gt;
-&lt;li&gt;从分布$P(D_{i+1}|D_{R,i}=d_i，M_{i+1}=m_{0})$ 中抽取下一步损伤状态$d_{i+1}$ ;&lt;/li&gt;
-&lt;li&gt;根据退化和修复算法更新$P(D_{i+1},M_{i+1})$  ; *&lt;/li&gt;
+&lt;li&gt;根据决策规则$i_{D,i}$做出是否进行检测的决策&lt;/li&gt;
+&lt;li&gt;从分布$P(I_{i}|D_i=d_i, I_{D,i}=i_{D,i})$中抽取检测结果$i_i$&lt;/li&gt;
+&lt;li&gt;使用贝叶斯准则更新$P(D_i,M_i)$ ;*&lt;/li&gt;
+&lt;li&gt;根据决策规则$r_i$做出是否进行修复的决策&lt;/li&gt;
+&lt;li&gt;从分布$P(D_{R,i}|D_i=d_i, R_{i}=r_{i})$中抽取进行修复后的结构损伤状态$d_{R,i}$&lt;/li&gt;
+&lt;li&gt;从分布$P(D_{i+1}|D_{R,i}=d_{R,i}, M_{i+1}=m_{i+1})$中抽取下一步损伤状态$d_{i+1}$&lt;/li&gt;
+&lt;li&gt;根据退化和修复算法更新$P(D_{i+1},M_{i+1})$ ; *&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;(* 表示需要使用贝叶斯定理进行概率更新)&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>海上风机状态监测运维策略优化</title>
-        <link>https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/</link>
+        <title>海上风机状态监测与运维策略优化：基于成本效益的综合决策框架</title>
+        <link>https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/</link>
         <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/1.png" alt="Featured image of post 海上风机状态监测运维策略优化" /&gt;&lt;h1 id=&#34;主要贡献&#34;&gt;主要贡献
-&lt;/h1&gt;&lt;p&gt;回答了两个基本问题：&lt;/p&gt;
+        <guid>https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.png" alt="Featured image of post 海上风机状态监测与运维策略优化：基于成本效益的综合决策框架" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;文章信息&lt;/strong&gt;：本文是对论文 &lt;em&gt;&amp;ldquo;A generic framework for the optimisation of maintenance strategies for offshore wind turbines&amp;rdquo;&lt;/em&gt; 的阅读笔记。该研究构建了一个通用框架，用于优化海上风机的维护策略，特别探讨了SCADA系统与专用状态监测系统（CMS）的协同应用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;研究背景与核心问题&#34;&gt;研究背景与核心问题
+&lt;/h1&gt;&lt;h2 id=&#34;研究目标&#34;&gt;研究目标
+&lt;/h2&gt;&lt;p&gt;本文旨在回答海上风机运维中的两个关键问题：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;风场中的SCADA系统是否是专门设计的状态监测系统（CMS）的可行替代方案；&lt;/li&gt;
-&lt;li&gt;结合CMS和运维策略以最大限度提到OWT的财务效益的最佳方法是什么；&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;监测系统的可行性&lt;/strong&gt;：风场中的SCADA系统是否可以作为专用状态监测系统（CMS）的可行替代方案？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;综合优化策略&lt;/strong&gt;：如何结合CMS与运维策略，以最大化海上风机（OWT）的财务效益？&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;基本假设&#34;&gt;基本假设
-&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;每个子系统的健康状态分为四类：正常、轻微故障、严重故障和失效；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;轻微故障或严重故障时，子系统仍允许运行；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;严重故障更容易被CMS所监测到；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;不同部件在故障发展的不同阶段有不同的误报率；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;任何子系统失效都将触发风机停机；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;每个子系统的退化过程遵循威布尔分布；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;威布尔分布的参数来源于文献中公开的故障率数据；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303154521803.png&#34;
+&lt;h2 id=&#34;核心贡献&#34;&gt;核心贡献
+&lt;/h2&gt;&lt;p&gt;该研究建立了一个&lt;strong&gt;综合仿真框架&lt;/strong&gt;，能够：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模拟风机组件的退化过程&lt;/li&gt;
+&lt;li&gt;评估不同监测系统的检测能力&lt;/li&gt;
+&lt;li&gt;优化维护策略的成本效益比&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;模型基本假设&#34;&gt;模型基本假设
+&lt;/h1&gt;&lt;h2 id=&#34;健康状态分级&#34;&gt;健康状态分级
+&lt;/h2&gt;&lt;p&gt;研究将每个子系统的健康状态划分为&lt;strong&gt;四个等级&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;状态等级&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;描述&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;运维影响&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;正常&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;无故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;正常运行&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;轻微故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;存在轻微缺陷&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;允许继续运行&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;严重故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;存在严重缺陷&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;仍可运行，但需关注&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;失效&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;完全故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;触发停机&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;关键假设&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轻微故障和严重故障状态下，子系统仍允许运行&lt;/li&gt;
+&lt;li&gt;严重故障更容易被CMS监测到&lt;/li&gt;
+&lt;li&gt;不同部件在故障发展的不同阶段有不同的误报率&lt;/li&gt;
+&lt;li&gt;任何子系统失效都将触发风机停机&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;退化过程模型&#34;&gt;退化过程模型
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;每个子系统的退化过程遵循&lt;strong&gt;威布尔分布（Weibull Distribution）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;威布尔分布的参数来源于文献中公开的故障率数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803.png&#34;
 	width=&#34;874&#34;
 	height=&#34;471&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303154521803_hu_d6169eec14c02c29.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303154521803_hu_f329c832a8019a0b.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803_hu_d6169eec14c02c29.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303154521803_hu_f329c832a8019a0b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Failure rates&#34;
+		alt=&#34;故障率数据&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -212,39 +242,87 @@ $$
 		data-flex-basis=&#34;445px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;风机使用寿命为20年；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;假设修复后组件的情况“as good as new”&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;运维策略&#34;&gt;运维策略
-&lt;/h1&gt;&lt;h2 id=&#34;纠正性维护&#34;&gt;纠正性维护
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：在子结构发生完全失效（failure）后进行；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;周期性维护&#34;&gt;周期性维护
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：按照预先确定的时间间隔进行维护；&lt;/li&gt;
-&lt;li&gt;将周期性维护分为大修和小修，基本服务（BS）是发现并修复那些常见、易于修复但难以监控的问题；高级服务（AS）将对所有结构部件进行检查；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;基于状态的维护&#34;&gt;基于状态的维护
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;： 基于风机实际的健康状态进行维护；&lt;/li&gt;
-&lt;li&gt;有效程度取决于CMS的故障检测能力；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;维护框架&#34;&gt;维护框架
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Maintenance 1对应修复Minor faults;&lt;/li&gt;
-&lt;li&gt;Maintenance 2对应修复critical faults;&lt;/li&gt;
-&lt;li&gt;Maintenance 3对应修复failures;&lt;/li&gt;
+&lt;h2 id=&#34;其他假设&#34;&gt;其他假设
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;参数&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;设定值&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;风机使用寿命&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;20年&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;标准设计寿命&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;修复后状态&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&amp;ldquo;as good as new&amp;rdquo;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;完全修复假设&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;运维策略体系&#34;&gt;运维策略体系
+&lt;/h1&gt;&lt;h2 id=&#34;1-纠正性维护corrective-maintenance&#34;&gt;1. 纠正性维护（Corrective Maintenance）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;：在子结构发生完全失效（failure）后进行的维护。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;被动响应式维护&lt;/li&gt;
+&lt;li&gt;通常成本最高（包括停机损失和紧急维修费用）&lt;/li&gt;
+&lt;li&gt;适用于非关键部件或故障后果不严重的情况&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160352843.png&#34;
+&lt;h2 id=&#34;2-周期性维护time-based-maintenance&#34;&gt;2. 周期性维护（Time-Based Maintenance）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;：按照预先确定的时间间隔进行的维护。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;分类&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基本服务（Basic Service, BS）&lt;/strong&gt;：发现并修复常见、易于修复但难以监控的问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高级服务（Advanced Service, AS）&lt;/strong&gt;：对所有结构部件进行全面检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;优化方向&lt;/strong&gt;：缩短相邻AS的时间间隔可提高风机可用率，但仍不如采用监测系统的效果。&lt;/p&gt;
+&lt;h2 id=&#34;3-基于状态的维护condition-based-maintenance-cbm&#34;&gt;3. 基于状态的维护（Condition-Based Maintenance, CBM）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;定义&lt;/strong&gt;：基于风机实际健康状态进行的维护。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心要素&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;依赖CMS的故障检测能力&lt;/li&gt;
+&lt;li&gt;实时评估设备健康状态&lt;/li&gt;
+&lt;li&gt;在故障发生前进行干预&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;有效性&lt;/strong&gt;：取决于CMS的检测精度、响应速度和维护决策的及时性。&lt;/p&gt;
+&lt;h2 id=&#34;维护框架体系&#34;&gt;维护框架体系
+&lt;/h2&gt;&lt;p&gt;研究定义了三种维护级别：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;维护级别&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;对应故障类型&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;维护内容&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance 1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;轻微故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;修复轻微缺陷，防止恶化&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance 2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;严重故障&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;修复严重缺陷，恢复功能&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Maintenance 3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;完全失效&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全面修复或更换部件&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843.png&#34;
 	width=&#34;1376&#34;
 	height=&#34;824&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160352843_hu_d74ad046dee78bd1.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160352843_hu_51a1a938e8222f16.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843_hu_d74ad046dee78bd1.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160352843_hu_51a1a938e8222f16.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;维护框架&#34;
@@ -255,14 +333,13 @@ $$
 		data-flex-basis=&#34;400px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;运维策略指定&#34;&gt;运维策略指定
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;五种不同的运维策略&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303194130738.png&#34;
+&lt;h2 id=&#34;运维策略组合&#34;&gt;运维策略组合
+&lt;/h2&gt;&lt;p&gt;研究设计了&lt;strong&gt;五种不同的运维策略&lt;/strong&gt;，结合&lt;strong&gt;四种监测系统配置&lt;/strong&gt;：&lt;/p&gt;
+&lt;h3 id=&#34;五种运维策略&#34;&gt;五种运维策略
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738.png&#34;
 	width=&#34;989&#34;
 	height=&#34;226&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303194130738_hu_37f34ea708fa176a.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303194130738_hu_d64c41b267ae55eb.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738_hu_37f34ea708fa176a.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194130738_hu_d64c41b267ae55eb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;运维策略制定&#34;
@@ -273,25 +350,46 @@ $$
 		data-flex-basis=&#34;1050px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;四种不同的monitoring system：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;没有部署monitoring system;&lt;/li&gt;
-&lt;li&gt;SCADA&lt;/li&gt;
-&lt;li&gt;CMS&lt;/li&gt;
-&lt;li&gt;SCADA+CMS&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;退化模型&#34;&gt;退化模型
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;系统退化模型架构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160707353.png&#34;
+&lt;h3 id=&#34;四种监测系统配置&#34;&gt;四种监测系统配置
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;配置&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;说明&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;特点&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;无监测系统&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;仅依赖定期检查和故障后维修&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;成本最低，但风险最高&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SCADA&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;利用风机现有监控和数据采集系统&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;成本低，但检测能力有限&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CMS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;专用状态监测系统&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;检测能力强，但成本较高&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SCADA+CMS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;两种系统协同工作&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;综合优势，检测能力最强&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;退化与检测模型&#34;&gt;退化与检测模型
+&lt;/h1&gt;&lt;h2 id=&#34;系统退化模型架构&#34;&gt;系统退化模型架构
+&lt;/h2&gt;&lt;p&gt;研究采用&lt;strong&gt;Petri网&lt;/strong&gt;建模系统退化过程：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353.png&#34;
 	width=&#34;662&#34;
 	height=&#34;851&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160707353_hu_eb98ae57232d80ea.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160707353_hu_e3f7321bfecb8599.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353_hu_eb98ae57232d80ea.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160707353_hu_e3f7321bfecb8599.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;系统Petri Net&#34;
@@ -302,12 +400,11 @@ $$
 		data-flex-basis=&#34;186px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160810715.png&#34;
+&lt;p&gt;威布尔分布参数设置：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715.png&#34;
 	width=&#34;916&#34;
 	height=&#34;259&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160810715_hu_2a43ab72ff4b1e7f.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303160810715_hu_1128ff5c7c73cdb0.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715_hu_2a43ab72ff4b1e7f.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303160810715_hu_1128ff5c7c73cdb0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Weibull分布参数&#34;
@@ -318,13 +415,13 @@ $$
 		data-flex-basis=&#34;848px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;检测模型&#34;&gt;检测模型
-&lt;/h1&gt;&lt;h2 id=&#34;the-purpose-designed-cms-特意安装传感器用于监测某一组件的健康状态&#34;&gt;The purpose-designed CMS (特意安装传感器用于监测某一组件的健康状态)
-&lt;/h2&gt;&lt;p&gt;整体框架如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303162950860.png&#34;
+&lt;h2 id=&#34;检测模型&#34;&gt;检测模型
+&lt;/h2&gt;&lt;h3 id=&#34;专用cms检测模型&#34;&gt;专用CMS检测模型
+&lt;/h3&gt;&lt;p&gt;整体框架如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860.png&#34;
 	width=&#34;746&#34;
 	height=&#34;709&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303162950860_hu_d82ae12e1f379137.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303162950860_hu_ee81c54a93f88e4b.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860_hu_d82ae12e1f379137.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162950860_hu_ee81c54a93f88e4b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;检测模型整体框架&#34;
@@ -335,13 +432,18 @@ $$
 		data-flex-basis=&#34;252px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;p&gt;&lt;strong&gt;模型组成&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;硬件健康状态的模拟（即考虑传感器失效概率）：C1表示传感器检测到系统故障的概率，C2表示传感器损坏的概率；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303162519443.png&#34;
+&lt;p&gt;&lt;strong&gt;硬件健康状态模拟&lt;/strong&gt;（考虑传感器失效概率）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C1：传感器检测到系统故障的概率&lt;/li&gt;
+&lt;li&gt;C2：传感器损坏的概率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443.png&#34;
 	width=&#34;420&#34;
 	height=&#34;445&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303162519443_hu_7bc7812685a48c0e.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303162519443_hu_f7de2e100660d5c9.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443_hu_7bc7812685a48c0e.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303162519443_hu_f7de2e100660d5c9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Part-one&#34;
@@ -354,11 +456,11 @@ $$
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;考虑数据采集系统（DAQ）发生故障的可能性：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303163125644.png&#34;
+&lt;p&gt;&lt;strong&gt;数据采集系统（DAQ）故障模拟&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644.png&#34;
 	width=&#34;467&#34;
 	height=&#34;56&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303163125644_hu_a5ca8cd46a93cc33.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303163125644_hu_e8ea4ad49038fe11.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644_hu_a5ca8cd46a93cc33.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163125644_hu_e8ea4ad49038fe11.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;DAQ系统故障模拟&#34;
@@ -371,11 +473,14 @@ $$
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;监测系统发出故障预警信号，对应的故障类型概率：其中normal : minor fault : critical fault为0.4，0.5，0.1&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303163342506.png&#34;
+&lt;p&gt;&lt;strong&gt;故障预警信号与故障类型概率&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正常 : 轻微故障 : 严重故障 = 0.4 : 0.5 : 0.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506.png&#34;
 	width=&#34;339&#34;
 	height=&#34;279&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303163342506_hu_c94ebc6ba296764d.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303163342506_hu_71cd851464535c2a.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506_hu_c94ebc6ba296764d.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303163342506_hu_71cd851464535c2a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;预警信号与对应故障类型概率&#34;
@@ -387,12 +492,12 @@ $$
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;scada-based-cms&#34;&gt;SCADA-based CMS
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303184823147.png&#34;
+&lt;/ol&gt;
+&lt;h3 id=&#34;基于scada的cms&#34;&gt;基于SCADA的CMS
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147.png&#34;
 	width=&#34;821&#34;
 	height=&#34;460&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303184823147_hu_ab7719dbc3a60c41.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303184823147_hu_3c7dcc4cd3fe31f3.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147_hu_ab7719dbc3a60c41.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184823147_hu_3c7dcc4cd3fe31f3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CMS &amp;#43; SCADA&#34;
@@ -404,12 +509,12 @@ $$
 	
 &gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;故障检测概率（Probability of detection），文中直接通过假设得出&lt;/li&gt;
+&lt;li&gt;故障检测概率（Probability of Detection）：通过假设直接得出&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303184857580.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580.png&#34;
 	width=&#34;477&#34;
 	height=&#34;209&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303184857580_hu_791155ca5620c503.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303184857580_hu_bdd4dff88bab3970.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580_hu_791155ca5620c503.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303184857580_hu_bdd4dff88bab3970.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;故障检测概率&#34;
@@ -420,12 +525,14 @@ $$
 		data-flex-basis=&#34;547px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1 id=&#34;修复模型&#34;&gt;修复模型
 &lt;/h1&gt;&lt;h2 id=&#34;维护成本&#34;&gt;维护成本
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185325375.png&#34;
+&lt;/h2&gt;&lt;p&gt;不同故障所需船只租赁成本：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375.png&#34;
 	width=&#34;495&#34;
 	height=&#34;380&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185325375_hu_89d8083601c20468.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185325375_hu_cb98617d2e84aeee.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375_hu_89d8083601c20468.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185325375_hu_cb98617d2e84aeee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;不同故障所需船只租赁成本&#34;
@@ -437,20 +544,62 @@ $$
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;维护流程&#34;&gt;维护流程
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;M1代表从检测到故障到发出修复指令的时间；&lt;/li&gt;
-&lt;li&gt;M2代表安排会议来指定维修计划的时间；&lt;/li&gt;
-&lt;li&gt;M3代表制定计划的时间；&lt;/li&gt;
-&lt;li&gt;M4+M5代表了租用船只，调遣人员，准备维护设备的时间；&lt;/li&gt;
-&lt;li&gt;M6代表了如果有备件，那么将启用M6，这个时间远短于M5；&lt;/li&gt;
-&lt;li&gt;M7没啥意思，表示维护船准备出发；&lt;/li&gt;
-&lt;li&gt;M8和M9代表运输船到达现场的时间，M9考虑了天气因素的影响，即等待合适窗口时间；&lt;/li&gt;
-&lt;li&gt;M11代表了维护所需要的时间；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185721918.png&#34;
+&lt;/h2&gt;&lt;p&gt;维护流程的时间节点定义：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;阶段&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;代号&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;描述&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;故障检测到修复指令&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;从检测到故障到发出修复指令的时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;维修计划会议&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;安排会议来制定维修计划的时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;计划制定&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;制定详细维修计划的时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;资源准备&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M4+M5&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;租用船只、调遣人员、准备维护设备的时间&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;备件调用&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M6&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;如果有备件，启用备件的时间（远短于M5）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;出发准备&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;维护船准备出发&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;运输到场&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M8/M9&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;运输船到达现场的时间，M9考虑了天气因素（等待合适窗口期）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;维修实施&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;M11&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;维护作业所需的时间&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918.png&#34;
 	width=&#34;799&#34;
 	height=&#34;439&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185721918_hu_598f43dee14409c4.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185721918_hu_716ae04bf1cd5df1.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918_hu_598f43dee14409c4.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185721918_hu_716ae04bf1cd5df1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;维护流程&#34;
@@ -461,10 +610,11 @@ $$
 		data-flex-basis=&#34;436px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185747196.png&#34;
+&lt;p&gt;修复模型中的相关参数：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196.png&#34;
 	width=&#34;991&#34;
 	height=&#34;349&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185747196_hu_d0cda188608c9bf3.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303185747196_hu_67afde48e95ffd20.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196_hu_d0cda188608c9bf3.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303185747196_hu_67afde48e95ffd20.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;修复模型中的相关参数&#34;
@@ -475,12 +625,13 @@ $$
 		data-flex-basis=&#34;681px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;仿真流程&#34;&gt;仿真流程
-&lt;/h1&gt;&lt;h2 id=&#34;风机的服役过程&#34;&gt;风机的服役过程
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303201938165.png&#34;
+&lt;hr&gt;
+&lt;h1 id=&#34;仿真流程与服役过程模拟&#34;&gt;仿真流程与服役过程模拟
+&lt;/h1&gt;&lt;h2 id=&#34;风机服役过程模拟&#34;&gt;风机服役过程模拟
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165.png&#34;
 	width=&#34;822&#34;
 	height=&#34;729&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303201938165_hu_7aa9a22bbc12cc34.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303201938165_hu_754d519d7a6adb95.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165_hu_7aa9a22bbc12cc34.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303201938165_hu_754d519d7a6adb95.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;服役过程模拟&#34;
@@ -491,25 +642,29 @@ $$
 		data-flex-basis=&#34;270px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;小结&#34;&gt;小结
+&lt;h2 id=&#34;仿真小结&#34;&gt;仿真小结
 &lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;对所有的随机变量进行采样，生成参数；&lt;/li&gt;
-&lt;li&gt;对一个风机执行上述所有流程，直至达到服务寿命；&lt;/li&gt;
-&lt;li&gt;反复迭代直至收敛 （30000次后收敛至稳定值，所有模拟均进行了50000次迭代；）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参数采样&lt;/strong&gt;：对所有的随机变量进行采样，生成参数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;单风机模拟&lt;/strong&gt;：对一个风机执行上述所有流程，直至达到服务寿命&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;迭代收敛&lt;/strong&gt;：反复迭代直至收敛（30,000次后收敛至稳定值，所有模拟均进行了50,000次迭代）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;结果及考虑的指标&#34;&gt;结果及考虑的指标
-&lt;/h1&gt;&lt;h2 id=&#34;使用率&#34;&gt;使用率
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;缩短相邻的AS能提高风机的使用率，但仍然不如使用任何一种monitoring system的情况；&lt;/li&gt;
-&lt;li&gt;当频繁进行AS时，结合两个monitoring system可能会导致使用率下降，因为检测到损伤后对风机进行修复的停机时间变长；&lt;/li&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;仿真结果与性能指标&#34;&gt;仿真结果与性能指标
+&lt;/h1&gt;&lt;h2 id=&#34;风机可用率availability&#34;&gt;风机可用率（Availability）
+&lt;/h2&gt;&lt;h3 id=&#34;关键发现&#34;&gt;关键发现
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;缩短AS间隔&lt;/strong&gt;：缩短相邻的高级服务（AS）时间间隔能提高风机的可用率，但仍然不如使用任何一种监测系统的效果&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监测系统优势&lt;/strong&gt;：采用SCADA或CMS监测系统能显著提高可用率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双重系统效应&lt;/strong&gt;：当频繁进行AS时，结合两个监测系统可能会导致可用率下降，因为检测到损伤后对风机进行修复的停机时间变长&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303194521652.png&#34;
+&lt;h3 id=&#34;数据集a结果&#34;&gt;数据集A结果
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652.png&#34;
 	width=&#34;791&#34;
 	height=&#34;419&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303194521652_hu_4897ec5c8a45afb3.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303194521652_hu_17cffc26ddcafee.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652_hu_4897ec5c8a45afb3.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303194521652_hu_17cffc26ddcafee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;不同维护策略下的风机使用率-DatasetA&#34;
+		alt=&#34;不同维护策略下的风机可用率-DatasetA&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -517,13 +672,14 @@ $$
 		data-flex-basis=&#34;453px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195148402.png&#34;
+&lt;h3 id=&#34;数据集b结果&#34;&gt;数据集B结果
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402.png&#34;
 	width=&#34;766&#34;
 	height=&#34;434&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195148402_hu_727c7ec9434883fc.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195148402_hu_9e5b466488bbd9f1.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402_hu_727c7ec9434883fc.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195148402_hu_9e5b466488bbd9f1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;不同维护策略下的风机使用率-DatasetB&#34;
+		alt=&#34;不同维护策略下的风机可用率-DatasetB&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -531,11 +687,13 @@ $$
 		data-flex-basis=&#34;423px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;coa-the-ratio-of-maintenance-cost-to-availability&#34;&gt;COA (the ratio of maintenance cost to availability)
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195254188.png&#34;
+&lt;h2 id=&#34;维护成本效益比coa&#34;&gt;维护成本效益比（COA）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;COA定义&lt;/strong&gt;：维护成本与可用率的比值（Cost to Availability Ratio），衡量单位可用率所需的维护成本。&lt;/p&gt;
+&lt;h3 id=&#34;数据集a结果-1&#34;&gt;数据集A结果
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188.png&#34;
 	width=&#34;762&#34;
 	height=&#34;435&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195254188_hu_9e02281951f7ffa.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195254188_hu_510da10a8a67bdab.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188_hu_9e02281951f7ffa.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195254188_hu_510da10a8a67bdab.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;不同维护策略下的COA-DatasetA&#34;
@@ -546,13 +704,14 @@ $$
 		data-flex-basis=&#34;420px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195320729.png&#34;
+&lt;h3 id=&#34;数据集b结果-1&#34;&gt;数据集B结果
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729.png&#34;
 	width=&#34;771&#34;
 	height=&#34;467&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195320729_hu_adca78140fcd7820.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/image-20250303195320729_hu_ef7ff15c599e13d9.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729_hu_adca78140fcd7820.png 480w, https://whhong-research.github.io/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/image-20250303195320729_hu_ef7ff15c599e13d9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;不同维护策略下的COA-DatasetA&#34;
+		alt=&#34;不同维护策略下的COA-DatasetB&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -560,6 +719,62 @@ $$
 		data-flex-basis=&#34;396px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;研究结论与实践启示&#34;&gt;研究结论与实践启示
+&lt;/h1&gt;&lt;h2 id=&#34;主要结论&#34;&gt;主要结论
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;监测系统的价值&lt;/strong&gt;：专用CMS和SCADA系统都能显著提升风机可用率，但SCADA作为成本更低的替代方案具有可观的经济效益&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;维护策略优化&lt;/strong&gt;：基于状态的维护（CBM）结合适当的监测系统，能够在控制成本的同时最大化可用率&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;系统协同效应&lt;/strong&gt;：SCADA与CMS的协同使用在某些情况下可能产生边际效益递减，需要权衡额外的检测能力与停机时间成本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;成本效益平衡&lt;/strong&gt;：COA指标显示，最优策略并非总是最先进的监测系统，而是成本与效益的最佳平衡点&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;工程实践建议&#34;&gt;工程实践建议
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;应用场景&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;推荐策略&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;理由&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;新建风场&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;CMS + CBM&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全生命周期效益最大化&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;存量风场改造&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SCADA升级 + 针对性CMS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;成本控制与效益平衡&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;预算受限场景&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;优化SCADA算法 + 周期性维护&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;最小投入获得可观收益&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;高风险环境&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;完整CMS + 双重监测&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;确保可靠性与安全性&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;未来研究方向&#34;&gt;未来研究方向
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;机器学习集成&lt;/strong&gt;：将AI算法融入SCADA数据分析，提升故障预测精度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数字孪生应用&lt;/strong&gt;：构建风机数字孪生模型，实现实时状态仿真与预测&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多风场协同&lt;/strong&gt;：研究风场级别的集中监测与维护资源优化调度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;全生命周期成本模型&lt;/strong&gt;：建立更完善的LCOE与维护成本关联模型&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         <item>

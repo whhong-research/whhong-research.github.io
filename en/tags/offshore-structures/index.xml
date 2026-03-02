@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Offshore Structures on whhong&#39;s blog</title>
+        <link>https://whhong-research.github.io/en/tags/offshore-structures/</link>
+        <description>Recent content in Offshore Structures on whhong&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>whhong</copyright>
+        <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/en/tags/offshore-structures/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report</title>
+        <link>https://whhong-research.github.io/en/p/structural-health-monitoring-of-offshore-structures-using-sensor-data-in-depth-analysis-of-psa-research-report/</link>
+        <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://whhong-research.github.io/en/p/structural-health-monitoring-of-offshore-structures-using-sensor-data-in-depth-analysis-of-psa-research-report/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225133412287.png" alt="Featured image of post Structural Health Monitoring of Offshore Structures Using Sensor Data: In-Depth Analysis of PSA Research Report" /&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Series Introduction&lt;/strong&gt;: This series of articles provides in-depth interpretation of reports and standards related to offshore structural health monitoring and management, covering the design and implementation of Structural Health Monitoring (SHM) systems, Risk-Based Inspection (RBI), and Structural Integrity Management (SIM). This inaugural article presents a detailed analysis of the research report on structural health monitoring of offshore structures using sensor data by the Petroleum Safety Authority Norway (PSA).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;executive-summary&#34;&gt;Executive Summary
+&lt;/h1&gt;&lt;h2 id=&#34;basic-information&#34;&gt;Basic Information
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Project Name&lt;/strong&gt;: PSA study: Structural health monitoring of offshore structure by use of sensor data&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Publication Date&lt;/strong&gt;: February 21, 2024&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Project Objectives&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Explore how SHM can serve as a decision support tool for assessing the health of offshore structures&lt;/li&gt;
+&lt;li&gt;Investigate how to use SHM (including sensor data, structural failure history, etc.) to guide operation and maintenance decisions&lt;/li&gt;
+&lt;li&gt;Evaluate and compare the advantages and disadvantages of different SHM approaches&lt;/li&gt;
+&lt;li&gt;Present case studies of offshore structures using SHM for maintenance planning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;This report explores structural health monitoring (SHM) as a decision support tool to assess the structural health of offshore structures. The main objective of this report is to evaluate how SHM may be used to improve safety and inspection and maintenance planning with use of sensor data and structural failure history. The report evaluates different SHM approaches, including strengths and weaknesses, and contains some examples of use of SHM for both maintenance planning and to capture safety critical behavior of offshore structures.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;key-terminology&#34;&gt;Key Terminology
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;SHM (Structural Health Monitoring)&lt;/strong&gt;: A diagnostic tool used to detect structural failures, which may also include functions such as warning, localizing, and evaluating the consequences of structural failures.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;SHM is a diagnostic tool that has the objective to detect a structural failure, and may in addition warn, localize and evaluate the consequence of a structural failure.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Digital Twin&lt;/strong&gt;: A virtual representation of a system or asset that calculates system states and makes system information available through integrated models and data, with the purpose of providing decision support over its life cycle.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;A digital twin is a virtual representation of a system or asset that calculates system states and makes system information available, through integrated models and data, with the purpose of providing decision support over its life cycle.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Inspection&lt;/strong&gt;: The process of examination, measurement, and/or testing to determine the condition or state of an item.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Process of examination, measurement and/or testing to determine a condition or state of an item&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Virtual Sensors&lt;/strong&gt;: Numerical sensors or sensors derived based on physical sensor data.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Virtual sensors are numerical sensors or derived based on physical sensors&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring System&lt;/strong&gt;: A system that receives information about the system through measuring devices (sensors) and makes it available to the operator.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;A monitoring system receives information about the system through measuring devices (sensors), and makes it available to the operator&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Risk-Based Inspection (RBI)&lt;/strong&gt;: A process that identifies, assesses, and maps industrial risks (due to corrosion and stress cracking) that could compromise equipment integrity in both pressurized equipment and structural elements. RBI addresses risks that can be controlled through proper inspections and analysis. During the RBI process, engineers design inspection strategies (what, when, how to inspect) that most efficiently match forecasted or observed degradation mechanisms.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Risk-based inspection (RBI) is a process that identifies, assesses and maps industrial risks (due to corrosion and stress cracking), which could compromise equipment integrity in both pressurized equipment and structural elements. RBI addresses risks that can be controlled through proper inspections and analysis. During the RBI process, engineers design inspection strategies (what, when, how to inspect) that most efficiently match forecasted or observed degradation mechanisms.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;structural-health-monitoring-shm-systems&#34;&gt;Structural Health Monitoring (SHM) Systems
+&lt;/h1&gt;&lt;p&gt;The typical components of a structural health monitoring system are shown in the following figure:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225180936281.png&#34;
+	width=&#34;976&#34;
+	height=&#34;531&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225180936281_hu_9d4eff56ebf7501d.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225180936281_hu_10674a5a29297ba1.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Components of Structural Health Monitoring System&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;441px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;classification-of-shm-systems&#34;&gt;Classification of SHM Systems
+&lt;/h2&gt;&lt;h3 id=&#34;1-by-input-type&#34;&gt;1. By Input Type
+&lt;/h3&gt;&lt;p&gt;Can be classified into sensor data, indicators, numerical twin, hybrid twin, and data-driven models.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225154603992.png&#34;
+	width=&#34;976&#34;
+	height=&#34;453&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225154603992_hu_3367452c7a6f5317.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225154603992_hu_68393dff7b3ea9b9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SHM System Categories by Input Type&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;517px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-by-function-level&#34;&gt;2. By Function Level
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Level&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Function&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Level 1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Detection&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Qualitatively determine that damage may exist in the structure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Level 2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Localization&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Provide location information of the fault&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Level 3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Assessment&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Provide information on the severity of the fault&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;Level 4&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Consequence&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Evaluate the impact of the fault on actual structural safety&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;-&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Prognostic&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Predict that damage will occur to the structure in the near future&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;-&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Fit for Purpose&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Verify that the structural strength is adequate&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;shm-system-implementation-process&#34;&gt;SHM System Implementation Process
+&lt;/h2&gt;&lt;p&gt;The standard process for establishing an SHM system includes the following phases:&lt;/p&gt;
+&lt;h3 id=&#34;phase-1-assess-structural-operating-environment&#34;&gt;Phase 1: Assess Structural Operating Environment
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Identify structural failure modes, degradation mechanisms, and their consequences&lt;/li&gt;
+&lt;li&gt;Select appropriate sensors, installation schemes, and cost budgets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;phase-2-build-shm-system&#34;&gt;Phase 2: Build SHM System
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Sensor installation, calibration, and data logging system configuration&lt;/li&gt;
+&lt;li&gt;System integration testing&lt;/li&gt;
+&lt;li&gt;Data recording, filtering, compression, and transmission&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;phase-3-data-analysis-and-processing&#34;&gt;Phase 3: Data Analysis and Processing
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Fault diagnosis, damage identification&lt;/li&gt;
+&lt;li&gt;Modal analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;phase-4-structural-integrity-assessment&#34;&gt;Phase 4: Structural Integrity Assessment
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Structural condition assessment&lt;/li&gt;
+&lt;li&gt;Remaining life prediction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225145911991.png&#34;
+	width=&#34;727&#34;
+	height=&#34;453&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225145911991_hu_9e431e16599f76f4.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225145911991_hu_deedcf9a5b3e77a9.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SHM System Establishment Process&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;value-of-shm-systems&#34;&gt;Value of SHM Systems
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Reference&lt;/strong&gt;: PSA: Svendsen et al., 2021, &lt;em&gt;The use of digital solutions and structural health monitoring for integrity management of offshore structures&lt;/em&gt;, Rambøll report no. REN2021N00099-RAM-RP-00004 dated 14th February 2022&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The core values of introducing SHM systems are manifested in:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Reducing Uncertainty&lt;/strong&gt;: Lowering uncertain factors in structural condition assessment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimizing Inspection Plans&lt;/strong&gt;: Providing key information for optimizing inspection plans&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192219780.png&#34;
+	width=&#34;909&#34;
+	height=&#34;322&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192219780_hu_e1aab0890b785f23.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192219780_hu_d456cfcb0f0f1255.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Value and Benefits of Using SHM in Offshore Structures&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;282&#34;
+		data-flex-basis=&#34;677px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;shm-system-value-matrix&#34;&gt;SHM System Value Matrix
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;CAPEX (Capital Expenditure)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;OPEX (Operating Expenditure)&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Actual design verification&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Actual safety and risk assessment&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Design basis optimization&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Predictive maintenance&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Implementing new learnings/knowledge gaps&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Immediate information for unexpected events&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Minimizing downtime&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Change (damage) detection&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Capturing unexpected behavior&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Root cause analysis&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Lifecycle history&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Early warning systems&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Decision making support&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;can-shm-prevent-major-accidents&#34;&gt;Can SHM Prevent Major Accidents?
+&lt;/h2&gt;&lt;h3 id=&#34;case-1-alexander-kjelland-platform-capsizing-accident-1981&#34;&gt;Case 1: Alexander Kjelland Platform Capsizing Accident (1981)
+&lt;/h3&gt;&lt;p&gt;Norway&amp;rsquo;s largest industrial accident was the capsizing of the Alexander Kjelland platform in 1981. The structural damage originated from a 6mm fillet weld defect, followed by fatigue crack propagation in the support structure, leading to the failure of one of the platform&amp;rsquo;s legs.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SHM System Applicability Analysis in This Scenario&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Limitations&lt;/strong&gt;: Using sensor data-based SHM systems &lt;strong&gt;might not have prevented&lt;/strong&gt; this accident, as the platform was a non-redundant structure where single-point failure led to overall capsizing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Potential Value&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SHM can support decision-making and reduce the likelihood of accidents&lt;/li&gt;
+&lt;li&gt;The crack would have to be detected before it developed into critical damage to potentially prevent the accident&lt;/li&gt;
+&lt;li&gt;However, the crack location was not a critical part assessed during the design phase, and sensors would typically not be placed there&lt;/li&gt;
+&lt;li&gt;Only if the sensor system could detect cracks larger than 100mm and recognize that such a crack would develop into critical damage could the accident potentially have been prevented&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225201437456.png&#34;
+	width=&#34;706&#34;
+	height=&#34;885&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225201437456_hu_fbeada6d3d50872c.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225201437456_hu_dc83385d8db4695e.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Damaged Pontoon in Alexander Kjelland Accident&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;79&#34;
+		data-flex-basis=&#34;191px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;case-2-ekofisk-24-w-platform-ship-collision-accident-2009&#34;&gt;Case 2: Ekofisk 2/4 W Platform Ship Collision Accident (2009)
+&lt;/h3&gt;&lt;p&gt;In the 2009 ship collision accident at the Ekofisk 2/4 W platform in Norway, the value of SHM was manifested in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Decision Support Tool&lt;/strong&gt;: SHM can serve as a decision support tool for assessing structural damage, providing preliminary assessment before more detailed inspection&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Real-time Safety Assessment&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Providing real-time structural load-bearing capacity assessment&lt;/li&gt;
+&lt;li&gt;Assessing remaining life&lt;/li&gt;
+&lt;li&gt;Determining whether personnel can be arranged to enter the structure after collision for inspection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technical Requirements&lt;/strong&gt;: Achieving the above functions requires the SHM system to be able to monitor large deformations caused by ship collision&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;structural-integrity-management-sim&#34;&gt;Structural Integrity Management (SIM)
+&lt;/h1&gt;&lt;h2 id=&#34;sim-overview&#34;&gt;SIM Overview
+&lt;/h2&gt;&lt;h3 id=&#34;structure-lifecycle&#34;&gt;Structure Lifecycle
+&lt;/h3&gt;&lt;p&gt;Structural integrity management covers the entire lifecycle of offshore structures from design, construction, and installation to operation, maintenance, and decommissioning.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193006829.png&#34;
+	width=&#34;484&#34;
+	height=&#34;432&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193006829_hu_3b0934b232d6d6f3.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193006829_hu_58108a6365903b83.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Structure Lifecycle&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;112&#34;
+		data-flex-basis=&#34;268px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;sim-definition&#34;&gt;SIM Definition
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Structural Integrity Management (SIM)&lt;/strong&gt; is a continuous process for managing the integrity status of offshore structures from installation to decommissioning throughout their lifecycle. SIM provides a systematic management framework for structural inspection planning, maintenance, and repair planning.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225161204447.png&#34;
+	width=&#34;1011&#34;
+	height=&#34;382&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225161204447_hu_79ae811d21a8bb62.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225161204447_hu_fba917d6d734e006.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SIM Framework with SHM&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;264&#34;
+		data-flex-basis=&#34;635px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;sim-framework-core-modules&#34;&gt;SIM Framework Core Modules
+&lt;/h3&gt;&lt;p&gt;The framework mainly includes the following four core modules:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data and Information Collection&lt;/strong&gt;: Gathering structural monitoring data, inspection records, maintenance history, and other information&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Structural Condition Assessment&lt;/strong&gt;: Evaluating the current health status of the structure based on collected data&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Maintenance Strategy Evaluation and Selection&lt;/strong&gt;: Developing and selecting optimal maintenance and repair strategies&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Inspection Plan Establishment&lt;/strong&gt;: Developing risk-based or condition-based inspection plans&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;barrier-management&#34;&gt;Barrier Management
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Reference&lt;/strong&gt;: PSA, 2013, &lt;em&gt;Principles for barrier management in the petroleum industry&lt;/em&gt;, dated 29th of January 2013&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;core-concepts&#34;&gt;Core Concepts
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Concept&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Definition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Barrier&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Technical, operational, and organizational elements that individually or jointly reduce the likelihood of specific errors, hazards, or accidents, or limit their harm/adverse effects&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Barrier Element&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Technical, operational, or organizational measures or solutions that implement barrier functions&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Barrier Function&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;The task or role undertaken by a barrier in the event chain from faults, hazards, or unexpected situations leading to accidents&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Performance Influencing Factors&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Conditions that significantly affect the operation of barrier functions and elements as expected&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225163007335.png&#34;
+	width=&#34;1003&#34;
+	height=&#34;499&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225163007335_hu_160b33d25b81e6db.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225163007335_hu_938a4ceadaf3f6f5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Barrier Management Architecture&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;482px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;inspection-planning&#34;&gt;Inspection Planning
+&lt;/h2&gt;&lt;h3 id=&#34;core-questions&#34;&gt;Core Questions
+&lt;/h3&gt;&lt;p&gt;The primary goal of inspection planning is to determine four key questions: &lt;strong&gt;what, when, where, and how to inspect&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194052111.png&#34;
+	width=&#34;1045&#34;
+	height=&#34;703&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194052111_hu_f385c3630565e50f.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194052111_hu_8274ee8e5a7ec018.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;What, When, Where and How to Inspect&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;148&#34;
+		data-flex-basis=&#34;356px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;population-based-shm&#34;&gt;Population-based SHM
+&lt;/h3&gt;&lt;p&gt;As shown in the figure above, &lt;strong&gt;population-based SHM&lt;/strong&gt; is an important component of SIM. Taking wind farms as an example, selecting representative wind turbines in the farm (usually those with the highest utilization or load), and collecting monitoring information from these structures to guide asset management strategies for other turbines in the farm.&lt;/p&gt;
+&lt;h3 id=&#34;inspection-technology-evaluation-metrics&#34;&gt;Inspection Technology Evaluation Metrics
+&lt;/h3&gt;&lt;h4 id=&#34;probability-of-detection-pod&#34;&gt;Probability of Detection (PoD)
+&lt;/h4&gt;&lt;p&gt;When selecting inspection technologies, the &lt;strong&gt;Probability of Detection (PoD)&lt;/strong&gt; should be considered, which measures the accuracy of inspection technologies.&lt;/p&gt;
+&lt;h4 id=&#34;trueness-and-precision&#34;&gt;Trueness and Precision
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Metric&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Definition&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Trueness&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;The degree of deviation between measurement results and true values&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Precision&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;The consistency of independent inspection results&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194619657.png&#34;
+	width=&#34;933&#34;
+	height=&#34;298&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194619657_hu_c9940562b4e18d6.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225194619657_hu_70568a3934bd0273.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Trueness and Precision Explanation&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;313&#34;
+		data-flex-basis=&#34;751px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;classification-model-evaluation-metrics&#34;&gt;Classification Model Evaluation Metrics
+&lt;/h4&gt;&lt;p&gt;For classification models, the following metrics can be used for evaluation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Confusion matrix&lt;/li&gt;
+&lt;li&gt;AUC (Area Under Curve)&lt;/li&gt;
+&lt;li&gt;Recall rate&lt;/li&gt;
+&lt;li&gt;Classifier accuracy&lt;/li&gt;
+&lt;li&gt;F1 score&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;inspection-timing-selection&#34;&gt;Inspection Timing Selection
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;When to inspect&lt;/strong&gt; should be based on a combination of &lt;strong&gt;Time-Based Inspection (TBI)&lt;/strong&gt; and &lt;strong&gt;Condition-Based Inspection (CBI)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TBI should be set based on RBI results&lt;/li&gt;
+&lt;li&gt;As SHM system information increases, TBI can gradually be replaced by CBI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;data-driven-inspection-planning&#34;&gt;Data-driven Inspection Planning
+&lt;/h2&gt;&lt;h3 id=&#34;regulatory-basis&#34;&gt;Regulatory Basis
+&lt;/h3&gt;&lt;p&gt;According to Norwegian standard Norsok N-005, inspection plans should consider risk-based inspection analysis results.&lt;/p&gt;
+&lt;h3 id=&#34;rbi-implementation-methods&#34;&gt;RBI Implementation Methods
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Risk-Based Inspection (RBI)&lt;/strong&gt; can be implemented at the following three levels:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Level&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Method&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Characteristics&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Generic Design Basis&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Using historical data or engineering experience from the same type or similar structures&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Inspection scope based on conservative assumptions for operational use&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Qualitative Analysis&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Combining historical data or engineering experience from the same or similar structures, with specific design details&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Inspection scope more targeted to concentrate on special areas with high utilization&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Quantitative Analysis&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Probabilistic analysis based on specific design&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Most precise method, requiring detailed structural information and reliability data&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;rbi-and-inspection-strategy-selection&#34;&gt;RBI and Inspection Strategy Selection
+&lt;/h3&gt;&lt;p&gt;The following figure shows how RBI serves as the basis for selecting TBI or CBI as inspection planning strategies:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192708216.png&#34;
+	width=&#34;1126&#34;
+	height=&#34;454&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192708216_hu_f399d836efca9ef8.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225192708216_hu_ce2e4f4aee4994e7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RBI as the Basis for Selecting TBI/CBI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;595px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;tbi-vs-cbi-comparison&#34;&gt;TBI vs. CBI Comparison
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Inspection Method&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Characteristics&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Illustration&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Time-Based Inspection (TBI)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Inspection at fixed time intervals&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Left figure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Condition-Based Inspection (CBI)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Determining inspection timing based on actual structural condition&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Right figure&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193442952.png&#34;
+	width=&#34;1104&#34;
+	height=&#34;595&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193442952_hu_8be6d0d2a726d07c.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225193442952_hu_1f35276135b9061.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Left: TBI, Right: Combined with CBI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;185&#34;
+		data-flex-basis=&#34;445px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;analysis-of-common-offshore-structural-failures&#34;&gt;Analysis of Common Offshore Structural Failures
+&lt;/h1&gt;&lt;h2 id=&#34;classification-of-structural-limit-states&#34;&gt;Classification of Structural Limit States
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Limit State&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Full English Name&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Definition&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Focus Areas&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Objectives&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;SLS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Serviceability Limit State&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Functional requirements that structures should meet under normal service conditions&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Deformation, vibration, crack width, etc.&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ensure structural functionality and comfort&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;FLS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Fatigue Limit State&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ability of structures to resist fatigue failure under cyclic loading&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cyclic stress, fatigue life, crack propagation, etc.&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Prevent fatigue failure caused by cyclic loading&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;ULS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ultimate Limit State&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ability of structures to resist failure under maximum loading&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Strength, stability, overall stability, etc.&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ensure safety under extreme conditions, prevent collapse or severe damage&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;ALS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Accidental Limit State&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Performance of structures under accidental events (such as explosion, impact, fire, etc.)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Residual load-bearing capacity, overall stability, local damage, etc.&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ensure no catastrophic failure occurs during accidental events, minimize losses&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;typical-structural-failure-scenarios&#34;&gt;Typical Structural Failure Scenarios
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Table 5: Overview of Different Failure Scenarios&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Scenario No.&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Scenario Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Fatigue cracking due to low-cycle and high-cycle fatigue&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;HISC (Hydrogen Induced Stress Cracking) related cracking&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Pitting and corrosion&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Dropped object impact on deck&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;6&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Yield overload due to extreme loads&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Local and global buckling due to extreme loads&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;8&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Global collapse due to extreme loads&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;9&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Dents due to local wave impact&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;10&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Mooring line or tendon failure&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;11&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Flooding due to leakage&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;12&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Effects of abnormal environmental conditions (waves on deck)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;13&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Explosion&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;comparison-of-failure-causes-between-floating-and-fixed-structures&#34;&gt;Comparison of Failure Causes Between Floating and Fixed Structures
+&lt;/h3&gt;&lt;p&gt;From the figure below, it can be seen that &lt;strong&gt;fatigue, corrosion, overload, and vibration&lt;/strong&gt; are the main failure causes in floating structures, while fixed structures also include &lt;strong&gt;foundation-seabed interaction&lt;/strong&gt; and &lt;strong&gt;bridge connections between platforms&lt;/strong&gt;. Additionally, &lt;strong&gt;dropped objects&lt;/strong&gt; and &lt;strong&gt;ship collisions&lt;/strong&gt; must also be considered.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225151959404.png&#34;
+	width=&#34;933&#34;
+	height=&#34;738&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225151959404_hu_6af8bff1b97ee9e9.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225151959404_hu_4b88aa16a9301cda.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Common Structural Failure Modes and Causes in Offshore Structures&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Table 6: Summary of Important Failure Modes&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;Failure Mode No.&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Description&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;1&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Through-thickness cracking due to fatigue and corrosion&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;2&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Member separation due to fatigue or corrosion&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;3&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Member loss due to fatigue or corrosion&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;4&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Dents and deformation due to ship collision or dropped objects&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;5&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Grouted connections for fixed installations (slip and failure)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;6&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Overload for fixed installations (settlement and subsidence)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Scour for fixed installations&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;8&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Excessive/unexpected vibration due to various causes&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;9&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Bridge support issues due to various causes (interconnecting bridges)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;10&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Vortex-induced vibration issues caused by wind, waves, or current&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;common-failure-modes-in-steel-structures&#34;&gt;Common Failure Modes in Steel Structures
+&lt;/h2&gt;&lt;p&gt;The typical failure mode in steel structures is &lt;strong&gt;degradation of structural load-bearing capacity&lt;/strong&gt;. The failure mechanisms causing this degradation include &lt;strong&gt;material degradation, material loss, fatigue, and excessive loading&lt;/strong&gt;. The main influencing factors leading to these failure mechanisms are shown in the figure below:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225153354229.png&#34;
+	width=&#34;846&#34;
+	height=&#34;594&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225153354229_hu_710784e51b65d6f5.png 480w, https://whhong-research.github.io/p/%E5%88%A9%E7%94%A8%E4%BC%A0%E6%84%9F%E5%99%A8%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%B5%B7%E4%B8%8A%E7%BB%93%E6%9E%84%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8Bpsa%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E8%AF%BB/image-20250225153354229_hu_7a84bef4b9962136.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Common Failure Modes in Steel Structures&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;statistics-on-major-offshore-structural-accident-reports&#34;&gt;Statistics on Major Offshore Structural Accident Reports
+&lt;/h2&gt;&lt;p&gt;The table below summarizes reports of major structural accidents by major offshore structural management organizations in recent years.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Table 7: Reported Events Defined as Major Accidents in the Past Five Years&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Region&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Reported Events&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;EU&lt;/strong&gt;: Offshore Oil and Gas Operations Safety&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Statistics on reported structural integrity loss events:&lt;br&gt;• 2016: 0&lt;br&gt;• 2017: 0&lt;br&gt;• 2018: 0&lt;br&gt;• 2019: 2 (specific events could not be identified)&lt;br&gt;• 2020: 1 (total loss of Croatian INA gas platform)&lt;br&gt;• 2021: 0&lt;br&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.croatiaweek.com/inas-missing-gas-platform-found-on-seabed/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Reference link&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;UK&lt;/strong&gt;: RIDDOR Dangerous Occurrence Reporting&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Types of accidents that operators should report:&lt;br&gt;• &lt;strong&gt;Collapse&lt;/strong&gt;: Any unintentional collapse or partial collapse of any offshore installation or equipment on an offshore installation that endangers the overall structural integrity of the installation&lt;br&gt;• &lt;strong&gt;Seabed subsidence or collapse&lt;/strong&gt;: Any seabed subsidence or collapse that may affect the foundation or overall structural integrity of an offshore installation&lt;br&gt;&lt;br&gt;Informal discussions with regulatory authorities show no records of the above major failures. Some failures have occurred but did not reach the level requiring reporting.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;IOGP&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;No major structural failure events reported; informal feedback indicates no structural failure situations.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;USA&lt;/strong&gt;: BSEE Offshore Accident Statistics&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Searching for major accidents from 2018-2021, only various crane&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;NORSOK N-005:2017+AC:2019 In-service integrity management of structures and marine systems&lt;/li&gt;
+&lt;li&gt;DNV-RP-C210: Probabilistic methods for planning of inspection for fatigue cracks in offshore structures&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

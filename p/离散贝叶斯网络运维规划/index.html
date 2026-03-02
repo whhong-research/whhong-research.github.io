@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="RBI建模方法 不同模型 Decision tree: 决策树； Crude Monte Carlo simulations: 粗略蒙特卡洛模拟； Discrete Bayesian networks (dBN): 离散贝叶斯网络； Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟； Limited memory influence diagrams (LIMID): 有限内存影响图； Partially observable Markov decision process: 部分可观察马尔可夫决策过程； 模型对比 MCMC不需要连续变量的离散化，dBN需要； MCMC相比于dBN更加耗时，因为其是基于采样进行推断的； 本文计算框架 两种决策模型 Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）； Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）； ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="RBI建模方法 不同模型 Decision tree：决策树 Crude Monte Carlo simulations：粗略蒙特卡洛模拟 Discrete Bayesian networks (dBN)：离散贝叶斯网络 Markov chain Monte Carlo simulation：马尔科夫链蒙特卡洛模拟 Limited memory influence diagrams (LIMID)：有限内存影响图 Partially observable Markov decision process：部分可观察马尔可夫决策过程 模型对比 MCMC不需要连续变量的离散化，而dBN需要 MCMC相比于dBN更加耗时，因为其基于采样进行推断 本文计算框架 两种决策模型 Bayesian network based：使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）\n">
 <title>离散贝叶斯网络运维规划</title>
 
 <link rel='canonical' href='https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/'>
 
 <link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="离散贝叶斯网络运维规划">
-<meta property='og:description' content="RBI建模方法 不同模型 Decision tree: 决策树； Crude Monte Carlo simulations: 粗略蒙特卡洛模拟； Discrete Bayesian networks (dBN): 离散贝叶斯网络； Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟； Limited memory influence diagrams (LIMID): 有限内存影响图； Partially observable Markov decision process: 部分可观察马尔可夫决策过程； 模型对比 MCMC不需要连续变量的离散化，dBN需要； MCMC相比于dBN更加耗时，因为其是基于采样进行推断的； 本文计算框架 两种决策模型 Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）； Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）； ">
+<meta property='og:description' content="RBI建模方法 不同模型 Decision tree：决策树 Crude Monte Carlo simulations：粗略蒙特卡洛模拟 Discrete Bayesian networks (dBN)：离散贝叶斯网络 Markov chain Monte Carlo simulation：马尔科夫链蒙特卡洛模拟 Limited memory influence diagrams (LIMID)：有限内存影响图 Partially observable Markov decision process：部分可观察马尔可夫决策过程 模型对比 MCMC不需要连续变量的离散化，而dBN需要 MCMC相比于dBN更加耗时，因为其基于采样进行推断 本文计算框架 两种决策模型 Bayesian network based：使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）\n">
 <meta property='og:url' content='https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/'>
 <meta property='og:site_name' content='whhong的博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='运维框架' /><meta property='article:tag' content='离散贝叶斯网络' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.png' />
 <meta name="twitter:title" content="离散贝叶斯网络运维规划">
-<meta name="twitter:description" content="RBI建模方法 不同模型 Decision tree: 决策树； Crude Monte Carlo simulations: 粗略蒙特卡洛模拟； Discrete Bayesian networks (dBN): 离散贝叶斯网络； Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟； Limited memory influence diagrams (LIMID): 有限内存影响图； Partially observable Markov decision process: 部分可观察马尔可夫决策过程； 模型对比 MCMC不需要连续变量的离散化，dBN需要； MCMC相比于dBN更加耗时，因为其是基于采样进行推断的； 本文计算框架 两种决策模型 Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）； Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）； "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="RBI建模方法 不同模型 Decision tree：决策树 Crude Monte Carlo simulations：粗略蒙特卡洛模拟 Discrete Bayesian networks (dBN)：离散贝叶斯网络 Markov chain Monte Carlo simulation：马尔科夫链蒙特卡洛模拟 Limited memory influence diagrams (LIMID)：有限内存影响图 Partially observable Markov decision process：部分可观察马尔可夫决策过程 模型对比 MCMC不需要连续变量的离散化，而dBN需要 MCMC相比于dBN更加耗时，因为其基于采样进行推断 本文计算框架 两种决策模型 Bayesian network based：使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.png' />
     </head>
     <body class="
@@ -277,9 +277,18 @@
   <ul>
     <li><a href="#两种决策模型">两种决策模型</a></li>
     <li><a href="#模型输入设定">模型输入设定</a></li>
-    <li><a href="#基础dbn架构">基础dBN架构</a></li>
+    <li><a href="#基础dbn架构">基础dBN架构</a>
+      <ul>
+        <li><a href="#概率分布说明">概率分布说明</a></li>
+      </ul>
+    </li>
     <li><a href="#维护策略">维护策略</a></li>
-    <li><a href="#简单策略下的算法说明">简单策略下的算法说明</a></li>
+    <li><a href="#简单策略下的算法说明">简单策略下的算法说明</a>
+      <ul>
+        <li><a href="#概率更新公式">概率更新公式</a></li>
+        <li><a href="#失效与修复概率">失效与修复概率</a></li>
+      </ul>
+    </li>
     <li><a href="#复杂策略下的算法说明">复杂策略下的算法说明</a></li>
   </ul>
 </nav>
@@ -355,6 +364,25 @@
     
 
     
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
 </div>
 
 </header>
@@ -365,23 +393,27 @@
     <h1 id="rbi建模方法">RBI建模方法
 </h1><h2 id="不同模型">不同模型
 </h2><ul>
-<li>Decision tree: 决策树；</li>
-<li>Crude Monte Carlo simulations: 粗略蒙特卡洛模拟；</li>
-<li>Discrete Bayesian networks (dBN): 离散贝叶斯网络；</li>
-<li>Markov chain Monte Carlo simulation: 马尔科夫链蒙特卡洛模拟；</li>
-<li>Limited memory influence diagrams (LIMID): 有限内存影响图；</li>
-<li>Partially observable Markov decision process: 部分可观察马尔可夫决策过程；</li>
+<li><strong>Decision tree</strong>：决策树</li>
+<li><strong>Crude Monte Carlo simulations</strong>：粗略蒙特卡洛模拟</li>
+<li><strong>Discrete Bayesian networks (dBN)</strong>：离散贝叶斯网络</li>
+<li><strong>Markov chain Monte Carlo simulation</strong>：马尔科夫链蒙特卡洛模拟</li>
+<li><strong>Limited memory influence diagrams (LIMID)</strong>：有限内存影响图</li>
+<li><strong>Partially observable Markov decision process</strong>：部分可观察马尔可夫决策过程</li>
 </ul>
 <h2 id="模型对比">模型对比
 </h2><ul>
-<li>MCMC不需要连续变量的离散化，dBN需要；</li>
-<li>MCMC相比于dBN更加耗时，因为其是基于采样进行推断的；</li>
+<li>MCMC不需要连续变量的离散化，而dBN需要</li>
+<li>MCMC相比于dBN更加耗时，因为其基于采样进行推断</li>
 </ul>
 <h1 id="本文计算框架">本文计算框架
 </h1><h2 id="两种决策模型">两种决策模型
 </h2><ol>
-<li>Bayesian network based: 使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）；</li>
-<li>Simulation-based: 通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）；</li>
+<li>
+<p><strong>Bayesian network based</strong>：使用贝叶斯网络直接估计概率，适合应用于简单的决策过程（基于常量或可观测的测量值，例如定期inspection，当inspection结果超过某一指定阈值后执行repair）</p>
+</li>
+<li>
+<p><strong>Simulation-based</strong>：通过仿真来估计概率，更加time-consuming，但可以应用于更高级的策略（基于变量随着inspection和CM信息进行更新的情况，例如下一个时间步的失效概率）</p>
+</li>
 </ol>
 <p><img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319150235335.png"
 	width="1083"
@@ -399,23 +431,20 @@
 ></p>
 <h2 id="模型输入设定">模型输入设定
 </h2><ol>
-<li>specific cost： 执行inspection，repair和a corrective repair的成本；</li>
-<li>specification of models: 退化概率模型、修复概率模型、检测概率模型以及监测概率模型；</li>
-<li>strategy and parameters：不同的维养策略；</li>
+<li><strong>Specific cost</strong>：执行inspection、repair和corrective repair的成本</li>
+<li><strong>Specification of models</strong>：退化概率模型、修复概率模型、检测概率模型以及监测概率模型</li>
+<li><strong>Strategy and parameters</strong>：不同的维养策略</li>
 </ol>
 <h2 id="基础dbn架构">基础dBN架构
-</h2><ul>
-<li>下图所示的dBN架构主要适用于simulation-based的模型；
+</h2><p>下图所示的dBN架构主要适用于simulation-based的模型：</p>
 <ul>
-<li>$M_0$ 表示初始的模型参数，不同的模型参数可以对应不同类型的退化模型；</li>
-<li>$D_0$ 表示初始的损伤状态，一般初始状态默认为健康无损；</li>
-<li>$I_i$ 是第 $i$ 个时间步的检测结果；</li>
-<li>$I_{M,i}$ 是第 $i$ 个时间步的监测结果；</li>
-<li>$I_{D,i}$ 是第 $i$ 个时间步的是否要进行检测的判断；</li>
-<li>$R_i$ 是第 $i$ 个时间步是否要进行修复，包括两种状态（&ldquo;repair&rdquo; and &ldquo;not repair&rdquo;）；</li>
-<li>$D_{R,i}$ 是第 $i$ 个时间步进行修复/或者不修复后的损伤状态；</li>
-</ul>
-</li>
+<li>$M_0$：表示初始的模型参数，不同的模型参数可以对应不同类型的退化模型</li>
+<li>$D_0$：表示初始的损伤状态，一般初始状态默认为健康无损</li>
+<li>$I_i$：第 $i$ 个时间步的检测结果</li>
+<li>$I_{M,i}$：第 $i$ 个时间步的监测结果</li>
+<li>$I_{D,i}$：第 $i$ 个时间步的是否要进行检测的判断</li>
+<li>$R_i$：第 $i$ 个时间步是否要进行修复，包括两种状态（&ldquo;repair&rdquo; and &ldquo;not repair&rdquo;）</li>
+<li>$D_{R,i}$：第 $i$ 个时间步进行修复/或者不修复后的损伤状态</li>
 </ul>
 <p><img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319151022557.png"
 	width="541"
@@ -431,86 +460,75 @@
 		data-flex-basis="353px"
 	
 ></p>
+<h3 id="概率分布说明">概率分布说明
+</h3><p>举例来说：</p>
 <ul>
-<li>举例来说
-<ul>
-<li>如果有 $n_d$ 种结构损伤状态，那么$P(D_0)$ 应该是一个长度为$n_d$ 的向量；</li>
-<li>如果有 $n_M$ 种结构参数，那么$P(M_0)$ 应该是一个长度为$n_M$ 的向量；</li>
-<li>$P(M_i|M_{i-1})$是一个$n_M*n_M$的矩阵，用于表示不同时间步过程中模型参数的变化；</li>
-<li>$P(D_i|D_{R，i-1}，M_i)$是一个$n_D<em>n_D</em>n_M$的三维矩阵；</li>
-<li>当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$ ;</li>
-<li>$P(D_{R,i}|D_{i}，R_i)$是一个 $n_D<em>n_D</em>2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布；</li>
-<li>如果有$n_I$种检测结果，那么检测模型将以$P(I_i|D_i,I_{D,i})$ 的形式进行建模，大小为$n_I<em>n_D</em>2$ ；</li>
-<li>健康检测系统被假设为仅仅与损伤尺寸$D_i$相关，用$P(I_{M,i}|D_i)$ 的形式进行表示，如果有$n_{I_M}$种健康监测系统报警结果，那么$P(I_{M,i}|D_i)$是一个$n_{I_M}*n_D$的矩阵；</li>
-</ul>
-</li>
+<li>如果有 $n_d$ 种结构损伤状态，那么$P(D_0)$应该是一个长度为$n_d$的向量</li>
+<li>如果有 $n_M$ 种结构参数，那么$P(M_0)$应该是一个长度为$n_M$的向量</li>
+<li>$P(M_i|M_{i-1})$是一个$n_M \times n_M$的矩阵，用于表示不同时间步过程中模型参数的变化</li>
+<li>$P(D_i|D_{R,i-1},M_i)$是一个$n_D \times n_D \times n_M$的三维矩阵</li>
+<li>当没有考虑模型参数的随机性时，例如一种固定的马尔科夫链作为退化模型，可以省略节点$M_i$</li>
+<li>$P(D_{R,i}|D_{i},R_i)$是一个 $n_D \times n_D \times 2$ 的三维矩阵，表示$D_{R,i}$在$D_i$（第$i$个时间步下的损伤状态）以及$R_i$（第$i$个时间步下是否要进行维护）的条件概率分布</li>
+<li>如果有$n_I$种检测结果，那么检测模型将以$P(I_i|D_i,I_{D,i})$的形式进行建模，大小为$n_I \times n_D \times 2$</li>
+<li>健康检测系统被假设为仅仅与损伤尺寸$D_i$相关，用$P(I_{M,i}|D_i)$的形式进行表示，如果有$n_{I_M}$种健康监测系统报警结果，那么$P(I_{M,i}|D_i)$是一个$n_{I_M} \times n_D$的矩阵</li>
 </ul>
 <h2 id="维护策略">维护策略
-</h2><p>本文考虑了13种不同的维护策略</p>
+</h2><p>本文考虑了13种不同的维护策略：</p>
 <ol>
-<li>纠正性运维；</li>
-<li>无检测，定期修复；</li>
-<li>无检测，根据CM报警结果来确定是否进行修复；</li>
-<li>等间距检测，根据检测结果确定是否进行修复；</li>
-<li>根据CM报警结果来确定是否进行检测，根据检测结果确定是否进行修复；</li>
-<li>无检测，根据失效概率决定是否进行修复；</li>
-<li>等距检测，根据失效概率决定是否进行修复；</li>
-<li>根据失效概率决定是否进行检测；根据失效概率决定是否进行修复；</li>
-<li>根据失效概率决定是否进行检测；根据检测结果决定是否进行修复；</li>
-<li>不检测，根据损伤尺寸的期望值决定是否进行修复；</li>
-<li>等距检测，根据损伤尺寸的期望值决定是否进行修复；</li>
-<li>根据损伤尺寸的期望值决定是否进行检测，根据损伤尺寸的期望值决定是否进行修复；</li>
-<li>根据损伤尺寸的期望值决定是否进行检测；根据检测结果决定是否进行修复；</li>
+<li>纠正性运维</li>
+<li>无检测，定期修复</li>
+<li>无检测，根据CM报警结果来确定是否进行修复</li>
+<li>等间距检测，根据检测结果确定是否进行修复</li>
+<li>根据CM报警结果来确定是否进行检测，根据检测结果确定是否进行修复</li>
+<li>无检测，根据失效概率决定是否进行修复</li>
+<li>等距检测，根据失效概率决定是否进行修复</li>
+<li>根据失效概率决定是否进行检测；根据失效概率决定是否进行修复</li>
+<li>根据失效概率决定是否进行检测；根据检测结果决定是否进行修复</li>
+<li>不检测，根据损伤尺寸的期望值决定是否进行修复</li>
+<li>等距检测，根据损伤尺寸的期望值决定是否进行修复</li>
+<li>根据损伤尺寸的期望值决定是否进行检测，根据损伤尺寸的期望值决定是否进行修复</li>
+<li>根据损伤尺寸的期望值决定是否进行检测；根据检测结果决定是否进行修复</li>
 </ol>
 <h2 id="简单策略下的算法说明">简单策略下的算法说明
-</h2><ul>
-<li>
-<p>公式（1）为每一个时间步中，对结构损伤状态概率的更新；（需要注意的是，这里存在6个变量，$D_i,D_{i-1},M_{i},M_{i-1},R_{i-1}以及D_{R,i-1}$​, 因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）</p>
+</h2><h3 id="概率更新公式">概率更新公式
+</h3><p>公式（1）为每一个时间步中，对结构损伤状态概率的更新：（需要注意的是，这里存在6个变量，$D_i, D_{i-1}, M_{i}, M_{i-1}, R_{i-1}$以及$D_{R,i-1}$，因此完整的概率矩阵将是一个6维矩阵，消耗巨大的内存资源）</p>
 $$
-  P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
-  \times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
-  $$</li>
-<li>
-<p>公式（2）为公式（1）的详细表示（以7种损伤状态，3种模型参数为例），值得解释的是，这里公式中的✖并不是代表标准的矩阵乘法，而是表示概率的乘积运算；</p>
+P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
+\times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
+$$<p>公式（2）为公式（1）的详细表示（以7种损伤状态，3种模型参数为例），值得解释的是，这里公式中的$\times$并不是代表标准的矩阵乘法，而是表示概率的乘积运算：</p>
 $$
-  P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1})
-  $$</li>
-<li>
-<p>公式（3）是进行变量消去后的公式，能够很好地提高计算效率和减少内存资源，依次消去了$M_{i-1},R_{i-1},D_{i-1}$，最终消去了$D_{R,i-1}$​ 变量：</p>
+P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1}})
+$$<p>公式（3）是进行变量消去后的公式，能够很好地提高计算效率和减少内存资源，依次消去了$M_{i-1}, R_{i-1}, D_{i-1}$，最终消去了$D_{R,i-1}$变量：</p>
 $$
-  P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
-  \times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
-  \times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
-  $$</li>
-<li>
-<p>失效概率等于损伤状态$D_i$ 等于”fault“的概率；</p>
-</li>
-<li>
-<p>repair的概率为节点$R_i$ 中取值为&quot;repair&quot;的概率；</p>
-</li>
-<li>
-<p>需要根据不同的策略来制定$P(R_i|D_i)$ , 例如对于策略1而言，所有的$R_i$ 均为0，即不进行repair；</p>
-</li>
+P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
+\times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
+\times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
+$$<h3 id="失效与修复概率">失效与修复概率
+</h3><ul>
+<li>失效概率等于损伤状态$D_i$等于&quot;fault&quot;的概率</li>
+<li>Repair的概率为节点$R_i$中取值为&quot;repair&quot;的概率</li>
+<li>需要根据不同的策略来制定$P(R_i|D_i)$，例如对于策略1而言，所有的$R_i$均为0，即不进行repair</li>
 </ul>
 <h2 id="复杂策略下的算法说明">复杂策略下的算法说明
 </h2><ul>
-<li>随机从$P(D_0)$ 分布中选取$d_0$；</li>
-<li>随机从$P(M_0)$ 分布中选取$m_0$；</li>
-<li>计算初始的$P(D_0,M_0)=P(D_0)P(M_0)$ ;</li>
-<li>对每一个时间步$i$ :
+<li>随机从$P(D_0)$分布中选取$d_0$</li>
+<li>随机从$P(M_0)$分布中选取$m_0$</li>
+<li>计算初始的$P(D_0,M_0)=P(D_0)P(M_0)$</li>
+<li>对每一个时间步$i$:
 <ul>
-<li>从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$ ;</li>
-<li>使用贝叶斯准则更新$P(D_i,M_i)$  ;*</li>
-<li>根据决策规则$i_{D,i}$ 做出是否进行检测的决策；</li>
-<li>从分布$P(I_{i}|D_i=d_i，I_{D,i}=i_{D,i})$ 中抽取检测结果$i_i$ ;</li>
+<li>从分布$P(I_{M,i}|D_i=d_i)$抽取监测结果$i_{M,i}$</li>
 <li>使用贝叶斯准则更新$P(D_i,M_i)$ ;*</li>
-<li>根据决策规则$r_i$ 做出是否进行修复的决策；</li>
-<li>从分布$P(D_{R，i}|D_i=d_i，R_{i}=r_{i})$ 中抽取进行修复后的结构损伤状态$d_{R,i}$ ;</li>
-<li>从分布$P(D_{i+1}|D_{R,i}=d_i，M_{i+1}=m_{0})$ 中抽取下一步损伤状态$d_{i+1}$ ;</li>
-<li>根据退化和修复算法更新$P(D_{i+1},M_{i+1})$  ; *</li>
+<li>根据决策规则$i_{D,i}$做出是否进行检测的决策</li>
+<li>从分布$P(I_{i}|D_i=d_i, I_{D,i}=i_{D,i})$中抽取检测结果$i_i$</li>
+<li>使用贝叶斯准则更新$P(D_i,M_i)$ ;*</li>
+<li>根据决策规则$r_i$做出是否进行修复的决策</li>
+<li>从分布$P(D_{R,i}|D_i=d_i, R_{i}=r_{i})$中抽取进行修复后的结构损伤状态$d_{R,i}$</li>
+<li>从分布$P(D_{i+1}|D_{R,i}=d_{R,i}, M_{i+1}=m_{i+1})$中抽取下一步损伤状态$d_{i+1}$</li>
+<li>根据退化和修复算法更新$P(D_{i+1},M_{i+1})$ ; *</li>
 </ul>
 </li>
 </ul>
+<p>(* 表示需要使用贝叶斯定理进行概率更新)</p>
 
 </section>
 
@@ -587,9 +605,9 @@ $$
     
 
     
-    <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/" class="series-link next">
+    <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/" class="series-link next">
       <span class="link-label">下一篇 →</span>
-      <span class="link-title">海上风机状态监测运维策略优化</span>
+      <span class="link-title">海上风机状态监测与运维策略优化：基于成本效益的综合决策框架</span>
     </a>
     
   </div>
@@ -710,15 +728,15 @@ $$
             
                 
 <article class="has-image">
-    <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/">
+    <a href="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/">
         
         
             <div class="article-image">
-                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_422c271d42ea37e9.png" 
+                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_422c271d42ea37e9.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post 海上风机状态监测运维策略优化"
+                        alt="Featured image of post 海上风机状态监测与运维策略优化：基于成本效益的综合决策框架"
                         
                         data-hash="md5-Cmq9yjtI&#43;wIrrk7eMo&#43;PHg==">
                 
@@ -726,7 +744,7 @@ $$
         
 
         <div class="article-details">
-            <h2 class="article-title">海上风机状态监测运维策略优化</h2>
+            <h2 class="article-title">海上风机状态监测与运维策略优化：基于成本效益的综合决策框架</h2>
         </div>
     </a>
 </article>

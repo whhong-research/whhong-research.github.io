@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="RBI Modeling Methods Different Models Decision tree: Decision tree Crude Monte Carlo simulations: Crude Monte Carlo simulations Discrete Bayesian networks (dBN): Discrete Bayesian networks Markov chain Monte Carlo simulation: Markov chain Monte Carlo simulation Limited memory influence diagrams (LIMID): Limited memory influence diagrams Partially observable Markov decision process: Partially observable Markov decision process Model Comparison MCMC does not require discretization of continuous variables, while dBN does MCMC is more time-consuming than dBN because it is based on sampling for inference Computational Framework in This Paper Two Decision Models Bayesian network based: Uses Bayesian networks to directly estimate probabilities, suitable for simple decision processes (based on constants or observable measurements, such as regular inspection, where repair is performed when inspection results exceed a specified threshold)\n">
+<title>Discrete Bayesian Network for Operation and Maintenance Planning</title>
+
+<link rel='canonical' href='https://whhong-research.github.io/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/'>
+
+<link rel="stylesheet" href="/scss/style.min.3e3cf13cc2add06b191ec377b365d2689aca9cd4cfa6d810c7ec21148e0904b0.css"><meta property='og:title' content="Discrete Bayesian Network for Operation and Maintenance Planning">
+<meta property='og:description' content="RBI Modeling Methods Different Models Decision tree: Decision tree Crude Monte Carlo simulations: Crude Monte Carlo simulations Discrete Bayesian networks (dBN): Discrete Bayesian networks Markov chain Monte Carlo simulation: Markov chain Monte Carlo simulation Limited memory influence diagrams (LIMID): Limited memory influence diagrams Partially observable Markov decision process: Partially observable Markov decision process Model Comparison MCMC does not require discretization of continuous variables, while dBN does MCMC is more time-consuming than dBN because it is based on sampling for inference Computational Framework in This Paper Two Decision Models Bayesian network based: Uses Bayesian networks to directly estimate probabilities, suitable for simple decision processes (based on constants or observable measurements, such as regular inspection, where repair is performed when inspection results exceed a specified threshold)\n">
+<meta property='og:url' content='https://whhong-research.github.io/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/'>
+<meta property='og:site_name' content='whhong&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='O&amp;M Framework' /><meta property='article:tag' content='Discrete Bayesian Network' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.png' />
+<meta name="twitter:title" content="Discrete Bayesian Network for Operation and Maintenance Planning">
+<meta name="twitter:description" content="RBI Modeling Methods Different Models Decision tree: Decision tree Crude Monte Carlo simulations: Crude Monte Carlo simulations Discrete Bayesian networks (dBN): Discrete Bayesian networks Markov chain Monte Carlo simulation: Markov chain Monte Carlo simulation Limited memory influence diagrams (LIMID): Limited memory influence diagrams Partially observable Markov decision process: Partially observable Markov decision process Model Comparison MCMC does not require discretization of continuous variables, while dBN does MCMC is more time-consuming than dBN because it is based on sampling for inference Computational Framework in This Paper Two Decision Models Bayesian network based: Uses Bayesian networks to directly estimate probabilities, suitable for simple decision processes (based on constants or observable measurements, such as regular inspection, where repair is performed when inspection results exceed a specified threshold)\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/en/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/whhong_hu_a485976ea237b87f.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/en">whhong&#39;s blog</a></h1>
+            <h2 class="site-description">Welcome to my blog!</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/en/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/en/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://whhong-research.github.io/en/" selected>English</option>
+                                
+                                    <option value="https://whhong-research.github.io/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#different-models">Different Models</a></li>
+    <li><a href="#model-comparison">Model Comparison</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#two-decision-models">Two Decision Models</a></li>
+    <li><a href="#model-input-settings">Model Input Settings</a></li>
+    <li><a href="#basic-dbn-architecture">Basic dBN Architecture</a>
+      <ul>
+        <li><a href="#probability-distribution-explanation">Probability Distribution Explanation</a></li>
+      </ul>
+    </li>
+    <li><a href="#maintenance-strategies">Maintenance Strategies</a></li>
+    <li><a href="#algorithm-explanation-for-simple-strategies">Algorithm Explanation for Simple Strategies</a>
+      <ul>
+        <li><a href="#probability-update-formulas">Probability Update Formulas</a></li>
+        <li><a href="#failure-and-repair-probabilities">Failure and Repair Probabilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#algorithm-explanation-for-complex-strategies">Algorithm Explanation for Complex Strategies</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/">
+                <img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319_hu_68114202eab30491.png"
+                        srcset="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319_hu_68114202eab30491.png 800w, /p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/20250319_hu_79aa14fe107e4725.png 1600w"
+                        width="800" 
+                        height="384" 
+                        loading="lazy"
+                        alt="Featured image of post Discrete Bayesian Network for Operation and Maintenance Planning" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/en/categories/paper-reading/" style="background-color: #2a9d8f; color: #fff;">
+                Paper Reading
+            </a>
+        
+            <a href="/en/categories/experimental-testing/" >
+                Experimental Testing
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/en/p/discrete-bayesian-network-for-operation-and-maintenance-planning/">Discrete Bayesian Network for Operation and Maintenance Planning</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 19, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://whhong-research.github.io/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="rbi-modeling-methods">RBI Modeling Methods
+</h1><h2 id="different-models">Different Models
+</h2><ul>
+<li><strong>Decision tree</strong>: Decision tree</li>
+<li><strong>Crude Monte Carlo simulations</strong>: Crude Monte Carlo simulations</li>
+<li><strong>Discrete Bayesian networks (dBN)</strong>: Discrete Bayesian networks</li>
+<li><strong>Markov chain Monte Carlo simulation</strong>: Markov chain Monte Carlo simulation</li>
+<li><strong>Limited memory influence diagrams (LIMID)</strong>: Limited memory influence diagrams</li>
+<li><strong>Partially observable Markov decision process</strong>: Partially observable Markov decision process</li>
+</ul>
+<h2 id="model-comparison">Model Comparison
+</h2><ul>
+<li>MCMC does not require discretization of continuous variables, while dBN does</li>
+<li>MCMC is more time-consuming than dBN because it is based on sampling for inference</li>
+</ul>
+<h1 id="computational-framework-in-this-paper">Computational Framework in This Paper
+</h1><h2 id="two-decision-models">Two Decision Models
+</h2><ol>
+<li>
+<p><strong>Bayesian network based</strong>: Uses Bayesian networks to directly estimate probabilities, suitable for simple decision processes (based on constants or observable measurements, such as regular inspection, where repair is performed when inspection results exceed a specified threshold)</p>
+</li>
+<li>
+<p><strong>Simulation-based</strong>: Estimates probabilities through simulation, more time-consuming, but can be applied to more advanced strategies (based on variables updated with inspection and CM information, such as failure probability at the next time step)</p>
+</li>
+</ol>
+<p><img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319150235335.png"
+	width="1083"
+	height="420"
+	srcset="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319150235335_hu_6f22d499fd023df.png 480w, /p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319150235335_hu_127522ecd40e63c.png 1024w"
+	loading="lazy"
+	
+		alt="Computational Framework"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="257"
+		data-flex-basis="618px"
+	
+></p>
+<h2 id="model-input-settings">Model Input Settings
+</h2><ol>
+<li><strong>Specific cost</strong>: Costs of performing inspection, repair, and corrective repair</li>
+<li><strong>Specification of models</strong>: Degradation probability model, repair probability model, inspection probability model, and monitoring probability model</li>
+<li><strong>Strategy and parameters</strong>: Different maintenance strategies</li>
+</ol>
+<h2 id="basic-dbn-architecture">Basic dBN Architecture
+</h2><p>The dBN architecture shown below is mainly applicable to simulation-based models:</p>
+<ul>
+<li>$M_0$: Represents initial model parameters; different model parameters can correspond to different types of degradation models</li>
+<li>$D_0$: Represents initial damage state; generally, the initial state defaults to healthy and undamaged</li>
+<li>$I_i$: Inspection result at time step $i$</li>
+<li>$I_{M,i}$: Monitoring result at time step $i$</li>
+<li>$I_{D,i}$: Decision on whether to perform inspection at time step $i$</li>
+<li>$R_i$: Whether to perform repair at time step $i$, including two states (&ldquo;repair&rdquo; and &ldquo;not repair&rdquo;)</li>
+<li>$D_{R,i}$: Damage state after repair or no repair at time step $i$</li>
+</ul>
+<p><img src="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319151022557.png"
+	width="541"
+	height="367"
+	srcset="/p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319151022557_hu_99c9580d90e19f8f.png 480w, /p/%E7%A6%BB%E6%95%A3%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4%E8%A7%84%E5%88%92/image-20250319151022557_hu_a8be50c955760dbb.png 1024w"
+	loading="lazy"
+	
+		alt="dBN Architecture"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="353px"
+	
+></p>
+<h3 id="probability-distribution-explanation">Probability Distribution Explanation
+</h3><p>For example:</p>
+<ul>
+<li>If there are $n_d$ structural damage states, then $P(D_0)$ should be a vector of length $n_d$</li>
+<li>If there are $n_M$ structural parameters, then $P(M_0)$ should be a vector of length $n_M$</li>
+<li>$P(M_i|M_{i-1})$ is an $n_M \times n_M$ matrix representing the change of model parameters in different time steps</li>
+<li>$P(D_i|D_{R,i-1},M_i)$ is a three-dimensional matrix of size $n_D \times n_D \times n_M$</li>
+<li>When the randomness of model parameters is not considered, for example, a fixed Markov chain as a degradation model, node $M_i$ can be omitted</li>
+<li>$P(D_{R,i}|D_{i},R_i)$ is a three-dimensional matrix of size $n_D \times n_D \times 2$, representing the conditional probability distribution of $D_{R,i}$ given $D_i$ (damage state at time step $i$) and $R_i$ (whether to perform maintenance at time step $i$)</li>
+<li>If there are $n_I$ inspection results, then the inspection model will be modeled in the form of $P(I_i|D_i,I_{D,i})$, with size $n_I \times n_D \times 2$</li>
+<li>The health monitoring system is assumed to be related only to damage size $D_i$, expressed in the form of $P(I_{M,i}|D_i)$. If there are $n_{I_M}$ health monitoring system alarm results, then $P(I_{M,i}|D_i)$ is a matrix of size $n_{I_M} \times n_D$</li>
+</ul>
+<h2 id="maintenance-strategies">Maintenance Strategies
+</h2><p>This paper considers 13 different maintenance strategies:</p>
+<ol>
+<li>Corrective maintenance</li>
+<li>No inspection, periodic repair</li>
+<li>No inspection, determine whether to repair based on CM alarm results</li>
+<li>Equal interval inspection, determine whether to repair based on inspection results</li>
+<li>Determine whether to inspect based on CM alarm results, determine whether to repair based on inspection results</li>
+<li>No inspection, determine whether to repair based on failure probability</li>
+<li>Equal interval inspection, determine whether to repair based on failure probability</li>
+<li>Determine whether to inspect based on failure probability; determine whether to repair based on failure probability</li>
+<li>Determine whether to inspect based on failure probability; determine whether to repair based on inspection results</li>
+<li>No inspection, determine whether to repair based on expected value of damage size</li>
+<li>Equal interval inspection, determine whether to repair based on expected value of damage size</li>
+<li>Determine whether to inspect based on expected value of damage size, determine whether to repair based on expected value of damage size</li>
+<li>Determine whether to inspect based on expected value of damage size; determine whether to repair based on inspection results</li>
+</ol>
+<h2 id="algorithm-explanation-for-simple-strategies">Algorithm Explanation for Simple Strategies
+</h2><h3 id="probability-update-formulas">Probability Update Formulas
+</h3><p>Formula (1) updates the structural damage state probability at each time step: (Note that there are 6 variables here: $D_i, D_{i-1}, M_{i}, M_{i-1}, R_{i-1}$, and $D_{R,i-1}$. Therefore, the complete probability matrix will be a 6-dimensional matrix, consuming huge memory resources)</p>
+$$
+P(D_i,M_i) = \sum_{D_{R,i-1}}\sum_{D_{i-1}}\sum_{R_{i-1}}\sum_{M_{i-1}} P(D_i|D_{R,i-1},M_i)P(D_{R,i-1}|D_{i-1},R_{i-1})\\
+\times P(R_{i-1}|D_{i-1})P(M_i|M_{i-1})P(D_{i-1},M_{i-1})
+$$<p>Formula (2) is the detailed representation of Formula (1) (taking 7 damage states and 3 model parameters as an example). It is worth explaining that the $\times$ in the formula here does not represent standard matrix multiplication, but represents probability product operation:</p>
+$$
+P(D_i=d, M_i=m) = \sum_{d_{i-1}=0}^{6}\sum_{m_{i-1}=0}^{2}\sum_{r_{i-1}=0}^{1}\sum_{d_{r,i-1}=0}^{6} P(D_i=d|D_{R,i-1}=d_{r,i-1},M_i=m) \times P(D_{R,i-1}=d_{r,i-1}|D_{i-1}=d_{i-1},R_{i-1}=r_{i-1}) \times P(R_{i-1}=r_{i-1}|D_{i-1}=d_{i-1}) \times P(M_i=m|M_{i-1}=m_{i-1}) \times P(D_{i-1}=d_{i-1},M_{i-1}=m_{i-1}})
+$$<p>Formula (3) is the formula after variable elimination, which can well improve computational efficiency and reduce memory resources, eliminating $M_{i-1}, R_{i-1}, D_{i-1}$ in sequence, and finally eliminating the $D_{R,i-1}$ variable:</p>
+$$
+P(D_i,M_i) = \sum_{D_{R,i-1}} P(D_i|D_{R,i-1}, M_i) \sum_{D_{i-1}} 
+\times \sum_{R_{i-1}} P(D_{R,i-1}|D_{i-1}, R_{i-1})P(R_{i-1}|D_{i-1})
+\times \sum_{M_{i-1}} P(M_i|M_{i-1})P(D_{i-1}, M_{i-1})
+$$<h3 id="failure-and-repair-probabilities">Failure and Repair Probabilities
+</h3><ul>
+<li>Failure probability equals the probability that damage state $D_i$ equals &ldquo;fault&rdquo;</li>
+<li>Repair probability is the probability that node $R_i$ takes the value &ldquo;repair&rdquo;</li>
+<li>Need to formulate $P(R_i|D_i)$ according to different strategies. For example, for strategy 1, all $R_i$ are 0, i.e., no repair is performed</li>
+</ul>
+<h2 id="algorithm-explanation-for-complex-strategies">Algorithm Explanation for Complex Strategies
+</h2><ul>
+<li>Randomly select $d_0$ from $P(D_0)$ distribution</li>
+<li>Randomly select $m_0$ from $P(M_0)$ distribution</li>
+<li>Calculate initial $P(D_0,M_0)=P(D_0)P(M_0)$</li>
+<li>For each time step $i$:
+<ul>
+<li>Draw monitoring result $i_{M,i}$ from distribution $P(I_{M,i}|D_i=d_i)$</li>
+<li>Update $P(D_i,M_i)$ using Bayesian criterion ;*</li>
+<li>Make decision on whether to inspect according to decision rule $i_{D,i}$</li>
+<li>Draw inspection result $i_i$ from distribution $P(I_{i}|D_i=d_i, I_{D,i}=i_{D,i})$</li>
+<li>Update $P(D_i,M_i)$ using Bayesian criterion ;*</li>
+<li>Make decision on whether to repair according to decision rule $r_i$</li>
+<li>Draw structural damage state after repair $d_{R,i}$ from distribution $P(D_{R,i}|D_i=d_i, R_{i}=r_{i})$</li>
+<li>Draw next step damage state $d_{i+1}$ from distribution $P(D_{i+1}|D_{R,i}=d_{R,i}, M_{i+1}=m_{i+1})$</li>
+<li>Update $P(D_{i+1},M_{i+1})$ according to degradation and repair algorithm ; *</li>
+</ul>
+</li>
+</ul>
+<p>(* indicates that Bayesian theorem needs to be used for probability update)</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/en/tags/om-framework/">O&amp;M Framework</a>
+        
+            <a href="/en/tags/discrete-bayesian-network/">Discrete Bayesian Network</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under whhong的博客</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+	const mainArticleElement = document.querySelector(".main-article");
+        renderMathInElement(mainArticleElement, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+
+    
+</article>
+
+    
+        <div class="series-navigation article-content">
+  <div class="series-header">
+    <span class="series-label">系列文章</span>
+    <h4 class="series-title">Operation &amp; Maintenance Decision and Risk Management</h4>
+    <span class="series-progress">第 2 篇，共 1 篇</span>
+  </div>
+  
+  <div class="series-links">
+    
+    <span class="series-link prev disabled">
+      <span class="link-label">← 上一篇</span>
+      <span class="link-title">已经是第一篇</span>
+    </span>
+    
+
+    
+    <span class="series-link next disabled">
+      <span class="link-label">下一篇 →</span>
+      <span class="link-title">已经是最后一篇</span>
+    </span>
+    
+  </div>
+</div>
+
+<style>
+.series-navigation {
+  background: var(--card-background);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.series-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.series-label {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.series-title {
+  margin: 10px 0;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.series-progress {
+  display: block;
+  color: var(--body-text-color);
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.series-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.series-link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.series-link:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-background);
+}
+
+.series-link.prev {
+  align-items: flex-start;
+}
+
+.series-link.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.series-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.link-label {
+  font-size: 12px;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.link-title {
+  font-size: 14px;
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+ 
+@media (max-width: 768px) {
+  .series-links {
+    flex-direction: column;
+  }
+  
+  .series-link.next {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+</style>
+
+    
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/en/p/multi-objective-opportunistic-maintenance-optimization-for-offshore-wind-farms-considering-uncertainty/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Multi-Objective Opportunistic Maintenance Optimization for Offshore Wind Farms Considering Uncertainty</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/sam-crack-segmentation-experiments-prompt-point-strategies-and-performance-evaluation/">
+        
+        
+            <div class="article-image">
+                <img src="/p/sam%E8%A3%82%E7%BC%9D%E5%88%86%E5%89%B2%E5%AE%9E%E9%AA%8C%E6%8F%90%E7%A4%BA%E7%82%B9%E7%AD%96%E7%95%A5%E4%B8%8E%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/004_True10_conf58.15.8abc989ef495447e6057a7a44616f555_hu_771ae8f5eaf57fe3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post SAM Crack Segmentation Experiments: Prompt Point Strategies and Performance Evaluation"
+                        
+                        data-hash="md5-iryYnvSVRH5gV6ekRhb1VQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">SAM Crack Segmentation Experiments: Prompt Point Strategies and Performance Evaluation</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/offshore-wind-turbine-condition-monitoring-and-maintenance-strategy-optimization-a-cost-effectiveness-based-decision-framework/">
+        
+        
+            <div class="article-image">
+                <img src="/p/%E6%B5%B7%E4%B8%8A%E9%A3%8E%E6%9C%BA%E7%8A%B6%E6%80%81%E7%9B%91%E6%B5%8B%E4%B8%8E%E8%BF%90%E7%BB%B4%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96%E5%9F%BA%E4%BA%8E%E6%88%90%E6%9C%AC%E6%95%88%E7%9B%8A%E7%9A%84%E7%BB%BC%E5%90%88%E5%86%B3%E7%AD%96%E6%A1%86%E6%9E%B6/1.0a6abdca3b48fb022bae4ede328f8f1e_hu_422c271d42ea37e9.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework"
+                        
+                        data-hash="md5-Cmq9yjtI&#43;wIrrk7eMo&#43;PHg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Offshore Wind Turbine Condition Monitoring and Maintenance Strategy Optimization: A Cost-Effectiveness Based Decision Framework</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/crack-diffusion-experiment/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-experiment/1.3d32b2264364214342092b476dfe7813_hu_7b69c78fe8655228.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques"
+                        data-key="crack-diffusion-experiment" 
+                        data-hash="md5-PTKyJkNkIUNCCStHbf54Ew==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fundamentals of Crack Image Processing: Semantic Segmentation and Post-Processing Techniques</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/en/p/crack-diffusion-paper-reading/">
+        
+        
+            <div class="article-image">
+                <img src="/p/crack-diffusion-paper-reading/1.42f81beb1fbd6930a80b4f0a26b2f740_hu_176c61a1e7b710d7.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework"
+                        data-key="crack-diffusion-paper-reading" 
+                        data-hash="md5-Qvgb6x&#43;9aTCoC08KJrL3QA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Deep Learning for Crack Detection: Cold Diffusion Anomaly Detection Framework</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-CN","locale":{"admin":"站长","placeholder":null},"requiredMeta":["nick","mail"],"serverURL":"https://vercel-test-2zkisdztn-whhong-researchs-projects.vercel.app/"});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 whhong
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress-bar';
+    document.body.appendChild(progressBar);
+    
+    
+    function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = progress + '%';
+    }
+    
+    
+    let ticking = false;
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateProgressBar();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    
+    updateProgressBar();
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                        img.removeAttribute('data-srcset');
+                    }
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                
+                const navHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('article a[href^="http"]').forEach(link => {
+        
+        if (!link.href.includes(window.location.hostname)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener('keydown', function(e) {
+    
+    if (e.key === 'Escape') {
+        const photoswipe = document.querySelector('.pswp--open');
+        if (photoswipe) {
+            
+            const closeBtn = photoswipe.querySelector('.pswp__button--close');
+            if (closeBtn) closeBtn.click();
+        }
+    }
+    
+    
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('.search-input, #search-input');
+        if (searchInput) {
+            searchInput.focus();
+        } else {
+            
+            window.location.href = '/page/search/';
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        
+        document.body.classList.add('page-hidden');
+    } else {
+        document.body.classList.remove('page-hidden');
+    }
+});
+</script>
+    </body>
+</html>

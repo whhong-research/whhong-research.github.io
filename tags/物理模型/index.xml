@@ -24,9 +24,16 @@
 &lt;h2 id=&#34;multiscale-approach&#34;&gt;Multiscale approach
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;
+&lt;p&gt;&lt;strong&gt;两条线路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多尺度建模（挑战在于多尺度模型之间如何保持“一致性”）&lt;/li&gt;
+&lt;li&gt;精细化的3D全尺寸模型（计算效率问题）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;&lt;strong&gt;为什么需要使用多尺度模型来进行模拟&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;损伤区域需要使用较细的网格，例如对于后缘的粘合层脱粘，需要网格尺寸在毫米级别来捕获裂缝的简短应力场；而全尺度的叶片模型长度在100m尺度；（&lt;strong&gt;从计算效率，计算精度角度出发&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;损伤区域需要使用较细的网格，例如对于后缘的粘合层脱粘，需要网格尺寸在毫米级别来捕获裂缝的尖端应力场；而全尺度的叶片模型长度在100m尺度；（&lt;strong&gt;从计算效率，计算精度角度出发&lt;/strong&gt;）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;从建模的最终目的出发&lt;/strong&gt;：如果只需要计算结构频率和计算挠度，一维梁模型就可以；而想要模拟损伤发展过程，子结构模型的精度仍然不足以进行捕获，而是需要从microscale尺度进行理解；“In general, we think that damage interaction and scale effects in fracture of composite structures are so complicated that they can only be understood on the microscale, i.e., by microscale experiments and micromechanical modelling”&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -47,6 +54,36 @@
 &lt;p&gt;“the output from a finer length scale model should be formulated in a sufficiently simple form such that it can be applied in a model at the coarser length scale.” 微观模型的输出应当以简单的形式表达，以便应用于大尺度模型中；&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;example&#34;&gt;Example
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;研究复合材料中片轴层中的多裂纹疲劳损伤
+&lt;ul&gt;
+&lt;li&gt;子结构长度尺度：研究承受循环弯曲荷载的薄壁梁试样的损伤演化；&lt;/li&gt;
+&lt;li&gt;宏观尺度：双轴循环加载的十字形试样，重点是双轴加载下的循环裂纹扩展、裂缝密度和刚度退化；&lt;/li&gt;
+&lt;li&gt;微观尺度：单轴循环加载的层压板试样，重点是循环加载下横向裂纹的扩展速率的实验表征和建模；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;各尺度之间的联系：
+&lt;ul&gt;
+&lt;li&gt;子结构长度尺度 vs 宏观尺度（十字形试样）：保持相同的双轴应变状态&lt;/li&gt;
+&lt;li&gt;宏观尺度 vs 微观尺度（层压板）：保持相同的能量释放能（energy release rate）和模式混合度（mode mixity）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/3-s2.0-B9780128212882000138-f18-29-9780128212882.jpg&#34;
+	width=&#34;298&#34;
+	height=&#34;336&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/3-s2.0-B9780128212882000138-f18-29-9780128212882_hu_afafcaf90c855d7c.jpg 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/3-s2.0-B9780128212882000138-f18-29-9780128212882_hu_fe1b34529f663270.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3-s2.0-B9780128212882000138-f18-29-9780128212882&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;212px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h2 id=&#34;trailing-edge-bondlines&#34;&gt;Trailing edge bondlines
 &lt;/h2&gt;&lt;h4 id=&#34;background&#34;&gt;Background
 &lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/20251002.png&#34;
@@ -106,69 +143,61 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;考虑重力和局部屈曲&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910.png&#34;
-	width=&#34;429&#34;
-	height=&#34;104&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_a86a433664790a4e.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171356910_hu_b37898d8a337511c.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/image-20251014171356910.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;重力引起的edgewise stress表达式&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;412&#34;
-		data-flex-basis=&#34;990px&#34;
-	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285.png&#34;
-	width=&#34;865&#34;
-	height=&#34;730&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_af610227c79f32c4.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171430285_hu_608407a6b75f0e57.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/image-20251014171430285.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;局部屈曲示意图&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;118&#34;
-		data-flex-basis=&#34;284px&#34;
-	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208.png&#34;
-	width=&#34;941&#34;
-	height=&#34;300&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_a995a6ddfac52531.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171452208_hu_13c07ff6f7659673.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/image-20251014171452208.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;局部屈曲导致的轴向力变化以及弯矩变化&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;313&#34;
-		data-flex-basis=&#34;752px&#34;
-	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585.png&#34;
-	width=&#34;930&#34;
-	height=&#34;186&#34;
-	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_68365090760c83e2.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251014171519585_hu_6deb70eeac99877d.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/image-20251014171519585.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;计算energe release rate&#34;
 	
 	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;500&#34;
-		data-flex-basis=&#34;1200px&#34;
-	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;fe-modelling&#34;&gt;FE Modelling
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Abaqus， C3D8R，solid element&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;A 5m prismatic beam model&lt;/strong&gt; from a 17m long Vindeby blade&lt;/li&gt;
-&lt;li&gt;mesh size:
+&lt;li&gt;
+&lt;p&gt;VCCT模型操作教学：“https://www.youtube.com/watch?v=lMDYXt4CDm0”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Abaqus， C3D8R，solid element&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A 5m prismatic beam model&lt;/strong&gt; from a 17m long Vindeby blade&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mesh size:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;25 * 22 * 6 mm for spar cap&lt;/li&gt;
 &lt;li&gt;25 * 11 * 14 mm for sandwich panels&lt;/li&gt;
@@ -176,8 +205,24 @@
 &lt;li&gt;Mesh size is chosen based on mesh sensitivitu analysis.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;The virtual crack closure technique (VCCT)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The virtual crack closure technique (VCCT)&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251022125136114.png&#34;
+	width=&#34;811&#34;
+	height=&#34;569&#34;
+	srcset=&#34;https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251022125136114_hu_347ece900d7adbdf.png 480w, https://whhong-research.github.io/p/%E5%8F%B6%E7%89%87%E5%A4%9A%E5%B0%BA%E5%BA%A6%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1%E4%BB%8E%E5%BE%AE%E8%A7%82%E6%8D%9F%E4%BC%A4%E5%88%B0%E5%AE%8F%E8%A7%82%E5%A4%B1%E6%95%88/image-20251022125136114_hu_efb32cc864717971.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;FEM叶片节段模型&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
 </description>
         </item>
         

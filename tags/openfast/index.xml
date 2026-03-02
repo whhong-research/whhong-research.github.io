@@ -1,49 +1,173 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>OpenFast on whhong的博客</title>
+        <title>OpenFAST on whhong的博客</title>
         <link>https://whhong-research.github.io/tags/openfast/</link>
-        <description>Recent content in OpenFast on whhong的博客</description>
+        <description>Recent content in OpenFAST on whhong的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Tue, 20 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/openfast/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>TurbSim风场建模与OpenFast入流设置指南</title>
+        <title>TurbSim风场建模与OpenFAST入流设置指南</title>
         <link>https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</link>
         <pubDate>Tue, 20 May 2025 00:00:00 +0000</pubDate>
         
         <guid>https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post TurbSim风场建模与OpenFast入流设置指南" /&gt;&lt;h1 id=&#34;input参数&#34;&gt;Input参数
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;RandSeed1: 生成随机数，和RandSeed2联合使用；&lt;/li&gt;
-&lt;li&gt;RandSeed2: 指定随机数生成器，建议使用“&lt;strong&gt;RanLux&lt;/strong&gt;”；&lt;/li&gt;
-&lt;li&gt;WrAdFF：&amp;ldquo;True&amp;rdquo; or &amp;ldquo;False&amp;rdquo;，指定输出格式，该格式满足AeroDyn需求，为.bts文件；&lt;/li&gt;
-&lt;li&gt;TimeStep: 建议设定为0.05秒，满足多数仿真需求，该值决定了最大频率（0.05对应20Hz）&lt;/li&gt;
-&lt;li&gt;NumGrid_Z（NumGrid_Y）：必须是大于1的整数，NumGrid_Y为奇数的话意味着中心点落在塔筒中心线上；&lt;/li&gt;
-&lt;li&gt;Analysis Time:仿真时间长度，建议至少设置为600s；&lt;/li&gt;
-&lt;li&gt;Usable Time：设置为“All”，将不会添加一个计算所需的小数值（the grid width divided by the mean HH wind speed）&lt;/li&gt;
-&lt;li&gt;HubHt:轮毂高度，单位为m，用作网格位置的参考高度；&lt;/li&gt;
-&lt;li&gt;GridHeight：1/2的网格高度应该小于HubHt；&lt;/li&gt;
-&lt;li&gt;GridWidth：保证叶片转动在网格范围内；&lt;/li&gt;
-&lt;li&gt;IECstandard：1代表61400-1风机，2代表61400-2，3代表61400-3（海上风机）；&lt;/li&gt;
-&lt;li&gt;IECturbc：IEC规定中的湍流强度，A表示强度最大，默认值为B；&lt;/li&gt;
-&lt;li&gt;IEC_WindType：IEC湍流模型，NTM为正常湍流模型，ETM为极端湍流模型，NWM为极端风速模型；&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;openfast报错&#34;&gt;Openfast报错
-&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;叶片撞塔&lt;/p&gt;
+        <description>&lt;img src="https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/TurbSim.png" alt="Featured image of post TurbSim风场建模与OpenFAST入流设置指南" /&gt;&lt;h1 id=&#34;input参数说明&#34;&gt;Input参数说明
+&lt;/h1&gt;&lt;h2 id=&#34;随机数生成参数&#34;&gt;随机数生成参数
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;建议值&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RandSeed1&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;生成随机数种子，与RandSeed2联合使用&lt;/td&gt;
+          &lt;td&gt;根据需求设置&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;RandSeed2&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;指定随机数生成器&lt;/td&gt;
+          &lt;td&gt;建议使用&amp;quot;&lt;strong&gt;RanLux&lt;/strong&gt;&amp;quot;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;输出格式参数&#34;&gt;输出格式参数
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;可选值&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;WrAdFF&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;指定输出格式，满足AeroDyn需求&lt;/td&gt;
+          &lt;td&gt;&amp;ldquo;True&amp;quot;或&amp;quot;False&amp;rdquo;，输出.bts文件&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;时间参数&#34;&gt;时间参数
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;建议值&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;TimeStep&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;时间步长，决定最大频率&lt;/td&gt;
+          &lt;td&gt;0.05秒（对应20Hz）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Analysis Time&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;仿真时间长度&lt;/td&gt;
+          &lt;td&gt;至少600秒&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;Usable Time&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;可用时间&lt;/td&gt;
+          &lt;td&gt;设置为&amp;quot;All&amp;quot;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;网格参数&#34;&gt;网格参数
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;注意事项&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;NumGrid_Z&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Z方向网格数&lt;/td&gt;
+          &lt;td&gt;必须大于1的整数&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;NumGrid_Y&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Y方向网格数&lt;/td&gt;
+          &lt;td&gt;奇数意味着中心点落在塔筒中心线上&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HubHt&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;轮毂高度（m）&lt;/td&gt;
+          &lt;td&gt;网格位置的参考高度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GridHeight&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;网格高度&lt;/td&gt;
+          &lt;td&gt;1/2的网格高度应小于HubHt&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GridWidth&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;网格宽度&lt;/td&gt;
+          &lt;td&gt;保证叶片转动在网格范围内&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;iec标准参数&#34;&gt;IEC标准参数
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;可选值&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IECstandard&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;IEC标准类型&lt;/td&gt;
+          &lt;td&gt;1: 61400-1, 2: 61400-2, 3: 61400-3（海上风机）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IECturbc&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;湍流强度等级&lt;/td&gt;
+          &lt;td&gt;A（最大）、B（默认）、C&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;IEC_WindType&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;IEC湍流模型&lt;/td&gt;
+          &lt;td&gt;NTM（正常湍流）、ETM（极端湍流）、NWM（极端风速）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;openfast常见报错及解决方法&#34;&gt;OpenFAST常见报错及解决方法
+&lt;/h1&gt;&lt;h2 id=&#34;1-叶片撞塔blade-tower-collision&#34;&gt;1. 叶片撞塔（Blade-Tower Collision）
+&lt;/h2&gt;&lt;h3 id=&#34;问题描述&#34;&gt;问题描述
+&lt;/h3&gt;&lt;p&gt;仿真过程中出现叶片与塔筒碰撞的错误。&lt;/p&gt;
+&lt;h3 id=&#34;可能原因及解决方法&#34;&gt;可能原因及解决方法
+&lt;/h3&gt;&lt;h4 id=&#34;原因1初始变桨角设置不当&#34;&gt;原因1：初始变桨角设置不当
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;问题&lt;/strong&gt;：叶片初始桨距角设置不合理，导致叶片过于接近塔筒&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;初始变桨角没有设置好&lt;/p&gt;
+&lt;li&gt;检查&lt;code&gt;.fst&lt;/code&gt;文件中的&lt;code&gt;BlPitch&lt;/code&gt;参数&lt;/li&gt;
+&lt;li&gt;设置合理的初始桨距角（通常3-5度）&lt;/li&gt;
+&lt;li&gt;确保所有叶片的桨距角一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097.png&#34;
 	width=&#34;840&#34;
 	height=&#34;1194&#34;
 	srcset=&#34;https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097_hu_840df227b5d51aef.png 480w, https://whhong-research.github.io/p/turbsim%E9%A3%8E%E5%9C%BA%E5%BB%BA%E6%A8%A1%E4%B8%8Eopenfast%E5%85%A5%E6%B5%81%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/image-20250524152737097_hu_7e7448cca983ff2f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20250524152737097&#34;
+		alt=&#34;初始变桨角设置&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -51,10 +175,95 @@
 		data-flex-basis=&#34;168px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;h4 id=&#34;原因2塔影效应参数设置问题&#34;&gt;原因2：塔影效应参数设置问题
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;问题&lt;/strong&gt;：塔影效应计算导致异常的气动力&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;检查AeroDyn中的&lt;code&gt;TwrShadow&lt;/code&gt;和&lt;code&gt;TwrPotent&lt;/code&gt;设置&lt;/li&gt;
+&lt;li&gt;确保塔筒几何参数正确&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;原因3结构模型问题&#34;&gt;原因3：结构模型问题
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;问题&lt;/strong&gt;：叶片或塔筒的刚度、质量分布不合理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方法&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;检查Blade和Tower的属性文件&lt;/li&gt;
+&lt;li&gt;验证模态频率是否合理&lt;/li&gt;
+&lt;li&gt;确保质量分布符合实际&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-数值不稳定numerical-instability&#34;&gt;2. 数值不稳定（Numerical Instability）
+&lt;/h2&gt;&lt;h3 id=&#34;症状&#34;&gt;症状
+&lt;/h3&gt;&lt;p&gt;仿真在短时间内发散，出现极大的位移或速度值。&lt;/p&gt;
+&lt;h3 id=&#34;解决方法&#34;&gt;解决方法
+&lt;/h3&gt;&lt;h4 id=&#34;检查时间步长&#34;&gt;检查时间步长
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;降低&lt;code&gt;DT&lt;/code&gt;时间步长（尝试0.001或更小）&lt;/li&gt;
+&lt;li&gt;确保满足CFL条件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查数值阻尼&#34;&gt;检查数值阻尼
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;调整&lt;code&gt;CompElast&lt;/code&gt;或&lt;code&gt;CompSub&lt;/code&gt;中的阻尼参数&lt;/li&gt;
+&lt;li&gt;增加人工阻尼以稳定计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-风场文件错误&#34;&gt;3. 风场文件错误
+&lt;/h2&gt;&lt;h3 id=&#34;症状-1&#34;&gt;症状
+&lt;/h3&gt;&lt;p&gt;提示风场文件格式错误或无法读取。&lt;/p&gt;
+&lt;h3 id=&#34;解决方法-1&#34;&gt;解决方法
+&lt;/h3&gt;&lt;h4 id=&#34;检查turbsim输出&#34;&gt;检查TurbSim输出
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;确认&lt;code&gt;.bts&lt;/code&gt;文件生成正确&lt;/li&gt;
+&lt;li&gt;检查文件路径是否正确设置&lt;/li&gt;
+&lt;li&gt;验证InflowWind中的&lt;code&gt;WindType&lt;/code&gt;设置（应为2表示.bts文件）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查风场参数匹配&#34;&gt;检查风场参数匹配
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;确认TurbSim的&lt;code&gt;HubHt&lt;/code&gt;与OpenFAST一致&lt;/li&gt;
+&lt;li&gt;检查&lt;code&gt;GridWidth&lt;/code&gt;和&lt;code&gt;GridHeight&lt;/code&gt;是否满足叶片扫掠范围&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;4-控制器相关问题&#34;&gt;4. 控制器相关问题
+&lt;/h2&gt;&lt;h3 id=&#34;症状-2&#34;&gt;症状
+&lt;/h3&gt;&lt;p&gt;出现控制相关错误或风机行为异常。&lt;/p&gt;
+&lt;h3 id=&#34;解决方法-2&#34;&gt;解决方法
+&lt;/h3&gt;&lt;h4 id=&#34;检查discondll&#34;&gt;检查DISCON.dll
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;确保控制器DLL文件路径正确&lt;/li&gt;
+&lt;li&gt;验证控制器参数文件（通常是&lt;code&gt;DISCON.IN&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;检查&lt;code&gt;DLL_FileName&lt;/code&gt;和&lt;code&gt;DLL_InFile&lt;/code&gt;设置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查初始条件&#34;&gt;检查初始条件
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;确保初始转速和桨距角在合理范围内&lt;/li&gt;
+&lt;li&gt;检查发电机转矩和转速的对应关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;调试建议&#34;&gt;调试建议
+&lt;/h2&gt;&lt;h3 id=&#34;逐步排查法&#34;&gt;逐步排查法
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;简化模型&lt;/strong&gt;：先使用刚性叶片和固定塔筒测试&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;逐步添加复杂度&lt;/strong&gt;：依次启用弹性叶片、塔筒、控制器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检查每个组件&lt;/strong&gt;：单独验证AeroDyn、ElastoDyn、InflowWind设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;常用检查清单&#34;&gt;常用检查清单
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 所有输入文件路径正确&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 几何参数一致（轮毂高度、叶片长度等）&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 时间步长合适&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 初始条件合理&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 风场文件正确生成且可读&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 控制器参数设置正确&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;OpenFAST官方文档：https://openfast.readthedocs.io/&lt;/li&gt;
+&lt;li&gt;NREL论坛：https://forums.nrel.gov/&lt;/li&gt;
+&lt;li&gt;GitHub Issues页面：https://github.com/OpenFAST/openfast/issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;本文基于OpenFAST v3.5.0和TurbSim v2.0编写，不同版本可能存在参数差异。&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

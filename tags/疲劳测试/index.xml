@@ -8,21 +8,21 @@
         <language>zh-cn</language>
         <copyright>whhong</copyright>
         <lastBuildDate>Wed, 05 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://whhong-research.github.io/tags/%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>IEC 61400-23叶片全尺寸疲劳测试标准解读</title>
-        <link>https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</link>
+        <title>IEC 61400-23 叶片全尺寸疲劳测试标准解读</title>
+        <link>https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</link>
         <pubDate>Wed, 05 Nov 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</guid>
-        <description>&lt;img src="https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.png" alt="Featured image of post IEC 61400-23叶片全尺寸疲劳测试标准解读" /&gt;&lt;h1 id=&#34;叶片疲劳测试规范&#34;&gt;叶片疲劳测试规范
-&lt;/h1&gt;&lt;h2 id=&#34;iec-61400-23-2014-full-scale-structural-testing-of-rotor-blades&#34;&gt;IEC-61400-23-2014 &lt;strong&gt;Full-scale structural testing of rotor blades&lt;/strong&gt;
+        <guid>https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/</guid>
+        <description>&lt;img src="https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/Cover.png" alt="Featured image of post IEC 61400-23 叶片全尺寸疲劳测试标准解读" /&gt;&lt;h1 id=&#34;叶片疲劳测试规范&#34;&gt;叶片疲劳测试规范
+&lt;/h1&gt;&lt;h2 id=&#34;iec-61400-232014-full-scale-structural-testing-of-rotor-blades&#34;&gt;IEC 61400-23:2014 Full-scale Structural Testing of Rotor Blades
 &lt;/h2&gt;&lt;h3 id=&#34;叶片坐标系规定&#34;&gt;叶片坐标系规定
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;叶片局部弦向坐标系（挥舞方向，摆振方向）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576.png&#34;
+&lt;p&gt;&lt;strong&gt;叶片局部弦向坐标系&lt;/strong&gt;（挥舞方向、摆振方向）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576.png&#34;
 	width=&#34;776&#34;
 	height=&#34;539&#34;
-	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_a62c90abebf96c61.png 480w, https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_d4b1599bdfc27cbc.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_a62c90abebf96c61.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105162846576_hu_d4b1599bdfc27cbc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;叶片坐标系&#34;
@@ -35,11 +35,11 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;叶片全局坐标系&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769.png&#34;
+&lt;p&gt;&lt;strong&gt;叶片全局坐标系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769.png&#34;
 	width=&#34;810&#34;
 	height=&#34;448&#34;
-	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_217a6be575c424f8.png 480w, https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_18fdf1956ed8ccd0.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_217a6be575c424f8.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105163057769_hu_18fdf1956ed8ccd0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;叶片全局坐标系&#34;
@@ -52,14 +52,12 @@
 &gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;设计优化后是否需要重新进行全尺寸实验&#34;&gt;设计优化后是否需要重新进行全尺寸实验
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;通常而言，加强叶片不需要重新测试，安全裕度较大的区域更新也不需要重新测试，但影响叶片负载分布的情况需要慎重考虑&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519.png&#34;
+&lt;h3 id=&#34;设计变更后是否需要重新进行全尺寸测试&#34;&gt;设计变更后是否需要重新进行全尺寸测试
+&lt;/h3&gt;&lt;p&gt;通常情况下，叶片加强或安全裕度较大的区域更新无需重新测试，但影响叶片载荷分布的变更需慎重评估：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519.png&#34;
 	width=&#34;806&#34;
 	height=&#34;425&#34;
-	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_b4c090ae41592a6.png 480w, https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_d5aea3b80a962400.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_b4c090ae41592a6.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105165013519_hu_d5aea3b80a962400.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;是否需要重新测试的案例说明&#34;
@@ -70,69 +68,77 @@
 		data-flex-basis=&#34;455px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;通常不需要重新测试&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;通常无需重新测试的情形&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;修改叶片叶尖形状&lt;/li&gt;
+&lt;li&gt;修改叶片叶尖外形&lt;/li&gt;
 &lt;li&gt;延长部分纤维层&lt;/li&gt;
-&lt;li&gt;原材料微调（更换供货商可能需要试样级别的重新测试）&lt;/li&gt;
+&lt;li&gt;原材料微调（更换供应商可能需要进行试样级别的重新测试）&lt;/li&gt;
 &lt;li&gt;芯材倒角调整&lt;/li&gt;
 &lt;li&gt;大块层压板的细微铺层调整&lt;/li&gt;
 &lt;li&gt;生产过程中的细微调整&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;通常需要重新测试：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;通常需要重新测试的情形&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;在重要测试位置（最大弦长）改变翼型&lt;/li&gt;
+&lt;li&gt;在关键测试位置（如最大弦长处）改变翼型&lt;/li&gt;
 &lt;li&gt;缩短部分纤维层&lt;/li&gt;
-&lt;li&gt;更换树脂或者纤维类型（玻璃纤维更换为碳纤维，聚酯树脂更换为环氧树脂）&lt;/li&gt;
+&lt;li&gt;更换树脂或纤维类型（如玻璃纤维更换为碳纤维，聚酯树脂更换为环氧树脂）&lt;/li&gt;
 &lt;li&gt;更换不同杨氏模量或剪切模量的芯材&lt;/li&gt;
-&lt;li&gt;sandwich结构中的大规模铺层修改&lt;/li&gt;
+&lt;li&gt;夹层结构中的大规模铺层修改&lt;/li&gt;
 &lt;li&gt;更换生产工艺&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;测试区域&#34;&gt;测试区域
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;(截面渐变区域？)The inboard part of the blade out to the span from where the section properties change only gradually;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;（计算薄弱区域）those parts of the blade where calculations show the smallest reserve factors against buckling, strength or fatigue life;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;（安装气动制动装置影响区域）if there is an aerodynamic braking device (or another blade system), that part of the blade incorporating this device, particularly where the structure is affected by this device&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;可以考虑测试前对尖端进行切割（通常而言尖端的安全裕度较大）&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;测试程序&#34;&gt;测试程序
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;重量、重心以及自然频率的测试&lt;/li&gt;
-&lt;li&gt;静力测试&lt;/li&gt;
-&lt;li&gt;疲劳加载测试&lt;/li&gt;
-&lt;li&gt;后疲劳静力测试&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;安全系数&#34;&gt;安全系数
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;设计阶段考虑的材料因素、损伤后果因素（non-fail-safe或者fail-safe）、荷载因素&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;疲劳公式中的不确定性考虑&lt;/p&gt;
+&lt;h3 id=&#34;测试区域选择&#34;&gt;测试区域选择
+&lt;/h3&gt;&lt;p&gt;测试区域应包括以下部分：&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;截面渐变区域&lt;/strong&gt;：从叶根到截面特性逐渐变化的位置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计算薄弱区域&lt;/strong&gt;：计算显示抗屈曲、强度或疲劳寿命储备系数最小的区域&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;气动制动装置影响区域&lt;/strong&gt;：如叶片装有气动制动装置（或其他叶片系统），需包含该装置及其对结构产生影响的区域&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;提示&lt;/strong&gt;：可考虑测试前对叶尖进行切割，因为叶尖区域通常安全裕度较大。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;测试程序&#34;&gt;测试程序
+&lt;/h3&gt;&lt;p&gt;标准测试流程包括以下阶段：&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;疲劳测试中所需要的循环次数越少，不确定性越大&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;质量特性测试&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;重量测量&lt;/li&gt;
+&lt;li&gt;重心位置测定&lt;/li&gt;
+&lt;li&gt;固有频率测试&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;推荐的疲劳参数不确定因素如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196.png&#34;
+&lt;p&gt;&lt;strong&gt;静力测试&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证结构在极限载荷下的承载能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;疲劳加载测试&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模拟长期运行条件下的循环载荷&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;后疲劳静力测试&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;评估疲劳损伤后的剩余强度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;安全系数&#34;&gt;安全系数
+&lt;/h3&gt;&lt;p&gt;设计阶段需考虑以下安全系数：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;材料因素&lt;/strong&gt;：材料性能的分散性&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;损伤后果因素&lt;/strong&gt;：非失效安全（non-fail-safe）或失效安全（fail-safe）设计&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;载荷因素&lt;/strong&gt;：载荷预测的不确定性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;疲劳公式中的不确定性&#34;&gt;疲劳公式中的不确定性
+&lt;/h4&gt;&lt;p&gt;疲劳测试所需循环次数越少，不确定性越大。标准推荐的疲劳参数不确定因素如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196.png&#34;
 	width=&#34;700&#34;
 	height=&#34;215&#34;
-	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_1662b60ce0de2a83.png 480w, https://whhong-research.github.io/p/iec-61400-23%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_21998d1f99f2a50.png 1024w&#34;
+	srcset=&#34;https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_1662b60ce0de2a83.png 480w, https://whhong-research.github.io/p/iec-61400-23-%E5%8F%B6%E7%89%87%E5%85%A8%E5%B0%BA%E5%AF%B8%E7%96%B2%E5%8A%B3%E6%B5%8B%E8%AF%95%E6%A0%87%E5%87%86%E8%A7%A3%E8%AF%BB/image-20251105175029196_hu_21998d1f99f2a50.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;对于不同的循环荷载使用的推荐安全系数&#34;
@@ -143,63 +149,48 @@
 		data-flex-basis=&#34;781px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;疲劳测试&#34;&gt;疲劳测试
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;疲劳荷载的放大（以减少测试时间）需要注意下面的限制：&lt;/p&gt;
+&lt;h3 id=&#34;疲劳测试要点&#34;&gt;疲劳测试要点
+&lt;/h3&gt;&lt;h4 id=&#34;载荷放大限制&#34;&gt;载荷放大限制
+&lt;/h4&gt;&lt;p&gt;为减少测试时间而进行疲劳载荷放大时，需注意以下限制：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;最大的应力和应变不应该超过静力强度或者导致出现静力损伤/失效；&lt;/li&gt;
-&lt;li&gt;应力和应变不应该超过过大以至于超过力与应力呈现线性的假设，例如屈曲；&lt;/li&gt;
-&lt;li&gt;高应力区域可能出现内部热能；&lt;/li&gt;
+&lt;li&gt;最大应力和应变不得超过静力强度或导致静力损伤/失效的限值&lt;/li&gt;
+&lt;li&gt;应力和应变不应过大以至于超出力与应力呈线性关系的假设（如屈曲）&lt;/li&gt;
+&lt;li&gt;高应力区域可能产生内部热量&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;疲劳试验期间施加的平均荷载通常应当尽可能接近对疲劳强度最严苛的运行条件下的平均荷载；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;若疲劳测试期间的理论损伤（例如基于Miner求和法）等于或高于理论损伤，则认为该位置经过充分测试；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;“理论上的测试损伤可以通过各部分测试的损伤累计来进行评估”&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The theoretical test damage can be evaluated by accumulation of the damage from all partial tests&lt;/li&gt;
+&lt;h4 id=&#34;平均载荷要求&#34;&gt;平均载荷要求
+&lt;/h4&gt;&lt;p&gt;疲劳测试期间施加的平均载荷应尽可能接近对疲劳强度最严苛的运行条件下的平均载荷。&lt;/p&gt;
+&lt;h4 id=&#34;损伤评估&#34;&gt;损伤评估
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;若疲劳测试期间的理论损伤（如基于Miner法则）等于或高于设计理论损伤，则认为该位置经过充分测试&lt;/li&gt;
+&lt;li&gt;理论测试损伤可通过各部分测试的损伤累积来评估&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;某区域在承受了相当于或者超过目标荷载的测试荷载后出现理论损伤，该区域可以认为通过测试；原则上叶片测试可以继续进行，直到其他区域到达同等损伤程度。但需要在未因为损伤导致应力重新分布的前提下。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&#34;通过准则&#34;&gt;通过准则
+&lt;/h4&gt;&lt;p&gt;某区域在承受了相当于或超过目标载荷的测试载荷后出现理论损伤，该区域可认为通过测试。原则上叶片测试可以继续进行，直到其他区域达到同等损伤程度，但需确保未因损伤导致应力重新分布。&lt;/p&gt;
 &lt;h3 id=&#34;测试要求&#34;&gt;测试要求
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;测量不确定性&lt;/p&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;测量不确定性&#34;&gt;测量不确定性
+&lt;/h4&gt;&lt;p&gt;需考虑以下测量不确定性：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;施加荷载的大小、方向以及位置的不确定性&lt;/li&gt;
-&lt;li&gt;位移的大小、方向和位置的不确定性&lt;/li&gt;
-&lt;li&gt;测量应变的大小、方向和位置的不确定性&lt;/li&gt;
+&lt;li&gt;施加载荷的大小、方向和位置&lt;/li&gt;
+&lt;li&gt;位移的大小、方向和位置&lt;/li&gt;
+&lt;li&gt;应变的大小、方向和位置&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;需要考虑测试台架的约束刚度&lt;/p&gt;
+&lt;h4 id=&#34;测试台架刚度&#34;&gt;测试台架刚度
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;测量的叶片挠度需校正叶片根部固定装置和测试台架的变形&lt;/li&gt;
+&lt;li&gt;对于刚性较强的测试台架（其对叶片尖端挠度的贡献小于1%），可忽略测试台架的影响&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;应变测量要求&#34;&gt;应变测量要求
+&lt;/h4&gt;&lt;p&gt;应变测量应覆盖以下区域：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;测量的叶片挠度需要校正叶片根部固定装置和测试台架的形变；&lt;/li&gt;
-&lt;li&gt;当刚性较强的测试台架（其对叶片尖端挠度的贡献小于1%），可以忽略测试台架的影响（如何进行评估？）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主要承力结构&lt;/strong&gt;：梁帽和梁翼缘，四个横截面，沿叶片展向轴的纵向&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前后缘区域&lt;/strong&gt;：最大弦长/叶片长度一半处的前缘和后缘，方向通常平行于叶片边缘&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;根部及腹板区域&lt;/strong&gt;：叶片根部区域及计算应变较大的腹板截面；还需测量剪切应变（使用应变花）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;连接螺栓&lt;/strong&gt;：连接螺栓处的拉伸和弯曲应变&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;应变测量要求&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;考虑主要承受荷载结构的区域：梁帽和梁翼缘，四个横截面，沿叶片展向轴的纵向；&lt;/li&gt;
-&lt;li&gt;最大弦长/叶片长度一半处的前缘和后缘，方向通常平行于叶片边缘；&lt;/li&gt;
-&lt;li&gt;叶片根部区域及计算应变较大的腹板截面；还需要测量剪切应变（使用应变片玫瑰花环）&lt;/li&gt;
-&lt;li&gt;连接螺栓处的拉伸和弯曲应变；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;参考标准&lt;/strong&gt;：IEC 61400-23:2014 &lt;em&gt;Full-scale Structural Testing of Rotor Blades&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         
